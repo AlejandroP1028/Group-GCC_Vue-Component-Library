@@ -1,6 +1,7 @@
 <template>
-    <alert_component msg="WAWAWAWA"></alert_component>
-
+  <div class="bg-gray-100 h-screen w-screen overflow-hidden">
+    <alert_component msg="ooga booga 123" ></alert_component>
+  </div>
 </template>
 
 <script>
