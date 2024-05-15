@@ -5,14 +5,16 @@ Components are designed first in [here](https://www.figma.com/design/ncwy7ApKxRj
 ### Members and their components:
 
 - Prado - alert, card
-- Arnau - list group, close button
+- Arnau - list group, notification
 - Alcantara - accordion, modal
 - Parrucho - dropdown, tooltip
 - Baylon - button, button group
 - Carable - breadcrumb, badge
 - De Leon - carousel, progress
 - Intalan - Navbar, Popovers
+- Javier - Collapse, Toast
+- Catalan- Avatars, Table
 
-Component Preview:
+  Component Preview:
 
 Lol wala pa hehe
