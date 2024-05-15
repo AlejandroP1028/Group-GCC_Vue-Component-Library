@@ -1,6 +1,6 @@
 # Group GCC Vue Component Library
 
-Components are designed first in [here] (https://www.figma.com/design/ncwy7ApKxRjGVoSGXWzJtd/Group-GCC---Vue-Component?node-id=0%3A1&t=CpWt0zb9bafTsA9r-1)
+Components are designed first in [here](https://www.figma.com/design/ncwy7ApKxRjGVoSGXWzJtd/Group-GCC---Vue-Component?node-id=0%3A1&t=CpWt0zb9bafTsA9r-1)
 
 ### Members and their components:
 
