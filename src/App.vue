@@ -1,6 +1,6 @@
 <template>
   <div class="bg-gray-100 h-screen w-screen overflow-hidden">
-    <alert_component msg="ooga booga 123" ></alert_component>
+    <alert_component msg="ooga booga 123" textColor="yellow" type="secondary"></alert_component>
   </div>
 </template>
 
