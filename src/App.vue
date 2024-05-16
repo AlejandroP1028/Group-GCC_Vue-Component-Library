@@ -1,7 +1,9 @@
 <template>
-  <div class="bg-gray-100 h-screen w-screen overflow-hidden">
-    <alert_component msg="ooga booga 123" textColor="yellow" type="secondary"></alert_component>
+  <div class=" overflow-hidden bg-gray-100 h-screen w-screen">
+    <alert_component msg="ooga booga 123" textColor="white" type="secondary" position="tc"></alert_component>
+    <alert_component msg="ooga booga 123" textColor="white" type="secondary" position="lc"></alert_component>
   </div>
+
 </template>
 
 <script>
