@@ -14,7 +14,7 @@
 import alert_component from './components/Alert.vue';
 
 export default {
-  name: 'App',
+  name: 'AlertTest',
   components: {
     alert_component
   },
