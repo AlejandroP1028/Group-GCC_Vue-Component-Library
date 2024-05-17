@@ -3,10 +3,7 @@
     <button @click="toggleDarkMode" type="button" class="absolute top-1/2 left-1/2 bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">
       {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
     </button>
-    <alert_component msg="ooga booga 123" type="default" position="tl" :isDark="isDarkMode" :bordered="true"></alert_component>
-    <alert_component msg="ooga booga 123" type="sky" position="tr" :isDark="isDarkMode" :bordered="true"></alert_component>
-    <alert_component msg="ooga booga 123" type="cyan" position="ll" :isDark="isDarkMode" :bordered="true"></alert_component>
-    <alert_component msg="ooga booga 123" type="teal" position="lr" :isDark="isDarkMode" :bordered="true"></alert_component>
+    <alert_component msg="ooga booga 123" ></alert_component>
   </div>
 </template>
 
