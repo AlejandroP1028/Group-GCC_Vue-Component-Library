@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center h-screen w-screen bg-gray-100">
+  <div class="flex items-center justify-center h-screen w-screen">
     <ItemList />
   </div>
 </template>
