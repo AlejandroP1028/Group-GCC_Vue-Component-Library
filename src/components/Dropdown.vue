@@ -1,5 +1,5 @@
 <template>
-    <div class="relative inline-block text-left">
+    <div class="relative inline-block text-left mt-4 ml-4">
       <div>
         <button @click="toggleDropdown" :class="buttonClasses" type="button">
           Dropdown
@@ -8,10 +8,10 @@
           </svg>
         </button>
       </div>
-      <div v-if="show" :class="dropdownClasses" @click="closeDropdown">
-        <a href="#" class="block px-4 py-2 text-sm" role="menuitem">Option 1</a>
-        <a href="#" class="block px-4 py-2 text-sm" role="menuitem">Option 2</a>
-        <a href="#" class="block px-4 py-2 text-sm" role="menuitem">Option 3</a>
+      <div v-if="show" :class="dropdownClasses">
+        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-200" role="menuitem">ackk</a>
+        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-200" role="menuitem">whaaa</a>
+        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-200" role="menuitem">hmph</a>
       </div>
     </div>
   </template>
@@ -78,8 +78,9 @@
         const { bgClass, borderClass } = styleClasses[this.type] || styleClasses['default'];
   
         return [
-          'origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg z-10',
-          bgClass, borderClass
+          'origin-top-right mt-2 w-full rounded-md shadow-lg z-10',
+          bgClass, borderClass,
+          'max-h-60 overflow-auto' // Ensures the dropdown doesn't go off-screen
         ];
       }
     },
@@ -93,4 +94,3 @@
     }
   }
   </script>
-  
