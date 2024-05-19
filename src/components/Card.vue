@@ -1,7 +1,9 @@
 <template>
-    <div class="bg-slate-200 inline-block rounded-md m-4 p-4">
-        <h1> {{ msg }}</h1>
-    </div>
+    <a href="#" class="m-4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ header }}</h5>
+        <p class="font-normal text-gray-700">{{ body }}</p>
+    </a>
 </template>
 
 
@@ -12,7 +14,8 @@
 export default{
     name: 'CardComponent',
     props: {
-        msg: String,
+        header: String,
+        body: String,
     }
 }
 </script>

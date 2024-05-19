@@ -3,4 +3,5 @@ import { createApp } from 'vue'
 import CardTest from "./card_test.vue";
 import './index.css'
 
+// createApp(AlertTest).mount('#app')
 createApp(CardTest).mount('#app')

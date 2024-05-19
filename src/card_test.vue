@@ -1,6 +1,6 @@
 <template>
   <div :class="{ 'dark': isDarkMode }" class="overflow-hidden h-screen w-screen bg-gray-100 dark:bg-gray-900">
-    <card_component msg="tite"></card_component>
+    <card_component header="Ulo" body="Katawan Katawan Katawan Katawan Katawan Katawan Katawan Katawan"></card_component>
     
   </div>
 </template>
