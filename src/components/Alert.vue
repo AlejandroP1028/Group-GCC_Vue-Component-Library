@@ -17,6 +17,7 @@
     <p class="inline-block ml-2" :class="fontClass">
       {{ msg }}
     </p>
+    
 
     
   </div>
@@ -92,13 +93,13 @@ export default {
       sky: {
         bgClass: 'dark:bg-gray-800 bg-sky-200',
         textClass: 'dark:text-sky-300 text-sky-800',
-        borderClass: this.bordered ? 'border dark:border-sky-300 border-sky-800' : '',
+        borderClass: this.bordered ? 'border-2 dark:border-sky-300 border-sky-800' : '',
         hoverClass: this.dismissType === 'manual' ? 'cursor-pointer dark:hover:bg-gray-600 hover:bg-sky-300' : ''
       },
       cyan: {
         bgClass: 'dark:bg-gray-800 bg-cyan-200',
         textClass: 'dark:text-cyan-300 text-cyan-800',
-        borderClass: this.bordered ? 'border dark:border-cyan-300 border-cyan-800' : '',
+        borderClass: this.bordered ? 'border-2 dark:border-cyan-300 border-cyan-800' : '',
         hoverClass: this.dismissType === 'manual' ? 'cursor-pointer dark:hover:bg-gray-600 hover:bg-cyan-300' : ''
       },
       teal: {
