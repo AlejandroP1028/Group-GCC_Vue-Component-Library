@@ -1,6 +1,6 @@
 <template>
   <div class="bg-gray-100 h-screen w-screen overflow-hidden">
-    <dropdown_component type="default" size="m" :isDark="false" bordered="true"></dropdown_component>
+    <dropdown_component type="default" size="w" :isDark="false" bordered="true"></dropdown_component>
   </div>
 </template>
 

@@ -36,7 +36,6 @@
       },
       isDark: {
         type: Boolean,
-        default: false
       },
       bordered: {
         type: Boolean,
@@ -80,7 +79,7 @@
         return [
           'origin-top-right mt-2 w-full rounded-md shadow-lg z-10',
           bgClass, borderClass,
-          'max-h-60 overflow-auto' // Ensures the dropdown doesn't go off-screen
+          'max-h-60 overflow-auto'
         ];
       }
     },
