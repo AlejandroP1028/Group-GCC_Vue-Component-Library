@@ -4,7 +4,7 @@ import PrimeVue from 'primevue/config';
 import Carousel from 'primevue/carousel';
 import Button from 'primevue/button';
 import Tag from 'primevue/tag';
-import 'primevue/resources/themes/saga-blue/theme.css'; // Choose a theme
+import 'primevue/resources/themes/saga-blue/theme.css';
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
 import 'bootstrap/dist/css/bootstrap.css'
