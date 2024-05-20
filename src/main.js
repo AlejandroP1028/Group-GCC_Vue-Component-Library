@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
-import AlertTest from "./alert_test.vue";
-// import CardTest from "./card_test.vue";
+// import AlertTest from "./alert_test.vue";
+import CardTest from "./card_test.vue";
 import './index.css'
 
-createApp(AlertTest).mount('#app')
-// createApp(CardTest).mount('#app')
+// createApp(AlertTest).mount('#app')
+createApp(CardTest).mount('#app')
