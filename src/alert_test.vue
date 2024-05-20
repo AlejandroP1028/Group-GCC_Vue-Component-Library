@@ -7,7 +7,17 @@
     <Alert msg="ooga booga 123" position="tr" dismissType="manual" type="cyan" ></Alert>
     <Alert msg="ooga booga 123" position="lr" dismissType="manual" type="sky" ></Alert>
     <Alert msg="ooga booga 123" position="ll" type="teal" ></Alert>
-    <Card header="Head" body="asdasdas" size="xs"></Card>
+    <Card header="Head" body="asdasdas" size="xs" ></Card>
+    <Card header="Head" body="asdasdas" type="sky" size="sm"></Card>
+    <Card header="Head" body="asdasdas" type="cyan" size="md"></Card>
+    <Card 
+      header="Card Title" 
+      body="This is a card body" 
+      image="assets/image1.jpg" 
+      size="lg" 
+      type="sky">
+      <button class="mt-4 bg-blue-500 text-white py-2 px-4 rounded">Click Me</button>
+    </Card>
   </div>
 </template>
 
