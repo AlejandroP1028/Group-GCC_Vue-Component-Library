@@ -5,5 +5,4 @@ import './index.css'
 //createApp(App).mount('#app')
 
 import AppNotifications from './AppNotifications.vue';
-//import './index.css';
 createApp(AppNotifications).mount('#app');
