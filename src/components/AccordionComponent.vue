@@ -1,4 +1,5 @@
 <template>
+<<<<<<< Updated upstream
   <div :class="isLightMode ? 'light-mode' : 'dark-mode'" class="min-h-screen p-8">
     <p class="mb-4 text-sm">Accordion</p>
     <p class="mb-4 text-sm">An accordion is a user interface (UI) element designed to enable the expansion and collapse of content, primarily to conserve space and enhance the organization of information on a webpage or within an application.</p>
@@ -26,12 +27,43 @@ export default {
       this.isLightMode = !this.isLightMode;
     },
   },
+=======
+  <div>
+    <div class="bg-light-mode dark:bg-dark-mode min-h-screen p-8">
+      <v-expansion-panels class="mt-4">
+        <v-expansion-panel
+          title="Title"
+          text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima"
+        >
+        </v-expansion-panel>
+      </v-expansion-panels>
+    </div>
+    
+    <div id="app">
+      <AccordionComponent />
+    </div>
+  </div>
+</template>
+
+<script>
+import AccordionComponent from './components/AccordionComponent.vue';
+
+export default {
+  name: 'App',
+  components: {
+    AccordionComponent
+  }
+>>>>>>> Stashed changes
 };
 </script>
 
 <style scoped>
 .light-mode {
+<<<<<<< Updated upstream
   background-color: #46a1f0; /* Light Blue */
+=======
+  background-color: #f0f8ff; /* Light Blue */
+>>>>>>> Stashed changes
   color: #000000;
 }
 
@@ -40,6 +72,7 @@ export default {
   color: #ffffff;
 }
 
+<<<<<<< Updated upstream
 button {
   cursor: pointer;
   border: 1px solid transparent; /* Reset border */
@@ -54,6 +87,8 @@ button {
   border-color: #46a1f0; /* Set border color in light mode */
 }
 
+=======
+>>>>>>> Stashed changes
 .v-expansion-panels {
   border: 1px solid #cccccc;
   border-radius: 5px;
