@@ -74,7 +74,7 @@ export default {
       const typeClasses = {
         info: {
           bgClass: 'dark:bg-gray-800 bg-blue-100',
-          textClass: 'dark:text-blue-200 text-blue-800',
+          textClass: 'dark:text-blue-300 text-blue-800',
           borderClass: this.bordered ? 'border dark:border-blue-300 border-blue-800' : ''
         },
         danger: {

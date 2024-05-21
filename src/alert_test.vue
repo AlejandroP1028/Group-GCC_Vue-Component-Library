@@ -6,11 +6,11 @@
     </button>
     <Alert msg="ooga booga 123" position="tr" dismiss-type="manual">
     </Alert>
-    <Alert msg="ooga booga 123" position="ll" type="warning" :bordered="true" dismiss-type="manual">
+    <Alert msg="ooga booga 123" position="ll" type="warning"  dismiss-type="manual">
     </Alert>
-    <Alert msg="ooga booga 123" position="tl" type="danger" :bordered="true" dismiss-type="manual">
+    <Alert msg="ooga booga 123" position="tl" type="danger"  dismiss-type="manual">
     </Alert>
-    <Alert msg="ooga booga 123" position="lr" type="success" :bordered="true" dismiss-type="manual" size="l">
+    <Alert msg="ooga booga 123" position="lr" type="success"  dismiss-type="manual" size="l">
     </Alert>
     <!-- <div class="flex flex-row space-x-4">
       <Card
