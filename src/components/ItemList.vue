@@ -1,13 +1,6 @@
 <template>
   <div class="h-full w-screen bg-blue-100">
     <div class="flex flex-col items-center justify-start h-full w-screen mt-7">
-      <div class="text-justify mb-4 max-w-4xl">
-        <h1 class="text-4xl mb-2 font-bold">List Group</h1>
-        <p class="mb-4">
-          The List Group Component is a versatile and crucial UI element for any web application, enabling developers to display a collection of items in an organized and attractive manner. Here are the various designs or formats a list can take:
-        </p>
-        <h1 class="text-2xl mb-2 font-bold">Basic</h1>
-      </div>
       <div class="max-w-3xl w-full p-4 bg-white rounded-3xl shadow-lg">
         <ul class="border border-blue-300 rounded max-w-sm" :style="{ borderColor: colors[currentColorIndex] }" style="margin: 0 auto;">
           <li v-for="(item, index) in items" :key="item" class="p-4" :style="{ borderColor: colors[currentColorIndex], textAlign: textAlign }" :class="{ 'border-b': index !== items.length - 1 }">
