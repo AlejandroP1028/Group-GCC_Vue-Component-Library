@@ -17,15 +17,63 @@
       </div>
       <div class="items_container">
         <ul class="flex flex-row gap-8">
-          <li>Home</li>
-          <li>About</li>
-          <li>Pricing</li>
-          <li>Contact</li>
-          <li>Services</li>
+          <li :class="{ activepage: activePage === 'Home' }">
+            <a
+              href="#"
+              @click.prevent="setActivePage('Home')"
+              class="hover:text-blue-400 active:text-blue-400"
+              >Home</a
+            >
+          </li>
+          <li :class="{ activepage: activePage === 'About' }">
+            <a
+              href="#"
+              @click.prevent="setActivePage('About')"
+              class="hover:text-blue-400 active:text-blue-400"
+              >About</a
+            >
+          </li>
+          <li :class="{ activepage: activePage === 'Pricing' }">
+            <a
+              href="#"
+              @click.prevent="setActivePage('Pricing')"
+              class="hover:text-blue-400 active:text-blue-400"
+              >Pricing</a
+            >
+          </li>
+          <li :class="{ activepage: activePage === 'Contact' }">
+            <a
+              href="#"
+              @click.prevent="setActivePage('Contact')"
+              class="hover:text-blue-400 active:text-blue-400"
+              >Contact</a
+            >
+          </li>
+          <li :class="{ activepage: activePage === 'Services' }">
+            <a
+              href="#"
+              @click.prevent="setActivePage('Services')"
+              class="hover:text-blue-400 active:text-blue-400"
+              >Services</a
+            >
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      activePage: "Home",
+    };
+  },
+  methods: {
+    setActivePage(page) {
+      this.activePage = page;
+    },
+  },
+};
+</script>
