@@ -1,49 +1,32 @@
 <template>
-    <span class="badge bg-secondary">
-      <slot></slot>
-    </span>
-  </template>
-  
-  <script>
-  export default {
-    name: 'BadgeComponent'
-  }
-  </script>
-  
-  <style scoped>
-  .badge {
-    display: inline-block;
-    padding: 0.25em 0.4em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: 0.25rem;
-  }
-  
-  .bg-secondary {
-    background-color: #6c757d;
-    color: white;
-    margin-left: 5px;
-  }
-  .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: red;
-}
+  <span :class="badgeClasses">
+    <slot></slot>
+  </span>
+</template>
 
-.number {
-  background-color: #007bff;
-  color: white;
+<script>
+export default {
+  name: 'BadgeComponent',
+  props: {
+    type: {
+      type: String,
+      default: 'secondary'
+    }
+  },
+  computed: {
+    badgeClasses() {
+      const baseClasses = 'inline-block px-2 py-1 text-xs font-bold text-center whitespace-nowrap align-baseline rounded';
+      const typeClasses = {
+        secondary: 'bg-blue-600 text-white ml-3',
+        dot: 'w-5 h-5 rounded-full bg-red-500',
+        number: 'w-7 h-6 bg-blue-600 text-white px-1 rounded-full text-xs',
+        icon: 'w-7 h-6 bg-cyan-500 text-white rounded-full'
+      };
+      return `${baseClasses} ${typeClasses[this.type]}`;
+    }
+  }
 }
+</script>
 
-.icon {
-  background-color: #28a745;
-  color: white;
-  padding: 5px;
-}
-
-  </style>
+<style scoped>
+</style>
