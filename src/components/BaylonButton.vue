@@ -95,7 +95,7 @@ showNotifications() {
   alert(notificationString);
 },
     showAlerts() {
-      alert("You have a alert!");
+      alert("You have a new alert!");
     }
   }
 }
