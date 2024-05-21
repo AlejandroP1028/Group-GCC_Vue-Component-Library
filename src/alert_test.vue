@@ -1,4 +1,5 @@
 /* eslint-disable */
+
 <template>
   <div :class="{ 'dark': isDarkMode }" class="overflow-auto h-screen w-screen bg-gray-100 dark:bg-gray-900">
     <button @click="toggleDarkMode" type="button" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">
@@ -12,6 +13,9 @@
     </Alert>
     <Alert msg="ooga booga 123" position="lr" type="success"  dismiss-type="manual" size="l">
     </Alert>
+
+
+
     <!-- <div class="flex flex-row space-x-4">
       <Card
         header="Card Title"
