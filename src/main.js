@@ -4,7 +4,7 @@ import { createApp } from 'vue'
 import './index.css'
 //createApp(App).mount('#app')
 
-import AppNotifications from './AppNotifications.vue';
+import AppNotifications from './AppNotifications.vue'; 
 createApp(AppNotifications).mount('#app');
 
 // createApp(AlertTest).mount('#app')
