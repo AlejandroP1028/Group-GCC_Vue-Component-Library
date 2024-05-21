@@ -1,15 +1,13 @@
 <template>
-  <div :class="['border rounded-lg shadow', computedClassesMain]">
+  <div :class="['border rounded-lg shadow max-h-fit', computedClassesMain]">
     <div class="flex justify-center">
       <img v-if="image" :src="imageSrc" class="rounded-t-lg" alt="Card Image" />
     </div>
-
     <div class="p-4">
-      <h5 v-if="header" class="mb-2 text-2xl font-bold tracking-tight text-gray-800 dark:text-white">{{ header }}</h5>
-    <p v-if="body" class="mb-3 font-normal text-gray-700 dark:text-gray-200">{{ body }}</p>
-    <slot></slot>
+      <h5 v-if="header" :class="['mb-2 text-2xl font-bold tracking-tight', computedClassesHeader]">{{ header }}</h5>
+      <p v-if="body" :class="['mb-3 font-normal', computedClassesBody]">{{ body }}</p>
+      <slot></slot>
     </div>
-    
   </div>
 </template>
 
@@ -39,16 +37,16 @@ export default {
     computedClassesMain() {
       const styleClasses = {
         default: {
-          bgClass: 'border-blue-100 bg-blue-200/80 dark:bg-blue-800/80 dark:border-blue-700',
+          bgClass: 'border-blue-200/[.80] bg-blue-100 dark:bg-gray-700 dark:border-blue-300',
         },
         sky: {
-          bgClass: 'border-sky-100 bg-sky-200/80 dark:bg-sky-800/80 dark:border-sky-700',
+          bgClass: 'border-sky-200/[.80] bg-sky-100 dark:bg-gray-700 dark:border-sky-300',
         },
         cyan: {
-          bgClass: 'border-cyan-100 bg-cyan-200/80 dark:bg-cyan-800/80 dark:border-cyan-700',
+          bgClass: 'border-cyan-200/[.80] bg-cyan-100 dark:bg-gray-700 dark:border-cyan-300',
         },
         teal: {
-          bgClass: 'border-teal-100 bg-teal-200/80 dark:bg-teal-800/80 dark:border-teal-700',
+          bgClass: 'border-teal-200/[.80] bg-teal-100 dark:bg-gray-700 dark:border-teal-300',
         },
       };
 
@@ -63,6 +61,48 @@ export default {
           'max-w-xl': this.size === 'xl',
         },
         bgClass,
+      ];
+    },
+    computedClassesHeader() {
+      const styleClasses = {
+        default: {
+          textClass: 'text-blue-900/[.87] dark:text-blue-100/[.87]',
+        },
+        sky: {
+          textClass: 'text-sky-900/[.87] dark:text-sky-100/[.87]',
+        },
+        cyan: {
+          textClass: 'text-cyan-900/[.87] dark:text-cyan-100/[.87]',
+        },
+        teal: {
+          textClass: 'text-teal-900/[.87] dark:text-teal-100/[.87]',
+        },
+      };
+
+      const { textClass } = styleClasses[this.type] || styleClasses['default'];
+      return [
+        textClass
+      ];
+    },
+    computedClassesBody() {
+      const styleClasses = {
+        default: {
+          textClass: 'text-blue-900/[.60]  dark:text-blue-200/[.60]',
+        },
+        sky: {
+          textClass: 'text-sky-900/[.60] dark:text-sky-200/[.60]',
+        },
+        cyan: {
+          textClass: 'text-cyan-900/[.60] dark:text-cyan-200/[.60]',
+        },
+        teal: {
+          textClass: 'text-teal-900/[.60] dark:text-teal-200/[.60]',
+        },
+      };
+
+      const { textClass } = styleClasses[this.type] || styleClasses['default'];
+      return [
+        textClass
       ];
     },
     imageSrc() {
