@@ -6,3 +6,6 @@ import './index.css'
 
 import AppNotifications from './AppNotifications.vue';
 createApp(AppNotifications).mount('#app');
+
+createApp(AlertTest).mount('#app')
+// createApp(CardTest).mount('#app')
