@@ -3,10 +3,11 @@
   <section
     class="page flex flex-col items-center justify-center h-screen overflow-hidden gap-20"
   >
-    <section class="navbar_container">
-      <h1 class="text-2xl text-center">Navbar</h1>
+    <section class="navbar_container flex flex-col gap-24">
       <div class="demo_container">
-        <h1>Default Navbar</h1>
+        <h1 class="mb-4 font-bold text-2xl text-blue-800 text-center">
+          Default navbar
+        </h1>
         <div class="demo p-10 bg-gray-100 w-auto">
           <div class="w-auto">
             <header class="bg-white p-4">
@@ -16,7 +17,9 @@
         </div>
       </div>
       <div class="demo_container">
-        <h1>Navbar with Search bar</h1>
+        <h1 class="mb-4 font-bold text-2xl text-blue-800 text-center">
+          Navbar with Search bar
+        </h1>
         <div class="demo p-10 bg-gray-100 w-auto">
           <div class="w-auto">
             <header class="bg-white p-4">
@@ -28,13 +31,21 @@
     </section>
 
     <section class="popover_container">
-      <h1 class="text-2xl text-center">Popover</h1>
-      <popovers></popovers>
+      <div class="demo_container">
+        <h1 class="mb-4 font-bold text-2xl text-blue-800 text-center">
+          Default popovers
+        </h1>
+        <div class="demo p-10 bg-gray-100 w-auto">
+          <div class="w-auto flex flex-row gap-24">
+            <popovers></popovers>
+          </div>
+        </div>
+      </div>
     </section>
   </section>
 
   <button
-    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded absolute bottom-4 right-4"
+    class="bg-sky-700 hover:bg-sky-800 text-white font-bold py-2 px-4 rounded absolute bottom-4 right-4"
   >
     Dark Mode
   </button>

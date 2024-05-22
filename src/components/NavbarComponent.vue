@@ -67,7 +67,10 @@ export default {
           <li :class="{ activepage: activePage === 'Services' }">
             <a href="#" @click.prevent="setActivePage('Services')" class="hover:text-blue-400 active:text-blue-400">Services</a>
           </li>
-          <input type="text" placeholder="Search.." class = "bg-blue-100 rounded border-2 border-blue-200 p-1">
+          <div class ="flex flex-row"> 
+            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="20px" height="20px"><path d="M 10 2 C 5.590603 2 2 5.5906063 2 10 C 2 14.409394 5.590603 18 10 18 C 11.929744 18 13.635779 17.22512 15.019531 16.082031 L 20.71875 21.78125 A 0.75130096 0.75130096 0 1 0 21.78125 20.71875 L 16.082031 15.019531 C 17.225119 13.635778 18 11.929742 18 10 C 18 5.5906063 14.409397 2 10 2 z M 10 3.5 C 13.598737 3.5 16.5 6.401265 16.5 10 C 16.5 13.598735 13.598737 16.5 10 16.5 C 6.4012627 16.5 3.5 13.598735 3.5 10 C 3.5 6.401265 6.4012627 3.5 10 3.5 z" class = "aboslute opacity-50 translate-x-9 translate-y-3 z-10"/></svg>
+            <input type="text" placeholder="Search.." class = "bg-sky-100 rounded border-2 border-blue-100 p-1 pl-9 z-0">
+          </div>
         </ul>`,
       ],
     };
