@@ -1,18 +1,28 @@
 <template>
     <div class="relative inline-block text-left mt-4 ml-4">
       <div>
-        <button @click="toggleDropdown" :class="buttonClasses" type="button">
+        <button @click="toggleDropdown" :class="[buttonClasses, { 'cursor-not-allowed opacity-50': disabled }]" :disabled="disabled" type="button">
           Dropdown
           <svg class="inline-block ml-2" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 10l5 5 5-5H7z" fill="currentColor"/>
           </svg>
         </button>
       </div>
-      <div v-if="show" :class="dropdownClasses">
-        <a href="#" :class="itemClasses" role="menuitem">ackkkkkk</a>
-        <a href="#" :class="itemClasses" role="menuitem">whaaaaaaaa</a>
-        <a href="#" :class="itemClasses" role="menuitem">hmphhhhhh</a>
-      </div>
+      <transition :name="fade-slide">
+        <div v-if="show" :class="dropdownClasses">
+          <a
+            v-for="(item, index) in menuItems"
+            :key="index"
+            :href="item.href || '#'"
+            :class="[itemClasses, { 'cursor-not-allowed opacity-50': item.disabled }]"
+            :aria-disabled="item.disabled"
+            role="menuitem"
+            @click.prevent="item.disabled ? null : item.action"
+          >
+            {{ item.label }}
+          </a>
+        </div>
+      </transition>
     </div>
   </template>
   
@@ -40,6 +50,14 @@
       bordered: {
         type: Boolean,
         default: false,
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      menuItems: {
+        type: Array,
+        default: () => []
       }
     },
     data() {
@@ -129,7 +147,7 @@
           this.type === 'teal' ? 'hover:bg-teal-200' :
           ''
         ];
-      },
+      }
     },
     methods: {
       toggleDropdown() {
@@ -140,4 +158,13 @@
       }
     }
   }
-  </script>
+</script>
+<style scoped>
+.fade-slide-enter-active, .fade-slide-leave-active {
+  transition: opacity 0.5s, transform 0.5s;
+}
+.fade-slide-enter, .fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+</style>
