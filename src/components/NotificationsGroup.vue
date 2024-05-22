@@ -95,7 +95,7 @@ export default {
         success: "text-green-800 dark:text-green-200",
         error: "text-red-600 dark:text-red-200",
         warning: "text-yellow-800 dark:text-yellow-200",
-        default: "text-blue-700 dark:text-sky-400",
+        default: "text-blue-900 dark:text-sky-400",
         message: "text-blue-800 dark:text-sky-400",
       };
       return textClasses[this.type];
