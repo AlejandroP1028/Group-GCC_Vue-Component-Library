@@ -1,25 +1,8 @@
-<!--<template>
-    <div class="flex">
-      <Notifications />
-    </div>
-</template>
-
-<script>
-import Notifications from './components/NotificationsGroup.vue';
-
-export default {
-  name: 'AppNotifications',
-  components: {
-    Notifications
-  }
-}
-</script>
--->
 <template>
-  <Notifications type="danger" message="danger" position="top-right"></Notifications>
-  <Notifications type="success" message="success" position="top-left"></Notifications>
-  <Notifications type="warning" message="warning" position="bottom-right"></Notifications>
-
+  <Notifications type="success" notification_message ="This is a success notification." position="top-right"></Notifications>
+  <Notifications type="error" notification_message ="This is an error notification." position="bottom-right"></Notifications>
+  <Notifications type="warning" notification_message ="This is a warning notification" position="bottom-left"></Notifications>
+  <Notifications type="default" notification_message ="This is a default notification" position="center"></Notifications>
 </template>
 
 <script>
