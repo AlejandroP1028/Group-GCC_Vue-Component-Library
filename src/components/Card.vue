@@ -1,9 +1,7 @@
 <template>
-  <div :class="['border rounded-lg shadow max-h-auto', computedClassesMain]">
-    <div class="flex justify-center">
-      <img v-if="image" :src="imageSrc" class="rounded-t-lg" alt="Card Image" />
-    </div>
-    <div class="p-4">
+  <div :class="['border rounded-lg shadow', computedClassesMain, mainHorizontal]">
+    <img v-if="image" :src="imageSrc" :class="imageHorizontal" alt="Card Image" />
+    <div :class="['p-4', isHorizontal]">
       <h5 v-if="header" :class="['mb-2 text-2xl font-bold tracking-tight', computedClassesHeader]">{{ header }}</h5>
       <p v-if="body" :class="['mb-3 font-normal', computedClassesBody]">{{ body }}</p>
       <slot></slot>
@@ -18,6 +16,7 @@ export default {
     header: String,
     body: String,
     image: String,
+    horizontal: Boolean,
     size: {
       type: String,
       validator: function (value) {
@@ -43,6 +42,7 @@ export default {
       };
 
       const bgClass = styleClasses[this.type] || styleClasses['default'];
+      
       const sizeClasses = {
         xs: 'max-w-xs',
         sm: 'max-w-sm',
@@ -52,6 +52,16 @@ export default {
       };
 
       return [bgClass, sizeClasses[this.size]];
+    },
+    mainHorizontal() {
+      return this.horizontal ? 'flex flex-row' : 'flex flex-col';
+    },
+    imageHorizontal() {
+
+      return this.horizontal ? 'w-2/5 object-cover rounded-l-lg' : 'w-full rounded-t-lg';
+    },
+    isHorizontal() {
+      return this.horizontal ? 'w-3/5 p-4' : 'w-full p-4';
     },
     computedClassesHeader() {
       const styleClasses = {

@@ -14,47 +14,44 @@
     <Alert msg="ooga booga 123" position="lr" type="success"  dismiss-type="manual" size="l">
     </Alert> -->
 
-
-
-    <div class="flex flex-row space-x-4">
+    <div class="ml-4 flex flex-col space-y-4">
       <Card
-        header="Card Title"
-        body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et sem malesuada, sollicitudin magna a, commodo leo. Suspendisse dapibus sodales risus, ut varius mi imperdiet." 
-        image="image-1.jpg"
-        size="lg">
-        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-        Read more
-        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-        </svg>
-    </a>
-
-      </Card>
-      <Card
-        header="Card Title"
-        body="This is a card body"
+        header="Noteworthy technology acquisitions 2021"
+        body="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order." 
         image="image-1.jpg"
         size="xl"
-        type="sky">
+        :horizontal="true">
 
       </Card>
       <Card
-        header="Card Title"
-        body="This is a card body"
+        header="Noteworthy technology acquisitions 2021"
+        body="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order." 
         image="image-1.jpg"
-        size="md"
-        type="cyan">
+        size="xl"
+        type="sky"
+        :horizontal="true">
 
       </Card>
       <Card
-        header="Card Title"
-        body="This is a card body"
+        header="Noteworthy technology acquisitions 2021"
+        body="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order." 
         image="image-1.jpg"
-        size="sm"
-        type="teal">
+        size="xl"
+        type="cyan"
+        :horizontal="true">
+
+      </Card>
+      <Card
+        header="Noteworthy technology acquisitions 2021"
+        body="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order." 
+        image="image-1.jpg"
+        size="xl"
+        type="teal"
+        :horizontal="true">
 
       </Card>
     </div>
+    
   </div>
 </template>
 
