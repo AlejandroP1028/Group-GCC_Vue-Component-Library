@@ -45,6 +45,22 @@
           d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z"
         />
       </svg>
+      <svg
+        v-if="type === 'message'"
+        class="w-5 h-5 text-blue-800 dark:text-sky-400 rotate-45 rounded-lg"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 18 20"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m9 17 8 2L9 1 1 19l8-2Zm0 0V9"
+        />
+      </svg>
     </div>
     <div class="ms-3 text-sm font-normal">
       {{ notification_message }}
@@ -65,7 +81,7 @@
         viewBox="0 0 14 14"
       >
         <path
-          stroke="currentColor"
+        stroke="currentColor"
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
@@ -83,7 +99,7 @@ export default {
     type: {
       type: String,
       required: true,
-      validator: (value) => ["success", "error", "warning", "default", "delete"].includes(value),
+      validator: (value) => ["success", "error", "warning", "default", "message"].includes(value),
     },
     notification_message: {
       type: String,
@@ -113,6 +129,7 @@ export default {
         error: "bg-blue-200 dark:bg-gray-800",
         warning: "bg-blue-300 dark:bg-gray-800",
         default: "bg-blue-800 dark:bg-gray-800",
+        message: "bg-blue-200 dark:bg-gray-800",
       };
       return bgClasses[this.type];
     },
@@ -121,7 +138,8 @@ export default {
         success: "text-blue-800 dark:text-sky-400",
         error: "text-blue-900  dark:text-sky-400",
         warning: "text-blue-800  dark:text-sky-400",
-        default: "text-blue-100  dark:text-sky-400",
+        default: "text-blue-100 dark:text-sky-400",
+        message: "text-blue-800 dark:text-sky-400",
       };
       return textClasses[this.type];
     },
@@ -131,6 +149,7 @@ export default {
         error: "bg-blue-100 dark:bg-gray-700",
         warning: "bg-blue-200 dark:bg-gray-700",
         default: "",
+        message: "",
       };
       return bgClasses[this.type];
     },
@@ -140,3 +159,4 @@ export default {
 
 <style scoped>
 </style>
+
