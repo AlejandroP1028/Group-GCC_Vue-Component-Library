@@ -6,7 +6,7 @@
     role="alert"
   >
     <div
-      class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 rounded-lg"
+      class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 rounded-full"
       :class="iconBgClass"
     >
       <svg
@@ -127,9 +127,9 @@ export default {
     },
     iconBgClass() {
       const bgClasses = {
-        success: "bg-blue-800 rounded-2xl dark:bg-gray-700",
-        error: "bg-blue-100 rounded-2xl dark:bg-gray-700",
-        warning: "bg-blue-200 rounded-2xl dark:bg-gray-700",
+        success: "bg-blue-800 dark:bg-gray-700",
+        error: "bg-blue-100 dark:bg-gray-700",
+        warning: "bg-blue-200 dark:bg-gray-700",
         default: "",
       };
       return bgClasses[this.type];
