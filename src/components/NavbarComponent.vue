@@ -15,60 +15,67 @@
           />
         </svg>
       </div>
-      <div class="items_container">
-        <ul class="flex flex-row gap-8">
-          <li :class="{ activepage: activePage === 'Home' }">
-            <a
-              href="#"
-              @click.prevent="setActivePage('Home')"
-              class="hover:text-blue-400 active:text-blue-400"
-              >Home</a
-            >
-          </li>
-          <li :class="{ activepage: activePage === 'About' }">
-            <a
-              href="#"
-              @click.prevent="setActivePage('About')"
-              class="hover:text-blue-400 active:text-blue-400"
-              >About</a
-            >
-          </li>
-          <li :class="{ activepage: activePage === 'Pricing' }">
-            <a
-              href="#"
-              @click.prevent="setActivePage('Pricing')"
-              class="hover:text-blue-400 active:text-blue-400"
-              >Pricing</a
-            >
-          </li>
-          <li :class="{ activepage: activePage === 'Contact' }">
-            <a
-              href="#"
-              @click.prevent="setActivePage('Contact')"
-              class="hover:text-blue-400 active:text-blue-400"
-              >Contact</a
-            >
-          </li>
-          <li :class="{ activepage: activePage === 'Services' }">
-            <a
-              href="#"
-              @click.prevent="setActivePage('Services')"
-              class="hover:text-blue-400 active:text-blue-400"
-              >Services</a
-            >
-          </li>
-        </ul>
-      </div>
+      <div class="items_container" v-html="variationContent"></div>
     </div>
   </nav>
 </template>
 
 <script>
 export default {
+  props: {
+    variationIndex: {
+      type: Number,
+      required: true,
+    },
+  },
   data() {
     return {
       activePage: "Home",
+      variations: [
+        //Default Navbar
+        `<ul class="flex flex-row gap-8 items-center">
+          <li :class="{ activepage: activePage === 'Home' }">
+            <a href="#" @click.prevent="setActivePage('Home')" class="hover:text-blue-400 active:text-blue-400">Home</a>
+          </li>
+          <li :class="{ activepage: activePage === 'About' }">
+            <a href="#" @click.prevent="setActivePage('About')" class="hover:text-blue-400 active:text-blue-400">About</a>
+          </li>
+          <li :class="{ activepage: activePage === 'Pricing' }">
+            <a href="#" @click.prevent="setActivePage('Pricing')" class="hover:text-blue-400 active:text-blue-400">Pricing</a>
+          </li>
+          <li :class="{ activepage: activePage === 'Contact' }">
+            <a href="#" @click.prevent="setActivePage('Contact')" class="hover:text-blue-400 active:text-blue-400">Contact</a>
+          </li>
+          <li :class="{ activepage: activePage === 'Services' }">
+            <a href="#" @click.prevent="setActivePage('Services')" class="hover:text-blue-400 active:text-blue-400">Services</a>
+          </li>
+        </ul>`,
+        //Navbar with Search
+        `<ul class="flex flex-row gap-8 items-center">
+          <li :class="{ activepage: activePage === 'Home' }">
+            <a href="#" @click.prevent="setActivePage('Home')" class="hover:text-blue-400 active:text-blue-400">Home</a>
+          </li>
+          <li :class="{ activepage: activePage === 'About' }">
+            <a href="#" @click.prevent="setActivePage('About')" class="hover:text-blue-400 active:text-blue-400">About</a>
+          </li>
+          <li :class="{ activepage: activePage === 'Pricing' }">
+            <a href="#" @click.prevent="setActivePage('Pricing')" class="hover:text-blue-400 active:text-blue-400">Pricing</a>
+          </li>
+          <li :class="{ activepage: activePage === 'Contact' }">
+            <a href="#" @click.prevent="setActivePage('Contact')" class="hover:text-blue-400 active:text-blue-400">Contact</a>
+          </li>
+          <li :class="{ activepage: activePage === 'Services' }">
+            <a href="#" @click.prevent="setActivePage('Services')" class="hover:text-blue-400 active:text-blue-400">Services</a>
+          </li>
+          <input type="text" placeholder="Search.." class = "bg-blue-100 rounded border-2 border-blue-200 p-1">
+        </ul>`,
+      ],
     };
+  },
+  computed: {
+    variationContent() {
+      return this.variations[this.variationIndex];
+    },
   },
   methods: {
     setActivePage(page) {
