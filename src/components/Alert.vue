@@ -1,5 +1,5 @@
 <template>
-  <div v-if="out" class="alert p-4 m-4 text-sm rounded-lg shadow-lg fixed" :class="computedClasses" @click="dismiss" role="alert">
+  <div v-if="out" :class="['alert p-4 m-4 text-sm shadow-lg fixed', computedClasses]"  @click="dismiss" role="alert">
     <svg v-if="icon" class="inline-block"
          width="24"
          height="24"
@@ -30,6 +30,12 @@ export default {
       type: String,
       validator: value => ['auto', 'manual'].includes(value),
       default: 'auto',
+    },
+    accent: {
+      type: Boolean,
+    },
+    rounded: {
+      type: Boolean
     },
     type: {
       type: String,
@@ -73,34 +79,42 @@ export default {
 
       const typeClasses = {
         info: {
-          bgClass: 'dark:bg-gray-800 bg-blue-100',
+          bgClass: 'dark:bg-gray-800 bg-blue-200/[.87]',
           textClass: 'dark:text-blue-300 text-blue-800',
           borderClass: this.bordered ? 'border dark:border-blue-300 border-blue-800' : ''
         },
         danger: {
-          bgClass: 'dark:bg-gray-800 bg-red-100',
+          bgClass: 'dark:bg-gray-800 bg-red-200/[.87]',
           textClass: 'dark:text-red-200 text-red-800',
           borderClass: this.bordered ? 'border dark:border-red-300 border-red-800' : ''
         },
         success: {
-          bgClass: 'dark:bg-gray-800 bg-green-100',
+          bgClass: 'dark:bg-gray-800 bg-green-200/[.87]',
           textClass: 'dark:text-green-200 text-green-800',
           borderClass: this.bordered ? 'border dark:border-green-300 border-green-800' : ''
         },
         warning: {
-          bgClass: 'dark:bg-gray-800 bg-yellow-100',
+          bgClass: 'dark:bg-gray-800 bg-yellow-200/[.87]',
           textClass: 'dark:text-yellow-200 text-yellow-800',
           borderClass: this.bordered ? 'border dark:border-yellow-300 border-yellow-800' : ''
         }
       };
+      const accent = {
+        info: ' border-t-4 border-blue-600',
+        danger:' border-t-4 border-red-600',
+        success:' border-t-4 border-green-600',
+        warning:' border-t-4 border-yellow-600',
+      }
 
-      const { bgClass, textClass, borderClass } = typeClasses[this.type] || typeClasses['info'];
+      const { bgClass, textClass, borderClass } = typeClasses[this.type];
+      const accentClass = accent[this.type] 
 
       return [
-        bgClass, textClass, borderClass,
+        bgClass, textClass, borderClass, accentClass,
         this.dismissType === 'manual' ? 'cursor-pointer dark:hover:bg-gray-700 hover:bg-opacity-70' : '',
         this.size === 'w' ? 'inline-block' : this.size === 's' ? 'w-32' : this.size === 'm' ? 'w-48' : 'w-64',
         positionClasses[this.position] || positionClasses['tl'],
+        this.rounded && this.accent ? 'rounded-b-lg' : this.rounded ? 'rounded-lg' : '',
         this.show ? 'end' : this.position + '-start'
       ];
     },
