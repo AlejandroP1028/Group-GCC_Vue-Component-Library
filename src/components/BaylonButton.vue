@@ -7,8 +7,6 @@
       :class="['btn-primary', color.class]">
       {{ color.name }}
     </button>
-    
-    <!-- New set of buttons -->
     <button type="button" class="btn-primary" @click="showMessages">
       Messages
       <span class="badge">2</span>
@@ -157,6 +155,6 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem; /* Space between icon and text */
+  gap: 0.5rem; 
 }
 </style>
