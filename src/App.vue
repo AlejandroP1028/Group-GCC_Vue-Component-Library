@@ -1,13 +1,11 @@
 <template>
-  <div :class="{ 'dark': isDarkMode }" class="overflow-auto h-screen w-screen bg-white text-gray-800">
-    <div class="flex justify-center items-center h-full">
-      <ToggleComponent @toggle-mode="toggleDarkMode" />
-    </div>
+  <div :class="{ 'dark': isDarkMode }" class="overflow-auto h-screen w-screen bg-gray-50 dark:bg-white dark:text-white">
+    <ToggleComponent :isDarkMode="isDarkMode" @toggle-dark-mode="toggleDarkMode" />
   </div>
 </template>
 
 <script>
-import ToggleComponent from "./components/ToggleComponent.vue";
+import ToggleComponent from './components/ToggleComponent.vue';
 
 export default {
   components: {
@@ -15,34 +13,21 @@ export default {
   },
   data() {
     return {
-      isDarkMode: false
+      isDarkMode: false // Initial state is light mode
     };
   },
   methods: {
-    toggleDarkMode(isChecked) {
-      this.isDarkMode = isChecked;
-    },
-    resetMode() {
-      this.isDarkMode = false;
+    toggleDarkMode() {
+      this.isDarkMode = !this.isDarkMode;
     }
   }
-};
+}
 </script>
 
 <style scoped>
-/* Light mode styles */
-.bg-white {
-  background-color: white;
-}
-.text-gray-800 {
-  color: #2d3748;
-}
-
 /* Dark mode styles */
-.dark .bg-white {
+.dark {
   background-color: #121212;
-}
-.dark .text-gray-800 {
   color: #ffffff;
 }
 </style>

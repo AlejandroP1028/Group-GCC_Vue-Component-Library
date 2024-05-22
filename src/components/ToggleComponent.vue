@@ -1,84 +1,37 @@
 <template>
-  <div :class="{ 'dark': isDarkMode }" class="h-screen w-screen items-center cursor-pointer" @click="toggleMode">
-    <input 
-      type="checkbox" 
-      value="" 
-      class="sr-only peer"
-      v-model="isChecked"
-    >
-    <div :class="toggleClasses"></div>
-    <span class="ms-3 text-sm font-medium font-sans absolute top-1/2 left-1/2 ml-20 transform -translate-x-1/2 -translate-y-1/2" :class="textClasses">{{ isDarkMode ? 'Dark Mode' : 'Light Mode' }}</span>
-  </div>
+  <label class="inline-flex items-center cursor-pointer">
+    <input type="checkbox" v-model="isChecked" class="sr-only peer" @change="toggleDarkMode">
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-blue-200 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+    <span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ml-20 mb-10 text-sm font-medium text-blue-200 dark:text-blue-400">{{ isDarkMode ? 'Dark Mode' : 'Light Mode' }}</span>
+  </label>
 </template>
 
 <script>
 export default {
+  props: {
+    isDarkMode: {
+      type: Boolean,
+      required: true
+    }
+  },
   data() {
     return {
-      isChecked: false,
-      isDarkMode: false, // Initial state is light mode
+      isChecked: this.isDarkMode
     };
   },
-  computed: {
-    toggleClasses() {
-      return {
-        'absolute': true,
-        'top-1/2':true,
-        'left-1/2':true,
-        'transform -translate-x-1/2 -translate-y-1/2':true,
-        'w-11': true,
-        'h-6': true,
-        'rounded-full': true,
-        'peer': true,
-        'peer-focus:outline-none': true,
-        'peer-focus:ring-4': true,
-        'peer-focus:ring-blue-300': true,
-        'dark:peer-focus:ring-blue-800': true,
-        'peer-checked:after:translate-x-full': true,
-        'rtl:peer-checked:after:-translate-x-full': true,
-        'peer-checked:after:border-gray': true,
-        'after:content-[""]': true,
-        'after:absolute': true,
-        'after:top-[2px]': true,
-        'after:start-[2px]': true,
-        'after:bg-white': true,
-        'after:border-gray-300': true,
-        'after:border': true,
-        'after:rounded-full': true,
-        'after:h-5': true,
-        'after:w-5': true,
-        'after:transition-all': true,
-        'dark:border-blue-400': true,
-        'peer-checked:bg-blue-200': this.isChecked
-      };
-    },
-    textClasses() {
-      return {
-        'text-gray-300': !this.isChecked,
-        'dark:text-gray-800': !this.isChecked,
-        'text-blue-400': this.isChecked,
-        'dark:text-blue-200': this.isChecked
-      };
+  methods: {
+    toggleDarkMode() {
+      this.$emit('toggle-dark-mode');
     }
   },
   watch: {
-    isChecked(newVal) {
-      this.isDarkMode = newVal;
-    }
-  },
-  methods: {
-    toggleMode() {
-      this.isChecked = !this.isChecked;
-      this.isDarkMode = this.isChecked;
+    isDarkMode(newVal) {
+      this.isChecked = newVal;
     }
   }
-};
+}
 </script>
 
 <style scoped>
-/* Dark mode styles */
-.dark {
-  background-color: #121212;
-  color: #ffffff;
-}
+/* Add any scoped styles here if needed */
 </style>
