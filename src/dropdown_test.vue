@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'dark': isDarkMode }" class="overflow-hidden h-screen w-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-start">
+  <div :class="{ 'dark': isDarkMode }" class="overflow-hidden h-screen w-screen bg-blue-50 dark:bg-blue-900 flex flex-col items-center justify-start">
     <button @click="toggleDarkMode" type="button" class="fixed bottom-4 right-4 bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">
       {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
     </button>
@@ -9,7 +9,7 @@
         The Dropdown Component is a versatile element designed for displaying a list of options or actions in a toggleable menu. It supports different types of notifications such as success, error, warning, and info messages, making it essential for user interaction.
       </p>
       <div class="absolute w-full">
-        <dropdown_component type="teal" size="l" :isDark="isDarkMode" bordered="true"></dropdown_component>
+        <dropdown_component type="sky" size="w" :isDark="isDarkMode" bordered="true"></dropdown_component>
       </div>
       <h1 :class="['text-2xl', 'mb-2', 'mt-4', 'font-bold', 'text-center', headingColor]">Default Dropdown</h1>
     </div>
