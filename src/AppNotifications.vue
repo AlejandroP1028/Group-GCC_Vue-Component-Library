@@ -4,8 +4,8 @@
       {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
     </button>
   <Notifications type="success" notification_message ="This is a success notification." position="top-right"></Notifications>
-  <Notifications type="error" notification_message ="This is an error notification." position="top-right1"></Notifications>
-  <Notifications type="warning" notification_message ="This is a warning notification." position="top-right2"></Notifications>
+  <Notifications type="error" notification_message ="This is an error notification." position="top-left"></Notifications>
+  <Notifications type="warning" notification_message ="This is a warning notification." position="bottom-left"></Notifications>
   <Notifications type="default" notification_message ="This is a default notification." position="center"></Notifications>
   <Notifications type="message" notification_message ="This is a message notification." position="bottom-right"></Notifications>
   </div>
@@ -33,7 +33,6 @@ data() {
 </script>
 
 <style scoped>
-/* Dark mode styles */
 .dark {
   background-color: #091224;
   color: #38BDF8;
