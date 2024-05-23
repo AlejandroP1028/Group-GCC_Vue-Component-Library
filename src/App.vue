@@ -1,6 +1,6 @@
 <template>
-  <div :class="{ 'dark': isDarkMode }">
-    <ToggleComponent :isDarkMode="isDarkMode" @toggle-dark-mode="toggleDarkMode"/>
+  <div :class="{ 'dark': isDarkMode }" class="overflow-auto h-screen w-screen bg-gray-50 dark:bg-white dark:text-white">
+    <ToggleComponent :isDarkMode="isDarkMode" @toggle-dark-mode="toggleDarkMode" />
   </div>
 </template>
 
@@ -24,6 +24,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
 </style>
