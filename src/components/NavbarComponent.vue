@@ -33,7 +33,7 @@ export default {
       activePage: "Home",
       variations: [
         //Default Navbar
-        `<ul class="flex space-x-4">
+        `<ul class="flex space-x-8">
           <li :class="{ activepage: activePage === 'Home' }">
             <a href="#" @click.prevent="setActivePage('Home')" class="hover:text-blue-400 active:text-blue-400">Home</a>
           </li>
@@ -51,7 +51,7 @@ export default {
           </li>
         </ul>`,
         //Navbar with Search
-        `<ul class="flex space-x-4 items-center">
+        `<ul class="flex space-x-8 items-center">
           <li :class="{ activepage: activePage === 'Home' }">
             <a href="#" @click.prevent="setActivePage('Home')" class="hover:text-blue-400 active:text-blue-400">Home</a>
           </li>

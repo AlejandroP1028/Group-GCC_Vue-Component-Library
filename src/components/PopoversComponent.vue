@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="relative inline-block">
     <button
       class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded w-32"
       @mouseover="popoverMouseOver"
@@ -14,11 +14,13 @@
       v-show="isPopoverVisible"
       ref="popover"
       @mouseover="popoverMouseOver"
-      @mouseleave="popoverMouseLeav"
+      @mouseleave="popoverMouseLeave"
       :class="[
         positionClass,
-        'absolute bg-blue-100 border-none rounded-lg shadow-lg p-4',
+        popoverColorClass,
+        'fixed border-none rounded-lg shadow-lg p-4',
       ]"
+      :style="popoverStyle"
     >
       <h3 class="text-lg font-semibold mb-2">{{ popoverTitle }}</h3>
       <p class="text-gray-600">
@@ -34,59 +36,113 @@ export default {
     position: {
       type: String,
       default: "top",
-      validator(value) {
-        return ["top", "bottom", "left", "right"].includes(value);
-      },
+    },
+    popoverColor: {
+      type: String,
+      default: "blue",
     },
     trigger: {
       type: String,
       default: "mouseover",
-      validator(value) {
-        return ["click", "mouseover"].includes(value);
-      },
     },
     buttonText: {
       type: String,
+      default: "Button",
     },
     popoverTitle: {
       type: String,
+      default: "Popover Title",
     },
     popoverContent: {
       type: String,
+      default:
+        "This is the content of the popover. You can place any information here.",
     },
   },
   data() {
     return {
       isPopoverVisible: false,
+      popoverStyle: {},
     };
   },
   methods: {
     popoverMouseOver() {
       if (this.trigger === "mouseover") {
-        this.isPopoverVisible = true;
+        this.showPopover();
       }
     },
     popoverMouseLeave() {
       if (this.trigger === "mouseover") {
-        this.isPopoverVisible = false;
+        this.hidePopover();
       }
     },
     popoverClick() {
       if (this.trigger === "click") {
-        this.isPopoverVisible = !this.isPopoverVisible;
+        this.isPopoverVisible ? this.hidePopover() : this.showPopover();
       }
+    },
+    showPopover() {
+      this.isPopoverVisible = true;
+      this.updatePopoverPosition();
+    },
+    hidePopover() {
+      this.isPopoverVisible = false;
+    },
+    updatePopoverPosition() {
+      this.$nextTick(() => {
+        const button = this.$refs.button;
+        const popover = this.$refs.popover;
+        const buttonRect = button.getBoundingClientRect();
+        const popoverRect = popover.getBoundingClientRect();
+        const space = 4;
+
+        let top, left;
+        if (this.position === "top") {
+          top = buttonRect.top - popoverRect.height - space;
+          left = buttonRect.left + (buttonRect.width - popoverRect.width) / 2;
+        } else if (this.position === "bottom") {
+          top = buttonRect.bottom + space;
+          left = buttonRect.left + (buttonRect.width - popoverRect.width) / 2;
+        } else if (this.position === "left") {
+          top = buttonRect.top + (buttonRect.height - popoverRect.height) / 2;
+          left = buttonRect.left - popoverRect.width - space;
+        } else if (this.position === "right") {
+          top = buttonRect.top + (buttonRect.height - popoverRect.height) / 2;
+          left = buttonRect.right + space;
+        }
+
+        this.popoverStyle = {
+          top: `${top}px`,
+          left: `${left}px`,
+        };
+      });
     },
   },
   computed: {
     positionClass() {
-      const positions = {
-        top: "translate-x-32 -translate-y-52 max-w-sm",
-        bottom: "-translate-x-24 translate-y-2 max-w-sm",
-        left: "-translate-x-48 -translate-y-16 max-w-xs",
-        right: "translate-x-32 -translate-y-44 max-w-xs",
-      };
-      return positions[this.position];
+      return {
+        top: "-translate-y-px",
+        bottom: "translate-y-px",
+        left: "-translate-x-px",
+        right: "-translate-x-px",
+      }[this.position];
+    },
+    popoverColorClass() {
+      return {
+        blue: "bg-blue-100",
+        slate: "bg-slate-100",
+        teal: "bg-teal-200",
+        cyan: "bg-cyan-200",
+        sky: "bg-sky-200",
+      }[this.popoverColor];
     },
   },
 };
 </script>
+s
+
+<style scoped>
+.popover {
+  transition: opacity 0.2s;
+}
+</style>
