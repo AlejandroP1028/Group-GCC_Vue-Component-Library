@@ -1,9 +1,11 @@
-/* eslint-disable */
 <template>
+  <header class="sticky top-0 h-40">
+    <navbar :variationIndex="1"></navbar>
+  </header>
   <section
     class="page flex flex-col items-center justify-center h-screen overflow-hidden gap-20"
   >
-    <section class="navbar_container flex flex-col gap-24">
+    <section class="navbar_container flex flex-col gap-24 max-w-none">
       <div class="demo_container">
         <h1 class="mb-4 font-bold text-2xl text-blue-800 text-center">
           Default navbar
@@ -37,18 +39,37 @@
         </h1>
         <div class="demo p-10 bg-gray-100 w-auto">
           <div class="w-auto flex flex-row gap-24">
-            <popovers></popovers>
+            <popovers
+              position="top"
+              trigger="mouseover"
+              buttonText="Top"
+            ></popovers>
+            <popovers
+              position="bottom"
+              trigger="mouseover"
+              buttonText="Bottom"
+            ></popovers>
+            <popovers
+              position="left"
+              trigger="mouseover"
+              buttonText="Left"
+            ></popovers>
+            <popovers
+              position="right"
+              trigger="mouseover"
+              buttonText="Right"
+            ></popovers>
           </div>
         </div>
       </div>
     </section>
   </section>
 
-  <button
+  <!--  <button
     class="bg-sky-700 hover:bg-sky-800 text-white font-bold py-2 px-4 rounded absolute bottom-4 right-4"
   >
     Dark Mode
-  </button>
+  </button> -->
 </template>
 
 <script>

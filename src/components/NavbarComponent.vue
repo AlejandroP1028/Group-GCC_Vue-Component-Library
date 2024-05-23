@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar_default">
-    <div class="flex flex-row gap-96">
+  <nav class="navbar_default justify-between items-center p-4">
+    <div class="container mx-auto flex items-center justify-between p-1">
       <div class="svg_container">
         <svg
           width="89"
@@ -33,7 +33,7 @@ export default {
       activePage: "Home",
       variations: [
         //Default Navbar
-        `<ul class="flex flex-row gap-8 items-center">
+        `<ul class="flex space-x-4">
           <li :class="{ activepage: activePage === 'Home' }">
             <a href="#" @click.prevent="setActivePage('Home')" class="hover:text-blue-400 active:text-blue-400">Home</a>
           </li>
@@ -51,7 +51,7 @@ export default {
           </li>
         </ul>`,
         //Navbar with Search
-        `<ul class="flex flex-row gap-8 items-center">
+        `<ul class="flex space-x-4 items-center">
           <li :class="{ activepage: activePage === 'Home' }">
             <a href="#" @click.prevent="setActivePage('Home')" class="hover:text-blue-400 active:text-blue-400">Home</a>
           </li>
