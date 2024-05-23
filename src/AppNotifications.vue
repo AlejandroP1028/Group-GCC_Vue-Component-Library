@@ -3,11 +3,11 @@
     <button @click="toggleDarkMode" type="button" class="absolute top-1/2 left-1/2 bg-gray-800 hover:bg-blue-800 text-blue-200 font-bold py-2 px-4 rounded">
       {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
     </button>
-  <Notifications type="success" notification_message ="This is a success notification." position="top-right"></Notifications>
-  <Notifications type="error" notification_message ="This is an error notification." position="top-left"></Notifications>
-  <Notifications type="warning" notification_message ="This is a warning notification." position="bottom-left"></Notifications>
-  <Notifications type="default" notification_message ="This is a default notification." position="center"></Notifications>
-  <Notifications type="message" notification_message ="This is a message notification." position="bottom-right"></Notifications>
+    <Notifications type="success" notification_message="This is a success notification." position="top-right" />
+    <Notifications type="error" notification_message="This is an error notification." position="top-left" />
+    <Notifications type="warning" notification_message="This is a warning notification." position="bottom-left" />
+    <Notifications type="default" notification_message="This is a default notification." position="center" />
+    <Notifications type="message" notification_message="This is a message notification." position="bottom-right" />
   </div>
 </template>
 
@@ -15,11 +15,11 @@
 import Notifications from './components/NotificationsGroup.vue';
 
 export default {
-name: 'AppNotifications',
-components: {
-  Notifications
-},
-data() {
+  name: 'AppNotifications',
+  components: {
+    Notifications
+  },
+  data() {
     return {
       isDarkMode: false 
     };
