@@ -35,6 +35,6 @@ export default {
 <style scoped>
 .dark {
   background-color: #091224;
-  color: #38BDF8;
+  color: #ffffff;
 }
 </style>

@@ -1,15 +1,28 @@
 <template>
-  <div class="h-full w-screen bg-blue-100">
-    <div class="flex flex-col items-center justify-start h-full w-screen mt-7">
-      <div class="max-w-3xl w-full p-4 bg-white rounded-3xl shadow-lg">
-        <ul class="border border-blue-300 rounded max-w-sm" :style="{ borderColor: colors[currentColorIndex] }" style="margin: 0 auto;">
-          <li v-for="(item, index) in items" :key="item" class="p-4" :style="{ borderColor: colors[currentColorIndex], textAlign: textAlign }" :class="{ 'border-b': index !== items.length - 1 }">
-            {{ item }}
-          </li>
-        </ul>
-        <div class="flex justify-center mt-3">
-          <button class="bg-blue-500 text-white px-4 py-2 mr-2 rounded hover:bg-blue-700" @click="changeColor">Change Color</button>
-          <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700" @click="changeAlignment">Change Alignment</button>
+  <div class="flex flex-col items-center h-full">
+    <div v-if="type === 'unorderedlist'" class="rounded-lg shadow p-4 bg-blue-200 dark:bg-gray-800 mb-8">
+      <h2 class="mb-2 text-lg font-semibold text-blue-900 dark:text-sky-400">Unordered List:</h2>
+      <ul class="max-w-md space-y-1 text-blue-800 list-disc list-inside dark:text-sky-400">
+        <li v-for="(item, index) in items" :key="index">
+          {{ item }}
+        </li>
+      </ul>
+    </div>
+
+    <div v-else-if="type === 'orderedlist'" class="rounded-lg shadow p-4 bg-blue-200 dark:bg-gray-800 mb-8">
+      <h2 class="mb-2 text-lg font-semibold text-blue-900 dark:text-sky-400">Ordered List:</h2>
+      <ol class="max-w-md space-y-1 text-blue-800 list-decimal list-inside dark:text-sky-400">
+        <li v-for="(item, index) in items" :key="index">
+          {{ item }}
+        </li>
+      </ol>
+    </div>
+
+    <div v-else-if="type === 'descriptionlist'" class="rounded-lg shadow-lg p-4 bg-blue-200 dark:bg-gray-800 mb-8">
+      <div class="max-w-md text-blue-900 divide-y divide-blue-300 dark:text-sky-400 dark:divide-gray-700">
+        <div class="flex flex-col pb-3" v-for="(item, index) in items" :key="index">
+          <dt class="mb-1 text-blue-900 font-semibold md:text-lg dark:text-sky-300">{{ item.term }}</dt>
+          <dd class="text-lg font-bold">{{ item.description }}</dd>
         </div>
       </div>
     </div>
@@ -19,30 +32,16 @@
 <script>
 export default {
   name: 'ItemList',
-  data() {
-    return {
-      items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'],
-      colors: ['#3498db', '#1d4ed8', '#1e3a8a'],
-      currentColorIndex: 0,
-      alignments: ['left', 'center', 'right'],
-      currentAlignmentIndex: 0,
-      textAlign: 'left'
-    };
-  },
-  methods: {
-    changeColor() {
-      this.currentColorIndex = (this.currentColorIndex + 1) % this.colors.length;
+  props: {
+    items: {
+      type: Array,
+      required: true,
     },
-    changeAlignment() {
-      this.currentAlignmentIndex = (this.currentAlignmentIndex + 1) % this.alignments.length;
-      this.textAlign = this.alignments[this.currentAlignmentIndex];
-    }
-  }
-}
+    type: {
+      type: String,
+      required: true,
+      validator: value => ["unorderedlist", "orderedlist", "descriptionlist"].includes(value),
+    },
+  },
+};
 </script>
-
-<style scoped>
-* {
-  font-family: 'Roboto', sans-serif;
-}
-</style>
