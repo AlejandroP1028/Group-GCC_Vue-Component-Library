@@ -3,7 +3,7 @@
     <img v-if="image" :src="imageSrc" :class="imageHorizontal" alt="Card Image" />
     <div :class="['p-4', isHorizontal]">
       <slot name="ts"></slot>
-      <div v-if="header" :class="['flex mb-2 text-2xl font-bold tracking-tight justify-between', computedClassesHeader]">{{ header }} <slot name="hs" class="max-h-8"></slot></div>
+      <div v-if="header" :class="['flex mb-2 text-2xl font-bold tracking-tight', computedClassesHeader]">{{ header }} <slot name="hs" class="max-h-8"></slot></div>
       <span v-if="body" :class="['mb-3 font-normal block', computedClassesBody]">{{ body }}</span>
       <slot name="bs"></slot>
     </div>
@@ -15,6 +15,13 @@ export default {
   name: 'CardComponent',
   props: {
     header: String,
+    justifyHeader: {
+      type: String,
+      validator: function (value) {
+        ['start','end','center','between','around','evenly'].includes(value)
+      },
+      default: 'start'
+    },
     body: String,
     image: String,
     horizontal: Boolean,
@@ -80,7 +87,17 @@ export default {
         teal: 'text-teal-900/[.87] dark:text-teal-200',
       };
 
-      return styleClasses[this.type] || styleClasses['default'];
+      const position = {
+        start: 'justify-start',
+        end: 'justify-end',
+        center: 'justify-center',
+        between: 'justify-between',
+        around: 'justify-around',
+        evenly: 'justify-stretch',
+        
+      } 
+
+      return [position[this.justifyHeader], styleClasses[this.type] || styleClasses['default']];
     },
     computedClassesBody() {
       const styleClasses = {
