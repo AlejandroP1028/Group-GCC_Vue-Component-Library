@@ -19,8 +19,10 @@ export default {
       const typeClasses = {
         secondary: 'bg-blue-600 text-white ml-3',
         dot: 'w-5 h-5 rounded-full bg-red-500',
-        number: 'w-7 h-6 bg-blue-600 text-white px-1 rounded-full text-xs',
-        icon: 'w-7 h-6 bg-cyan-500 text-white rounded-full'
+        number: 'w-8 h-6 bg-blue-600 text-white rounded-full text-xs',
+        icon: 'w-7 h-6 bg-cyan-500 text-white rounded-full',
+        bordered: 'text-m font-medium px-4 py-1 rounded border',
+        pill: 'text-xs font-medium px-4 py-1 rounded-full'
       };
       return `${baseClasses} ${typeClasses[this.type]}`;
     }
