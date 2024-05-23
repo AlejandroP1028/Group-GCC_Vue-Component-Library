@@ -27,23 +27,61 @@ import Avatar from './components/UserAvatar.vue';
         rounded="full"
         :is-online="true"/>
 
-    
+        <Avatar
+        name="Gian Catalan"
+        image="https://i.pinimg.com/originals/04/63/12/046312aac440d95cbc6d56b3eb527d5d.jpg"
+        size="xl"
+        rounded="full"
+        :is-online="true"/>
 
-    </div>
-  
+        <Avatar
+        name="Gian Catalan"
+        image="https://i.pinimg.com/originals/04/63/12/046312aac440d95cbc6d56b3eb527d5d.jpg"
+        size="xxl"
+        rounded="full"
+        :is-online="true"/>
+
+        <Avatar
+        name="Gian Catalan"
+        image="https://i.pinimg.com/originals/04/63/12/046312aac440d95cbc6d56b3eb527d5d.jpg"
+        size="xxxl"
+        rounded="full"
+        :is-online="true"/>
+
+
+        
+
+    </div> 
+
     <div class="flex justify-between items-end space-x-1 mt-4">
       <Avatar
         name="Alejandro Prado"
         size="sm"
         rounded="full"
         :is-online="true"/>
+
       <Avatar
         name="Gian Catalan"
         rounded="full"
         size="md"/>
+
       <Avatar
-        name="Ryan Intalan"
+        name="Paul"
         size="lg"/>
+
+         <Avatar
+        name="Edelyn"
+        size="xl"/>
+
+         <Avatar
+        name="Lovely"
+        size="xxl"
+        rounded="full"/>
+
+         <Avatar
+        name="Lovely"
+        size="xxxl"
+        rounded="full"/>
     </div>
   </div>
 </template>

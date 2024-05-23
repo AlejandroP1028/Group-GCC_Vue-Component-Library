@@ -49,7 +49,7 @@ export default{
             required: false,
             default: 'md',
             validator(value){
-                return['sm','md','lg'].includes(value);
+                return['sm', 'md', 'lg', 'xl', 'xxl','xxxl'].includes(value);
             },
         },
 
@@ -87,14 +87,21 @@ export default{
                 sm: 'w-6 h-6 text-xs',
                 md: 'w-8 h-8 text-base',
                 lg: 'w-10 h-10 text-lg',
+                xl: 'w-12 h-12 text-xl',
+                xxl: 'w-16 h-16 text-2xl',
+                xxxl: 'w-20 h-20 text-3xl',
+
             }[this.size];
 
         },
          onlineSizeClass(){
             return{
-                sm: 'w-2 h-2',
-                md: 'w-3 h-3',
-                lg: 'w-4 h-4',
+                sm: 'w-1.5 h-1.5',
+                md: 'w-2 h-2',
+                lg: 'w-2.5 h-2.5',
+                xl: 'w-3 h-3',
+                xxl: 'w-4 h-4',
+                xxxl: 'w-5 h-5',
 
             }[this.size];
 
