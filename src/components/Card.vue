@@ -2,9 +2,10 @@
   <div :class="['rounded-lg shadow', computedClassesMain, mainHorizontal]">
     <img v-if="image" :src="imageSrc" :class="imageHorizontal" alt="Card Image" />
     <div :class="['p-4', isHorizontal]">
-      <span v-if="header" :class="['mb-2 text-2xl font-bold tracking-tight block', computedClassesHeader]">{{ header }}</span>
+      <slot name="ts"></slot>
+      <div v-if="header" :class="['flex mb-2 text-2xl font-bold tracking-tight justify-between', computedClassesHeader]">{{ header }} <slot name="hs" class="max-h-8"></slot></div>
       <span v-if="body" :class="['mb-3 font-normal block', computedClassesBody]">{{ body }}</span>
-      <slot></slot>
+      <slot name="bs"></slot>
     </div>
   </div>
 </template>
@@ -66,7 +67,6 @@ export default {
       return this.horizontal ? 'flex flex-row' : 'flex flex-col';
     },
     imageHorizontal() {
-
       return this.horizontal ? 'w-2/5 object-cover rounded-l-lg' : 'w-full rounded-t-lg';
     },
     isHorizontal() {
@@ -100,4 +100,5 @@ export default {
 </script>
 
 <style scoped>
+/* Add any scoped styles if needed */
 </style>
