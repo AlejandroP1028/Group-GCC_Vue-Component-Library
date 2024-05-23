@@ -44,24 +44,28 @@
               trigger="mouseover"
               buttonText="Top"
               popoverColor="slate"
+              popoverButtonColor="blue"
             ></popovers>
             <popovers
               position="bottom"
               trigger="mouseover"
               buttonText="Bottom"
               popoverColor="sky"
+              popoverButtonColor="slate"
             ></popovers>
             <popovers
               position="left"
               trigger="mouseover"
               buttonText="Left"
               popoverColor="teal"
+              popoverButtonColor="cyan"
             ></popovers>
             <popovers
               position="right"
               trigger="mouseover"
               buttonText="Right"
               popoverColor="cyan"
+              popoverButtonColor="sky"
             ></popovers>
           </div>
         </div>

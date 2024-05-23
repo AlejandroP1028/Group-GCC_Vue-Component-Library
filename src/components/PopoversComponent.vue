@@ -1,7 +1,10 @@
 <template>
   <div class="relative inline-block">
     <button
-      class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded w-32"
+      :class="[
+        popoverButtonColorClass,
+        'text-white font-bold py-2 px-4 rounded w-32',
+      ]"
       @mouseover="popoverMouseOver"
       @mouseleave="popoverMouseLeave"
       @click="popoverClick"
@@ -38,6 +41,10 @@ export default {
       default: "top",
     },
     popoverColor: {
+      type: String,
+      default: "blue",
+    },
+    popoverButtonColor: {
       type: String,
       default: "blue",
     },
@@ -135,6 +142,14 @@ export default {
         cyan: "bg-cyan-200",
         sky: "bg-sky-200",
       }[this.popoverColor];
+    },
+    popoverButtonColorClass() {
+      return {
+        blue: "bg-blue-700 hover:bg-blue-800",
+        slate: "bg-slate-700 hover:bg-slate-800",
+        cyan: "bg-cyan-700 hover:bg-cyan-800",
+        sky: "bg-sky-700 hover:bg-sky-800",
+      }[this.popoverButtonColor];
     },
   },
 };
