@@ -36,7 +36,7 @@ export default {
   computed: {
     breadcrumbClass() {
       return {
-        'bg-white dark:bg-black border border-black dark:border-white px-4 py-2 rounded': this.type === 'solidbg'
+        'bg-blue-200 dark:bg-blue-600 border border-black dark:border-white px-4 py-2 rounded': this.type === 'solidbg'
       };
     }
   }

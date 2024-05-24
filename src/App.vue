@@ -19,7 +19,7 @@
           <BadgeComponent type="bordered" color="sky" class="mr-3"> Sky </BadgeComponent>
           <BadgeComponent type="bordered" color="teal" class="mr-3"> Teal </BadgeComponent>
         </div>
-        <p class="text-black dark:text-white text-lg mb-2"> Pills badge </p>
+        <p class="text-black dark:text-white text-lg mb-2"> Pill badge </p>
         <div class="p-10 mb-5 bg-sky-200 dark:bg-gray-700 flex justify-center items-center overflow-x-auto">
           <BadgeComponent type="pill" color="blue" class="mr-3"> Blue </BadgeComponent>
           <BadgeComponent type="pill" color="cyan" class="mr-3"> Cyan </BadgeComponent>
