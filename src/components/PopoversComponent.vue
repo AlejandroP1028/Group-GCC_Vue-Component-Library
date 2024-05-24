@@ -32,7 +32,7 @@
     </div>
   </div>
 </template>
-
+s
 <script>
 export default {
   props: {

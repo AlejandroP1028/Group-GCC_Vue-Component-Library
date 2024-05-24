@@ -45,6 +45,12 @@
               buttonText="Top"
               popoverColor="slate"
               popoverButtonColor="blue"
+              popoverTitle="hello gaish"
+              popoverContent="sabi ng mama mo,
+              tita na lang daw ang itawag ko sa'yo oh sa kanya 
+              tapos ngayon mama ko na siya ang tita mo noon, 
+              ngayon kaya pwede na tayo magsama kasi aksept, akcipt na tayo nila, 
+              ng mama mo sa tita ko noon"
             ></popovers>
             <popovers
               position="bottom"
