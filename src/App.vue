@@ -17,8 +17,8 @@ export default {
     };
   },
   methods: {
-    toggleDarkMode() {
-      this.isDarkMode = !this.isDarkMode;
+    toggleDarkMode(isDarkMode) {
+      this.isDarkMode = isDarkMode;
     }
   }
 }
