@@ -118,7 +118,6 @@ export default {
   },
   watch: {
     isDarkMode(newVal) {
-      // Update standardToggles array when isDarkMode changes
       this.standardToggles[0].label = newVal ? 'Dark Mode' : 'Light Mode';
       this.standardToggles[0].checked = newVal;
     }
@@ -127,5 +126,5 @@ export default {
 </script>
 
 <style scoped>
-/* Your existing scoped styles */
+
 </style>
