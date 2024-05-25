@@ -3,7 +3,7 @@
     <!-- First Row: Standard Toggles -->
     <div class="flex flex-wrap justify-center">
       <label v-for="toggle in standardToggles" :key="toggle.label" class="inline-flex items-center cursor-pointer mt-6 me-6">
-        <input type="checkbox" class="sr-only peer" :disabled="toggle.disabled" :checked="toggle.checked" @change="toggleDarkMode">
+        <input type="checkbox" class="sr-only peer" :disabled="toggle.disabled" :checked="toggle.checked" @change="toggleDarkMode($event, toggle.label)">
         <div :class="standardToggleClass" class="relative w-11 h-6"></div>
         <span :class="spanClass">{{ toggle.label }}</span>
       </label>
@@ -12,7 +12,7 @@
     <!-- Second Row: Colored Toggles -->
     <div class="mt-6 flex flex-wrap justify-center">
       <label v-for="(color, index) in colors" :key="index" class="inline-flex items-center cursor-pointer me-5">
-        <input type="checkbox" class="sr-only peer" :checked="isDarkMode" @change="toggleDarkMode">
+        <input type="checkbox" class="sr-only peer" :checked="coloredToggleStates[index]" @change="toggleColoredToggle(index)">
         <div :class="colorToggleClass(color)" class="relative w-11 h-6"></div>
         <span :class="spanClass">{{ color.charAt(0).toUpperCase() + color.slice(1) }}</span>
       </label>
@@ -31,12 +31,13 @@ export default {
   data() {
     return {
       colors: ['blue', 'sky', 'cyan', 'teal'],
+      coloredToggleStates: [false, false, false, false] // Initialize colored toggles state
     };
   },
   computed: {
     standardToggles() {
       return [
-        { label: this.isDarkMode ? 'Dark Mode' : 'Light Mode', checked: this.isDarkMode },
+        { label: 'Dark Mode', checked: this.isDarkMode },
         { label: 'Checked Toggle', checked: true },
         { label: 'Disabled Toggle', disabled: true },
         { label: 'Disabled Checked', checked: true, disabled: true }
@@ -112,14 +113,13 @@ export default {
         ${colorClassMap[color]}
       `;
     },
-    toggleDarkMode(event) {
-      this.$emit('toggle-dark-mode', event.target.checked);
-    }
-  },
-  watch: {
-    isDarkMode(newVal) {
-      this.standardToggles[0].label = newVal ? 'Dark Mode' : 'Light Mode';
-      this.standardToggles[0].checked = newVal;
+    toggleDarkMode(event, label) {
+      if (label === 'Dark Mode') {
+        this.$emit('toggle-dark-mode', event.target.checked);
+      }
+    },
+    toggleColoredToggle(index) {
+      this.coloredToggleStates[index] = !this.coloredToggleStates[index];
     }
   }
 }
