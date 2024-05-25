@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       colors: ['blue', 'sky', 'cyan', 'teal'],
-      coloredToggleStates: [false, false, false, false] // Initialize colored toggles state
+      coloredToggleStates: [false, false, false, false] 
     };
   },
   computed: {
