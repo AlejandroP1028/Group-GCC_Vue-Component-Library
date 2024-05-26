@@ -1,6 +1,6 @@
 <template>
   <div :class="{ 'dark': isDarkMode }" class="overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900">
-    <Button @click="toggleDarkMode"> {{ 'Toggle' }}</Button>
+    <Button :class="`absolute m-4 bottom-4 right-4 `" @click="toggleDarkMode"> {{ isDarkMode ? 'Light' : 'Dark' }}</Button>
     <PageHeader 
       header="Alert" 
       body="Show contextual information to your users using alert elements based on Tailwind CSS"/>
@@ -11,7 +11,7 @@
       <template #content>
         <div class="flex flex-col items-center mt-4 h-full">
           <Button :class="'w-9/10'" @click="addAlert">Add Random Default Alert</Button>
-          <div class="relative bg-gray-300 mt-4 w-3/5 h-80 p-4 overflow-hidden rounded-lg shadow-lg border border-gray-800">
+          <div class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-3/5 h-80 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
             <Alert v-for="(alert, index) in alerts" 
                    :key="index"
                    :msg="alert.msg"
