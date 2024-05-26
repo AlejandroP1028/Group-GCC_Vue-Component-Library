@@ -1,5 +1,5 @@
 <template>
-  <div v-if="out" :class="['alert p-4 m-4 text-sm shadow-lg fixed', computedClasses]"  @click="dismiss" role="alert">
+  <div v-if="out" :class="['alert p-4 m-4 text-sm shadow-lg transition-colors duration-300 ease-in-out', computedClasses]" @click="dismiss" role="alert">
     <svg v-if="icon" class="inline-block"
          width="24"
          height="24"
@@ -61,7 +61,7 @@ export default {
     },
     position: {
       type: String,
-      validator: value => ['tl', 'tc', 'tr', 'll', 'lc', 'lr'].includes(value),
+      validator: value => ['tl', 'tc', 'tr', 'll', 'lc', 'lr', 'ptl', 'ptc', 'ptr', 'pll', 'plc', 'plr'].includes(value),
       default: 'tl',
     }
   },
@@ -73,7 +73,13 @@ export default {
         tr: 'top-4 right-4',
         ll: 'bottom-4 left-4',
         lc: 'bottom-4 left-1/2 transform -translate-x-1/2',
-        lr: 'bottom-4 right-4'
+        lr: 'bottom-4 right-4',
+        ptl: 'top-0 left-0',
+        ptc: 'top-0 left-1/2 transform -translate-x-1/2',
+        ptr: 'top-0 right-0',
+        pll: 'bottom-0 left-0',
+        plc: 'bottom-0 left-1/2 transform -translate-x-1/2',
+        plr: 'bottom-0 right-0'
       };
 
       const typeClasses = {
@@ -104,12 +110,16 @@ export default {
         success:' border-t-4 border-green-600',
         warning:' border-t-4 border-yellow-600',
       }
+      const positioning = {
+        p : "absolute"
+      }
 
       const { bgClass, textClass, borderClass } = typeClasses[this.type];
-      const accentClass = accent[this.type] 
+      const accentClass = accent[this.type];
+      const positioningClass = positioning[this.position[0]] || "fixed"
 
       return [
-        bgClass, textClass, borderClass, accentClass,
+        bgClass, textClass, borderClass, accentClass, positioningClass,
         this.dismissType === 'manual' ? 'cursor-pointer dark:hover:bg-gray-700 hover:bg-opacity-70' : '',
         this.size === 'w' ? 'inline-block' : this.size === 's' ? 'w-32' : this.size === 'm' ? 'w-48' : 'w-64',
         positionClasses[this.position] || positionClasses['tl'],
@@ -155,32 +165,32 @@ export default {
 </script>
 
 <style scoped>
-.tl-start {
+.tl-start, .ptl-start {
   transition: transform 0.3s ease-in;
   transform: translateX(-150%);
 }
 
-.tc-start {
+.tc-start, .ptc-start {
   transition: transform 0.3s ease-in;
   transform: translateY(-150%);
 }
 
-.tr-start {
+.tr-start, .ptr-start {
   transition: transform 0.3s ease-in;
   transform: translateX(150%);
 }
 
-.ll-start {
+.ll-start, .pll-start {
   transition: transform 0.3s ease-in;
   transform: translateX(-150%);
 }
 
-.lc-start {
+.lc-start, .plc-start {
   transition: transform 0.3s ease-in;
   transform: translateY(150%);
 }
 
-.lr-start {
+.lr-start, .plr-start {
   transition: transform 0.3s ease-in;
   transform: translateX(150%);
 }
