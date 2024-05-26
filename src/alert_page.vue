@@ -2,7 +2,7 @@
   <div :class="{ 'dark': isDarkMode }" class="overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 flex flex-row scroll-smooth">
     <div class="relative w-auto mb-16">
       <PageHeader 
-      :class="'flex-none'"
+        :class="'flex-none'"
         @sectioncreated="addLink"
         header="GCC Alert" 
         body="Show contextual information to your users using alert elements based on Tailwind CSS"/>
@@ -15,11 +15,11 @@
         <template #content>
           <div class="flex flex-col items-center mt-4 h-full">
             <div class="flex flex-row space-x-4">
-              <Button color="sky" :class="'w-9/10'" @click="addAlertNormal">Add Random Auto Alert</Button>
-              <Button color="cyan" :class="'w-9/10'" @click="addAlertManual">Add Random Manual Alert</Button>
+              <Button color="sky" :class="'w-9/10'" @click="addAlert('auto')">Add Random Auto Alert</Button>
+              <Button color="cyan" :class="'w-9/10'" @click="addAlert('manual')">Add Random Manual Alert</Button>
             </div>
             
-            <div :class="{ 'dark': defaultDark}" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-3/5 h-80 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-3/5 h-80 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
               <Alert v-for="(alert, index) in alerts" 
                      :key="index"
                      :msg="alert.msg"
@@ -40,7 +40,7 @@
       <Section @sectioncreated="addLink" header="Alert Types" body="There are 4 supported types in the GCC alert component. Info to show users important information, Danger to show whenever something bad happens, Warning which warns the user, and Success to show a successful task or input.">
         <template #content>
           <div class="flex flex-col items-center my-4 h-full">
-            <div :class="{ 'dark': defaultDark}" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-3/5 h-80 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-3/5 h-80 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
               <div class="pointer-events-none mb-24">
                 <Alert v-for="(alert, index) in alertsType" 
                        :key="index"
@@ -60,10 +60,10 @@
           <div class="flex flex-col items-center mt-4 h-full">
             <div class="flex flex-row space-x-4">
               <input v-model="customAlertMessage" class="border rounded-lg border-gray-800 bg-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 shadow-lg p-2" type="text" id="alertMessage">
-              <Button color="cyan" :class="'w-9/10'" @click="addAlertMessage">Show Alert</Button>
+              <Button color="cyan" :class="'w-9/10'" @click="addAlertWithMessage">Show Alert</Button>
             </div>
             
-            <div :class="{ 'dark': defaultDark}" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-3/5 h-80 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-3/5 h-80 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
               <Alert v-for="(alert, index) in alertsMessage" 
                      :key="index"
                      :msg="alert.msg"
@@ -82,15 +82,14 @@
       </Section>
 
       <Section @sectioncreated="addLink" header="Alert Positions" 
-      body="There are 12 supported positions in the GCC alert component. 
-      These are divided into two, the Parent and Absolute positions. The parent positions are: ptl, ptr, pll, ptc, plc and plr. The absolute positions are: tl, tr, tc, ll, lc and lr. The parent positions are based on the parent while the absolute positions are based on the viewport. The following buttons will demonstrate where they are positioned:">
+        body="There are 12 supported positions in the GCC alert component. These are divided into two, the Parent and Absolute positions. The parent positions are: ptl, ptr, pll, ptc, plc and plr. The absolute positions are: tl, tr, tc, ll, lc and lr. The parent positions are based on the parent while the absolute positions are based on the viewport. The following buttons will demonstrate where they are positioned:">
         <template #content>
           <div class="flex flex-col items-center my-4 h-full">
             <div class="flex flex-row space-x-4">
-              <Button color="sky" :class="'w-9/10'" @click="addAlertPositionA">Show Absolute Positions</Button>
-              <Button color="cyan" :class="'w-9/10'" @click="addAlertPositionP">Show Parent Positions</Button>
+              <Button color="sky" :class="'w-9/10'" @click="addAlertPositions('absolute')">Show Absolute Positions</Button>
+              <Button color="cyan" :class="'w-9/10'" @click="addAlertPositions('parent')">Show Parent Positions</Button>
             </div>
-            <div :class="{ 'dark': defaultDark}" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-3/5 h-80 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-3/5 h-80 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
               <div class="pointer-events-none mb-24">
                 <Alert v-for="(alert, index) in alertsPositionsA" 
                        :key="index"
@@ -108,9 +107,8 @@
           </div>
         </template>
       </Section>
-     
 
-        <br>
+      <br>
     </div>
     <div class="sticky top-8 w-2/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
       <hr class="h-0.5 bg-blue-600 border-none rounded-full">
@@ -123,7 +121,6 @@
       </div>
       <hr class="h-0.5 bg-blue-600 border-none rounded-full">
     </div>
-    
   </div>  
 </template>
 
@@ -172,7 +169,6 @@ export default {
           msg: 'Success'
         },
       ],
-
       isDarkMode: false,
       defaultDark: false,
       customAlertMessage: '',
@@ -181,121 +177,55 @@ export default {
   methods: {
     addLink(header) {
       this.links.push({ label: header });
-      console.log(this.links)
     },
     toggleDarkMode() {
       this.isDarkMode = !this.isDarkMode;
     },
-    toggleDefaultDark() {
-      this.defaultDark = !this.defaultDark;
-    },
-    addAlertNormal() {
+    getRandomAlertProps(dismissType) {
       const positions = ['ptl', 'ptr', 'pll', 'plr'];
       const types = ['info', 'danger', 'success', 'warning'];
       const sizes = ['w', 's', 'm', 'l'];
       const fonts = ['medium', 'bold', 'semibold', 'light', 'normal'];
-      const randomPosition = positions[Math.floor(Math.random() * positions.length)];
-      const randomType = types[Math.floor(Math.random() * types.length)];
-      const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
-      const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
-      const randomRounded = Math.random() > 0.5;
-      const randomAccent = Math.random() > 0.5;
-      const randomIcon = Math.random() > 0.5;
-      const randomBordered = Math.random() > 0.5;
 
-      const message = {
-        info: 'This is an info alert',
-        danger: 'This is a danger alert',
-        success: 'This is a success alert',
-        warning: 'This is a warning alert',
+      return {
+        msg: {
+          info: 'This is an info alert',
+          danger: 'This is a danger alert',
+          success: 'This is a success alert',
+          warning: 'This is a warning alert',
+        }[types[Math.floor(Math.random() * types.length)]],
+        type: types[Math.floor(Math.random() * types.length)],
+        position: positions[Math.floor(Math.random() * positions.length)],
+        size: sizes[Math.floor(Math.random() * sizes.length)],
+        font: fonts[Math.floor(Math.random() * fonts.length)],
+        rounded: Math.random() > 0.5,
+        accent: Math.random() > 0.5,
+        icon: Math.random() > 0.5,
+        bordered: Math.random() > 0.5,
+        dismissType,
       };
-
-      this.alerts.push({
-        msg: message[randomType],
-        type: randomType,
-        position: randomPosition,
-        size: randomSize,
-        font: randomFont,
-        rounded: randomRounded,
-        accent: randomAccent,
-        icon: randomIcon,
-        bordered: randomBordered,
-        dismissType: 'auto'
-      });
     },
-    addAlertManual() {
-      const positions = ['ptl', 'ptr', 'pll', 'plr'];
-      const types = ['info', 'danger', 'success', 'warning'];
-      const sizes = ['w', 's', 'm', 'l'];
-      const fonts = ['medium', 'bold', 'semibold', 'light', 'normal'];
-      const randomPosition = positions[Math.floor(Math.random() * positions.length)];
-      const randomType = types[Math.floor(Math.random() * types.length)];
-      const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
-      const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
-      const randomRounded = Math.random() > 0.5;
-      const randomAccent = Math.random() > 0.5;
-      const randomIcon = Math.random() > 0.5;
-      const randomBordered = Math.random() > 0.5;
-
-      const message = {
-        info: 'This is an info alert',
-        danger: 'This is a danger alert',
-        success: 'This is a success alert',
-        warning: 'This is a warning alert',
-      };
-
-      this.alerts.push({
-        msg: message[randomType],
-        type: randomType,
-        position: randomPosition,
-        size: randomSize,
-        font: randomFont,
-        rounded: randomRounded,
-        accent: randomAccent,
-        icon: randomIcon,
-        bordered: randomBordered,
-        dismissType: 'manual'
-      });
+    addAlert(dismissType) {
+      this.alerts.push(this.getRandomAlertProps(dismissType));
     },
-    addAlertMessage() {
-      const positions = ['ptl', 'ptr', 'pll', 'plr'];
-      const types = ['info', 'danger', 'success', 'warning'];
-      const randomPosition = positions[Math.floor(Math.random() * positions.length)];
-      const randomType = types[Math.floor(Math.random() * types.length)];
-
-      this.alertsMessage.push({
-        msg: this.customAlertMessage || 'Default message',
-        type: randomType,
-        position: randomPosition,
-        rounded: false,
-        accent: false,
-        size: 'm',
-        icon: true,
-        bordered: false,
-        font: 'bold',
-        dismissType: 'auto'
-      });
+    addAlertWithMessage() {
+      const alertProps = this.getRandomAlertProps('auto');
+      alertProps.msg = this.customAlertMessage || 'Default message';
+      this.alertsMessage.push(alertProps);
     },
-    addAlertPositionA() {
-      const positions = ['tl', 'tr', 'll', 'lr','lc','tc'];
+    addAlertPositions(type) {
+      const positions = type === 'absolute' 
+        ? ['tl', 'tr', 'll', 'lr', 'lc', 'tc'] 
+        : ['ptl', 'ptr', 'pll', 'plr', 'plc', 'ptc'];
 
-      for (let p of positions){
-        this.alertsPositionsA.push({
-          position: p,
-        })
-      }
-      
-    },
-    addAlertPositionP() {
-      const positions = ['ptl', 'ptr', 'pll', 'plr','plc','ptc'];
-
-      for (let p of positions){
-        this.alertsPositionsP.push({
-          position: p,
-        })
+      for (let p of positions) {
+        if (type === 'absolute') {
+          this.alertsPositionsA.push({ position: p });
+        } else {
+          this.alertsPositionsP.push({ position: p });
+        }
       }
     },
   },
 };
 </script>
-
