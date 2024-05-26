@@ -8,8 +8,8 @@
         <span v-else class="inline-flex items-center text-sm font-medium text-black hover:text-blue-600 dark:text-white dark:hover:text-sky-200">
           {{ item.text }}
         </span>
-        <span v-if="index < items.length - 1" class="inline-flex items-center text-m text-black dark:text-white mr-1 ml-4">
-          {{ divider }}
+        <span v-if="index < items.length - 1" class="inline-flex items-center text-m font-bold text-black dark:text-white mr-1 ml-4">
+          {{ computedDivider }}
         </span>
       </li>
     </ol>
@@ -36,8 +36,20 @@ export default {
   computed: {
     breadcrumbClass() {
       return {
-        'bg-blue-200 dark:bg-blue-600 border border-black dark:border-white px-4 py-2 rounded': this.type === 'solidbg'
+        'bg-sky-200 dark:bg-blue-600 border border-black dark:border-white px-4 py-2 rounded': this.type === 'solidbg'
       };
+    },
+    computedDivider() {
+      const dividerMap = {
+        'backslash': '\\',
+        'forwardslash': '/',
+        'dot': '.',
+        'arrow': '→',
+        'greaterthan': '>',
+        'hyphen': '-',
+        'line': '|'
+      }
+      return dividerMap[this.divider] || this.divider;
     }
   }
 }
