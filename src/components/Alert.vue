@@ -1,5 +1,5 @@
 <template>
-  <div v-if="out" class="p-4 m-4 text-sm rounded-lg shadow-lg fixed" :class="computedClasses" @click="dismiss" role="alert">
+  <div v-if="out" :class="['alert p-4 m-4 text-sm shadow-lg fixed', computedClasses]"  @click="dismiss" role="alert">
     <svg v-if="icon" class="inline-block"
          width="24"
          height="24"
@@ -17,9 +17,6 @@
     <p class="inline-block ml-2" :class="fontClass">
       {{ msg }}
     </p>
-    
-
-    
   </div>
 </template>
 
@@ -30,23 +27,23 @@ export default {
     msg: String,
     dismissType: {
       type: String,
-      validator: function (value){
-        return ['auto','manual'].includes(value);
-      },
+      validator: value => ['auto', 'manual'].includes(value),
       default: 'auto',
+    },
+    accent: {
+      type: Boolean,
+    },
+    rounded: {
+      type: Boolean
     },
     type: {
       type: String,
-      validator: function (value) {
-        return ['default', 'sky', 'cyan', 'teal'].includes(value);
-      },
-      default: 'default'
+      validator: value => ['info', 'danger', 'success', 'warning'].includes(value),
+      default: 'info'
     },
     size: {
       type: String,
-      validator: function (value) {
-        return ['w', 's', 'm', 'l'].includes(value);
-      },
+      validator: value => ['w', 's', 'm', 'l'].includes(value),
       default: 'w',
     },
     icon: {
@@ -57,82 +54,83 @@ export default {
       type: Boolean,
       default: false,
     },
-    font:{
+    font: {
       type: String,
-      validator: function (value) {
-        return ['medium','bold','semibold','light','normal'].includes(value);
-        
-      },
-      default: 'normal',
-    },    
+      validator: value => ['medium', 'bold', 'semibold', 'light', 'normal'].includes(value),
+      default: 'bold',
+    },
     position: {
       type: String,
-      validator: function (value) {
-        return ['tl', 'tc', 'tr', 'll', 'lc', 'lr'].includes(value);
-      },
+      validator: value => ['tl', 'tc', 'tr', 'll', 'lc', 'lr'].includes(value),
       default: 'tl',
     }
   },
   computed: {
     computedClasses() {
-      let position = this.position === 'tl' ? 'top-4 left-4' :
-                     this.position === 'tc' ? 'top-4 left-1/2 transform -translate-x-1/2' :
-                     this.position === 'tr' ? 'top-4 right-4' :
-                     this.position === 'll' ? 'bottom-4 left-4' :
-                     this.position === 'lc' ? 'bottom-4 left-1/2  transform -translate-x-1/2' :
-                     this.position === 'lr' ? 'bottom-4 right-4' :
-                     '';
-
-      const styleClasses = {
-        default: {
-        bgClass: 'dark:bg-gray-800 bg-blue-200',
-        textClass: 'dark:text-blue-300 text-blue-800',
-        borderClass: this.bordered ? 'border dark:border-blue-300 border-blue-800' : '',
-        hoverClass: this.dismissType === 'manual' ? 'cursor-pointer dark:hover:bg-gray-600 hover:bg-blue-300' : ''
-      },
-      sky: {
-        bgClass: 'dark:bg-gray-800 bg-sky-200',
-        textClass: 'dark:text-sky-300 text-sky-800',
-        borderClass: this.bordered ? 'border-2 dark:border-sky-300 border-sky-800' : '',
-        hoverClass: this.dismissType === 'manual' ? 'cursor-pointer dark:hover:bg-gray-600 hover:bg-sky-300' : ''
-      },
-      cyan: {
-        bgClass: 'dark:bg-gray-800 bg-cyan-200',
-        textClass: 'dark:text-cyan-300 text-cyan-800',
-        borderClass: this.bordered ? 'border-2 dark:border-cyan-300 border-cyan-800' : '',
-        hoverClass: this.dismissType === 'manual' ? 'cursor-pointer dark:hover:bg-gray-600 hover:bg-cyan-300' : ''
-      },
-      teal: {
-        bgClass: 'dark:bg-gray-800 bg-teal-200',
-        textClass: 'dark:text-teal-300 text-teal-800',
-        borderClass: this.bordered ? 'border dark:border-teal-300 border-teal-800' : '',
-        hoverClass: this.dismissType === 'manual' ? 'cursor-pointer dark:hover:bg-gray-600 hover:bg-teal-300' : ''
-      }
+      const positionClasses = {
+        tl: 'top-4 left-4',
+        tc: 'top-4 left-1/2 transform -translate-x-1/2',
+        tr: 'top-4 right-4',
+        ll: 'bottom-4 left-4',
+        lc: 'bottom-4 left-1/2 transform -translate-x-1/2',
+        lr: 'bottom-4 right-4'
       };
 
-      const { bgClass, textClass, borderClass, hoverClass } = styleClasses[this.type] || styleClasses['default'];
+      const typeClasses = {
+        info: {
+          bgClass: 'dark:bg-gray-800 bg-blue-200',
+          textClass: 'dark:text-blue-300 text-blue-800',
+          borderClass: this.bordered ? 'border dark:border-blue-300 border-blue-800' : ''
+        },
+        danger: {
+          bgClass: 'dark:bg-gray-800 bg-red-200',
+          textClass: 'dark:text-red-200 text-red-800',
+          borderClass: this.bordered ? 'border dark:border-red-300 border-red-800' : ''
+        },
+        success: {
+          bgClass: 'dark:bg-gray-800 bg-green-200',
+          textClass: 'dark:text-green-200 text-green-800',
+          borderClass: this.bordered ? 'border dark:border-green-300 border-green-800' : ''
+        },
+        warning: {
+          bgClass: 'dark:bg-gray-800 bg-yellow-200',
+          textClass: 'dark:text-yellow-200 text-yellow-800',
+          borderClass: this.bordered ? 'border dark:border-yellow-300 border-yellow-800' : ''
+        }
+      };
+      const accent = {
+        info: ' border-t-4 border-blue-600',
+        danger:' border-t-4 border-red-600',
+        success:' border-t-4 border-green-600',
+        warning:' border-t-4 border-yellow-600',
+      }
+
+      const { bgClass, textClass, borderClass } = typeClasses[this.type];
+      const accentClass = accent[this.type] 
 
       return [
-        bgClass, textClass, borderClass, hoverClass,
+        bgClass, textClass, borderClass, accentClass,
+        this.dismissType === 'manual' ? 'cursor-pointer dark:hover:bg-gray-700 hover:bg-opacity-70' : '',
         this.size === 'w' ? 'inline-block' : this.size === 's' ? 'w-32' : this.size === 'm' ? 'w-48' : 'w-64',
-        position,
+        positionClasses[this.position] || positionClasses['tl'],
+        this.rounded && this.accent ? 'rounded-b-lg' : this.rounded ? 'rounded-lg' : '',
         this.show ? 'end' : this.position + '-start'
       ];
     },
-    fontClass(){
-      return this.font === "normal" ? 'font-normal' :this.font === "medium" ? 'font-medium' : this.font === "bold" ? 'font-bold' : this.font === "light" ? 'font-light' : 'font-semibold'
+    fontClass() {
+      return this.font === "normal" ? 'font-normal' : this.font === "medium" ? 'font-medium' : this.font === "bold" ? 'font-bold' : this.font === "light" ? 'font-light' : 'font-semibold';
     }
   },
   methods: {
     dismiss() {
-      if(this.dismissType === "manual"){
+      if (this.dismissType === "manual") {
         this.show = false;
-        setTimeout(() => {  
-        this.out = false;
-    }, 300);
-      
+        setTimeout(() => {
+          this.out = false;
+        }, 300);
+      }
     }
-  }},
+  },
   data() {
     return {
       out: true,
@@ -144,16 +142,14 @@ export default {
       this.show = true;
     }, 50);
 
-    if (this.dismissType === "auto"){
+    if (this.dismissType === "auto") {
       setTimeout(() => {
-      this.show = false;
-      setTimeout(() => {
-        this.out = false;
-      }, 300);
-    }, 5000);
-
+        this.show = false;
+        setTimeout(() => {
+          this.out = false;
+        }, 300);
+      }, 5000);
     }
-    
   },
 }
 </script>
@@ -166,7 +162,7 @@ export default {
 
 .tc-start {
   transition: transform 0.3s ease-in;
-  transform:translateY(-150%);
+  transform: translateY(-150%);
 }
 
 .tr-start {
@@ -181,7 +177,7 @@ export default {
 
 .lc-start {
   transition: transform 0.3s ease-in;
-  transform:translateY(150%);
+  transform: translateY(150%);
 }
 
 .lr-start {
