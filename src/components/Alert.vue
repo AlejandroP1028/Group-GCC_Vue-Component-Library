@@ -78,22 +78,22 @@ export default {
 
       const typeClasses = {
         info: {
-          bgClass: 'dark:bg-gray-800 bg-blue-200/[.87]',
+          bgClass: 'dark:bg-gray-800 bg-blue-200',
           textClass: 'dark:text-blue-300 text-blue-800',
           borderClass: this.bordered ? 'border dark:border-blue-300 border-blue-800' : ''
         },
         danger: {
-          bgClass: 'dark:bg-gray-800 bg-red-200/[.87]',
+          bgClass: 'dark:bg-gray-800 bg-red-200',
           textClass: 'dark:text-red-200 text-red-800',
           borderClass: this.bordered ? 'border dark:border-red-300 border-red-800' : ''
         },
         success: {
-          bgClass: 'dark:bg-gray-800 bg-green-200/[.87]',
+          bgClass: 'dark:bg-gray-800 bg-green-200',
           textClass: 'dark:text-green-200 text-green-800',
           borderClass: this.bordered ? 'border dark:border-green-300 border-green-800' : ''
         },
         warning: {
-          bgClass: 'dark:bg-gray-800 bg-yellow-200/[.87]',
+          bgClass: 'dark:bg-gray-800 bg-yellow-200',
           textClass: 'dark:text-yellow-200 text-yellow-800',
           borderClass: this.bordered ? 'border dark:border-yellow-300 border-yellow-800' : ''
         }
