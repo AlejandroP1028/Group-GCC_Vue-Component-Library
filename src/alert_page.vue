@@ -108,6 +108,39 @@
         </template>
       </Section>
 
+      <Section @sectioncreated="addLink" header="Alert Classes" body="Users can toggle the icon, border class, accent class and the border-radius class of our GCC alert component by explicitly setting the respective the prop to true.">
+        <template #content>
+          <div class="flex flex-col items-center mt-4 h-full">
+            <div class="flex flex-row space-x-4">
+              <div class="flex flex-col space-y-2">
+                <Toggle label="Icon" type="blue" :changeFunc="toggleI"></Toggle>
+                <Toggle label="Bordered" type="sky" :changeFunc="toggleB"></Toggle>
+              </div>
+              <div class="flex flex-col space-y-2">
+                <Toggle label="Accent" type="cyan" :changeFunc="toggleA"></Toggle>
+                <Toggle label="Rounded" type="teal" :changeFunc="toggleR"></Toggle>
+              </div>
+              <Button color="blue" :class="'w-9/10'" @click="addAlertIBA">Show Alert</Button>
+            </div>
+            
+            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-3/5 h-80 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+              <Alert v-for="(alert, index) in alertIBA" 
+                     :key="index"
+                     :msg="alert.msg"
+                     :type="alert.type"
+                     :position="alert.position"
+                     :rounded="alert.rounded"
+                     :accent="alert.accent"
+                     :size="alert.size"
+                     :icon="alert.icon"
+                     :bordered="alert.bordered"
+                     :font="alert.font"
+                     :dismissType="alert.dismissType"/>
+            </div>
+          </div>
+        </template>
+      </Section>
+
       <br>
     </div>
     <div class="sticky top-8 w-2/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
@@ -130,6 +163,7 @@ import Section from './components/Section.vue';
 import PageHeader from './components/pageHeader.vue';
 import Alert from './components/Alert.vue';
 import PageLinks from './components/pageLinks.vue'; 
+import Toggle from './components/ToggleComponent.vue';
 
 export default {
   name: 'App',
@@ -138,7 +172,8 @@ export default {
     Section,
     PageHeader,
     Alert,
-    PageLinks  
+    PageLinks,
+     Toggle  
   },
   data() {
     return {
@@ -146,6 +181,11 @@ export default {
       alertsMessage: [],
       alertsPositionsA: [],
       alertsPositionsP: [],
+      alertIBA: [],
+      icon: false,
+      accent: false,
+      bordered: false,
+      rounded: false,
       links: [],
       alertsType: [
         {
@@ -175,11 +215,31 @@ export default {
     };
   },
   methods: {
+    toggleI(){
+      this.icon = !this.icon
+    },
+    toggleA(){
+      this.accent = !this.accent
+    },
+    toggleB(){
+      this.bordered = !this.bordered
+    },
+    toggleR(){
+      this.rounded = !this.rounded
+    },
     addLink(header) {
       this.links.push({ label: header });
     },
     toggleDarkMode() {
       this.isDarkMode = !this.isDarkMode;
+    },
+    addAlertIBA(){
+      let alert = this.getRandomAlertProps('auto')
+      alert.accent = this.accent
+      alert.bordered = this.bordered
+      alert.icon = this.icon
+      alert.rounded = this.rounded
+      this.alertIBA.push(alert)
     },
     getRandomAlertProps(dismissType) {
       const positions = ['ptl', 'ptr', 'pll', 'plr'];
