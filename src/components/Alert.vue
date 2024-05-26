@@ -1,5 +1,5 @@
 <template>
-  <div v-if="out" :class="['alert p-4 m-4 text-sm shadow-lg transition-colors duration-300 ease-in-out', computedClasses]" @click="dismiss" role="alert">
+  <div v-if="out" :class="['alert p-4 m-4 text-sm z-50 shadow-lg transition-colors duration-300 ease-in-out', computedClasses]" @click="dismiss" role="alert">
     <svg v-if="icon" class="inline-block"
          width="24"
          height="24"
@@ -66,71 +66,70 @@ export default {
     }
   },
   computed: {
-    computedClasses() {
-      const positionClasses = {
-        tl: 'top-4 left-4',
-        tc: 'top-4 left-1/2 transform -translate-x-1/2',
-        tr: 'top-4 right-4',
-        ll: 'bottom-4 left-4',
-        lc: 'bottom-4 left-1/2 transform -translate-x-1/2',
-        lr: 'bottom-4 right-4',
-        ptl: 'top-0 left-0',
-        ptc: 'top-0 left-1/2 transform -translate-x-1/2',
-        ptr: 'top-0 right-0',
-        pll: 'bottom-0 left-0',
-        plc: 'bottom-0 left-1/2 transform -translate-x-1/2',
-        plr: 'bottom-0 right-0'
-      };
+  computedClasses() {
+    const positionClasses = {
+      tl: 'top-4 left-4',
+      tc: 'top-4 left-1/2 transform -translate-x-1/2',
+      tr: 'top-4 right-4',
+      ll: 'bottom-4 left-4',
+      lc: 'bottom-4 left-1/2 transform -translate-x-1/2',
+      lr: 'bottom-4 right-4',
+      ptl: 'top-0 left-0',
+      ptc: 'top-0 left-1/2 transform -translate-x-1/2',
+      ptr: 'top-0 right-0',
+      pll: 'bottom-0 left-0',
+      plc: 'bottom-0 left-1/2 transform -translate-x-1/2',
+      plr: 'bottom-0 right-0'
+    };
 
-      const typeClasses = {
-        info: {
-          bgClass: 'dark:bg-gray-800 bg-blue-200',
-          textClass: 'dark:text-blue-300 text-blue-800',
-          borderClass: this.bordered ? 'border dark:border-blue-300 border-blue-800' : ''
-        },
-        danger: {
-          bgClass: 'dark:bg-gray-800 bg-red-200',
-          textClass: 'dark:text-red-200 text-red-800',
-          borderClass: this.bordered ? 'border dark:border-red-300 border-red-800' : ''
-        },
-        success: {
-          bgClass: 'dark:bg-gray-800 bg-green-200',
-          textClass: 'dark:text-green-200 text-green-800',
-          borderClass: this.bordered ? 'border dark:border-green-300 border-green-800' : ''
-        },
-        warning: {
-          bgClass: 'dark:bg-gray-800 bg-yellow-200',
-          textClass: 'dark:text-yellow-200 text-yellow-800',
-          borderClass: this.bordered ? 'border dark:border-yellow-300 border-yellow-800' : ''
-        }
-      };
-      const accent = {
-        info: ' border-t-4 border-blue-600',
-        danger:' border-t-4 border-red-600',
-        success:' border-t-4 border-green-600',
-        warning:' border-t-4 border-yellow-600',
+    const typeClasses = {
+      info: {
+        bgClass: 'dark:bg-gray-600 bg-blue-200',
+        textClass: 'dark:text-blue-300 text-blue-800',
+        borderClass: this.bordered ? 'border dark:border-blue-300 border-blue-800' : ''
+      },
+      danger: {
+        bgClass: 'dark:bg-gray-600 bg-red-200',
+        textClass: 'dark:text-red-200 text-red-800',
+        borderClass: this.bordered ? 'border dark:border-red-300 border-red-800' : ''
+      },
+      success: {
+        bgClass: 'dark:bg-gray-600 bg-green-200',
+        textClass: 'dark:text-green-200 text-green-800',
+        borderClass: this.bordered ? 'border dark:border-green-300 border-green-800' : ''
+      },
+      warning: {
+        bgClass: 'dark:bg-gray-600 bg-yellow-200',
+        textClass: 'dark:text-yellow-200 text-yellow-800',
+        borderClass: this.bordered ? 'border dark:border-yellow-300 border-yellow-800' : ''
       }
-      const positioning = {
-        p : "absolute"
-      }
-
-      const { bgClass, textClass, borderClass } = typeClasses[this.type];
-      const accentClass = accent[this.type];
-      const positioningClass = positioning[this.position[0]] || "fixed"
-
-      return [
-        bgClass, textClass, borderClass, accentClass, positioningClass,
-        this.dismissType === 'manual' ? 'cursor-pointer dark:hover:bg-gray-700 hover:bg-opacity-70' : '',
-        this.size === 'w' ? 'inline-block' : this.size === 's' ? 'w-32' : this.size === 'm' ? 'w-48' : 'w-64',
-        positionClasses[this.position] || positionClasses['tl'],
-        this.rounded && this.accent ? 'rounded-b-lg' : this.rounded ? 'rounded-lg' : '',
-        this.show ? 'end' : this.position + '-start'
-      ];
-    },
-    fontClass() {
-      return this.font === "normal" ? 'font-normal' : this.font === "medium" ? 'font-medium' : this.font === "bold" ? 'font-bold' : this.font === "light" ? 'font-light' : 'font-semibold';
+    };
+    
+    const accent = {
+      info: ' border-t-4 border-blue-600',
+      danger: ' border-t-4 border-red-600',
+      success: ' border-t-4 border-green-600',
+      warning: ' border-t-4 border-yellow-600',
     }
+
+    const { bgClass, textClass, borderClass } = typeClasses[this.type];
+    const accentClass = this.accent ? accent[this.type] : '';
+    const positioningClass = this.position.startsWith('p') ? 'absolute' : 'fixed';
+
+    return [
+      bgClass, textClass, borderClass, accentClass, positioningClass,
+      this.dismissType === 'manual' ? 'cursor-pointer dark:hover:bg-gray-700 hover:bg-opacity-70' : '',
+      this.size === 'w' ? 'inline-block' : this.size === 's' ? 'w-32' : this.size === 'm' ? 'w-48' : 'w-64',
+      positionClasses[this.position] || positionClasses['tl'],
+      this.rounded && this.accent ? 'rounded-b-lg' : this.rounded ? 'rounded-lg' : '',
+      this.show ? 'end' : this.position + '-start'
+    ];
   },
+  fontClass() {
+    return this.font === "normal" ? 'font-normal' : this.font === "medium" ? 'font-medium' : this.font === "bold" ? 'font-bold' : this.font === "light" ? 'font-light' : 'font-semibold';
+  }
+}
+,
   methods: {
     dismiss() {
       if (this.dismissType === "manual") {
@@ -199,4 +198,5 @@ export default {
   transition: transform 0.3s ease-out;
   transform: translate(0, 0);
 }
+
 </style>

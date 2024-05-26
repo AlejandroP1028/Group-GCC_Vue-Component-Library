@@ -1,11 +1,12 @@
 <template>
+  <div class="  bg-blue-50 dark:bg-gray-900">
     <div class="mx-24 my-8">
       <div :id="header" :href="header" 
       :class="`header-container 
       text-gray-800 
       dark:text-gray-200  
-      hover:text-blue-400 
-      dark:hover:text-blue-200 cursor-pointer 
+      hover:text-blue-600 
+      cursor-pointer 
       transition-all ease-in-out duration-300 
       hover:translate-x-8 w-full text-5xl font-bold mb-2`">
         {{ header }}
@@ -14,7 +15,10 @@
         {{ body }}
       </div>
     </div>
-    <hr class="h-1 rounded-full bg-gray-800 dark:bg-gray-200 mx-24">
+    <hr class="h-2 rounded-full border-none bg-blue-600 mx-24">
+
+  </div>
+    
   </template>
   
   <script>
