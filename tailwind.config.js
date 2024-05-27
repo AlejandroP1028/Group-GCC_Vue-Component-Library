@@ -4,6 +4,7 @@ module.exports = {
     './index.html',
     './src/**/*.{vue,js,ts,jsx,tsx}',
   ],
+  darkMode: 'selector',
   theme: {
     extend: {
       animation: {
@@ -19,4 +20,3 @@ module.exports = {
   },
   plugins: [],
 };
-
