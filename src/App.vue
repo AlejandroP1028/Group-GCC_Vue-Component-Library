@@ -50,7 +50,7 @@
         </div>
         <p class="text-black dark:text-white text-lg mb-2"> Inline badge </p>
         <div class="mb-10 bg-blue-100 dark:bg-gray-700 flex justify-center items-center overflow-x-auto">
-          <div class="p-10 flex items-center grid grid-cols-2 border-r-2 border-white dark:border-gray-800">
+          <div class="p-10 flex items-center grid grid-cols-2 border-r-2 border-white dark:border-gray-800 overflow-x-auto">
             <button class="badge-button bg-blue-500 hover:bg-blue-700 dark:bg-sky-700 dark:hover:bg-blue-800 w-52 text-white font-bold rounded mr-2">
               Messages
               <BadgeComponent type="number" :class="['relative ml-1', badgeNumber > 0 ? 'visible' : 'invisible']"> {{ badgeNumber }} </BadgeComponent>
@@ -58,7 +58,7 @@
           </div>
           <div class="flex items-center justify-center"> 
             <p class="text-black dark:text-white text-lg ml-10 mr-5"> Increase the counter value: </p>
-            <input type="range" min="1" max="99" v-model="badgeNumber" @input="updateBadgeNumber" class="h-2 w-40 appearance-none rounded-lg bg-white mt-1 outline-none dark:bg-gray-800">
+            <input type="range" min="1" max="99" v-model="badgeNumber" @input="updateBadgeNumber" class="h-2 w-40 appearance-none rounded-lg bg-white mt-1 mr-10 outline-none dark:bg-gray-800">
           </div>
         </div>
       </section> 
@@ -71,15 +71,26 @@
           <BreadcrumbComponent :items="breadcrumbItems" />
         </div>
         <p class="text-black dark:text-white text-lg mb-2"> With a solid background </p>
-        <div class="justify-center mt-2 flex items-center text-black dark:text-white text-lg bg-blue-100 dark:bg-gray-700 p-10 mb-5 overflow-x-auto"> 
-          <BreadcrumbComponent :items="breadcrumbItems" type="solidbg" divider="/"/>
+        <div class="grid grid-cols-5 mt-2 text-black dark:text-white text-lg bg-blue-100 dark:bg-gray-700 mb-5 overflow-x-auto"> 
+          <div class="flex items-center justify-center col-span-3 border-r-2 border-solid border-white dark:border-gray-800 overflow-x-auto"> 
+            <BreadcrumbComponent :items="breadcrumbItems" type="solidbg" divider="/" :bgColor="selectedColor"/>
+          </div>
+          <div class="flex items-center p-10 col-span-2"> 
+            <label for="bgColor" class="text-black dark:text-white"> Select background color: </label>
+            <select id="bgColor" v-model="selectedColor" class="ml-2 p-2 rounded bg-white dark:bg-gray-800 dark:text-white">
+              <option value="cyan"> Cyan </option>
+              <option value="blue"> Blue </option>
+              <option value="teal"> Teal </option>
+              <option value="sky"> Sky </option>
+            </select>
+          </div>
         </div>
         <p class="text-black dark:text-white text-lg mb-2"> Customize divider </p>
         <div class="grid grid-cols-5 mt-2 text-black dark:text-white text-lg bg-blue-100 dark:bg-gray-700 mb-5 overflow-x-auto">
-          <div class="flex-shrink-0 flex items-center justify-center col-span-3 border-r-2 border-solid border-white dark:border-gray-800"> 
+          <div class="flex items-center justify-center col-span-3 border-r-2 border-solid border-white dark:border-gray-800 overflow-x-auto"> 
             <BreadcrumbComponent type="solidbg" :items="breadcrumbItems" :divider="selectedDivider"/>
           </div>
-          <div class="flex items-center p-10"> 
+          <div class="flex items-center p-10 col-span-2"> 
             <label for="divider" class="text-black dark:text-white"> Choose divider: </label>
             <select id="divider" v-model="selectedDivider" class="ml-2 p-2 rounded bg-white dark:bg-gray-800 dark:text-white">
               <option value="greaterthan"> > </option>
@@ -112,6 +123,7 @@ export default {
       badgeNumber: 1,
       isDarkMode: false,
       selectedDivider: 'greaterthan', //default divider
+      selectedColor: 'sky', //default solid bg
       breadcrumbItems: [
         { text: 'src', href: '#' },
         { text: 'components', href: '#' },
