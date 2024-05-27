@@ -1,4 +1,5 @@
 <template>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <div :class="{ 'dark': isDarkMode }" class="overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 flex flex-row scroll-smooth">
     <div class="relative w-auto mb-16">
       <PageHeader 
@@ -140,6 +141,34 @@
         </template>
       </Section>
 
+
+      <Section @sectioncreated="addLink" header="Alert Font Weights and Sizes" 
+        body="There are 5 supported font-weights and 4 different sizes for the GCC alert component. The 5 supported font-weights are: light, normal, medium, semibold, and bold.
+        The 4 supported sizes are: wrap, small, medium, and large. These weights and sizes will allow the user to allow users to further customize the GCC component.">
+        <template #content>
+          <div class="flex flex-col items-center my-4 h-full">
+            <div class="flex flex-row space-x-4">
+              <Button color="sky" :class="'w-9/10'" @click="addAlertPositions('absolute')">Show Absolute Positions</Button>
+              <Button color="cyan" :class="'w-9/10'" @click="addAlertPositions('parent')">Show Parent Positions</Button>
+            </div>
+            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+              <div class="pointer-events-none mb-24">
+                <Alert v-for="(alert, index) in alertsPositionsA" 
+                       :key="index"
+                       :msg="`This is ${alert.position} position`"
+                       :type="'info'"
+                       :position="alert.position"/>
+                <Alert v-for="(alert, index) in alertsPositionsP" 
+                       :key="index"
+                       :msg="`This is ${alert.position} position`"
+                       :type="'info'"
+                       :position="alert.position"/>
+              </div>
+              
+            </div>
+          </div>
+        </template>
+      </Section>
       <br>
     </div>
     <div class="sticky top-8 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
@@ -149,7 +178,12 @@
         :key="link.label"
         :label="link.label"/>
       <div class="flex justify-center">
-        <Button color="blue" :class="`m-4 bottom-4 right-4 z-50`" size="small" @click="toggleDarkMode"> {{ isDarkMode ? 'Light' : 'Dark' }}</Button>
+        <Button @click="toggleDarkMode" color="blue">
+        <template #icon>
+          <i :class="[isDarkMode ? 'fas fa-sun text-2xl' : 'fas fa-moon text-2xl','text-blue-200']"></i>
+          </template>
+        </Button>
+
       </div>
       <hr class="h-0.5 bg-blue-600 border-none rounded-full">
     </div>
@@ -245,15 +279,18 @@ export default {
       const types = ['info', 'danger', 'success', 'warning'];
       const sizes = ['w', 's', 'm', 'l'];
       const fonts = ['medium', 'bold', 'semibold', 'light', 'normal'];
-
-      return {
-        msg: {
+      const msg = { 
           info: 'This is an info alert',
           danger: 'This is a danger alert',
           success: 'This is a success alert',
           warning: 'This is a warning alert',
-        }[types[Math.floor(Math.random() * types.length)]],
-        type: types[Math.floor(Math.random() * types.length)],
+        }
+        
+      let type = types[Math.floor(Math.random() * types.length)]
+
+      return {
+        type: type,
+        msg: msg[type],
         position: positions[Math.floor(Math.random() * positions.length)],
         size: sizes[Math.floor(Math.random() * sizes.length)],
         font: fonts[Math.floor(Math.random() * fonts.length)],
