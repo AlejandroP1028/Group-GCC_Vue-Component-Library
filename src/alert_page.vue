@@ -59,7 +59,7 @@
         <template #content>
           <div class="flex flex-col items-center mt-4 h-full">
             <div class="flex flex-row space-x-4">
-              <input v-model="customAlertMessage" class="border rounded-lg border-gray-800 bg-gray-200 dark:bg-gray-600 dark:border dark:border-gray-700 text-gray-800 dark:text-gray-200 shadow-lg p-2" type="text" id="alertMessage">
+              <input v-model="customAlertMessage" placeholder="Enter text..." class="placeholder:italic placeholder:text-gray-600 dark:placeholder:text-gray-400 border rounded-lg border-gray-800 bg-gray-200 dark:bg-gray-600 dark:border dark:border-gray-700 text-gray-800 dark:text-gray-200 shadow-lg p-2" type="text" id="alertMessage">
               <Button color="cyan" :class="'w-9/10'" @click="addAlertWithMessage">Show Alert</Button>
             </div>
             
