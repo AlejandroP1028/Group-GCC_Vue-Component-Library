@@ -1,6 +1,11 @@
 <template>
   <header class="sticky top-0 bg-white z-40">
-    <navbar :variationIndex="1"></navbar>
+    <navbar
+      :variationIndex="1"
+      navbarColor="white"
+      searchColor="blue"
+      hoverColor="blue"
+    ></navbar>
   </header>
   <section
     class="page flex flex-col items-center justify-center h-full overflow-hidden gap-20 p-12"
@@ -13,7 +18,11 @@
         <div class="demo p-10 bg-gray-100 w-auto">
           <div class="w-auto">
             <header class="bg-white p-4">
-              <navbar :variationIndex="0"></navbar>
+              <navbar
+                :variationIndex="0"
+                navbarColor="white"
+                hoverColor="slate"
+              ></navbar>
             </header>
           </div>
         </div>
@@ -45,7 +54,7 @@
               trigger="mouseover"
               buttonText="Top"
               popoverColor="slate"
-              popoverButtonColor="blue"
+              popoverButtonColor="cyan"
               popoverTitle="hello gaish"
               popoverContent="sabi ng mama mo, <br> tita na lang daw ang itawag ko sa'yo oh sa kanya <br> tapos ngayon mama ko na siya ang tita mo noon, <br> ngayon kaya pwede na tayo magsama kasi aksept, akcipt na tayo nila, <br> ng mama mo sa tita ko noon"
             ></popovers>
@@ -63,7 +72,7 @@
               position="left"
               trigger="mouseover"
               buttonText="Left"
-              popoverColor="teal"
+              popoverColor="blue"
               popoverButtonColor="cyan"
             ></popovers>
             <popovers
@@ -210,8 +219,8 @@
 </template>
 
 <script>
-import navbar from "./components/navbarComponent.vue";
-import popovers from "./components/popoversComponent.vue";
+import navbar from "./components/NavbarComponent.vue";
+import popovers from "./components/PopoversComponent.vue";
 
 export default {
   components: {
