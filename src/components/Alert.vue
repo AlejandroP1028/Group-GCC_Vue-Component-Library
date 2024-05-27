@@ -159,38 +159,4 @@ export default {
 </script>
 
 <style scoped>
-.tl-start {
-  transition: transform 0.3s ease-in;
-  transform: translateX(-150%);
-}
-
-.tc-start {
-  transition: transform 0.3s ease-in;
-  transform:translateY(-150%);
-}
-
-.tr-start {
-  transition: transform 0.3s ease-in;
-  transform: translateX(150%);
-}
-
-.ll-start {
-  transition: transform 0.3s ease-in;
-  transform: translateX(-150%);
-}
-
-.lc-start {
-  transition: transform 0.3s ease-in;
-  transform:translateY(150%);
-}
-
-.lr-start {
-  transition: transform 0.3s ease-in;
-  transform: translateX(150%);
-}
-
-.end {
-  transition: transform 0.3s ease-out;
-  transform: translate(0, 0);
-}
 </style>
