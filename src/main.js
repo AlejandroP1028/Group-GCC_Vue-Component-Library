@@ -1,4 +1,3 @@
-//para lang makita ko sa browser changes nung 2 components
 import { createApp } from 'vue'
 //import App from "./App.vue";
 import './index.css'
