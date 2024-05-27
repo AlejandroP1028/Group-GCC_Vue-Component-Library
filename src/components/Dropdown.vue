@@ -1,5 +1,5 @@
 <template>
-    <div class="relative inline-block text-left mt-4 ml-4">
+    <div class="relative inline-block text-left">
       <div>
         <button @click="toggleDropdown" :class="[buttonClasses, { 'cursor-not-allowed opacity-50': disabled }]" :disabled="disabled" type="button">
           Dropdown
@@ -8,7 +8,7 @@
           </svg>
         </button>
       </div>
-      <transition :name="fade-slide">
+      <transition>
         <div v-if="show" :class="dropdownClasses">
           <a
             v-for="(item, index) in menuItems"
@@ -132,7 +132,7 @@
         const { bgClass, borderClass } = styleClasses[this.type] || styleClasses['default'];
   
         return [
-          'origin-top-right mt-2 w-full rounded-md shadow-lg z-10 max-h-60 overflow-auto py-2',
+          'absolute origin-top-right mt-2 w-full rounded-md shadow-lg z-10 max-h-60 overflow-auto py-2',
           bgClass, borderClass
         ];
       },
@@ -166,5 +166,15 @@
 .fade-slide-enter, .fade-slide-leave-to {
   opacity: 0;
   transform: translateY(-10px);
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(-5%);
 }
 </style>

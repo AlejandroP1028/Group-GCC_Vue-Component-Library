@@ -30,10 +30,10 @@ export default {
       headingColor: 'text-gray-900 dark:text-gray-100',
       paragraphColor: 'text-gray-700 dark:text-gray-300',
       menuItems: [
-        { label: 'ackkkkkk', href: '#', disabled: false, action: () => console.log('ackkkkkk clicked') },
-        { label: 'whaaaaaaaa', href: '#', disabled: false, action: () => console.log('whaaaaaaaa clicked') },
-        { label: 'hmphhhhhh', href: '#', disabled: true },
-        { label: 'reeeeeeeee', href: '#', disabled: true }
+        { label: 'ackkkkkk', disabled: false, action: () => console.log('ackkkkkk clicked') },
+        { label: 'whaaaaaaaa', disabled: false, action: () => console.log('whaaaaaaaa clicked') },
+        { label: 'hmphhhhhh', disabled: true },
+        { label: 'reeeeeeeee', disabled: true }
       ]
     };
   },
