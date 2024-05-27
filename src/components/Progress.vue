@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-80 bg-gray-200 rounded-full h-3.5 dark:bg-gray-700">
+  <div :class="wrapperClasses">
     <span v-if="labelInside" class="absolute top-0 left-5 -mt-0.6 text-white px-1" style="font-size: 10px">{{ labelInside }}</span>
     <div :class="progressClasses" :style="{ width: computedWidth, animationDuration: computedAnimationDuration }"></div>
   </div>
@@ -33,7 +33,11 @@ export default {
     },
     animationDuration: {
       type: Number,
-      default: 2, // default animation duration in seconds
+      default: 2,
+    },
+    rounded: {
+      type: Boolean,
+      default: true,
     },
   },
   computed: {
@@ -44,7 +48,10 @@ export default {
       return `${this.animationDuration}s`;
     },
     progressClasses() {
-      const baseClass = ['h-3.5', 'rounded-full'];
+      const baseClass = ['h-3.5'];
+      if (this.rounded) {
+        baseClass.push('rounded-full');
+      }
       if (this.gradient) {
         return [
           ...baseClass,
@@ -66,6 +73,13 @@ export default {
         return [...baseClass, colorClasses[this.color], 'animate-progress'];
       }
       return [colorClasses[this.color], ...baseClass].join(' ');
+    },
+    wrapperClasses() {
+      const baseClass = ['relative', 'w-80', 'bg-gray-200', 'dark:bg-gray-700'];
+      if (this.rounded) {
+        baseClass.push('rounded-full');
+      }
+      return baseClass.join(' ');
     },
   },
 };
