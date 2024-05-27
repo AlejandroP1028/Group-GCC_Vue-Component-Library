@@ -1,4 +1,5 @@
 <template>
+  <Transition name = "fade">
   <div v-if="visible" :id="`toast-${type}`" class="absolute flex items-center w-full max-w-xs p-4 mb-4 rounded-full shadow" :class="[positionClass, notificationBgClass, notificationTextColorClass]" role="alert">
     <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 rounded-full" :class="iconBgClass">
       <svg class="w-5 h-5 rounded-lg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -20,6 +21,7 @@
       </svg>
     </button>
   </div>
+  </Transition>
 </template>
 
 <script>
@@ -104,4 +106,10 @@ export default {
 </script>
 
 <style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.6s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 </style>
