@@ -19,7 +19,7 @@
               <Button color="cyan" :class="'w-9/10'" @click="addAlert('manual')">Add Random Manual Alert</Button>
             </div>
             
-            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-3/5 h-80 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
               <Alert v-for="(alert, index) in alerts" 
                      :key="index"
                      :msg="alert.msg"
@@ -40,7 +40,7 @@
       <Section @sectioncreated="addLink" header="Alert Types" body="There are 4 supported types in the GCC alert component. Info to show users important information, Danger to show whenever something bad happens, Warning which warns the user, and Success to show a successful task or input.">
         <template #content>
           <div class="flex flex-col items-center my-4 h-full">
-            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-3/5 h-80 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
               <div class="pointer-events-none mb-24">
                 <Alert v-for="(alert, index) in alertsType" 
                        :key="index"
@@ -59,11 +59,11 @@
         <template #content>
           <div class="flex flex-col items-center mt-4 h-full">
             <div class="flex flex-row space-x-4">
-              <input v-model="customAlertMessage" class="border rounded-lg border-gray-800 bg-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 shadow-lg p-2" type="text" id="alertMessage">
+              <input v-model="customAlertMessage" class="border rounded-lg border-gray-800 bg-gray-200 dark:bg-gray-600 dark:border dark:border-gray-700 text-gray-800 dark:text-gray-200 shadow-lg p-2" type="text" id="alertMessage">
               <Button color="cyan" :class="'w-9/10'" @click="addAlertWithMessage">Show Alert</Button>
             </div>
             
-            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-3/5 h-80 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
               <Alert v-for="(alert, index) in alertsMessage" 
                      :key="index"
                      :msg="alert.msg"
@@ -89,7 +89,7 @@
               <Button color="sky" :class="'w-9/10'" @click="addAlertPositions('absolute')">Show Absolute Positions</Button>
               <Button color="cyan" :class="'w-9/10'" @click="addAlertPositions('parent')">Show Parent Positions</Button>
             </div>
-            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-3/5 h-80 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
               <div class="pointer-events-none mb-24">
                 <Alert v-for="(alert, index) in alertsPositionsA" 
                        :key="index"
@@ -120,10 +120,10 @@
                 <Toggle label="Accent" type="cyan" :changeFunc="toggleA"></Toggle>
                 <Toggle label="Rounded" type="teal" :changeFunc="toggleR"></Toggle>
               </div>
-              <Button color="blue" :class="'w-9/10'" @click="addAlertIBA">Show Alert</Button>
+              <Button color="blue" :class="'w-9/10'" @click="addAlertIBA">Show Custom alert</Button>
             </div>
             
-            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-3/5 h-80 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
               <Alert v-for="(alert, index) in alertIBA" 
                      :key="index"
                      :msg="alert.msg"
@@ -143,9 +143,9 @@
 
       <br>
     </div>
-    <div class="sticky top-8 w-2/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
+    <div class="sticky top-8 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
       <hr class="h-0.5 bg-blue-600 border-none rounded-full">
-      <span class="tracking-tight font-semibold text-md text-gray-800 dark:text-gray-200">ON THIS PAGE</span>
+      <span class="tracking-tight font-semibold self-center text-md text-gray-800 dark:text-gray-200">ON THIS PAGE</span>
       <PageLinks v-for="link in links" 
         :key="link.label"
         :label="link.label"/>
