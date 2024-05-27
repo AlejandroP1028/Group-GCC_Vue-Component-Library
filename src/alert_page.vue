@@ -3,7 +3,6 @@
     <div class="relative w-auto mb-16">
       <PageHeader 
         :class="'flex-none'"
-        @sectioncreated="addLink"
         header="GCC Alert" 
         body="Show contextual information to your users using alert elements based on Tailwind CSS"/>
       
