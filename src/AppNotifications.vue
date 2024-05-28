@@ -9,11 +9,11 @@
     <Notifications type="default" notification_message="This is a default notification." position="center" />
     <Notifications type="message" notification_message="This is a message notification." position="bottom-right" />
     <div>
-    <Notifications type="success" notification_message="This is a success notification." position="pTop-right" />
-    <Notifications type="error" notification_message="This is an error notification." position="pTop-left" />
-    <Notifications type="warning" notification_message="This is a warning notification." position="pBottom-left" />
-    <Notifications type="default" notification_message="This is a default notification." position="pCenter" />
-    <Notifications type="message" notification_message="This is a message notification." position="pBottom-right" />
+    <Notifications type="success" notification_message="This is a success notification." position="Top-right" />
+    <Notifications type="error" notification_message="This is an error notification." position="Top-left" />
+    <Notifications type="warning" notification_message="This is a warning notification." position="Bottom-left" />
+    <Notifications type="default" notification_message="This is a default notification." position="Center" />
+    <Notifications type="message" notification_message="This is a message notification." position="Bottom-right" />
     </div>
   </div>
 </template>
