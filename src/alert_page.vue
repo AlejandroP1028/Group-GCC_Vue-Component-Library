@@ -149,52 +149,46 @@
         <template #content>
           <div class="flex flex-col items-center my-4 h-full">
             <div class="flex flex-row space-x-4">
-              <ul class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                  <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                      <div class="flex items-center ps-3">
-                          <input id="horizontal-list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="horizontal-list-radio-license" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Driver License </label>
-                      </div>
-                  </li>
-                  <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                      <div class="flex items-center ps-3">
-                          <input id="horizontal-list-radio-id" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="horizontal-list-radio-id" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">State ID</label>
-                      </div>
-                  </li>
-                  <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                      <div class="flex items-center ps-3">
-                          <input id="horizontal-list-radio-military" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="horizontal-list-radio-military" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">US Military</label>
-                      </div>
+              <div class="flex flex-col items-start space-y-2 p-2 bg-blue-100 dark:bg-gray-800 rounded-lg shadow-md">
+                <h4 class="text-md font-semibold text-gray-900 dark:text-gray-200">Fonts</h4>
+                <Radio 
+                :items="[
+                          {value: 'medium' ,label: 'Medium'},
+                          {value: 'bold' ,label: 'Bold'},
+                          {value: 'semibold' ,label: 'Semibold'},
+                          {value: 'light' ,label: 'Light'},
+                          {value: 'normal' ,label: 'Normal'},
+                        ]"
+                @input="changeFont"/>
+              </div>
+              <div>
 
-                  </li>
-                  <li class="w-full dark:border-gray-600">
-                      <div class="flex items-center ps-3">
-                          <input id="horizontal-list-radio-passport" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                          <label for="horizontal-list-radio-passport" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">US Passport</label>
-                      </div>
-                  </li>
-              </ul>
-
-              <Button color="blue" :class="'w-9/10'" @click="addAlertIBA">Show Custom alert</Button>
-
-            </div>
-            
-            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
-              <div class="pointer-events-none mb-24">
-                <Alert v-for="(alert, index) in alertsPositionsA" 
-                       :key="index"
-                       :msg="`This is ${alert.position} position`"
-                       :type="'info'"
-                       :position="alert.position"/>
-                <Alert v-for="(alert, index) in alertsPositionsP" 
-                       :key="index"
-                       :msg="`This is ${alert.position} position`"
-                       :type="'info'"
-                       :position="alert.position"/>
+              </div>
+              <div class="flex flex-col items-start space-y-2 p-2 bg-blue-100 dark:bg-gray-800 rounded-lg shadow-md">
+                <h4 class="text-md font-semibold text-gray-900 dark:text-gray-200">Sizes</h4>
+                <Radio 
+                :items="[
+                          {value: 'w' ,label: 'Wrap'},
+                          {value: 's' ,label: 'Small'},
+                          {value: 'm' ,label: 'Medium'},
+                          {value: 'l' ,label: 'Large'},
+                        ]"
+                @input="changeSize"/>
               </div>
               
+            </div>
+            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+              <div class="pointer-events-none mb-24">
+                <Alert v-for="(alert, index) in alertsType" 
+                       :key="index"
+                       :msg="'This is a message for our alert.'"
+                       :type="alert.type"
+                       :position="alert.position"
+                       :dismissType="'manual'"
+                       :size="this.size"
+                       :accent="true"
+                       :font="this.font"/>
+              </div>
             </div>
           </div>
         </template>
@@ -227,7 +221,7 @@ import PageHeader from './components/pageHeader.vue';
 import Alert from './components/Alert.vue';
 import PageLinks from './components/pageLinks.vue'; 
 import Toggle from './components/ToggleComponent.vue';
-
+import Radio from './components/radio.vue'
 export default {
   name: 'App',
   components: {
@@ -236,10 +230,13 @@ export default {
     PageHeader,
     Alert,
     PageLinks,
-     Toggle  
+     Toggle,
+     Radio
   },
   data() {
     return {
+      size: 'w',
+      font: 'bold',
       alerts: [],
       alertsMessage: [],
       alertsPositionsA: [],
@@ -278,6 +275,12 @@ export default {
     };
   },
   methods: {
+    changeSize(val){
+      this.size = val
+    },
+    changeFont(val){
+      this.font = val
+    },
     toggleI(){
       this.icon = !this.icon
     },
