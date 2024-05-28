@@ -1,6 +1,6 @@
 <template>
   <button
-    :type="type"
+    type="button"
     :class="buttonClasses"
     :disabled="disabled"
     @click="handleClick"
@@ -18,10 +18,6 @@
 export default {
   name: 'ButtonComponent',
   props: {
-    type: {
-      type: String,
-      default: 'button'
-    },
     color: {
       type: String,
       default: 'blue',
