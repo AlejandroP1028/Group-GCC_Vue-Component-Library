@@ -62,6 +62,10 @@
 
 <script>
 export default {
+  //no need na yung isDarkMode prop since naka 
+  //selector naman tayo sa tailwind meaning as pag may dark: selector ka sa class ayon yung ipa-prioritize ng css as the class as long as yung parent ay included yung dark na class
+
+  //dagdag colors, make border optional + border size variations and carousel size variations, plano kong gamiting etong carousel sa card page
   name: 'Carousel-component',
   props: {
     items: {
