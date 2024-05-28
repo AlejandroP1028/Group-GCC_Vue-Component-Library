@@ -60,9 +60,9 @@ export default {
     },
     sizeClass() {
       return {
-        small: 'relative w-9 h-5',
-        default: 'relative w-11 h-6',
-        large: 'relative w-14 h-7'
+        small: 'relative w-6 h-4 after:w-3 after:h-3',
+        default: 'relative w-11 h-6 after:w-5 after:h-5',
+        large: 'relative w-14 h-7 after:w-6 after:h-6'
       }[this.size || this.default];
     },
     baseClass() {
