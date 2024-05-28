@@ -1,5 +1,5 @@
 <template>
-  <div v-if="header || body" class=" mx-24 my-16">
+  <div v-if="header || body" class=" mx-24 my-16 ">
     <div v-if="header" :id="header" class="header-container tracking text-gray-800 dark:text-gray-200 hover:text-blue-600 text-3xl font-bold cursor-pointer mb-2 transition-all ease-in-out duration-300 hover:translate-x-8 w-full">
       {{ header }}
     </div>
