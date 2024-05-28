@@ -8,7 +8,7 @@ import './index.css'
 
 // import AvatarTest from "./avatar_test.vue";
 
-createApp(AlertTest).mount('#app')
+createApp(app).mount('#app')
 // createApp(CardTest).mount('#app')
 
 // createApp(AvatarTest).mount('#app')
