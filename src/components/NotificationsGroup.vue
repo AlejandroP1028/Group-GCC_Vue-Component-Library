@@ -56,12 +56,12 @@ export default {
         'top-left': 'top-4 left-4',
         'bottom-right': 'bottom-4 right-4',
         'bottom-left': 'bottom-4 left-4',
-        'center': 'top-4 left-1/2 transform -translate-x-1/2',
-        'pTop-left': 'top-0 left-0',
-        'pCenter': 'top-0 left-1/2 transform -translate-x-1/2',
-        'pTop-right': 'top-0 right-0',
-        'pBottom-left': 'bottom-0 left-0',
-        'pBottom-right': 'bottom-0 right-0'
+        'center': 'top- left-1/2 transform -translate-x-1/2',
+        'pTop-left': 'top-2 left-2',
+        'pCenter': 'top-2 left-1/2 transform -translate-x-1/2',
+        'pTop-right': 'top-2 right-2',
+        'pBottom-left': 'bottom-0 left-2',
+        'pBottom-right': 'bottom-0 right-2'
       };
 
       const positioningClass = this.position.startsWith('p') ? 'absolute' : 'fixed';

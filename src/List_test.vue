@@ -11,9 +11,6 @@
         <ItemList :items="List" type="unorderedlist" layout="vertical" />
       </div>
       <div class="mb-8 flex">
-        <ItemList :items="List" type="orderedlist" layout="horizontal" />
-      </div>
-      <div class="mb-8 flex">
         <ItemList :items="List" type="orderedlist" layout="vertical" />
       </div>
       <div class="flex">
@@ -27,7 +24,7 @@
 import ItemList from './components/ItemList.vue';
 
 export default {
-  name: 'ListTest',
+  name: 'App',
   components: {
     ItemList,
   },
