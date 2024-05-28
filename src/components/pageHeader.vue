@@ -5,7 +5,7 @@
       :class="`header-container 
       text-gray-800 
       dark:text-gray-200  
-      hover:text-blue-600 
+      hover:text-blue-500 
       cursor-pointer 
       transition-all ease-in-out duration-300 
       hover:translate-x-8 w-full text-5xl font-bold mb-2`">
@@ -15,7 +15,7 @@
         {{ body }}
       </div>
     </div>
-    <hr class="h-2 rounded-full border-none bg-blue-600 mx-24">
+    <hr class="h-2 rounded-full border-none bg-blue-500 mx-24">
 
   </div>
     
