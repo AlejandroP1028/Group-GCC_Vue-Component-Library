@@ -16,6 +16,9 @@
       <div class="flex">
         <ItemList :items="descriptionList" type="descriptionlist" layout="vertical" />
       </div>
+      <div class="flex">
+        <ItemList :items="List" type="unorderedicon"/>
+      </div>
     </div>
   </div>
 </template>
