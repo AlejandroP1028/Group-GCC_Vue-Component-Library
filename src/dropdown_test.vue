@@ -9,7 +9,15 @@
         The Dropdown Component is a versatile element designed for displaying a list of options or actions in a toggleable menu. It supports different types of notifications such as success, error, warning, and info messages, making it essential for user interaction.
       </p>
       <div class="absolute w-full">
-        <dropdown_component type="sky" size="w" :isDark="isDarkMode" bordered="true" :menuItems="menuItems"></dropdown_component>
+        <dropdown_component 
+        type="default" 
+        size="w" 
+        :isDark="isDarkMode" 
+        :menuItems="menuItems" 
+        menuWidth="full" 
+        menuAlignment="left"
+        bordered="true"
+        />
       </div>
       <h1 :class="['text-2xl', 'mb-2', 'mt-4', 'font-bold', 'text-center', headingColor]">Dropdown Customizations</h1>
     </div>
@@ -32,8 +40,8 @@ export default {
       menuItems: [
         { label: 'ackkkkkk', disabled: false, action: () => console.log('ackkkkkk clicked') },
         { label: 'whaaaaaaaa', disabled: false, action: () => console.log('whaaaaaaaa clicked') },
-        { label: 'hmphhhhhh', disabled: true },
-        { label: 'reeeeeeeee', disabled: true }
+        { label: 'hmphhhhhh', disabled: false, divider: true, customMargin: '0.5' },
+        { label: 'reeeeeeeee', disabled: false }
       ]
     };
   },

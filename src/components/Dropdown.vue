@@ -1,7 +1,10 @@
 <template>
     <div class="relative inline-block text-left">
       <div>
-        <button @click="toggleDropdown" :class="[buttonClasses, { 'cursor-not-allowed opacity-50': disabled }]" :disabled="disabled" type="button">
+        <button @click="toggleDropdown" 
+        :class="[buttonClasses, { 'cursor-not-allowed opacity-50': disabled }]" 
+        :disabled="disabled" 
+        type="button">
           Dropdown
           <svg class="inline-block ml-2" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 10l5 5 5-5H7z" fill="currentColor"/>
@@ -10,17 +13,20 @@
       </div>
       <transition>
         <div v-if="show" :class="dropdownClasses">
-          <a
-            v-for="(item, index) in menuItems"
-            :key="index"
-            :href="item.href || '#'"
-            :class="[itemClasses, { 'cursor-not-allowed opacity-50': item.disabled }]"
-            :aria-disabled="item.disabled"
-            role="menuitem"
-            @click.prevent="item.disabled ? null : item.action"
-          >
-            {{ item.label }}
-          </a>
+          <template v-for="(item, index) in menuItems" :key="index">
+            <a
+              v-if="item && item.label !== undefined"
+              :href="item.href || '#'"
+              :class="[itemClasses, { 'cursor-not-allowed opacity-50': item.disabled }]"
+              :aria-disabled="item.disabled"
+              role="menuitem"
+              @click.prevent="item.disabled ? null : item.action"
+            >
+              {{ item.label }}
+            </a>
+            <div v-if="item && item.divider" :class="setDivider(item.customMargin)"></div>
+            <div v-if="divider && index < menuItems.length - 1" :class="setDivider(item.customMargin)"></div>
+          </template>
         </div>
       </transition>
     </div>
@@ -44,6 +50,20 @@
         },
         default: 'w',
       },
+      menuWidth: {
+        type: String,
+        default: 'full',
+        validator: function (value) {
+          return ['auto', 'full', 'w-48', 'w-64'].includes(value);
+        }
+      },
+      menuAlignment: {
+        type: String,
+        default: 'right',
+        validator: function (value) {
+          return ['left', 'center', 'right'].includes(value);
+        }
+      },
       isDark: {
         type: Boolean,
       },
@@ -52,6 +72,10 @@
         default: false,
       },
       disabled: {
+        type: Boolean,
+        default: false
+      },
+      divider: {
         type: Boolean,
         default: false
       },
@@ -78,6 +102,18 @@
             return 'text-lg';
           default:
             return 'text-xs';
+        }
+      },
+      alignmentClass() {
+        switch (this.menuAlignment) {
+          case 'left':
+            return 'left-0';
+          case 'center':
+            return 'left-1/2 transform -translate-x-1/2';
+          case 'right':
+            return 'right-0';
+          default:
+            return 'right-0';
         }
       },
       buttonClasses() {
@@ -132,8 +168,9 @@
         const { bgClass, borderClass } = styleClasses[this.type] || styleClasses['default'];
   
         return [
-          'absolute origin-top-right mt-2 w-full rounded-md shadow-lg z-10 max-h-60 overflow-auto py-2',
-          bgClass, borderClass
+          'absolute origin-top-right mt-2 rounded-md shadow-lg z-10 max-h-60 overflow-auto py-2',
+          bgClass, borderClass, this.alignmentClass,
+          this.menuWidth === 'full' ? 'w-full' : this.menuWidth,
         ];
       },
       itemClasses() {
@@ -155,18 +192,38 @@
       },
       closeDropdown() {
         this.show = false;
+      },
+      setDivider(a) {
+        const styleClasses = {
+          default: {
+            borderClass: this.isDark ? 'border-blue-300/[.87]' : 'border-blue-300/[.87]',
+          },
+          sky: {
+            borderClass: this.isDark ? 'border-sky-300/[.87]' : 'border-sky-300/[.87]',
+          },
+          cyan: {
+            borderClass: this.isDark ? 'border-cyan-300/[.87]' : 'border-cyan-300/[.87]',
+          },
+          teal: {
+            borderClass: this.isDark ? 'border-teal-300/[.87]' : 'border-teal-300/[.87]',
+          }
+        };
+
+        const { borderClass } = styleClasses[this.type] || styleClasses['default'];
+
+        return [
+          'border-t-2',
+          borderClass,
+          a === '0.5' ? 'my-0.5' :
+          a === '1' ? 'my-1' :
+          a === '2' ? 'my-2' :
+          'my-0.5'
+        ];
       }
     }
   }
 </script>
 <style scoped>
-.fade-slide-enter-active, .fade-slide-leave-active {
-  transition: opacity 0.5s, transform 0.5s;
-}
-.fade-slide-enter, .fade-slide-leave-to {
-  opacity: 0;
-  transform: translateY(-10px);
-}
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s ease, transform 0.5s ease;
