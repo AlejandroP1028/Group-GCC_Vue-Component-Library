@@ -6,7 +6,7 @@
     ]"
   >
     <div class="container mx-auto flex items-center justify-between p-1">
-      <div class="svg_container">
+      <div class="logo_container">
         <svg
           width="89"
           height="30"
@@ -22,45 +22,18 @@
       </div>
       <div class="items_container">
         <ul class="flex space-x-8 items-center">
-          <li :class="{ activepage: activePage === 'Home' }">
+          <li
+            v-for="item in menuItems"
+            :key="item.page"
+            :class="{ activepage: activePage === item.page }"
+          >
             <a
               href="#"
-              @click.prevent="setActivePage('Home')"
+              @click.prevent="setActivePage(item.page)"
               :class="[HoverColorClass]"
-              >Home</a
             >
-          </li>
-          <li :class="{ activepage: activePage === 'About' }">
-            <a
-              href="#"
-              @click.prevent="setActivePage('About')"
-              :class="[HoverColorClass]"
-              >About</a
-            >
-          </li>
-          <li :class="{ activepage: activePage === 'Pricing' }">
-            <a
-              href="#"
-              @click.prevent="setActivePage('Pricing')"
-              :class="[HoverColorClass]"
-              >Pricing</a
-            >
-          </li>
-          <li :class="{ activepage: activePage === 'Contact' }">
-            <a
-              href="#"
-              @click.prevent="setActivePage('Contact')"
-              :class="[HoverColorClass]"
-              >Contact</a
-            >
-          </li>
-          <li :class="{ activepage: activePage === 'Services' }">
-            <a
-              href="#"
-              @click.prevent="setActivePage('Services')"
-              :class="[HoverColorClass]"
-              >Services</a
-            >
+              {{ item.name }}
+            </a>
           </li>
           <input
             type="text"
@@ -91,6 +64,17 @@ export default {
     hoverColor: {
       type: String,
       default: "white",
+    },
+    menuItems: {
+      type: Array,
+      required: true,
+      default: () => [
+        { name: "Home", page: "Home" },
+        { name: "About", page: "About" },
+        { name: "Pricing", page: "Pricing" },
+        { name: "Contact", page: "Contact" },
+        { name: "Services", page: "Services" },
+      ],
     },
   },
   data() {
@@ -130,7 +114,7 @@ export default {
       return {
         transparent: "bg-transparent",
         white: "bg-white",
-        blue: "hover:text-blue-400 active:text-blue-400",
+        blue: "hover:text-blue-600 active:text-blue-600",
         slate: "hover:text-slate-400 active:text-slate-400",
         teal: "hover:text-teal-600 active:text-teal-600",
         cyan: "hover:text-cyan-400 active:text-cyan-400",

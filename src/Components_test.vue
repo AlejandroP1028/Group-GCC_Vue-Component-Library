@@ -2,9 +2,9 @@
   <header class="sticky top-0 bg-white z-40">
     <navbar
       :variationIndex="1"
-      navbarColor="white"
       searchColor="blue"
       hoverColor="blue"
+      :menuItems="menuItems"
     ></navbar>
   </header>
   <section
@@ -20,8 +20,8 @@
             <header class="bg-white p-4">
               <navbar
                 :variationIndex="0"
-                navbarColor="white"
-                hoverColor="slate"
+                hoverColor="blue"
+                :menuItems="menuItems"
               ></navbar>
             </header>
           </div>
@@ -34,7 +34,12 @@
         <div class="demo p-10 bg-gray-100 w-auto">
           <div class="w-auto">
             <header class="bg-white p-4">
-              <navbar :variationIndex="1"></navbar>
+              <navbar
+                :variationIndex="1"
+                :menuItems="menuItems"
+                hoverColor="blue"
+                searchColor="blue"
+              ></navbar>
             </header>
           </div>
         </div>
@@ -226,6 +231,17 @@ export default {
   components: {
     navbar,
     popovers,
+  },
+  data() {
+    return {
+      menuItems: [
+        { name: "Home", page: "Home" },
+        { name: "About", page: "About" },
+        { name: "Pricing", page: "Pricing" },
+        { name: "Contact", page: "Contact" },
+        { name: "Services", page: "Services" },
+      ],
+    };
   },
 };
 </script>
