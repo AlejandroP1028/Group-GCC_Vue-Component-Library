@@ -10,13 +10,13 @@
       </p>
       <div class="absolute w-full">
         <dropdown_component 
-        type="default" 
+        type="cyan" 
         size="w" 
         :isDark="isDarkMode" 
         :menuItems="menuItems" 
         menuWidth="full" 
         menuAlignment="left"
-        
+        @list-item-click="handleListItemClick"
         :bordered="true"
         />
       </div>
@@ -39,17 +39,19 @@ export default {
       headingColor: 'text-gray-900 dark:text-gray-100',
       paragraphColor: 'text-gray-700 dark:text-gray-300',
       menuItems: [
-        { label: 'ackkkkkk', disabled: false, action: () => console.log('ackkkkkk clicked') },
-        { label: 'whaaaaaaaa', disabled: false, action: () => console.log('whaaaaaaaa clicked') },
-        { label: 'hmphhhhhh', disabled: false, divider: true, customMargin: '0.5' },
-        { label: 'reeeeeeeee', disabled: false }
+        { label: 'ackkkkkk', disabled: false },
+        { label: 'whaaaaaaaa', disabled: false },
+        { label: 'hmphhhhhh', disabled: true, divider: true, customMargin: '0.5' },
+        { label: 'reeeeeeeee', disabled: true }
       ]
     };
   },
   methods: {
     toggleDarkMode() {
-      // Toggle dark mode
       this.isDarkMode = !this.isDarkMode;
+    },
+    handleListItemClick(item) {
+      console.log('List item clicked:', item.label);
     }
   }
 }

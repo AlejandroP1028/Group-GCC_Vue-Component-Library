@@ -14,16 +14,11 @@
       <transition>
         <div v-if="show" :class="dropdownClasses">
           <template v-for="(item, index) in menuItems" :key="index">
-            <a
-              v-if="item && item.label !== undefined"
-              :href="item.href || '#'"
-              :class="[itemClasses, { 'cursor-not-allowed opacity-50': item.disabled }]"
-              :aria-disabled="item.disabled"
-              role="menuitem"
-              @click.prevent="item.disabled ? null : item.action"
-            >
-              {{ item.label }}
-            </a>
+            <ListItem 
+              :item="item"
+              @item-click="handleListItemClick"
+              :class="itemClasses"
+            ></ListItem>
             <div v-if="item && item.divider" :class="setDivider(item.customMargin)"></div>
             <div v-if="divider && index < menuItems.length - 1" :class="setDivider(item.customMargin)"></div>
           </template>
@@ -33,13 +28,12 @@
   </template>
   
   <script>
+  import ListItem from './ListItem.vue';
   export default {
-    //no need na yung isDark since naka selector yung darkmode natin
-
-    //pwede mo din gawin na component yung listitem for more versatility
-
-    //change approach sa action shit, instead na irun yung function agad use emits
     name: 'DropdownComponent',
+    components: {
+      ListItem
+    },
     props: {
       type: {
         type: String,
@@ -68,9 +62,6 @@
         validator: function (value) {
           return ['left', 'center', 'right'].includes(value);
         }
-      },
-      isDark: {
-        type: Boolean,
       },
       bordered: {
         type: Boolean,
@@ -124,19 +115,19 @@
       buttonClasses() {
         const styleClasses = {
           default: {
-            bgClass: this.isDark ? 'bg-blue-600 text-blue-100 hover:bg-blue-700' : 'bg-blue-500 text-blue-100 hover:bg-blue-600',
+            bgClass: 'dark:bg-blue-600 dark:text-blue-100 dark:hover:bg-blue-700 bg-blue-500 text-blue-100 hover:bg-blue-600',
             borderClass: this.bordered ? 'border border-blue-100' : '',
           },
           sky: {
-            bgClass: this.isDark ? 'bg-sky-600 text-sky-100 hover:bg-sky-700' : 'bg-sky-500 text-sky-100 hover:bg-sky-600',
+            bgClass: 'dark:bg-sky-600 dark:text-sky-100 dark:hover:bg-sky-700 bg-sky-500 text-sky-100 hover:bg-sky-600',
             borderClass: this.bordered ? 'border border-sky-100' : '',
           },
           cyan: {
-            bgClass: this.isDark ? 'bg-cyan-600 text-cyan-100 hover:bg-cyan-700' : 'bg-cyan-500 text-cyan-100 hover:bg-cyan-600',
+            bgClass: 'dark:bg-cyan-600 dark:text-cyan-100 dark:hover:bg-cyan-700 bg-cyan-500 text-cyan-100 hover:bg-cyan-600',
             borderClass: this.bordered ? 'border border-cyan-100' : '',
           },
           teal: {
-            bgClass: this.isDark ? 'bg-teal-600 text-teal-100 hover:bg-teal-700' : 'bg-teal-500 text-teal-100 hover:bg-teal-600',
+            bgClass: 'dark:bg-teal-600 dark:text-teal-100 dark:hover:bg-teal-700 bg-teal-500 text-teal-100 hover:bg-teal-600',
             borderClass: this.bordered ? 'border border-teal-100' : '',
           }
         };
@@ -153,19 +144,19 @@
       dropdownClasses() {
         const styleClasses = {
           default: {
-            bgClass: this.isDark ? 'bg-gray-700 text-blue-100' : 'bg-blue-100 text-blue-800',
+            bgClass: 'dark:bg-gray-700 dark:text-blue-100 bg-blue-100 text-blue-800',
             borderClass: this.bordered ? 'border border-blue-300' : '',
           },
           sky: {
-            bgClass: this.isDark ? 'bg-gray-700 text-sky-100' : 'bg-sky-100 text-sky-800',
+            bgClass: 'dark:bg-gray-700 dark:text-sky-100 bg-sky-100 text-sky-800',
             borderClass: this.bordered ? 'border border-sky-300' : '',
           },
           cyan: {
-            bgClass: this.isDark ? 'bg-gray-700 text-cyan-100' : 'bg-cyan-100 text-cyan-800',
+            bgClass: 'dark:bg-gray-700 dark:text-cyan-100 bg-cyan-100 text-cyan-800',
             borderClass: this.bordered ? 'border border-cyan-300' : '',
           },
           teal: {
-            bgClass: this.isDark ? 'bg-gray-700 text-teal-100' : 'bg-teal-100 text-teal-800',
+            bgClass: 'dark:bg-gray-700 dark:text-teal-100 bg-teal-100 text-teal-800',
             borderClass: this.bordered ? 'border border-teal-300' : '',
           }
         };
@@ -182,11 +173,10 @@
         return [
           'block px-4 py-2',
           this.sizeClass,
-          this.isDark ? 'hover:bg-gray-600' : 
-          this.type === 'default' ? 'hover:bg-blue-200' :
-          this.type === 'sky' ? 'hover:bg-sky-200' :
-          this.type === 'cyan' ? 'hover:bg-cyan-200' :
-          this.type === 'teal' ? 'hover:bg-teal-200' :
+          this.type === 'default' ? 'hover:bg-blue-200 dark:hover:bg-gray-600' :
+          this.type === 'sky' ? 'hover:bg-sky-200 dark:hover:bg-gray-600' :
+          this.type === 'cyan' ? 'hover:bg-cyan-200 dark:hover:bg-gray-600' :
+          this.type === 'teal' ? 'hover:bg-teal-200 dark:hover:bg-gray-600' :
           ''
         ];
       }
@@ -201,16 +191,16 @@
       setDivider(a) {
         const styleClasses = {
           default: {
-            borderClass: this.isDark ? 'border-blue-300/[.87]' : 'border-blue-300/[.87]',
+            borderClass: 'dark:border-blue-300/[.87] border-blue-300/[.87]',
           },
           sky: {
-            borderClass: this.isDark ? 'border-sky-300/[.87]' : 'border-sky-300/[.87]',
+            borderClass: 'dark:border-sky-300/[.87] border-sky-300/[.87]',
           },
           cyan: {
-            borderClass: this.isDark ? 'border-cyan-300/[.87]' : 'border-cyan-300/[.87]',
+            borderClass: 'dark:border-cyan-300/[.87] border-cyan-300/[.87]',
           },
           teal: {
-            borderClass: this.isDark ? 'border-teal-300/[.87]' : 'border-teal-300/[.87]',
+            borderClass: 'dark:border-teal-300/[.87] border-teal-300/[.87]',
           }
         };
 
@@ -224,6 +214,10 @@
           a === '2' ? 'my-2' :
           'my-0.5'
         ];
+      },
+      handleListItemClick(item) {
+        // Emit custom event with the clicked list item
+        this.$emit('list-item-click', item);
       }
     }
   }
