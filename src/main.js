@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
-import CollapseTest from "./collapse_test.vue";
-//import ToastTest from "./toast_test.vue";
+//import CollapseTest from "./collapse_test.vue";
+import Page_Testing from './Page_Testing.vue';
+//import SnackBarTest from './Snackbar_Test.vue';
 
 import './index.css'
-
-createApp(CollapseTest).mount('#app')
-//CreateApp(ToastTest).mount*('#app')
+const app = createApp(Page_Testing);
+app.mount('#app');
