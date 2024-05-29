@@ -14,6 +14,20 @@
   
 <script>
   export default {
+    //mali pag-gamit mo ng props, yung show and hide prop mo dapat nasa data yan tsaka kung ang purpose lang niyan ay para sa text tanggalin mo nalang
+    // idiretso mo nalang na isCollapsed ? 'SHOW' : 'HIDE'. maglagay ka ng validator sa types mo since naka-tailwind tayo madaling mag
+    // style inject ng mga unintended styles sa component mo
+
+    //kung mag-lalagay ang user ng type na kelangan nila hindi na dapat :type="<insert style>" kase they're basically injecting classes
+    //sa component mo which is hindi purpose ng component. Instead na :type="<insert style>" dapat type="<insert predetermined style>".
+    //ang v-bind or : ay ginagamit lang kung ang value na kelangan ng prop ay kelangan javascript expression tulad ng boolean, object, etc etc..
+
+    //ok lang na native css yung gamit mo pero much better kung nag implement ka ng tailwind para mapractice mo na din. tsaka sa tailwind hindi mo
+    //na kelangan ng isDark prop since meron tayong feature don na pag may dark: selector ka na style ayon yung ipa-prioritize ng css as the style na
+    //gagamitin
+
+    //tama yung pag-gamit mo ng initialCollapsed kase binigyan mo yung user ng choice if want ba nila na kita agad yung content or not, paikliin mo lang yung name
+    //sapat na yung isCollapsed or collapsed for that.
     props: {
       initialCollapsed: {
         type: Boolean,
@@ -26,7 +40,7 @@
       hide: {
         type: String,
         default: 'HIDE'
-      },
+      },  
       type: {
       type: String,
       default: 'default'
