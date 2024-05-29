@@ -16,7 +16,8 @@
         :menuItems="menuItems" 
         menuWidth="full" 
         menuAlignment="left"
-        bordered="true"
+        
+        :bordered="true"
         />
       </div>
       <h1 :class="['text-2xl', 'mb-2', 'mt-4', 'font-bold', 'text-center', headingColor]">Dropdown Customizations</h1>

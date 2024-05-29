@@ -34,6 +34,11 @@
   
   <script>
   export default {
+    //no need na yung isDark since naka selector yung darkmode natin
+
+    //pwede mo din gawin na component yung listitem for more versatility
+
+    //change approach sa action shit, instead na irun yung function agad use emits
     name: 'DropdownComponent',
     props: {
       type: {
