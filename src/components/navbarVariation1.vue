@@ -119,7 +119,7 @@ export default {
     },
     HoverColorClass() {
       return {
-        blue: "hover:text-blue-600 active:text-blue-600",
+        blue: "hover:text-blue-600 active:text-blue-400",
         slate: "hover:text-slate-400 active:text-slate-400",
         teal: "hover:text-teal-600 active:text-teal-600",
         cyan: "hover:text-cyan-400 active:text-cyan-400",

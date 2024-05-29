@@ -6,9 +6,9 @@
       <header class="sticky top-0 bg-white z-40">
         <navbar
           :variationIndex="1"
-          searchColor="cyan"
-          hoverColor="sky"
-          navbarColor="teal"
+          searchColor="white"
+          hoverColor="blue"
+          navbarColor="slate"
           :menuItems="menuItems"
         ></navbar>
       </header>
