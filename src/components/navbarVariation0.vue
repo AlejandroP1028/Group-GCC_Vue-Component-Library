@@ -50,7 +50,7 @@ export default {
     },
     navbarColor: {
       type: String,
-      default: "transparent",
+      default: "default",
     },
     hoverColor: {
       type: String,
@@ -67,6 +67,10 @@ export default {
         { name: "Services", page: "Services" },
       ],
     },
+    isDarkMode: {
+      type: Boolean,
+      required: true,
+    },
   },
   data() {
     return {
@@ -82,12 +86,12 @@ export default {
     navbarColorClass() {
       return {
         transparent: "bg-transparent",
-        default: "bg-white",
-        blue: "bg-blue-100",
-        slate: "bg-slate-200",
-        teal: "bg-teal-100",
-        cyan: "bg-cyan-50",
-        sky: "bg-sky-100",
+        default: "bg-white dark:bg-gray-800 dark:text-white",
+        blue: "bg-blue-100 dark:bg-blue-800 dark:text-white",
+        slate: "bg-slate-200 dark:bg-slate-700 dark:text-white",
+        teal: "bg-teal-100 dark:bg-teal-900 dark:text-white",
+        cyan: "bg-cyan-50 dark:bg-cyan-900 dark:text-white",
+        sky: "bg-sky-100 dark:bg-sky-900 dark:text-white",
       }[this.navbarColor];
     },
     HoverColorClass() {

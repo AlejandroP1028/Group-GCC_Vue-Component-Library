@@ -38,7 +38,10 @@
           <input
             type="text"
             placeholder="Search.."
-            :class="[searchColorClass, 'rounded border-2 p-1 pl-6']"
+            :class="[
+              searchColorClass,
+              'rounded border-2 p-1 pl-6 dark:text-black',
+            ]"
           />
         </ul>
       </div>
@@ -55,7 +58,7 @@ export default {
     },
     navbarColor: {
       type: String,
-      default: "transparent",
+      default: "default",
     },
     searchColor: {
       type: String,
@@ -76,6 +79,10 @@ export default {
         { name: "Services", page: "Services" },
       ],
     },
+    isDarkMode: {
+      type: Boolean,
+      required: true,
+    },
   },
   data() {
     return {
@@ -91,12 +98,12 @@ export default {
     navbarColorClass() {
       return {
         transparent: "bg-transparent",
-        white: "bg-white",
-        blue: "bg-blue-100",
-        slate: "bg-slate-200",
-        teal: "bg-teal-100",
-        cyan: "bg-cyan-50",
-        sky: "bg-sky-100",
+        default: "bg-white dark:bg-gray-800 dark:text-white",
+        blue: "bg-blue-100 dark:bg-blue-800 dark:text-white",
+        slate: "bg-slate-200 dark:bg-slate-700 dark:text-white",
+        teal: "bg-teal-100 dark:bg-teal-900 dark:text-white",
+        cyan: "bg-cyan-50 dark:bg-cyan-900 dark:text-white",
+        sky: "bg-sky-100 dark:bg-sky-900 dark:text-white",
       }[this.navbarColor];
     },
     searchColorClass() {
@@ -112,8 +119,6 @@ export default {
     },
     HoverColorClass() {
       return {
-        transparent: "bg-transparent",
-        white: "bg-white",
         blue: "hover:text-blue-600 active:text-blue-600",
         slate: "hover:text-slate-400 active:text-slate-400",
         teal: "hover:text-teal-600 active:text-teal-600",

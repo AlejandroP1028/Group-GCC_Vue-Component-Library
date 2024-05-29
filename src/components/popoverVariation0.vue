@@ -16,8 +16,6 @@
     <div
       v-show="isPopoverVisible"
       ref="popover"
-      @mouseover="popoverMouseOver"
-      @mouseleave="popoverMouseLeave"
       :class="[
         positionClass,
         popoverColorClass,
@@ -25,8 +23,11 @@
       ]"
       :style="popoverStyle"
     >
-      <h3 class="text-lg font-semibold mb-2" v-html="popoverTitle"></h3>
-      <p class="text-gray-600" v-html="popoverContent"></p>
+      <h3
+        class="text-lg font-semibold mb-2 dark:text-white"
+        v-html="popoverTitle"
+      ></h3>
+      <p class="text-gray-600 dark:text-white" v-html="popoverContent"></p>
     </div>
   </div>
 </template>
@@ -63,12 +64,22 @@ export default {
       default:
         "This is the content of the popover. You can place any information here.",
     },
+    isDarkMode: {
+      type: Boolean,
+      required: true,
+    },
   },
   data() {
     return {
       isPopoverVisible: false,
       popoverStyle: {},
     };
+  },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
     popoverMouseOver() {
@@ -122,6 +133,9 @@ export default {
         };
       });
     },
+    handleScroll() {
+      this.hidePopover();
+    },
   },
   computed: {
     positionClass() {
@@ -134,19 +148,20 @@ export default {
     },
     popoverColorClass() {
       return {
-        blue: "bg-blue-100",
-        slate: "bg-slate-100",
-        teal: "bg-teal-200",
-        cyan: "bg-cyan-200",
-        sky: "bg-sky-200",
+        blue: "bg-blue-100 dark:bg-blue-900",
+        slate: "bg-slate-100 dark:bg-slate-800",
+        teal: "bg-teal-200 dark:bg-teal-900",
+        cyan: "bg-cyan-200 dark:bg-cyan-900",
+        sky: "bg-sky-200 dark:bg-sky-900",
       }[this.popoverColor];
     },
     popoverButtonColorClass() {
       return {
-        blue: "bg-blue-700 hover:bg-blue-800",
-        slate: "bg-slate-700 hover:bg-slate-800",
-        cyan: "bg-cyan-700 hover:bg-cyan-800",
-        sky: "bg-sky-700 hover:bg-sky-800",
+        blue: "bg-blue-700 hover:bg-blue-800 dark:bg-blue-900 dark:hover:bg-blue-800",
+        slate:
+          "bg-slate-700 hover:bg-slate-800 dark:bg-slate-900 dark:hover:bg-stale-800 ",
+        cyan: "bg-cyan-700 hover:bg-cyan-800 dark:bg-cyan-900 dark:hover:bg-cyan-800",
+        sky: "bg-sky-700 hover:bg-sky-800 dark:bg-sky-900 dark:hover:bg-sky-800",
       }[this.popoverButtonColor];
     },
   },
