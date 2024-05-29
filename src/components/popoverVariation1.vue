@@ -117,15 +117,15 @@ export default {
         let top, left;
         if (this.position === "top") {
           top = buttonRect.top - popoverRect.height - space;
-          left = buttonRect.left + (buttonRect.width - popoverRect.width) / 2;
+          left = buttonRect.left + (buttonRect.width - popoverRect.width + 4);
         } else if (this.position === "bottom") {
           top = buttonRect.bottom + space;
-          left = buttonRect.left + (buttonRect.width - popoverRect.width) / 2;
+          left = buttonRect.left + (buttonRect.width - popoverRect.width) / 32;
         } else if (this.position === "left") {
-          top = buttonRect.top + (buttonRect.height - popoverRect.height) / 2;
+          top = buttonRect.top + (buttonRect.height - popoverRect.height) / 32;
           left = buttonRect.left - popoverRect.width - space;
         } else if (this.position === "right") {
-          top = buttonRect.top + (buttonRect.height - popoverRect.height) / 2;
+          top = buttonRect.top + (buttonRect.height - popoverRect.height) / 32;
           left = buttonRect.right + space;
         }
 

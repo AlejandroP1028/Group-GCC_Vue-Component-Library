@@ -176,7 +176,7 @@
                   popoverColor="sky"
                   informationIconColor="sky"
                   popoverTitle="Beer ka ba?"
-                  popoverContent="gusto kasi kita eh pero beero lang"
+                  popoverContent="gusto kasi kita eh pero beero"
                 ></popovers>
                 <popovers
                   :variationIndex="1"
@@ -222,6 +222,8 @@
                   trigger="click"
                   popoverColor="sky"
                   informationIconColor="sky"
+                  popoverTitle="hello pooo"
+                  popoverContent="hoy bakla ayos ayosin mo"
                 ></popovers>
                 <popovers
                   :variationIndex="1"
@@ -230,6 +232,8 @@
                   popoverColor="teal"
                   popoverButtonColor="cyan"
                   informationIconColor="cyan"
+                  popoverTitle="hello pooo"
+                  popoverContent="papansin k teh"
                 ></popovers>
                 <popovers
                   :variationIndex="1"
