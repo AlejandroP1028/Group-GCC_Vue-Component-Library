@@ -16,7 +16,10 @@
           <template v-for="(item, index) in menuItems" :key="index">
             <ListItem 
               :item="item"
+              :type="type"
               @item-click="handleListItemClick"
+              @toggle-change="handleToggleChange"
+              @checkbox-change="handleCheckboxChange"
               :class="itemClasses"
             ></ListItem>
             <div v-if="item && item.divider" :class="setDivider(item.customMargin)"></div>
@@ -216,8 +219,19 @@
         ];
       },
       handleListItemClick(item) {
-        // Emit custom event with the clicked list item
-        this.$emit('list-item-click', item);
+        if(!item.disabled){
+          this.$emit('list-item-click', item);
+        }
+      },
+      handleToggleChange(item) {
+        if(!item.disabled){
+          this.$emit('toggle-change', item);
+        }
+      },
+      handleCheckboxChange(item) {
+        if(!item.disabled){
+          this.$emit('checkbox-change', item);
+        }
       }
     }
   }

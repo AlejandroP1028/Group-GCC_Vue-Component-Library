@@ -10,13 +10,14 @@
       </p>
       <div class="absolute w-full">
         <dropdown_component 
-        type="cyan" 
+        type="default" 
         size="w" 
-        :isDark="isDarkMode" 
         :menuItems="menuItems" 
-        menuWidth="full" 
-        menuAlignment="left"
+        menuWidth="w-48" 
+        menuAlignment="center"
         @list-item-click="handleListItemClick"
+        @toggle-change="handleToggleChange"
+        @checkbox-change="handleCheckboxChange"
         :bordered="true"
         />
       </div>
@@ -39,10 +40,10 @@ export default {
       headingColor: 'text-gray-900 dark:text-gray-100',
       paragraphColor: 'text-gray-700 dark:text-gray-300',
       menuItems: [
-        { label: 'ackkkkkk', disabled: false },
-        { label: 'whaaaaaaaa', disabled: false },
-        { label: 'hmphhhhhh', disabled: true, divider: true, customMargin: '0.5' },
-        { label: 'reeeeeeeee', disabled: true }
+        { label: 'ackkkkkk', disabled: false, type: 'checkbox' },
+        { label: 'whaaaaaaaa', disabled: false, type: 'checkbox' },
+        { label: 'hmphhhhhh', disabled: false, divider: true, customMargin: '0.5', type: 'checkbox', toggleHandler: 'toggleDarkMode' },
+        { label: 'reeeeeeeee', disabled: false, type: 'checkbox' }
       ]
     };
   },
@@ -52,6 +53,16 @@ export default {
     },
     handleListItemClick(item) {
       console.log('List item clicked:', item.label);
+    },
+    handleToggleChange(item) {
+      if(item.toggleHandler === 'toggleDarkMode'){
+        this.toggleDarkMode();
+      }
+    },
+    handleCheckboxChange(item) {
+      if(item.toggleHandler === 'toggleDarkMode'){
+        this.toggleDarkMode();
+      }
     }
   }
 }
