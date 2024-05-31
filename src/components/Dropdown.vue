@@ -11,7 +11,7 @@
           </svg>
         </button>
       </div>
-      <transition>
+      <transition :name="[this.menuAlignment === 'center' ? 'center' : 'v']">
         <div v-if="show" :class="dropdownClasses">
           <template v-for="(item, index) in menuItems" :key="index">
             <ListItem 
@@ -246,5 +246,15 @@
 .v-leave-to {
   opacity: 0;
   transform: translateY(-5%);
+}
+.center-enter-active,
+.center-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.center-enter-from,
+.center-leave-to {
+  opacity: 0;
+  transform: translateY(-50%,-5%);
 }
 </style>

@@ -13,10 +13,14 @@
 
       <label v-if="item.type === 'checkbox'" :class="{ 'cursor-not-allowed opacity-50 pointer-events-none': item.disabled }">
         <input type="checkbox" 
-        class="checkbox-input"
         :disabled="item.disabled" 
         @change="emitCheckboxChange" 
-        :class="checkboxColorClass"
+        :class="[checkboxColorClass,
+        this.type === 'default' ? 'checkbox-input checkbox-blue' : 
+        this.type === 'sky' ? 'checkbox-input checkbox-sky' :
+        this.type === 'cyan' ? 'checkbox-input checkbox-cyan' :
+        this.type === 'teal' ? 'checkbox-input checkbox-teal' :
+        'checkbox-input checkbox-blue']"
         />
         <span class="ml-2"> {{ item.label }} </span>
       </label>
@@ -79,7 +83,7 @@
           default:
             return 'checked:bg-blue-500 text-blue-500';
         }
-      }
+      },
     },
     methods: {
       handleItemClick() {
@@ -107,14 +111,11 @@
   width: 16px;
   height: 16px;
   background-color: #fff;
-  border: 1px solid #ccc;
   border-radius: 2px;
   display: inline-block;
   position: relative;
   vertical-align: middle;
 }
-
-
 .checkbox-input:checked:before {
   content: '';
   position: absolute;
@@ -125,6 +126,18 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(45deg);
+}
+.checkbox-blue {
+  border: 1px solid #4299E1;
+}
+.checkbox-sky {
+  border: 1px solid #90CDF4;
+}
+.checkbox-cyan {
+  border: 1px solid #81E6D9;
+}
+.checkbox-teal {
+  border: 1px solid #4FD1C5;
 }
 .toggle-checkbox {
   appearance: none;

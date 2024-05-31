@@ -10,7 +10,7 @@
       </p>
       <div class="absolute w-full">
         <dropdown_component 
-        type="default" 
+        type="teal" 
         size="w" 
         :menuItems="menuItems" 
         menuWidth="w-48" 
@@ -43,7 +43,7 @@ export default {
         { label: 'ackkkkkk', disabled: false, type: 'checkbox' },
         { label: 'whaaaaaaaa', disabled: false, type: 'checkbox' },
         { label: 'hmphhhhhh', disabled: false, divider: true, customMargin: '0.5', type: 'checkbox', toggleHandler: 'toggleDarkMode' },
-        { label: 'reeeeeeeee', disabled: false, type: 'checkbox' }
+        { label: 'reeeeeeeee', disabled: false, type: 'toggle' }
       ]
     };
   },
