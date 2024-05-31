@@ -7,7 +7,8 @@
 
 <script>
 export default {
-  name: 'Progress',
+  //change Progress to ProgressComponent or Progress-component, eslint fucks this shi up
+  name: 'ProgressComponent',
   props: {
     progress: {
       type: Number,
