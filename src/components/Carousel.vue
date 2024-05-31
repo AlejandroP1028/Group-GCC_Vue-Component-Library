@@ -1,7 +1,8 @@
+<!-- Carousel.vue -->
 <template>
-  <div class="relative w-full border-8 rounded-lg border-blue-600 dark:border-gray-700" data-carousel="static">
+  <div :class="['relative w-full', borderSize, borderColor, { 'dark:border-gray-800': isDarkMode }]" data-carousel="static">
     <!-- Carousel wrapper -->
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+    <div class="relative h-full overflow-hidden">
       <transition-group name="carousel" tag="div">
         <div
           v-for="(item, index) in items"
@@ -12,7 +13,8 @@
           <img
             :src="item.src"
             :alt="item.alt"
-            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+            class="w-full h-auto"
+            style="max-height: 100%;"
           />
         </div>
       </transition-group>
@@ -37,7 +39,7 @@
       @click="prevSlide"
       data-carousel-prev
     >
-      <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-500  dark:bg-gray-800/30 group-hover:bg-cyan-400 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+      <span :class="['inline-flex items-center justify-center w-10 h-10 rounded-full', sliderControlColor, 'group-hover:bg-cyan-400 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none']">
         <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
         </svg>
@@ -50,7 +52,7 @@
       @click="nextSlide"
       data-carousel-next
     >
-      <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-500  dark:bg-gray-800/30 group-hover:bg-cyan-400 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+      <span :class="['inline-flex items-center justify-center w-10 h-10 rounded-full', sliderControlColor, 'group-hover:bg-cyan-400 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none']">
         <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
         </svg>
@@ -62,11 +64,7 @@
 
 <script>
 export default {
-  //no need na yung isDarkMode prop since naka 
-  //selector naman tayo sa tailwind meaning as pag may dark: selector ka sa class ayon yung ipa-prioritize ng css as the class as long as yung parent ay included yung dark na class
-
-  //dagdag colors, make border optional + border size variations and carousel size variations, plano kong gamiting etong carousel sa card page
-  name: 'Carousel-component',
+  name: 'CarouselComponent',
   props: {
     items: {
       type: Array,
@@ -81,6 +79,21 @@ export default {
       type: Boolean,
       default: false,
     },
+    borderColor: {
+      type: String,
+      default: 'border-blue-600',
+    },
+    borderSize: {
+      type: String, 
+    },
+    indicatorColor: {
+      type: String,
+      default: 'bg-blue-500', 
+    },
+    sliderControlColor: {
+      type: String,
+      default: 'bg-blue-500',
+    },
   },
   data() {
     return {
@@ -90,7 +103,7 @@ export default {
   computed: {
     itemClasses() {
       return index => ({
-        hidden: this.currentSlide!== index,
+        hidden: this.currentSlide !== index,
         'duration-700 ease-in-out': true,
         block: this.currentSlide === index,
         'carousel-enter-active': true,
@@ -100,8 +113,8 @@ export default {
     indicatorClasses() {
       return index => ({
         'w-3 h-3 rounded-full': true,
-        'bg-blue-500': this.currentSlide === index,
-        'bg-gray-300': this.currentSlide!== index,
+        [this.indicatorColor]: this.currentSlide === index,
+        'bg-gray-300': this.currentSlide !== index,
       });
     },
   },
@@ -118,12 +131,20 @@ export default {
   },
 };
 </script>
+
 <style scoped>
-.carousel-enter-active,.carousel-leave-active {
+.carousel-enter-active,
+.carousel-leave-active {
   transition: opacity 1s;
 }
-.carousel-enter,.carousel-leave-to{
+.carousel-enter,
+.carousel-leave-to {
   opacity: 0;
 }
+/* 
+img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+} */
 </style>
-
