@@ -75,10 +75,6 @@ export default {
       type: Number,
       default: 0,
     },
-    isDarkMode: {
-      type: Boolean,
-      default: false,
-    },
     borderColor: {
       type: String,
       default: 'border-blue-600',
