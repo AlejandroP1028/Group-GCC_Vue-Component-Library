@@ -9,45 +9,37 @@ import Avatar from './components/UserAvatar.vue';
       <Avatar
         name="Gian Catalan"
         image="https://i.pinimg.com/originals/04/63/12/046312aac440d95cbc6d56b3eb527d5d.jpg"
-        size="sm"
+        size="xl"
         rounded="full"
-        :is-online="true"
-        borderColor="sky"
-        border-weight="thin"/>
+        :is-online="true"/>
         
         <Avatar
         name="Gian Catalan"
         image="https://i.pinimg.com/originals/04/63/12/046312aac440d95cbc6d56b3eb527d5d.jpg"
         size="md"
         rounded="full"
-        :is-online="true"
-        borderColor="cyan"/>
+        :is-online="true"/>
 
         <Avatar
         name="Gian Catalan"
         image="https://i.pinimg.com/originals/04/63/12/046312aac440d95cbc6d56b3eb527d5d.jpg"
         size="lg"
         rounded="full"
-        :is-online="true"
-        borderColor="teal"
-        border-weight="md"/>
+        :is-online="true"/>
 
         <Avatar
         name="Gian Catalan"
         image="https://i.pinimg.com/originals/04/63/12/046312aac440d95cbc6d56b3eb527d5d.jpg"
         size="xl"
         rounded="full"
-        :is-online="true"
-        borderColor="primary"/>
+        :is-online="true"/>
 
         <Avatar
         name="Gian Catalan"
         image="https://i.pinimg.com/originals/04/63/12/046312aac440d95cbc6d56b3eb527d5d.jpg"
         size="xxl"
         rounded="full"
-        :is-online="true"
-        borderColor="secondary"
-        border-weight="extra-thick"/>
+        :is-online="true"/>
 
         <Avatar
         name="Gian Catalan"
@@ -75,29 +67,21 @@ import Avatar from './components/UserAvatar.vue';
 
       <Avatar
         name="Paul"
-        size="lg"
-         borderColor="secondary"
-        border-weight="extra-thick"/>
+        size="lg"/>
 
          <Avatar
         name="Edelyn"
-        size="xl"
-         borderColor="secondary"
-        border-weight="extra-thick"/>
+        size="xl"/>
 
          <Avatar
         name="Lovely"
         size="xxl"
-        rounded="full"
-        borderColor="secondary"
-        border-weight="teal"/>
+        rounded="full"/>
 
          <Avatar
         name="Lovely"
         size="xxxl"
-        rounded="full"
-        borderColor="cyan"
-        border-weight="extra-thick"/>
+        rounded="full"/>
     </div>
   </div>
 </template>
