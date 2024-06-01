@@ -18,7 +18,7 @@
     <footer :class="footerClasses">
       <div :class="divFooterLogoClass">
         <a href="link" :class="anchorFooterLogoClass">
-          <img src="https://flowbite.com/docs/images/logo.svg" :class="imgFooterLogoClass" alt="Flowbite Logo" />
+          <img src="../assets/images/GCC_LOGO.png" :class="imgSocialFooterClass" alt="GCC Logo" />
           <span :class="spanFooterLogoClass">GCC™</span>
         </a>
         <ul :class="ulClasses">
@@ -39,7 +39,7 @@
         <div :class="socialDivClass">
           <div class="mb-6 md:mb-0">
             <a href="link" class="flex items-center">
-              <img src="https://flowbite.com/docs/images/logo.svg" :class="imgSocialFooterClass" alt="FlowBite Logo" />
+              <img src="../assets/images/GCC_LOGO.png" :class="imgSocialFooterClass" alt="GCC Logo" />
               <span :class="spanSocialFooterClass">GCC™</span>
             </a>
           </div>
