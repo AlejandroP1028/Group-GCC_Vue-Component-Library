@@ -9,7 +9,7 @@
                 <h2>COLLAPSE COMPONENT</h2>
                 <div id="collapse_test">
                     <div id="c_style1">
-                    <CollapseComponent :type="'default'" :isDarkMode="isDarkMode" id="collapse1">
+                    <CollapseComponent :type="'default'" :isDarkMode="isDarkMode" id="collapse1" :initialCollapsed="false">
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet accumsan arcu. Praesent ac magna at ipsum cursus ornare. 
                     </p>
@@ -51,18 +51,15 @@
                 
             </div>
         </div>
-    <AlertComponent message="This is an alert message!" />
   </template>
 <script>
 import CollapseComponent from './components/CollapseComponent.vue';
-import AlertComponent from './components/Alert.vue';
 import Snackbar from './components/SnackbarComponent.vue';
 
 export default {
   name: 'CollapseTest',
   components: {
     CollapseComponent,
-    AlertComponent,
     Snackbar
   },
   data() {
