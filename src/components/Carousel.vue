@@ -1,9 +1,16 @@
 <!-- Carousel.vue -->
 <template>
   <div :class="['relative w-full', borderSize, borderColor, { 'dark:border-gray-800': isDarkMode }]" data-carousel="static">
+    <!-- Add new buttons for controlling slider -->
+    <button v-if="showSliderControls" @click="toggleSliderControls" class="absolute top-0 end-0 z-30 bg-white dark:bg-gray-800 p-2 m-2 rounded-md shadow-md cursor-pointer focus:outline-none">
+      {{ showSlider ? 'Remove Slider Control' : 'Revert Slider Control' }}
+    </button>
+    
+    <!-- Existing carousel content -->
     <!-- Carousel wrapper -->
     <div class="relative h-full overflow-hidden">
       <transition-group name="carousel" tag="div">
+        <!-- Carousel items -->
         <div
           v-for="(item, index) in items"
           :key="index"
@@ -21,6 +28,7 @@
     </div>
     <!-- Slider indicators -->
     <div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2">
+      <!-- Slider indicator buttons -->
       <button
         v-for="(item, index) in items"
         :key="index"
@@ -34,12 +42,14 @@
     </div>
     <!-- Slider controls -->
     <button
+      v-if="showSliderControls && showSlider"
       type="button"
       class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
       @click="prevSlide"
       data-carousel-prev
     >
       <span :class="['inline-flex items-center justify-center w-10 h-10 rounded-full', sliderControlColor, 'group-hover:bg-cyan-400 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none']">
+        <!-- Previous button icon -->
         <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
         </svg>
@@ -47,12 +57,14 @@
       </span>
     </button>
     <button
+      v-if="showSliderControls && showSlider"
       type="button"
       class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
       @click="nextSlide"
       data-carousel-next
     >
       <span :class="['inline-flex items-center justify-center w-10 h-10 rounded-full', sliderControlColor, 'group-hover:bg-cyan-400 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none']">
+        <!-- Next button icon -->
         <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
         </svg>
@@ -90,10 +102,21 @@ export default {
       type: String,
       default: 'bg-blue-500',
     },
+    autoplay: {
+      type: Boolean,
+      default: false,
+    },
+    autoplayInterval: {
+      type: Number,
+      default: 3000, // 3 seconds
+    }
   },
   data() {
     return {
       currentSlide: this.initialSlide,
+      autoplayTimer: null,
+      showSlider: true,
+      showSliderControls: true,
     };
   },
   computed: {
@@ -124,7 +147,28 @@ export default {
     nextSlide() {
       this.currentSlide = (this.currentSlide + 1) % this.items.length;
     },
+    startAutoplay() {
+      if (this.autoplay) {
+        this.autoplayTimer = setInterval(() => {
+          this.nextSlide();
+        }, this.autoplayInterval);
+      }
+    },
+    stopAutoplay() {
+      clearInterval(this.autoplayTimer);
+      this.autoplayTimer = null;
+    },
+    toggleSliderControls() {
+      this.showSlider = !this.showSlider;
+      this.showSliderControls = !this.showSliderControls;
+    },
   },
+  mounted() {
+    this.startAutoplay();
+  },
+  beforeUnmount() {
+    this.stopAutoplay();
+  }
 };
 </script>
 
@@ -137,10 +181,4 @@ export default {
 .carousel-leave-to {
   opacity: 0;
 }
-/* 
-img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-} */
 </style>
