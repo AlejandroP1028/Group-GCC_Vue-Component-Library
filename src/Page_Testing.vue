@@ -98,6 +98,7 @@ button{
   border-radius: 5px; 
   cursor:pointer;
 }
+
 #main {
     display: flex;
     justify-content:baseline;
@@ -124,14 +125,14 @@ button{
 }
 #c_style1,#c_style2{
     display: flex;
-    gap: 17em;
+    gap: 20em;
 }
 h2{
     font-weight: bold;
     color:#1e40af;
 }
 #snackbar{
-    margin-left: 2.5%;
+    margin-left: -4%;
     margin-top: 5.2em;
 }
 #s_style{
