@@ -14,7 +14,7 @@
       <div class="ms-3 text-sm font-normal">
         {{ notification_message }}
       </div>
-      <button v-if="type !== 'default'" type="button" class="ms-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 focus:ring-blue-500 p-1.5 inline-flex items-center justify-center h-8 w-8 hover:bg-blue-400" :data-dismiss-target="`#toast-${type}`" aria-label="Close" @click="hideNotification">
+      <button v-if="showCloseButton" type="button" class="ms-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 focus:ring-blue-500 p-1.5 inline-flex items-center justify-center h-8 w-8 hover:bg-blue-400" :data-dismiss-target="`#toast-${type}`" aria-label="Close" @click="hideNotification">
         <span class="sr-only">
           Close
         </span>
@@ -32,7 +32,7 @@ export default {
     type: {
       type: String,
       required: true,
-      validator: (value) => ["success", "error", "warning", "default", "message"].includes(value),
+      validator: (value) => ["success", "error", "warning", "default", "message", "BlueBorder", "CyanBorder", "SkyBorder", "TealBorder"].includes(value),
     },
     notification_message: {
       type: String,
@@ -90,13 +90,36 @@ export default {
           icon: "",
         },
         message: {
-          bg: "bg-blue-200 dark:bg-gray-800",
+          bg: "bg-blue-200 dark:bg-gray",
           text: "text-blue-800 dark:text-sky-400",
           icon: "",
         },
+        BlueBorder: {
+          bg: "bg-blue-100 dark:bg-gray-800 border border-blue-900",
+          text: "text-blue-800 dark:text-sky-400",
+          icon: "",
+        },
+        CyanBorder: {
+          bg: "bg-cyan-100 dark:bg-gray-800 dark:border-cyan-400 border border-cyan-900",
+          text: "text-cyan-900 dark:text-cyan-400",
+          icon: "",
+        },
+        SkyBorder: {
+          bg: "bg-sky-100 dark:bg-gray-800 border border-sky-900",
+          text: "text-sky-900 dark:text-sky-400",
+          icon: "",
+        },
+        TealBorder: {
+          bg: "bg-teal-100 dark:bg-gray-800 border border-teal-900",
+          text: "text-teal-800 dark:text-teal-400",
+          icon: "",
+        }
       };
       return styles[this.type];
     },
+    showCloseButton() {
+      return !["default", "BlueBorder", "CyanBorder", "SkyBorder", "TealBorder"].includes(this.type);
+    }
   },
   methods: {
     hideNotification() {
@@ -104,12 +127,13 @@ export default {
     },
   },
   mounted() {
-    if (this.type === "default") {
-      setTimeout(() => {
-        this.visible = false;
-      }, 5000);
-    }
-  },
+  if (["default", "BlueBorder", "CyanBorder", "TealBorder", "SkyBorder"].includes(this.type)) {
+    setTimeout(() => {
+      this.visible = false;
+    }, 5000);
+  }
+},
+
 };
 </script>
 <style scoped>
