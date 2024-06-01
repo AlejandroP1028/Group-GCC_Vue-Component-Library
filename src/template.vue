@@ -5,28 +5,32 @@
         <PageHeader header="GCC Carousel" body="Show contextual information to your users using carousel elements based on Tailwind CSS"/>
         <Section body="The GCC Carousel component allows you to showcase a series of images or content in a visually appealing and interactive manner. It is a great way to grab users' attention and highlight important information or products on your website. With features like autoplay, navigation controls, and customizable settings, the GCC Carousel is a versatile tool for creating dynamic and engaging content sections."/>
   
-        <Section
-          @sectioncreated="addLink"
-          header="Carousel Autoplay"
-          body="The GCC Carousel is capable of automatically transitioning between slides without user interaction, providing a hands-free browsing experience."
-        >
-          <template #content>
-            <div class="flex flex-col items-center mt-4 h-full">
-              <div class="flex flex-row space-x-4">
-                <Button color="sky" @click="showBorder">Show Border</Button>
-                <Button color="cyan" @click="hideBorder">Hide Border</Button>
-              </div>
-              <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
-              </div>
-            </div>
-          </template>
-        </Section>
-
-            <Section
-            @sectioncreated="addLink"
-            header="Carousel Navigation Controls"
-            body="asdapsdkasoaskdapsdkakoasdkaosoasdskodsadspdsadsaoskdaosdkasokdaopdkasopdkaspd oadkoasodkaosdko paskdaosk adksaosdk oasdk apsdk apsdk asdasdaskdaosdkaspdkoasodpsaodaksods osakdopaksodpksaodasodaksdoaskd poaksdopaksdsaodksapdksaodkoadkasodkaspdksaodk opasdokasodkasodkasoadkodskaosdkaosdaskpdoasd opaskod aospokasodpaoskdso "
+    <Section
+      @sectioncreated="addLink"
+      header="Carousel Autoplay"
+      body="The GCC Carousel is capable of automatically transitioning between slides without user interaction, providing a hands-free browsing experience."
+    >
+      <template #content>
+        <div class="flex flex-col items-center mt-4 h-full">
+          <div class="flex flex-row space-x-4">
+            <Button color="sky" @click="showBorder">Show Border</Button>
+            <Button color="cyan" @click="hideBorder">Hide Border</Button>
+          </div>
+          <div :class="{ 'dark': isDarkMode, 'border border-blue-600/[.87]': showBorderFlag }"
+            class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg">
+            <CarouselComponent
+              :items="carouselItems"
+              :autoplay="true"
+              :borderSize="borderSize"
+              :borderColor="borderColor"
+              style="width: 1100px; height: 350px;"
             />
+          </div>
+        </div>
+      </template>
+    </Section>
+
+
             <Section
             @sectioncreated="addLink"
             header="WAsdasdkaspo"
@@ -118,6 +122,7 @@ import Section from './components/Section.vue'
 import PageLinks from './components/pageLinks.vue'; 
 import PageHeader from './components/pageHeader.vue';
 import Button from './components/Button.vue';
+import CarouselComponent from './components/Carousel.vue';
 
 export default{
     name: 'CardPage',
@@ -125,21 +130,36 @@ export default{
         PageHeader,
         Section,
         PageLinks,
-        Button
+        Button,
+        CarouselComponent,
     },
-    data(){
+    data() {
         return {
-            links:[],
+            links: [],
             isDarkMode: false,
-        }
+            showBorderFlag: false,
+            carouselItems: [
+                { src: require('@/assets/img1.png'), alt: 'First Image' },
+                { src: require('@/assets/img2.png'), alt: 'Second Image' },
+                { src: require('@/assets/img3.png'), alt: 'Third Image' },
+            ],
+            borderSize: 'border-8',
+            borderColor: 'border-blue-500',
+        };
     },
-    methods:{
+    methods: {
         addLink(header) {
-      this.links.push({ label: header });
-    },
-    toggleDarkMode() {
-      this.isDarkMode = !this.isDarkMode;
-    }
+            this.links.push({ label: header });
+        },
+        toggleDarkMode() {
+            this.isDarkMode =!this.isDarkMode;
+        },
+        showBorder() {
+            this.showBorderFlag = true;
+        },
+        hideBorder() {
+            this.showBorderFlag = false;
+        }
     }
     
 }
