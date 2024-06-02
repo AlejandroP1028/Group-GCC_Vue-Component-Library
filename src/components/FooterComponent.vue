@@ -127,7 +127,7 @@ export default defineComponent({
       
       // Footer Similarities
       footerClasses: 'bg-blue-200 rounded-lg shadow m-4 dark:bg-blue-600',
-      ulClasses: 'flex flex-wrap items-center mt-3 text-sm font-medium text-blue-800 dark:text-white sm:mt-0 pl-0px',
+      ulClasses: 'flex flex-wrap items-center float-right mt-3 text-sm font-medium text-blue-800 dark:text-white sm:mt-0',
       liClasses: 'me-4 md:me-6',
       hoverClasses: 'hover:underline',
       footerLinks: [
