@@ -90,10 +90,10 @@
     <!-- Sitemap Linked Footer -->
     <footer :class="footerClasses">
       <div :class="containerClasses">
-        <div :class="gridClasses">
+        <div :class="sitemapGridClasses">
           <div v-for="(section, index) in sections" :key="index">
             <h2 :class="sectionTitleClasses">{{ section.title }}</h2>
-            <ul :class="ulClasses">
+            <ul :class="sitemapUlClasses">
               <li v-for="(item, index) in section.items" :key="index" :class="liClasses">
                 <a href="#" :class="linkClasses">{{ item }}</a>
               </li>
@@ -201,9 +201,10 @@ export default defineComponent({
 
       // Sitemap Linked Footer Classes
       containerClasses: 'w-full max-w-screen-xl p-4 mx-auto md:py-8',
-      gridClasses: 'grid grid-cols-2 gap-8 md:grid-cols-4',
+      sitemapGridClasses: 'grid grid-cols-1 md:grid-cols-4 gap-8',
       sectionTitleClasses: 'mb-6 text-sm font-semibold text-blue-800 uppercase dark:text-white',
-      linkClasses: 'text-blue-800 dark:text-white font-medium hover:underline',
+      sitemapUlClasses: 'space-y-4 text-blue-800 dark:text-white font-medium',
+      linkClasses: 'hover:underline',
       footerBottomClasses: 'flex items-center justify-between pt-6 mt-6 border-t border-blue-800 dark:border-white',
       footerTextClasses: 'text-sm text-blue-800 dark:text-white',
       socialLinksClasses: 'flex space-x-6 sm:justify-center',
