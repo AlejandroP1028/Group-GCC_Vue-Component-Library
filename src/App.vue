@@ -109,18 +109,16 @@
 </template>
 
 <script>
-import BadgeComponent from './components/BadgeComponent.vue';
-import BreadcrumbComponent from './components/BreadcrumbComponent.vue';
+import Progress from './components/Progress.vue';
+// Ensure Button is imported or defined here if needed
 
 export default {
   name: 'App',
   components: {
-    BadgeComponent,
-    BreadcrumbComponent
+    Progress,
   },
   data() {
     return {
-      badgeNumber: 1,
       isDarkMode: false,
       selectedDivider: 'greaterthan', //default divider
       selectedColor: 'sky', //default solid bg
@@ -132,20 +130,27 @@ export default {
     };
   },
   methods: {
-    updateBadgeNumber() {},
     toggleDarkMode() {
-      this.isDarkMode = !this.isDarkMode;
-    }
-  }
-}
+      this.isDarkMode =!this.isDarkMode;
+      this.updateDarkModePreference();
+    },
+    checkDarkModePreference() {
+      const darkModePreference = localStorage.getItem('darkMode');
+      if (darkModePreference) {
+        this.isDarkMode = JSON.parse(darkModePreference);
+      }
+    },
+    updateDarkModePreference() {
+      localStorage.setItem('darkMode', JSON.stringify(this.isDarkMode));
+    },
+  },
+};
 </script>
 
 <style scoped>
-.badge-button {
-  @apply inline-block py-2 px-4 text-base font-bold rounded bg-transparent border-2 border-sky-500 text-black dark:text-white cursor-pointer mr-2 dark:bg-sky-700;
+.dark {
+  background-color: #121212;
+  color: #ffffff;
 }
 
-.badge-button:hover {
-  @apply bg-blue-200 dark:bg-blue-800 border-blue-200 dark:border-blue-800 text-blue-600 dark:text-white;
-}
 </style>
