@@ -32,7 +32,7 @@ export default {
     type: {
       type: String,
       required: true,
-      validator: (value) => ["success", "error", "warning", "default", "message", "BlueBorder", "CyanBorder", "SkyBorder", "TealBorder"].includes(value),
+      validator: (value) => ["success", "error", "warning", "default", "message", "BlueBorder", "CyanBorder", "SkyBorder", "TealBorder", "dismiss"].includes(value),
     },
     notification_message: {
       type: String,
@@ -86,6 +86,11 @@ export default {
           icon: "bg-yellow-100 dark:bg-yellow-800",
         },
         default: {
+          bg: "bg-blue-200 dark:bg-blue-800",
+          text: "text-blue-800 dark:text-blue-200",
+          icon: "",
+        },
+        dismiss: {
           bg: "bg-blue-200 dark:bg-blue-800",
           text: "text-blue-800 dark:text-blue-200",
           icon: "",
