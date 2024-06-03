@@ -4,7 +4,7 @@
       <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 rounded-full" :class="notificationStyles.icon">
         <svg class="w-5 h-5 rounded-lg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path v-if="type === 'success'" d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-          <path v-if="type === 'error'" d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z"/>
+          <path v-if="type === 'error'" d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z"/>
           <path v-if="type === 'warning'" d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z"/>
         </svg>
         <svg v-if="type === 'message'" class="w-5 h-5 rounded-lg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 20" transform="rotate(45)">
@@ -85,33 +85,33 @@ export default {
           icon: "bg-yellow-100 dark:bg-yellow-800",
         },
         default: {
-          bg: "bg-blue-800 dark:bg-blue-500",
-          text: "text-blue-100 dark:text-sky-100",
+          bg: "bg-blue-200 dark:bg-blue-800",
+          text: "text-blue-800 dark:text-blue-200",
           icon: "",
         },
         message: {
-          bg: "bg-blue-200 dark:bg-gray",
-          text: "text-blue-800 dark:text-sky-400",
+          bg: "bg-blue-200 dark:bg-blue-800",
+          text: "text-blue-800 dark:text-blue-200",
           icon: "",
         },
         BlueBorder: {
-          bg: "bg-blue-100 dark:bg-gray-800 border border-blue-900",
-          text: "text-blue-800 dark:text-sky-400",
+          bg: "bg-blue-200 dark:bg-blue-700 dark:border-blue-300 border border-blue-800",
+          text: "text-blue-800 dark:text-blue-200",
           icon: "",
         },
         CyanBorder: {
-          bg: "bg-cyan-100 dark:bg-gray-800 dark:border-cyan-400 border border-cyan-900",
-          text: "text-cyan-900 dark:text-cyan-400",
+          bg: "bg-cyan-100 dark:bg-cyan-700 dark:border-cyan-300 border border-cyan-800",
+          text: "text-cyan-800 dark:text-cyan-200",
           icon: "",
         },
         SkyBorder: {
-          bg: "bg-sky-100 dark:bg-gray-800 border border-sky-900",
-          text: "text-sky-900 dark:text-sky-400",
+          bg: "bg-sky-100 dark:bg-sky-700 dark:border-sky-300 border border-sky-800",
+          text: "text-sky-800 dark:text-sky-200",
           icon: "",
         },
         TealBorder: {
-          bg: "bg-teal-100 dark:bg-gray-800 border border-teal-900",
-          text: "text-teal-800 dark:text-teal-400",
+          bg: "bg-teal-100 dark:bg-teal-700 dark:border-teal-300 border border-teal-800",
+          text: "text-teal-800 dark:text-teal-200",
           icon: "",
         }
       };
