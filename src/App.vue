@@ -89,26 +89,29 @@
 </template>
 
 <script>
-import Button from './components/Button.vue';
-import ButtonGroup from './components/ButtonGroup.vue';
+import Progress from './components/Progress.vue';
+// Ensure Button is imported or defined here if needed
 
 export default {
   name: 'App',
   components: {
-    Button,
-    ButtonGroup,
+    Progress,
   },
   data() {
     return {
       isDarkMode: false,
+      selectedDivider: 'greaterthan', //default divider
+      selectedColor: 'sky', //default solid bg
+      breadcrumbItems: [
+        { text: 'src', href: '#' },
+        { text: 'components', href: '#' },
+        { text: 'BreadcrumbComponent.vue' }
+      ]
     };
-  },
-  mounted() {
-    this.checkDarkModePreference();
   },
   methods: {
     toggleDarkMode() {
-      this.isDarkMode = !this.isDarkMode;
+      this.isDarkMode =!this.isDarkMode;
       this.updateDarkModePreference();
     },
     checkDarkModePreference() {
@@ -120,50 +123,10 @@ export default {
     updateDarkModePreference() {
       localStorage.setItem('darkMode', JSON.stringify(this.isDarkMode));
     },
-    showMessages() {
-      const message = {
-        sender: 'John',
-        content: 'Hello there! How are you?',
-        timestamp: new Date().toLocaleString(),
-      };
-      const messageString = `New message received:\nSender: ${message.sender}\nContent: ${message.content}\nTimestamp: ${message.timestamp}`;
-      alert(messageString);
-    },
-    showNotifications() {
-      const notification = {
-        title: 'New Notification',
-        content: 'You have a new notification! Click here to view.',
-        timestamp: new Date().toLocaleString(),
-      };
-      const notificationString = `Title: ${notification.title}\nContent: ${notification.content}\nTimestamp: ${notification.timestamp}`;
-      alert(notificationString);
-    },
-    showAlerts() {
-      alert('You have a new alert!');
-    },
-  },
-  computed: {
-    profileButtonClasses() {
-      return {
-        'text-blue-800 bg-blue-200': !this.isDarkMode,
-        'text-blue-100 bg-gray-800': this.isDarkMode,
-      };
-    },
-    settingsButtonClasses() {
-      return {
-        'text-blue-800 bg-blue-200': !this.isDarkMode,
-        'text-blue-100 bg-gray-800': this.isDarkMode,
-      };
-    },
-    downloadsButtonClasses() {
-      return {
-        'text-blue-800 bg-blue-200': !this.isDarkMode,
-        'text-blue-100 bg-gray-800': this.isDarkMode,
-      };
-    },
   },
 };
 </script>
+
 <style scoped>
 .dark {
   background-color: #121212;
