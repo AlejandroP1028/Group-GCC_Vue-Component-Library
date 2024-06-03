@@ -41,7 +41,7 @@ export default {
     position: {
       type: String,
       default: 'bottom-right',
-      validator: (value) => ['top-left', 'top-right', 'bottom-right', 'bottom-left', 'center', 'pTop-left', 'pTop-right', 'pBottom-right', 'pBottom-left', 'pCenter'].includes(value),
+      validator: (value) => ['top-left', 'top-right', 'bottom-right', 'bottom-left', 'center', 'pTop-left', 'pTop-right', 'pBottom-right', 'pBottom-left', 'pCenter','centered'].includes(value),
     },
   },
   data() {
@@ -57,6 +57,7 @@ export default {
         'bottom-right': 'bottom-4 right-4',
         'bottom-left': 'bottom-4 left-4',
         'center': 'top- left-1/2 transform -translate-x-1/2',
+        'centered': 'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2',
         'pTop-left': 'top-2 left-2',
         'pCenter': 'top-2 left-1/2 transform -translate-x-1/2',
         'pTop-right': 'top-2 right-2',

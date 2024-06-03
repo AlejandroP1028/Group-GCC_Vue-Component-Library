@@ -4,34 +4,34 @@
     <div class="relative w-auto mb-16">
       <PageHeader :class="'flex-none'" header="GCC Notification" body="Show contextual information to your users using notification elements based on Tailwind CSS"/>
       <Section body="The GCC notification component is a versatile tool for displaying various types of messages to users, including warnings, success, errors, default notifications, and general information. Each notification type is designed to stand out, ensuring that users receive important feedback clearly and promptly, thereby enhancing the overall user experience and communication on the webpage."/>
-      <Section header="Default Notification" @sectioncreated="addLink" body="The GCC notification component features a default notification with different styles that seamlessly fades out for automatic dismissal.">
+      <Section header="Default Notification" @sectioncreated="addLink" body="The GCC notification component features a default notification style that seamlessly fades out for automatic dismissal.">
         <template #content>
           <div class="flex flex-col items-center mt-4 h-full">
             <div class="flex space-x-4">
-              <Button color="blue" :class="'w-9/10'" @click="showNotification">Show Notification</Button>
+              <Button color="blue" :class="'w-9/10'" @click="showNotification">Show Default Notification</Button>
             </div>
             <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
-              <Notifications v-if="notificationVisible" type="default" notification_message="This is a default notification." position="pCenter"/> 
-              <Notifications v-if="notificationVisible" type="BlueBorder" notification_message="This is a default notification." position="pTop-right"/>       
-              <Notifications v-if="notificationVisible" type="CyanBorder" notification_message="This is a default notification." position="pTop-left"/>
-              <Notifications v-if="notificationVisible" type="SkyBorder" notification_message="This is a default notification." position="pBottom-left"/>     
-              <Notifications v-if="notificationVisible" type="TealBorder" notification_message="This is a default notification." position="pBottom-right"/>      
+              <Notifications v-if="notificationVisible" type="default" notification_message="This is a default notification." position="centered"/> 
             </div>
           </div>
         </template>
       </Section>
-      <Section header="Notification Types" @sectioncreated="addLink" body="The GCC notification component features a default notification style that seamlessly fades out for automatic dismissal.">
+      <Section header="Default Notification Style" @sectioncreated="addLink" body="The GCC notification component features a default notification with 5 different styles that seamlessly fades out for automatic dismissal.">
         <template #content>
           <div class="flex flex-col items-center mt-4 h-full">
             <div class="flex space-x-4">
-              <Button color="blue" :class="'w-9/10'" @click="showNotificationTypes">Show Notification</Button>
+              <Button color="blue" :class="'w-9/10'" @click="showNotificationDefault">Default</Button>
+              <Button color="blue" :class="'w-9/10'" @click="showNotificationBlue">Blue</Button>
+              <Button color="sky" :class="'w-9/10'" @click="showNotificationSky">Sky</Button>
+              <Button color="teal" :class="'w-9/10'" @click="showNotificationTeal">Teal</Button>
+              <Button color="cyan" :class="'w-9/10'" @click="showNotificationCyan">Cyan</Button>
             </div>
             <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
-              <Notifications v-if="notificationVisibled" type="default" notification_message="This is a default notification." position="pCenter"/> 
-              <Notifications v-if="notificationVisibled"  type="success" notification_message="This is a success notification." position="pTop-right"/>       
-              <Notifications v-if="notificationVisibled" type="warning" notification_message="This is a warning notification." position="pTop-left"/>
-              <Notifications v-if="notificationVisibled" type="error" notification_message="This is an error notification." position="pBottom-left"/>     
-              <Notifications v-if="notificationVisibled" type="message" notification_message="This is a message notification." position="pBottom-right"/>    
+              <Notifications v-if="notificationDefaultVisible" type="default" notification_message="This is a default notification." position="pCenter"/> 
+              <Notifications v-if="notificationBlueBorderVisible"  type="BlueBorder" notification_message="This is a blue bordered default notification." position="pTop-right"/>       
+              <Notifications v-if="notificationCyanBorderVisible" type="CyanBorder" notification_message="This is a cyan bordered default notification." position="pTop-left"/>
+              <Notifications v-if="notificationSkyBorderVisible" type="SkyBorder" notification_message="This is a sky bordered default notification." position="pBottom-left"/>     
+              <Notifications v-if="notificationTealBorderVisible" type="TealBorder" notification_message="This is a teal bordered default notification." position="pBottom-right"/>    
             </div>
           </div>
         </template>
@@ -106,6 +106,11 @@ export default {
       defaultDark: false,
       notificationVisible: false,
       notificationVisibled: false,
+      notificationDefaultVisible: false,
+      notificationBlueBorderVisible: false,
+      notificationCyanBorderVisible: false,
+      notificationSkyBorderVisible: false,
+      notificationTealBorderVisible: false,
       notificationPositionsA: [],
       notificationPositionsP: []
     };
@@ -119,6 +124,21 @@ export default {
     },
     showNotification() {
       this.notificationVisible = !this.notificationVisible;
+    },
+    showNotificationDefault() {
+      this.notificationDefaultVisible = !this.notificationDefaultVisible;
+    },
+    showNotificationBlue() {
+      this.notificationBlueBorderVisible = !this.notificationBlueBorderVisible;
+    },
+    showNotificationSky() {
+      this.notificationSkyBorderVisible = !this.notificationSkyBorderVisible;
+    },
+    showNotificationCyan() {
+      this.notificationCyanBorderVisible = !this.notificationCyanBorderVisible;
+    },
+    showNotificationTeal() {
+      this.notificationTealBorderVisible = !this.notificationTealBorderVisible;
     },
     showNotificationTypes() {
       this.notificationVisibled = !this.notificationVisibled;
