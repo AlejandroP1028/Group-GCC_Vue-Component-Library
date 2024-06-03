@@ -87,7 +87,7 @@
             </div>
             <div class="w-1/3 border-l-2 border-gray-300 p-5">
               <p class="text-gray-800/[.87] dark:text-gray-200/[.87] font-medium text-md">Increase the counter value:</p>
-              <input type="range" min="1" max="99" v-model="badgeNumber" @input="updateBadgeNumber" class="h-2 w-40 appearance-none rounded-lg bg-gray-300 mt-1 outline-none dark:bg-gray-800">
+              <input type="range" min="1" max="99" v-model="badgeNumber" @input="updateBadgeNumber" class="h-2 w-40 appearance-none rounded-lg bg-gray-300 mt-1 outline-none dark:bg-gray-900">
             </div>
           </div>
         </template>
