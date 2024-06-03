@@ -5,7 +5,7 @@
         :class="[buttonClasses, { 'cursor-not-allowed opacity-50': disabled }]" 
         :disabled="disabled" 
         type="button">
-          Dropdown
+          {{ buttonText }}
           <svg class="inline-block ml-2" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 10l5 5 5-5H7z" fill="currentColor"/>
           </svg>
@@ -44,6 +44,10 @@
           return ['default', 'sky', 'cyan', 'teal'].includes(value);
         },
         default: 'default'
+      },
+      buttonText: {
+        type: String,
+        default: 'Dropdown',
       },
       size: {
         type: String,

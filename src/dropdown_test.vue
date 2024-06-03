@@ -10,6 +10,7 @@
       </p>
       <div class="absolute w-full">
         <dropdown_component 
+        buttonText="tysm-"
         type="teal" 
         size="w" 
         :menuItems="menuItems" 
