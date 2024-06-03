@@ -1,5 +1,6 @@
 <template>
-  <div v-if="type === 'unorderedlist' && layout === 'horizontal'"  class="border border-opacity-5 border-blue-700 bg-blue-100 rounded-sm md:px-5 md:py-4 w-full dark:bg-gray-900">
+  <div :class="computedClass">
+  <div v-if="type === 'unorderedlist' && layout === 'horizontal'" class="border border-opacity-5 border-blue-700 bg-blue-100 rounded-sm md:px-5 md:py-4 w-full dark:bg-gray-900">
   <ul v-if="items && items.length" class="space-x-5 text-lg text-blue-800 dark:text-sky-400 flex flex-wrap justify-center">
     <li v-for="(item, index) in items" :key="index">
       {{ item }}
@@ -88,6 +89,7 @@
       </li>
     </ul>
   </div>
+</div>
 </template>
 
 <script>
@@ -114,7 +116,17 @@ props: {
     default: 'vertical',
     validator: value => ['horizontal', 'vertical'].includes(value),
   },
+  position: {
+      type: String,
+      default: 'centered',
+      validator: (value) => value === 'centered',
+    }
 },
+computed: {
+    computedClass() {
+      return 'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2';
+    },
+  }
 };
 </script>
 
