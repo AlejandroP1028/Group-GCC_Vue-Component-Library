@@ -1,13 +1,32 @@
 <template>
     <div :class="{'dark': isDarkMode}" class="overflow-auto h-screen w-screen bg-gray-50 dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <div class="flex items-center justify-center min-h-screen">
-        <div class="float-left">
-            <div class="absolute top-10 left-10 m-16px z-1000 ">
-                <h1 class="text-gray-900 dark:text-gray-200 mb-4 text-5xl font-bold">GCC Toggle</h1>
-                <p class="text-gray-900 dark:text-gray-200 pt-3 text-1l font-medium">Show contextual information to your users using toggle elements based on Tailwind CSS</p>
-                <p class="text-gray-900 dark:text-gray-200 text-1l font-medium">The Toggle component collects "yes" or "no" responses from users with various sizes, styles, colors, and dark mode support using Tailwind CSS utility classes.</p>
+
+        <div class="flex flex-col items-center">
+
+            <div class="absolute top-10 left-24 m-16px z-1000">
+              <div class="text-gray-900 dark:text-gray-200">
+                <h1 class=" mb-4 text-5xl font-bold">GCC Toggle</h1>
+                <p class="pt-3 text-1l font-medium">Show contextual information to your users using toggle elements based on Tailwind CSS</p>
+                <div class="bg-blue-500 h-2 rounded-full my-4"></div>
+                <p class="text-gray-900 dark:text-gray-200 text-1l font-medium pt-10">The GCC toggle component can be used to switch between a binary state of true or false using a single click, available in multiple sizes, variants, and colors.</p>
+              </div>
             </div>
+
           <div class="flex flex-col my-4 items-center">
+            <div class="absolute top-72 left-24 m-16px">
+            <h1 class="mb-2 text-3xl font-bold">Sample Toggle</h1>
+            <p class="text-1l font-medium">Start by using the GCC toggle component example, modifying it into a checkbox element that allows the user to select either true or false.</p>
+              <div class="flex justify-center pt-10">
+                <ToggleComponent
+                    label="Toggle Me"
+                    size="default"
+                    type="blue"
+                    :isChecked="false"
+                  />
+              </div>
+            </div>
+
             <h1 class="text-gray-900 dark:text-gray-200 mb-4 font-medium">Checked and Disabled</h1>
             <div class="flex flex-wrap justify-center space-x-6 mb-6">
               <ToggleComponent
@@ -17,12 +36,7 @@
                 :isChecked="isDarkMode"
                 type="blue"
               />
-              <ToggleComponent
-                label="Another Toggle"
-                size="default"
-                type="blue"
-                :isChecked="false"
-              />
+              
               <ToggleComponent
                 label="Disabled Toggle"
                 size="default"
