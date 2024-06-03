@@ -85,8 +85,8 @@ export default {
           icon: "bg-yellow-100 dark:bg-yellow-800",
         },
         default: {
-          bg: "bg-blue-800 dark:bg-gray-800",
-          text: "text-blue-100 dark:text-sky-400",
+          bg: "bg-blue-800 dark:bg-blue-500",
+          text: "text-blue-100 dark:text-sky-100",
           icon: "",
         },
         message: {
