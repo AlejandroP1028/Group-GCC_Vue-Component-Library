@@ -95,7 +95,7 @@
             <h2 :class="sectionTitleClasses">{{ section.title }}</h2>
             <ul :class="sitemapUlClasses">
               <li v-for="(item, index) in section.items" :key="index" :class="liClasses">
-                <a href="#" :class="linkClasses">{{ item }}</a>
+                <a href="#" :class="hoverClasses">{{ item }}</a>
               </li>
             </ul>
           </div>
@@ -115,6 +115,15 @@
         </div>
       </div>
     </footer>
+
+    <footer :class="footerClasses">
+    <span :class="spanClass">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
+        <ul :class="ulClasses">
+          <li v-for="(item, index) in footerLinks" :key="index" :class="liClasses">
+            <a :href="item.url" :class="hoverClasses">{{ item.label }}</a>
+          </li>
+        </ul>
+  </footer>
   </div>
 </template>
 
