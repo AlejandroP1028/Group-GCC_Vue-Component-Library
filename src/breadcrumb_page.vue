@@ -31,13 +31,12 @@
                 > 
                     <template #content>
                         <div class="flex justify-center mt-5"> 
-                            <label for="bgColor" class="text-gray-800/[.87] dark:text-gray-200/[.87] font-medium text-md"> Select background color: </label>
-                            <select id="bgColor" v-model="selectedColor" class="ml-2 rounded bg-white dark:bg-gray-800 dark:text-white">
-                            <option value="cyan"> Cyan </option>
-                            <option value="blue"> Blue </option>
-                            <option value="teal"> Teal </option>
-                            <option value="sky"> Sky </option>
-                            </select>
+                            <DropdownComponent
+                                v-model="selectedColor"
+                                :menu-items="dropdownItems"
+                                buttonText="Select background color"
+                                size="s"
+                                />
                         </div>
                         <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
                             <BreadcrumbComponent :items="breadcrumbItems" type="solidbg" divider="/" :bgColor="selectedColor"/>
@@ -102,6 +101,7 @@ import PageHeader from './components/pageHeader.vue';
 import PageLinks from './components/pageLinks.vue'; 
 import Button from './components/Button.vue';
 import BreadcrumbComponent from './components/BreadcrumbComponent.vue';
+import DropdownComponent from './components/Dropdown.vue';
 
 export default{
     name: 'breadcrumb_page',
@@ -110,7 +110,8 @@ export default{
         PageLinks, 
         BreadcrumbComponent,
         Section,
-        Button
+        Button,
+        DropdownComponent
     },
     data(){
         return{
@@ -122,6 +123,12 @@ export default{
                 { text: 'src', href: '#' },
                 { text: 'components', href: '#' },
                 { text: 'BreadcrumbComponent.vue' }
+            ],
+            dropdownItems: [
+                { label: 'Cyan', value: 'cyan', type:'default' },
+                { label: 'Blue', value: 'blue', type:'default' },
+                { label: 'Teal', value: 'teal', type:'default' },
+                { label: 'Sky', value: 'sky', type:'default' }
             ]
         }
     },

@@ -65,22 +65,31 @@
         <template #content>
           <div class="flex justify-center flex-row space-x-4">
             <div class="flex justify-center flex-col space-y-2 p-5">
-              <ToggleComponent label="Default Badge" v-model="toggles.default" @change="handleToggle('default')" :disabled="toggles.defaultDisabled"></ToggleComponent>
-              <ToggleComponent label="Dot Badge" v-model="toggles.dot" @change="handleToggle('dot')" :disabled="toggles.dotDisabled"></ToggleComponent>
+              <ToggleComponent label="Default Badge" type="sky" v-model="toggles.default" @change="handleToggle('default')" :disabled="toggles.defaultDisabled"></ToggleComponent>
+              <ToggleComponent label="Dot Badge" type="sky" v-model="toggles.dot" @change="handleToggle('dot')" :disabled="toggles.dotDisabled"></ToggleComponent>
             </div>
             <div class="flex justify-center flex-col space-y-2 p-5">
-              <ToggleComponent label="Pill Badge" v-model="toggles.pill" @change="handleToggle('pill')" :disabled="toggles.pillDisabled"></ToggleComponent>
-              <ToggleComponent label="Bordered Badge" v-model="toggles.bordered" @change="handleToggle('bordered')"></ToggleComponent>
+              <ToggleComponent label="Pill Badge" type="sky" v-model="toggles.pill" @change="handleToggle('pill')" :disabled="toggles.pillDisabled"></ToggleComponent>
+              <ToggleComponent label="Bordered Badge" type="sky" v-model="toggles.bordered" @change="handleToggle('bordered')"></ToggleComponent>
             </div>
             <div class="flex justify-center flex-col space-y-2 border-l-2 border-gray-300 p-5">
-              <DropdownComponent> Colors </DropdownComponent>
+              <DropdownComponent 
+                buttonText="Colors"
+                type="sky" 
+                size="s" 
+                :menuItems="menuItems" 
+                :isDark="isDarkMode" 
+                bordered="true"
+                @item-selected="handleColorChange">
+                
+              </DropdownComponent>
             </div>
           </div>
           <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
             <div class="w-2/3 flex items-center justify-center">
-              <Button>
+              <Button color="sky">
                 Button
-                <BadgeComponent :type="badgeType" color="blue" :bordered="toggles.bordered" :class="['relative ml-1', badgeNumber > 0 ? 'visible' : 'invisible']">
+                <BadgeComponent :type="badgeType" :color="badgeColors" :bordered="toggles.bordered" :class="['relative ml-1', badgeNumber > 0 ? 'visible' : 'invisible']">
                   {{ badgeNumber }}
                 </BadgeComponent>
               </Button>
@@ -100,13 +109,13 @@
       > 
         <template #content>
           <div class="flex justify-center flex-row space-x-4 mt-6">
-            <ToggleComponent label="Dot Badge" type="blue" @change="toggleDot" :disabled="displayBadge.number || displayBadge.icon"></ToggleComponent>
-            <ToggleComponent label="Number Badge" type="blue" @change="toggleNum" :disabled="displayBadge.dot || displayBadge.icon"></ToggleComponent>
-            <ToggleComponent label="Icon Badge" type="blue" @change="toggleIcon" :disabled="displayBadge.dot || displayBadge.number"></ToggleComponent>
+            <ToggleComponent label="Dot Badge" type="sky" @change="toggleDot" :disabled="displayBadge.number || displayBadge.icon"></ToggleComponent>
+            <ToggleComponent label="Number Badge" type="sky" @change="toggleNum" :disabled="displayBadge.dot || displayBadge.icon"></ToggleComponent>
+            <ToggleComponent label="Icon Badge" type="sky" @change="toggleIcon" :disabled="displayBadge.dot || displayBadge.number"></ToggleComponent>
           </div>
           <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
             <div class="relative">
-              <Button>
+              <Button color="sky">
                 Button
                 <BadgeComponent type="dot" color="red" position v-if="displayBadge.dot"></BadgeComponent>
                 <BadgeComponent type="dot" color="blue" bordered position v-if="displayBadge.number"> 2 </BadgeComponent>
@@ -151,6 +160,7 @@ import PageHeader from './components/pageHeader.vue';
 import BadgeComponent from './components/BadgeComponent.vue';
 import PageLinks from './components/pageLinks.vue';
 import ToggleComponent from './components/ToggleComponent.vue';
+import DropdownComponent from './components/Dropdown.vue';
 
 export default {
   name: 'badge_page',
@@ -160,7 +170,8 @@ export default {
     PageHeader,
     BadgeComponent,
     PageLinks,
-    ToggleComponent
+    ToggleComponent,
+    DropdownComponent
   },
   data() {
     return {
@@ -180,7 +191,14 @@ export default {
         defaultDisabled: false,
         dotDisabled: false,
         pillDisabled: false
-      }
+      },
+      menuItems: [
+        { label: 'Blue', type:'default'},
+        { label: 'Sky', type:'default'},
+        { label: 'Teal', type:'default'},
+        { label: 'Cyan', type:'default'}
+      ],
+      badgeColors: 'blue',
     };
   },
   computed: {
@@ -258,7 +276,10 @@ export default {
     },
     updateBadgeNumber(event) {
       this.badgeNumber = event.target.value;
-    }
+    },
+    handleColorChange(color) {
+      this.badgeColors = color; 
+    },
   }
 };
 </script>

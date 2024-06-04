@@ -9,7 +9,18 @@
         The Dropdown Component is a versatile element designed for displaying a list of options or actions in a toggleable menu. It supports different types of notifications such as success, error, warning, and info messages, making it essential for user interaction.
       </p>
       <div class="absolute w-full">
-        <dropdown_component type="sky" size="w" :isDark="isDarkMode" bordered="true" :menuItems="menuItems"></dropdown_component>
+        <dropdown_component 
+        buttonText="tysm-"
+        type="teal" 
+        size="w" 
+        :menuItems="menuItems" 
+        menuWidth="w-48" 
+        menuAlignment="center"
+        @list-item-click="handleListItemClick"
+        @toggle-change="handleToggleChange"
+        @checkbox-change="handleCheckboxChange"
+        :bordered="true"
+        />
       </div>
       <h1 :class="['text-2xl', 'mb-2', 'mt-4', 'font-bold', 'text-center', headingColor]">Dropdown Customizations</h1>
     </div>
@@ -18,7 +29,6 @@
 
 <script>
 import dropdown_component from './components/Dropdown.vue';
-
 export default {
   name: 'DropdownTest',
   components: {
@@ -30,17 +40,29 @@ export default {
       headingColor: 'text-gray-900 dark:text-gray-100',
       paragraphColor: 'text-gray-700 dark:text-gray-300',
       menuItems: [
-        { label: 'ackkkkkk', href: '#', disabled: false, action: () => console.log('ackkkkkk clicked') },
-        { label: 'whaaaaaaaa', href: '#', disabled: false, action: () => console.log('whaaaaaaaa clicked') },
-        { label: 'hmphhhhhh', href: '#', disabled: true },
-        { label: 'reeeeeeeee', href: '#', disabled: true }
+        { label: 'ackkkkkk', disabled: false, type: 'checkbox' },
+        { label: 'whaaaaaaaa', disabled: false, type: 'checkbox' },
+        { label: 'hmphhhhhh', disabled: false, divider: true, customMargin: '0.5', type: 'checkbox', toggleHandler: 'toggleDarkMode' },
+        { label: 'reeeeeeeee', disabled: false, type: 'toggle' }
       ]
     };
   },
   methods: {
     toggleDarkMode() {
-      // Toggle dark mode
       this.isDarkMode = !this.isDarkMode;
+    },
+    handleListItemClick(item) {
+      console.log('List item clicked:', item.label);
+    },
+    handleToggleChange(item) {
+      if(item.toggleHandler === 'toggleDarkMode'){
+        this.toggleDarkMode();
+      }
+    },
+    handleCheckboxChange(item) {
+      if(item.toggleHandler === 'toggleDarkMode'){
+        this.toggleDarkMode();
+      }
     }
   }
 }
