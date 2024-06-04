@@ -1,117 +1,107 @@
 <template>
-  <div :class="{ 'dark': isDarkMode }">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <div class="px-24 py-10 text-left dark:bg-gray-900 font-sans">
-      <section id="badgeComponent">
-        <button @click="toggleDarkMode" class="hover:bg-gray-200 text-black dark:text-white p-2 rounded-full">
-          <i :class="isDarkMode ? 'fas fa-sun text-2xl' : 'fas fa-moon text-2xl'"></i>
-        </button>
-        <p class="font-bold text-6xl mb-5 text-black dark:text-white"> Badge </p>
-        <p class="text-black dark:text-white text-lg"> A component used to provide information on new updates and notifications. It is used with other components and cannot be used alone. </p>
-        <h1 class="justify-center mt-2 flex items-center text-black dark:text-white text-lg bg-blue-100 dark:bg-gray-700 p-7 px-10 mb-5 overflow-x-auto">
-          Example of an inline badge in a heading
-          <BadgeComponent> New </BadgeComponent>
-        </h1>
-        <p class="text-black dark:text-white text-lg mb-2"> Bordered badge </p>
-        <div class="p-10 mb-5 bg-blue-100 dark:bg-gray-700 flex justify-center items-center overflow-x-auto">
-          <BadgeComponent type="bordered" color="blue" class="mr-3"> Blue </BadgeComponent>
-          <BadgeComponent type="bordered" color="cyan" class="mr-3"> Cyan </BadgeComponent>
-          <BadgeComponent type="bordered" color="sky" class="mr-3"> Sky </BadgeComponent>
-          <BadgeComponent type="bordered" color="teal" class="mr-3"> Teal </BadgeComponent>
-        </div>
-        <p class="text-black dark:text-white text-lg mb-2"> Pill badge </p>
-        <div class="p-10 mb-5 bg-blue-100 dark:bg-gray-700 flex justify-center items-center overflow-x-auto">
-          <BadgeComponent type="pill" color="blue" class="mr-3"> Blue </BadgeComponent>
-          <BadgeComponent type="pill" color="cyan" class="mr-3"> Cyan </BadgeComponent>
-          <BadgeComponent type="pill" color="sky" class="mr-3"> Sky </BadgeComponent>
-          <BadgeComponent type="pill" color="teal" class="mr-3"> Teal </BadgeComponent>
-        </div>
-        <p class="text-black dark:text-white text-2xl font-bold mb-2"> Examples of badge in a button </p>
-        <p class="text-black dark:text-white text-lg mb-2"> Floating badge </p>
-        <div class="p-7 mb-5 bg-blue-100 dark:bg-gray-700 text-center overflow-x-auto">
-          <div class="relative inline-block mr-10 m-5">
-            <button class="badge-button bg-blue-500 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 w-52 text-white font-bold py-2 px-4 rounded mr-2">
-              Dot Badge
-              <BadgeComponent type="dot" position> </BadgeComponent>
-            </button>
-          </div>
-          <div class="relative inline-block mr-10 m-5">
-            <button class="badge-button bg-blue-500 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 w-52 text-white font-bold py-2 px-4 rounded mr-2">
-              Number Badge
-              <BadgeComponent type="number" position> 7 </BadgeComponent>
-            </button>
-          </div>
-          <div class="relative inline-block mr-10 m-5">
-            <button class="badge-button bg-blue-500 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 w-52 text-white font-bold py-2 px-4 rounded mr-2">
-              Icon Badge
-              <BadgeComponent type="icon" position> <i class="fas fa-envelope text-white"></i> </BadgeComponent>
-            </button>
-          </div>
-        </div>
-        <p class="text-black dark:text-white text-lg mb-2"> Inline badge </p>
-        <div class="mb-10 bg-blue-100 dark:bg-gray-700 flex justify-center items-center overflow-x-auto">
-          <div class="p-10 flex items-center grid grid-cols-2 border-r-2 border-white dark:border-gray-800">
-            <button class="badge-button bg-blue-500 hover:bg-blue-700 dark:bg-sky-700 dark:hover:bg-blue-800 w-52 text-white font-bold rounded mr-2">
-              Messages
-              <BadgeComponent type="number" :class="['relative ml-1', badgeNumber > 0 ? 'visible' : 'invisible']"> {{ badgeNumber }} </BadgeComponent>
-            </button>
-          </div>
-          <div class="flex items-center justify-center"> 
-            <p class="text-black dark:text-white text-lg ml-10 mr-5"> Increase the counter value: </p>
-            <input type="range" min="1" max="99" v-model="badgeNumber" @input="updateBadgeNumber" class="h-2 w-40 appearance-none rounded-lg bg-white mt-1 outline-none dark:bg-gray-800">
-          </div>
-        </div>
-      </section> 
-
-      <section id="breadcrumbComponent"> 
-        <p class="font-bold text-6xl mb-5 text-black dark:text-white"> Breadcrumb </p>
-        <p class="text-black dark:text-white text-lg"> A navigational component that provides users with a trail of links that represent the path they have taken to arrive at their current location within a website or application. </p>
-        <p class="text-black dark:text-white text-2xl font-bold mt-5 mb-2"> Default breadcrumb </p>
-        <div class="justify-center mt-2 flex items-center text-black dark:text-white text-lg bg-blue-100 dark:bg-gray-700 p-10 mb-5 overflow-x-auto"> 
-          <BreadcrumbComponent :items="breadcrumbItems" />
-        </div>
-        <p class="text-black dark:text-white text-lg mb-2"> With a solid background </p>
-        <div class="justify-center mt-2 flex items-center text-black dark:text-white text-lg bg-blue-100 dark:bg-gray-700 p-10 mb-5 overflow-x-auto"> 
-          <BreadcrumbComponent :items="breadcrumbItems" type="solidbg" divider="/"/>
-        </div>
-        <p class="text-black dark:text-white text-lg mb-2"> Customize divider </p>
-        <div class="grid grid-cols-5 mt-2 text-black dark:text-white text-lg bg-blue-100 dark:bg-gray-700 mb-5 overflow-x-auto">
-          <div class="flex-shrink-0 flex items-center justify-center col-span-3 border-r-2 border-solid border-white dark:border-gray-800"> 
-            <BreadcrumbComponent type="solidbg" :items="breadcrumbItems" :divider="selectedDivider"/>
-          </div>
-          <div class="flex items-center p-10"> 
-            <label for="divider" class="text-black dark:text-white"> Choose divider: </label>
-            <select id="divider" v-model="selectedDivider" class="ml-2 p-2 rounded bg-white dark:bg-gray-800 dark:text-white">
-              <option value="greaterthan"> > </option>
-              <option value="backslash"> \ </option>
-              <option value="forwardslash"> / </option>
-              <option value="dot"> . </option>
-              <option value="arrow"> → </option>
-              <option value="hyphen"> - </option>
-              <option value="line"> | </option>
-            </select>
-          </div>
-        </div>
-      </section>
+  <div :class="{ 'dark': isDarkMode }" class="overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 p-4">
+    <div class="flex justify-center mb-8">
+      <Button
+        @click="toggleDarkMode"
+        color="blue"
+        customClasses="w-48"
+      >
+        {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
+      </Button>
+    </div>
+    <ButtonGroup class="mx-auto">
+      <button type="button" color="blue" :class="profileButtonClasses" class="inline-flex items-center px-4 py-2 text-sm font-medium border border-gray-200 rounded-s-lg hover:bg-blue-600 focus:ring-blue-300 dark:hover:bg-blue-600 dark:focus:ring-blue-800">
+        <svg class="w-3 h-3 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"/>
+        </svg>
+        Profile
+      </button>
+      <button type="button" color="blue" :class="settingsButtonClasses" class="inline-flex items-center px-4 py-2 text-sm font-medium border-t border-b border-gray-200 hover:bg-blue-600 focus:ring-blue-300 dark:hover:bg-blue-600 dark:focus:ring-blue-800">
+        <svg class="w-3 h-3 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12.25V1m0 11.25a2.25 2.25 0 0 0 0 4.5m0-4.5a2.25 2.25 0 0 1 0 4.5M4 19v-2.25m6-13.5V1m0 2.25a2.25 2.25 0 0 0 0 4.5m0-4.5a2.25 2.25 0 0 1 0 4.5M10 19V7.75m6 4.5V1m0 11.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM16 19v-2"/>
+        </svg>
+        Settings
+      </button>
+      <button type="button" color="blue" :class="downloadsButtonClasses" class="inline-flex items-center px-4 py-2 text-sm font-medium border border-gray-200 rounded-e-lg hover:bg-blue-600 focus:ring-blue-300 dark:hover:bg-blue-600 dark:focus:ring-blue-800">
+        <svg class="w-3 h-3 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z"/>
+          <path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>
+        </svg>
+        Downloads
+      </button>
+    </ButtonGroup>
+    <div class="space-y-4">
+      <div class="flex flex-wrap gap-4 justify-center">
+        <Button color="blue" size="small" @click="showMessages">
+          Small Button
+          <template #icon>
+            <span class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">2</span>
+          </template>
+        </Button>
+        <Button color="blue" size="normal" @click="showNotifications">
+          Normal Button
+          <template #icon>
+            <span class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">3</span>
+          </template>
+        </Button>
+        <Button color="blue" size="large" @click="showAlerts">
+          Large Button
+          <template #icon>
+            <span class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">1</span>
+          </template>
+        </Button>
+      </div>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <Button color="sky">
+          Sky Button
+        </Button>
+        <Button color="cyan">
+          Cyan Button
+        </Button>
+        <Button color="teal">
+          Teal Button
+        </Button>
+        <Button color="gray">
+          Gray Button
+        </Button>
+      </div>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <Button color="blue">
+          <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+          </svg>
+          Buy now
+        </Button>
+        <Button color="blue" customClasses="flex items-center space-x-2">
+          Choose plan
+          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+          </svg>
+        </Button>
+      </div>
+      <div class="flex justify-center">
+        <Button color="sky" disabled>
+          Disabled Button
+        </Button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import BadgeComponent from './components/BadgeComponent.vue';
-import BreadcrumbComponent from './components/BreadcrumbComponent.vue';
+import Progress from './components/Progress.vue';
+// Ensure Button is imported or defined here if needed
 
 export default {
   name: 'App',
   components: {
-    BadgeComponent,
-    BreadcrumbComponent
+    Progress,
   },
   data() {
     return {
-      badgeNumber: 1,
       isDarkMode: false,
       selectedDivider: 'greaterthan', //default divider
+      selectedColor: 'sky', //default solid bg
       breadcrumbItems: [
         { text: 'src', href: '#' },
         { text: 'components', href: '#' },
@@ -120,20 +110,30 @@ export default {
     };
   },
   methods: {
-    updateBadgeNumber() {},
     toggleDarkMode() {
-      this.isDarkMode = !this.isDarkMode;
-    }
-  }
-}
+      this.isDarkMode =!this.isDarkMode;
+      this.updateDarkModePreference();
+    },
+    checkDarkModePreference() {
+      const darkModePreference = localStorage.getItem('darkMode');
+      if (darkModePreference) {
+        this.isDarkMode = JSON.parse(darkModePreference);
+      }
+    },
+    updateDarkModePreference() {
+      localStorage.setItem('darkMode', JSON.stringify(this.isDarkMode));
+    },
+  },
+};
 </script>
 
 <style scoped>
-.badge-button {
-  @apply inline-block py-2 px-4 text-base font-bold rounded bg-transparent border-2 border-sky-500 text-black dark:text-white cursor-pointer mr-2 dark:bg-sky-700;
+.dark {
+  background-color: #121212;
+  color: #ffffff;
 }
-
-.badge-button:hover {
-  @apply bg-blue-200 dark:bg-blue-800 border-blue-200 dark:border-blue-800 text-blue-600 dark:text-white;
+.mx-auto {
+  margin-bottom: 3%;
+  margin-right: -38%;
 }
 </style>
