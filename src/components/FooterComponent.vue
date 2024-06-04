@@ -106,7 +106,9 @@
           </span>
           <div :class="socialLinksClasses">
             <a v-for="(icon, index) in socialIcons" :key="index" href="#" :class="socialLinkClasses">
-              <component :is="icon.component" :class="iconClasses" aria-hidden="true" />
+              <svg :class="iconClasses" aria-hidden="true" :viewBox="icon.viewBox" fill="currentColor">
+                <path :d="icon.path" :fill-rule="icon.fillRule" :clip-rule="icon.clipRule"></path>
+              </svg>
               <span class="sr-only">{{ icon.label }}</span>
             </a>
           </div>
@@ -120,10 +122,10 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "SiteFooter",
+  name: "FooterComponent",
   data() {
     return {
-      footerType: 'default', // Change this value to 'logo', 'social', or 'sitemap' to display different footers
+      footerType: 'default',
       
       // Footer Similarities
       footerClasses: 'bg-blue-200 rounded-lg shadow m-4 dark:bg-blue-600',
@@ -162,7 +164,7 @@ export default defineComponent({
       smDivSocialFooterClass: 'sm:flex sm:items-center sm:justify-between',
       spanSocialFooterTextClasses: 'text-sm text-blue-800 sm:text-center dark:text-white',
       flexSocialFooterClass: 'flex mt-4 sm:justify-center sm:mt-0',
-      socialLinkClasses: 'text-blue-800 hover:text-blue-800 dark:text-white dark:hover:text-blue-200 ms-5',
+      socialLinkClasses: 'text-blue-800 hover:text-white dark:text-white dark:hover:text-blue-800 ms-5',
       svgSocialFooterClass: 'w-4 h-4',
 
       // Links for Social Footer
@@ -178,56 +180,50 @@ export default defineComponent({
         { label: 'Privacy Policy', url: '#' },
         { label: 'Terms & Conditions', url: '#' }
       ],
-
-      // Icons for Social Footer
+      
+      // SVG Icons for Social Footer
       socialIcons: [
         {
+          label: 'Facebook',
           ariaHidden: 'true',
           viewBox: '0 0 24 24',
-          path: 'M12 2.04c-5.52 0-10 4.48-10 10 0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.46-1.17-1.12-1.48-1.12-1.48-.92-.63.07-.62.07-.62 1.02.07 1.56 1.05 1.56 1.05.9 1.55 2.36 1.1 2.94.84.09-.65.35-1.1.63-1.35-2.22-.25-4.56-1.11-4.56-4.93 0-1.09.39-1.99 1.02-2.69-.1-.25-.44-1.27.1-2.64 0 0 .83-.27 2.73 1.02A9.48 9.48 0 0112 6.8c.84.004 1.68.11 2.47.32 1.9-1.29 2.73-1.02 2.73-1.02.55 1.37.21 2.39.1 2.64.63.7 1.02 1.6 1.02 2.69 0 3.84-2.35 4.67-4.58 4.91.36.31.68.92.68 1.85 0 1.33-.01 2.41-.01 2.74 0 .26.18.58.69.48A10.02 10.02 0 0022 12.04c0-5.52-4.48-10-10-10z',
+          path: 'M22.675 0h-21.35C1.2 0 0 1.2 0 2.675v18.65C0 22.8 1.2 24 2.675 24h9.569v-9.294H9.256V10.41h3.008V7.981c0-3.007 1.792-4.681 4.536-4.681 1.312 0 2.686.235 2.686.235v2.953h-1.512c-1.491 0-1.95.926-1.95 1.874v2.048h3.367l-.538 3.296h-2.829V24h5.547C22.8 24 24 22.8 24 21.325v-18.65C24 1.2 22.8 0 22.675 0z',
           fillRule: 'evenodd',
-          clipRule: 'evenodd',
-          label: 'GitHub'
+          clipRule: 'evenodd'
         },
         {
+          label: 'Instagram',
           ariaHidden: 'true',
           viewBox: '0 0 24 24',
-          path: 'M12 2.04c-5.52 0-10 4.48-10 10 0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.46-1.17-1.12-1.48-1.12-1.48-.92-.63.07-.62.07-.62 1.02.07 1.56 1.05 1.56 1.05.9 1.55 2.36 1.1 2.94.84.09-.65.35-1.1.63-1.35-2.22-.25-4.56-1.11-4.56-4.93 0-1.09.39-1.99 1.02-2.69-.1-.25-.44-1.27.1-2.64 0 0 .83-.27 2.73 1.02A9.48 9.48 0 0112 6.8c.84.004 1.68.11 2.47.32 1.9-1.29 2.73-1.02 2.73-1.02.55 1.37.21 2.39.1 2.64.63.7 1.02 1.6 1.02 2.69 0 3.84-2.35 4.67-4.58 4.91.36.31.68.92.68 1.85 0 1.33-.01 2.41-.01 2.74 0 .26.18.58.69.48A10.02 10.02 0 0022 12.04c0-5.52-4.48-10-10-10z',
+          path: 'M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.314 3.608 1.29.975.975 1.227 2.242 1.29 3.608.058 1.267.069 1.647.069 4.85s-.012 3.584-.07 4.85c-.062 1.366-.314 2.633-1.29 3.608-.975.975-2.242 1.227-3.608 1.29-1.267.058-1.647.069-4.85.069s-3.584-.012-4.85-.07c-1.366-.062-2.633-.314-3.608-1.29-.975-.975-1.227-2.242-1.29-3.608-.058-1.267-.069-1.647-.069-4.85s.012-3.584.07-4.85c.062-1.366.314-2.633 1.29-3.608.975-.975 2.242-1.227 3.608-1.29 1.267-.058 1.647-.069 4.85-.069zM12 0C8.741 0 8.332.012 7.052.072 5.773.131 4.429.399 3.27 1.558 2.112 2.716 1.844 4.06 1.785 5.34.725 6.62.714 6.742.714 12s.012 5.38.072 6.658c.059 1.279.327 2.624 1.486 3.783 1.158 1.158 2.503 1.426 3.783 1.485 1.279.06 1.688.072 4.947.072s3.668-.012 4.947-.072c1.279-.059 2.624-.327 3.783-1.486 1.158-1.158 1.426-2.503 1.485-3.783.06-1.279.072-1.688.072-4.947s-.012-3.668-.072-4.947c-.059-1.279-.327-2.624-1.486-3.783-1.158-1.158-2.503-1.426-3.783-1.485C15.668.012 15.259 0 12 0z',
           fillRule: 'evenodd',
-          clipRule: 'evenodd',
-          label: 'Twitter'
+          clipRule: 'evenodd'
+        },
+        {
+          label: 'Twitter',
+          ariaHidden: 'true',
+          viewBox: '0 0 24 24',
+          path: 'M24 4.557a9.825 9.825 0 0 1-2.827.775 4.939 4.939 0 0 0 2.165-2.724 9.84 9.84 0 0 1-3.127 1.195A4.928 4.928 0 0 0 16.616 3c-2.73 0-4.94 2.214-4.94 4.942 0 .387.043.762.127 1.124C7.728 8.83 4.1 6.855 1.671 3.958a4.932 4.932 0 0 0-.669 2.482c0 1.71.869 3.214 2.19 4.1a4.919 4.919 0 0 1-2.24-.617v.062c0 2.388 1.698 4.384 3.946 4.835a4.939 4.939 0 0 1-2.23.084c.63 1.964 2.45 3.393 4.604 3.433A9.885 9.885 0 0 1 0 19.54a13.94 13.94 0 0 0 7.548 2.213c9.057 0 14.01-7.514 14.01-14.01 0-.213-.005-.425-.015-.637A10.012 10.012 0 0 0 24 4.557z',
+          fillRule: 'evenodd',
+          clipRule: 'evenodd'
         }
       ],
 
       // Sitemap Linked Footer Classes
-      containerClasses: 'w-full max-w-screen-xl p-4 mx-auto md:py-8',
-      sitemapGridClasses: 'grid grid-cols-1 md:grid-cols-4 gap-8',
+      containerClasses: 'w-full max-w-screen-xl mx-auto p-4 py-6 lg:py-8',
+      sitemapGridClasses: 'md:flex md:justify-between',
       sectionTitleClasses: 'mb-6 text-sm font-semibold text-blue-800 uppercase dark:text-white',
-      sitemapUlClasses: 'space-y-4 text-blue-800 dark:text-white font-medium',
-      linkClasses: 'hover:underline',
-      footerBottomClasses: 'flex items-center justify-between pt-6 mt-6 border-t border-blue-800 dark:border-white',
-      footerTextClasses: 'text-sm text-blue-800 dark:text-white',
-      socialLinksClasses: 'flex space-x-6 sm:justify-center',
-      iconClasses: 'w-5 h-5 text-blue-800 hover:text-blue-800 dark:text-white dark:hover:text-white',
+      sitemapUlClasses: 'text-blue-800 dark:text-white font-medium',
+      footerBottomClasses: 'sm:flex sm:items-center sm:justify-between mt-6 pt-6 border-t border-blue-800 dark:border-white',
+      footerTextClasses: 'text-sm text-blue-800 sm:text-center dark:text-white',
+      socialLinksClasses: 'flex mt-4 space-x-6 sm:justify-center sm:mt-0',
+      iconClasses: 'w-5 h-5 text-blue-800 hover:text-white dark:text-white dark:hover:text-blue-800',
 
-      // Sections for Sitemap Linked Footer
+      // Sitemap Sections and Links
       sections: [
-        {
-          title: 'Company',
-          items: ['About', 'Careers', 'Brand Center', 'Blog']
-        },
-        {
-          title: 'Help Center',
-          items: ['Discord Server', 'Twitter', 'Facebook', 'Contact Us']
-        },
-        {
-          title: 'Legal',
-          items: ['Privacy Policy', 'Licensing', 'Terms & Conditions']
-        },
-        {
-          title: 'Download',
-          items: ['iOS', 'Android', 'Windows', 'MacOS']
-        }
+        { title: 'Company', items: ['About', 'Careers', 'Brand Center', 'Blog'] },
+        { title: 'Help center', items: ['Discord Server', 'Twitter', 'Facebook', 'Contact Us'] },
+        { title: 'Legal', items: ['Privacy Policy', 'Licensing', 'Terms & Conditions'] }
       ]
     };
   }
@@ -235,7 +231,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.footerLogoClass {
-  margin-top: 20px;
-}
+
 </style>
