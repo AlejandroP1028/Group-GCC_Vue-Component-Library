@@ -2,13 +2,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <div :class="{ 'dark': isDarkMode }" class="overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 flex flex-row scroll-smooth">
       <div class="relative w-auto mb-16">
-        <PageHeader :class="'flex-none'" header="GCC List" body="Show contextual information to your users using notification elements based on Tailwind CSS"/>
-        <Section body="The GCC notification component is a versatile tool for displaying various types of messages to users, including warnings, success, errors, default notifications, and general information. Each notification type is designed to stand out, ensuring that users receive important feedback clearly and promptly, thereby enhancing the overall user experience and communication on the webpage."/>
-        <Section header="Default Notification" @sectioncreated="addLink" body="The GCC notification component features a default notification style that seamlessly fades out for automatic dismissal.">
+        <PageHeader :class="'flex-none'" header="GCC List" body="Show contextual information to your users using list elements based on Tailwind CSS"/>
+        <Section body="The GCC list component is a versatile tool for presenting various types of information. Each list item type is designed to be distinct, ensuring that users receive important feedback clearly and promptly, thereby enhancing the overall user experience and communication on the webpage."/>
+        <Section header="Unordered List" @sectioncreated="addLink" body="The GCC notification component features a default notification style that seamlessly fades out for automatic dismissal.">
           <template #content>
             <div class="flex flex-col items-center mt-4 h-full">
               <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]"> 
-                <ItemList :items="List" type="unorderedicon" position="centered"/>
+                <ItemList :items="List" type="unorderedlist" layout="vertical" color="sky" position="centered"/>
               </div>
             </div>
           </template>

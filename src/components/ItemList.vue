@@ -1,7 +1,8 @@
 <template>
   <div :class="computedClass">
-  <div v-if="type === 'unorderedlist' && layout === 'horizontal'" class="border border-opacity-5 border-blue-700 bg-blue-100 rounded-sm md:px-5 md:py-4 w-full dark:bg-gray-900">
-  <ul v-if="items && items.length" class="space-x-5 text-lg text-blue-800 dark:text-sky-400 flex flex-wrap justify-center">
+    <div v-if="type === 'unorderedlist' && layout === 'horizontal'" :class="{ ...containerClasses, ...colorClasses }">
+
+  <ul v-if="items && items.length" :class="listClasses">
     <li v-for="(item, index) in items" :key="index">
       {{ item }}
     </li>
@@ -39,9 +40,8 @@
     <slot name="icons"></slot>
   </ul>
 </div>
-
-  <div v-else-if="type === 'unorderedlist' && layout === 'vertical'" class="border border-blue-700 bg-blue-100 rounded-sm px-4 py-3 sm:px-6 sm:py-4 md:p-8 w-64 dark:bg-gray-900 dark:border-sky-400">
-    <ul v-if="items && items.length" class="list-disc divide-y divide-opacity-5 divide-blue-900 text-blue-800 dark:text-sky-400 divide-sky-400">
+  <div v-else-if="type === 'unorderedlist' && layout === 'vertical'" :class="{ ...containerClasses, ...colorClasses }">
+    <ul v-if="items && items.length" :class="listClasses">
       <li v-for="(item, index) in items" :key="index" class="py-1 m-1">
         {{ item }}
       </li>
@@ -50,8 +50,8 @@
       <slot></slot>
     </ul>
   </div>
-  <div v-else-if="type === 'orderedlist' && layout === 'vertical'" class="border border-blue-700 bg-blue-100 rounded-sm px-4 py-3 sm:px-6 sm:py-4 md:p-8 w-64 dark:bg-gray-900 dark:border-sky-400">
-      <ol v-if="items && items.length" class="list-decimal divide-y divide-opacity-5 divide-blue-900 text-blue-800 dark:text-sky-400 divide-sky-400">
+  <div v-else-if="type === 'orderedlist' && layout === 'vertical'" :class="{ ...containerClasses, ...colorClasses }">
+      <ol v-if="items && items.length" :class="listClasses">
         <li v-for="(item, index) in items" :key="index" class="py-1 m-1">
           {{ item }}
         </li>
@@ -91,45 +91,181 @@
   </div>
 </div>
 </template>
-
 <script>
 export default {
-name: 'ItemList',
-props: {
-  items: {
-    type: Array,
-    required: false,
-    default: () => []
-  },
-  iconItems: {
+  name: 'ItemList',
+  props: {
+    items: {
       type: Array,
       required: false,
       default: () => []
-  },
-  type: {
-    type: String,
-    required: true,
-    validator: value => ["unorderedlist", "orderedlist", "descriptionlist", "unorderedicon"].includes(value),
-  },
-  layout: {
-    type: String,
-    default: 'vertical',
-    validator: value => ['horizontal', 'vertical'].includes(value),
-  },
-  position: {
+    },
+    iconItems: {
+      type: Array,
+      required: false,
+      default: () => []
+    },
+    type: {
+      type: String,
+      required: true,
+      validator: value => ["unorderedlist", "orderedlist", "descriptionlist", "unorderedicon"].includes(value),
+    },
+    layout: {
+      type: String,
+      default: 'vertical',
+      validator: value => ['horizontal', 'vertical'].includes(value),
+    },
+    position: {
       type: String,
       default: 'centered',
       validator: (value) => value === 'centered',
-    }
-},
-computed: {
+    },
+    color: {
+      type: String,
+      default: 'blue',
+      validator: value => ['blue', 'sky', 'teal', 'cyan'].includes(value),
+    },
+  },
+  computed: {
     computedClass() {
       return 'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2';
     },
+    containerClasses() {
+      let baseClasses = {
+        'rounded-2xl': true
+      };
+
+      if (this.type === 'unorderedlist' && this.layout === 'horizontal') {
+        return {
+          ...baseClasses,
+          'md:px-5': true,
+          'md:py-4': true,
+          'w-full': true,
+        };
+      } else if (this.type === 'unorderedlist' && this.layout === 'vertical') {
+        return {
+          ...baseClasses,
+          'py-4': true,
+          'sm:px-6': true,
+          'sm:py-2': true,
+          'md:px-8': true,
+          'w-64': true
+        };
+      } else if (this.type === 'orderedlist' && this.layout === 'vertical') {
+        return {
+          ...baseClasses,
+          'px-4': true,
+          'py-3': true,
+          'sm:px-6': true,
+          'sm:py-4': true,
+          'md:p-8': true,
+          'w-64': true,
+        };
+      } else if (this.type === 'descriptionlist' && this.layout === 'vertical') {
+        return {
+          ...baseClasses,
+          'px-4': true,
+          'py-3': true,
+          'sm:px-6': true,
+          'sm:py-4': true,
+          'md:p-8': true,
+          'w-full': true,
+        };
+      } else if (this.type === 'unorderedicon') {
+        return {
+          ...baseClasses,
+          'px-4': true,
+          'py-3': true,
+          'sm:px-6': true,
+          'sm:py-4': true,
+          'md:p-8': true,
+          'w-64': true,
+        };
+      }
+      return baseClasses;
+    },
+    listClasses() {
+  let baseClasses = {
+    'text-lg': true,
+  };
+  let classes = {
+    ...baseClasses,
+    ...this.colorClasses
+  };
+
+  if (this.type === 'unorderedlist' && this.layout === 'horizontal') {
+    return {
+      ...classes,
+      'space-x-5': true,
+      'flex': true,
+      'flex-wrap': true,
+      'justify-center': true
+    };
+  } else if (this.type === 'unorderedlist' && this.layout === 'vertical') {
+    return {
+      ...classes,
+      'list-disc': true,
+      'divide-y': true,
+      'divide-opacity-5': true,
+      'divide-blue-900': true,
+      'divide-sky-400': true
+    };
+  } else if (this.type === 'orderedlist' && this.layout === 'vertical') {
+    return {
+      ...classes,
+      'list-decimal': true,
+      'divide-y': true,
+      'divide-opacity-5': true,
+      'divide-blue-900': true,
+      'divide-sky-400': true
+    };
+  } else if (this.type === 'descriptionlist' && this.layout === 'vertical') {
+    return {
+      ...classes,
+      'text-blue-900': true,
+      'divide-y': true,
+      'divide-blue-300': true,
+      'dark:divide-gray-700': true
+    };
+  } else if (this.type === 'unorderedicon') {
+    return {
+      ...classes,
+      'max-w-md': true,
+      'space-y-1': true,
+      'list-inside': true
+    };
+  }
+  return classes;
+},
+    colorClasses() {
+      switch (this.color) {
+        case 'sky':
+          return {
+            'text-sky-800': true,
+            'dark:text-sky-200': true,
+            'bg-sky-100': true,
+            'dark:bg-sky-700': true
+          };
+        case 'teal':
+          return {
+            'dark:text-teal-400': true,
+            'bg-teal-100': true
+          };
+        case 'cyan':
+          return {
+            'dark:text-cyan-400': true,
+            'bg-cyan-100': true
+          };
+        default:
+          return {
+            'dark:text-sky-400': true,
+            'bg-blue-100': true
+          };
+      }
+    }
   }
 };
 </script>
-
 <style scoped>
 
 </style>
