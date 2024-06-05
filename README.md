@@ -6,7 +6,7 @@ Components are designed first in [here](https://www.figma.com/design/ncwy7ApKxRj
 
 - Prado - alert, card
 - Arnau - list group, notification
-- Alcantara - accordion, modal
+- Alcantara - footer, toggle
 - Parrucho - dropdown, tooltip
 - Baylon - button, button group
 - Carable - breadcrumb, badge
