@@ -60,36 +60,27 @@
       <Section 
         header="Inline Badge"
         @sectioncreated="addLink"
-        body="nyenyenye"
+        body="The default position of the GCC badge component is inline. Use the toggles for dot badge and pill badge one at a time, and use the bordered badge toggle to display the bordered badge."
       > 
         <template #content>
-          <div class="flex justify-center flex-row space-x-4">
-            <div class="flex justify-center flex-col space-y-2 p-5">
-              <ToggleComponent label="Default Badge" type="sky" v-model="toggles.default" @change="handleToggle('default')" :disabled="toggles.defaultDisabled"></ToggleComponent>
+          <div class="flex justify-center items-center">
+            <div class="flex flex-col space-y-2 p-5">
               <ToggleComponent label="Dot Badge" type="sky" v-model="toggles.dot" @change="handleToggle('dot')" :disabled="toggles.dotDisabled"></ToggleComponent>
-            </div>
-            <div class="flex justify-center flex-col space-y-2 p-5">
               <ToggleComponent label="Pill Badge" type="sky" v-model="toggles.pill" @change="handleToggle('pill')" :disabled="toggles.pillDisabled"></ToggleComponent>
               <ToggleComponent label="Bordered Badge" type="sky" v-model="toggles.bordered" @change="handleToggle('bordered')"></ToggleComponent>
             </div>
-            <div class="flex justify-center flex-col space-y-2 border-l-2 border-gray-300 p-5">
-              <DropdownComponent 
-                buttonText="Colors"
-                type="sky" 
-                size="s" 
-                :menuItems="menuItems" 
-                :isDark="isDarkMode" 
-                bordered="true"
-                @item-selected="handleColorChange">
-                
-              </DropdownComponent>
+            <div class="flex flex-col space-y-2 p-5 border-l-2 border-gray-200">
+              <ToggleComponent label="Blue" type="blue" :value="selectedColor === 'blue'" @change="updateSelectedColor('blue')" />
+              <ToggleComponent label="Sky" type="sky" :value="selectedColor === 'sky'" @change="updateSelectedColor('sky')" />
+              <ToggleComponent label="Teal" type="teal" :value="selectedColor === 'teal'" @change="updateSelectedColor('teal')" />
+              <ToggleComponent label="Cyan" type="cyan" :value="selectedColor === 'cyan'" @change="updateSelectedColor('cyan')" />
             </div>
           </div>
           <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
             <div class="w-2/3 flex items-center justify-center">
               <Button color="sky">
                 Button
-                <BadgeComponent :type="badgeType" :color="badgeColors" :bordered="toggles.bordered" :class="['relative ml-1', badgeNumber > 0 ? 'visible' : 'invisible']">
+                <BadgeComponent :type="badgeType" :color="selectedColor" :bordered="toggles.bordered" :class="['relative ml-1', badgeNumber > 0 ? 'visible' : 'invisible']">
                   {{ badgeNumber }}
                 </BadgeComponent>
               </Button>
@@ -129,9 +120,8 @@
       <Section 
         header="Summary"
         @sectioncreated="addLink"
-        body="mama mo summary di pa tapos sandale"
-      > 
-        </Section>
+        body="The GCC Badge component offers versatile badge elements based on Tailwind CSS, including various colors such as blue, sky, teal, and cyan. It supports different styles like bordered badges, dot badges, and pill-shaped badges, providing flexibility in design options. Additionally, the component allows for easy integration of badge elements to display contextual information or counts, enhancing user interaction and visual appeal."
+      /> 
     </div>
 
     <div class="sticky top-8 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
@@ -160,7 +150,6 @@ import PageHeader from './components/pageHeader.vue';
 import BadgeComponent from './components/BadgeComponent.vue';
 import PageLinks from './components/pageLinks.vue';
 import ToggleComponent from './components/ToggleComponent.vue';
-import DropdownComponent from './components/Dropdown.vue';
 
 export default {
   name: 'badge_page',
@@ -170,8 +159,7 @@ export default {
     PageHeader,
     BadgeComponent,
     PageLinks,
-    ToggleComponent,
-    DropdownComponent
+    ToggleComponent
   },
   data() {
     return {
@@ -188,17 +176,10 @@ export default {
         dot: false,
         pill: false,
         bordered: false,
-        defaultDisabled: false,
         dotDisabled: false,
         pillDisabled: false
       },
-      menuItems: [
-        { label: 'Blue', type:'default'},
-        { label: 'Sky', type:'default'},
-        { label: 'Teal', type:'default'},
-        { label: 'Cyan', type:'default'}
-      ],
-      badgeColors: 'blue',
+      selectedColor: 'sky'
     };
   },
   computed: {
@@ -215,8 +196,11 @@ export default {
     toggleDarkMode() {
       this.isDarkMode = !this.isDarkMode;
     },
-    handleToggle(type) {
-      if (type === 'default') {
+    handleToggle(type, color) {
+      if (type ==='coolor') {
+        this.toggles[color] = !this.toggles[color];
+      }
+      else if (type === 'default') {
         this.toggles.default = !this.toggles.default;
         if (this.toggles.default) {
           this.toggles.dot = false;
@@ -232,10 +216,8 @@ export default {
         if (this.toggles.dot) {
           this.toggles.default = false;
           this.toggles.pill = false;
-          this.toggles.defaultDisabled = true;
           this.toggles.pillDisabled = true;
         } else {
-          this.toggles.defaultDisabled = false;
           this.toggles.pillDisabled = false;
         }
       } else if (type === 'pill') {
@@ -243,10 +225,8 @@ export default {
         if (this.toggles.pill) {
           this.toggles.default = false;
           this.toggles.dot = false;
-          this.toggles.defaultDisabled = true;
           this.toggles.dotDisabled = true;
         } else {
-          this.toggles.defaultDisabled = false;
           this.toggles.dotDisabled = false;
         }
       } else if (type === 'bordered') {
@@ -277,9 +257,9 @@ export default {
     updateBadgeNumber(event) {
       this.badgeNumber = event.target.value;
     },
-    handleColorChange(color) {
-      this.badgeColors = color; 
-    },
+    updateSelectedColor(color) {
+            this.selectedColor = color;
+        }
   }
 };
 </script>

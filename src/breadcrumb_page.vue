@@ -7,15 +7,15 @@
                 header="GCC Breadcrumb" 
                 body="Show navigational information to your users using breadcrumb elements based on Tailwind CSS"
                 />
-
+                
                 <Section 
-                    body="The GCC badge component is a navigational component that provides users with a trail of links that represent the path they have taken to arrive at their current location within a website or application."
+                    body="The GCC breadcrumb component is a navigational component that provides users with a trail of links that represent the path they have taken to arrive at their current location within a website or application."
                 />
 
                 <Section 
                     header="Default Breadcrumb"
                     @sectioncreated="addLink"
-                    body="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    body="The default GCC breadcrumb component provides users with a clear trail of navigation links, aiding in easy navigation within a website or application."
                 > 
                     <template #content>
                         <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
@@ -25,55 +25,56 @@
                 </Section>
 
                 <Section 
-                    header="Breadcrumb with solid background"
-                    @sectioncreated="addLink"
-                    body="The GCC breadcrumb component is supported in 4 different solid background colors: blue, sky, teal, and cyan."
-                > 
-                    <template #content>
-                        <div class="flex justify-center mt-5"> 
-                            <DropdownComponent
-                                v-model="selectedColor"
-                                :menu-items="dropdownItems"
-                                buttonText="Select background color"
-                                size="s"
-                                />
+                header="Breadcrumb with solid background"
+                @sectioncreated="addLink"
+                body="The GCC breadcrumb component is supported in 4 different solid background colors: blue, sky, teal, and cyan."
+            > 
+                <template #content>
+                    <div class="flex justify-center mt-5"> 
+                        <div class="flex space-x-4">
+                            <ToggleComponent label="Blue" type="blue" :value="selectedColor === 'blue'" @change="updateSelectedColor('blue')" />
+                            <ToggleComponent label="Sky" type="sky" :value="selectedColor === 'sky'" @change="updateSelectedColor('sky')" />
+                            <ToggleComponent label="Teal" type="teal" :value="selectedColor === 'teal'" @change="updateSelectedColor('teal')" />
+                            <ToggleComponent label="Cyan" type="cyan" :value="selectedColor === 'cyan'" @change="updateSelectedColor('cyan')" />
                         </div>
-                        <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
-                            <BreadcrumbComponent :items="breadcrumbItems" type="solidbg" divider="/" :bgColor="selectedColor"/>
-                        </div>
-                    </template>
-                </Section>
+                    </div>
+                    <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
+                        <BreadcrumbComponent :items="breadcrumbItems" type="solidbg" divider="/" :bgColor="selectedColor"/>
+                    </div>
+                </template>
+            </Section>
 
-                <Section 
-                    header="Breadcrumb Dividers"
-                    @sectioncreated="addLink"
-                    body="Separator or divider of the GCC breadcrumb component can be customized."
-                > 
-                    <template #content> 
-                        <div class="flex justify-center mt-5"> 
-                            <label for="divider" class="text-gray-800/[.87] dark:text-gray-200/[.87] font-medium text-md"> Choose divider: </label>
-                            <select id="divider" v-model="selectedDivider" class="ml-2 rounded bg-white dark:bg-gray-800 dark:text-white">
-                            <option value="greaterthan"> > </option>
-                            <option value="backslash"> \ </option>
-                            <option value="forwardslash"> / </option>
-                            <option value="dot"> . </option>
-                            <option value="arrow"> → </option>
-                            <option value="hyphen"> - </option>
-                            <option value="line"> | </option>
-                            </select>
-                        </div>
-                        <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
-                            <BreadcrumbComponent type="solidbg" :items="breadcrumbItems" :divider="selectedDivider"/>
-                        </div>
-                    </template>
-                </Section>
+            <Section 
+                header="Breadcrumb Dividers"
+                @sectioncreated="addLink"
+                body="Separator or divider of the GCC breadcrumb component can be customized."
+            > 
+                <template #content> 
+                    <div class="flex flex-col items-start space-y-2 p-2 bg-blue-100 dark:bg-gray-800 rounded-lg shadow-md"> 
+                        <label for="divider" class="text-gray-800/[.87] dark:text-gray-200/[.87] font-medium text-md"> Choose divider: </label>
+                        <Radio :items="[
+                                    {value: 'greaterthan', label: '>'},
+                                    {value: 'backslash', label: '\\'},
+                                    {value: 'forwardslash', label: '/'},
+                                    {value: 'dot', label: '.'},
+                                    {value: 'arrow', label: '→'},
+                                    {value: 'hyphen', label: '-'},
+                                    {value: 'line', label: '|'},
+                                    ]"
+                            @input="changeDivider"/>
+                    </div>
+                    <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
+                        <BreadcrumbComponent type="solidbg" :items="breadcrumbItems" :divider="selectedDivider"/>
+                    </div>
+                </template>
+            </Section>
 
-                <Section 
-                    header="Summary"
-                    @sectioncreated="addLink"
-                    body="mama mo summary di pa tapos sandale"
-                > 
-                </Section>
+            <Section 
+                header="Summary"
+                @sectioncreated="addLink"
+                body="The GCC breadcrumb page offers users a comprehensive suite of navigational features, including customizable divider options and a range of solid background colors, ensuring seamless navigation within web applications. By providing clear and intuitive navigation paths, it enhances user experience and facilitates effortless exploration of website content."
+            > 
+            </Section>
         </div>
 
         <div class="sticky top-8 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
@@ -101,35 +102,31 @@ import PageHeader from './components/pageHeader.vue';
 import PageLinks from './components/pageLinks.vue'; 
 import Button from './components/Button.vue';
 import BreadcrumbComponent from './components/BreadcrumbComponent.vue';
-import DropdownComponent from './components/Dropdown.vue';
+import ToggleComponent from './components/ToggleComponent.vue';
+import Radio from './components/radio.vue';
 
-export default{
-    name: 'breadcrumb_page',
+export default {
+    name: 'BreadcrumbPage',
     components: {
         PageHeader,
         PageLinks, 
         BreadcrumbComponent,
         Section,
         Button,
-        DropdownComponent
+        ToggleComponent,
+        Radio
     },
-    data(){
-        return{
+    data() {
+        return {
             links: [],
             isDarkMode: false,
-            selectedColor: 'sky',
+            selectedColor: 'sky', 
             selectedDivider: 'greaterthan',
             breadcrumbItems: [
                 { text: 'src', href: '#' },
                 { text: 'components', href: '#' },
                 { text: 'BreadcrumbComponent.vue' }
             ],
-            dropdownItems: [
-                { label: 'Cyan', value: 'cyan', type:'default' },
-                { label: 'Blue', value: 'blue', type:'default' },
-                { label: 'Teal', value: 'teal', type:'default' },
-                { label: 'Sky', value: 'sky', type:'default' }
-            ]
         }
     },
     methods: {
@@ -139,6 +136,12 @@ export default{
         toggleDarkMode() {
             this.isDarkMode = !this.isDarkMode;
         },
+        updateSelectedColor(color) {
+            this.selectedColor = color;
+        },
+        changeDivider(val){
+            this.selectedDivider = val
+        }
     },
 }
 </script>
