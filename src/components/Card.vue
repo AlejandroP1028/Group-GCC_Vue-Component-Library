@@ -61,6 +61,11 @@ export default {
       const bgClass = styleClasses[this.type] || styleClasses['default'];
       
       const sizeClasses = {
+        // xs: 'w-[20rem]',
+        // sm: 'w-[24rem]',
+        // md: 'w-[28rem]',
+        // lg: 'w-[32rem]',
+        // xl: 'w-[36rem]',
         xs: 'max-w-xs',
         sm: 'max-w-sm',
         md: 'max-w-md',

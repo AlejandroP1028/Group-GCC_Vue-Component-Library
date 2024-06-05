@@ -1,184 +1,185 @@
 <template>
-    <div :class="{ 'dark': isDarkMode }" class="overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 flex flex-row scroll-smooth">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-      <div class="relative w-auto mb-16">
-        <PageHeader 
-          class="flex-none"
-          header="GCC Card" 
-          body="Use these responsive card components to show data entries and information to your users in multiple forms and contexts such as for your blog, application, user profiles, and more."
-        />
-        <Section
-          @sectioncreated="addLink"
-          header="Card Types"
-          body="GCC card has four types: blue, sky, cyan, and teal. The default is blue."
-        >
-          <template #content>
-            <div class="flex flex-col items-center mt-4 h-full">
-              <div :class="{ 'dark': defaultDark }" class="relative flex space-x-4 flex-row items-center justify-center bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border overflow-x-auto border-blue-600/[.87]">
-                <Card v-for="(card, index) in cardTypes" 
-                      :key="index"
-                      :type="card.type"
-                      :header="`This is a ${card.type} card.`"
-                      :body="'This is the body text.'"
-                />
-              </div>
-            </div>
-          </template>
-        </Section>
-  
-        <Section
-          @sectioncreated="addLink"
-          header="Card Sizes"
-          body="GCC card has different sizes: xs, sm, md, lg, xl."
-        >
-          <template #content>
-            <div class="flex flex-col items-center mt-4 h-full">
-              <div :class="{ 'dark': defaultDark }" class="relative overflow-y-scroll bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border overflow-x-auto border-blue-600/[.87]">
-                <Card v-for="(card, index) in cardSizes"
-                :class="'mb-4'" 
-                      :key="index"
-                      :type="card.type"
-                      :size="card.size"
-                      :header="`This is a ${card.size} card.`"
-                      :body="'This is the body text.'"
-                />
-              </div>
-            </div>
-          </template>
-        </Section>
-  
-        <Section
-          @sectioncreated="addLink"
-          header="Card Bordered"
-          body="GCC card can have borders."
-        >
-          <template #content>
-            <div class="flex flex-col items-center mt-4 h-full">
-              <div :class="{ 'dark': defaultDark }" class="relative flex space-x-4 flex-row items-center justify-center bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border overflow-x-auto border-blue-600/[.87]">
-                <Card v-for="(card, index) in cardBordered" 
-                      :key="index"
-                      :size="'lg'"
-                      :bordered="card.bordered"
-                      :header="`This is ${card.bordered ? 'a bordered' : 'not a bordered'} card.`"
-                      :body="'This is the body text.'"
-                />
-              </div>
-            </div>
-          </template>
-        </Section>
-  
-        <Section
-          @sectioncreated="addLink"
-          header="Card Image"
-          body="GCC card can include images."
-        >
-          <template #content>
-            <div class="flex flex-col items-center mt-4 h-full">
-              <div :class="{ 'dark': defaultDark }" class="relative flex space-x-4 flex-row items-center justify-center bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-full p-16 overflow-hidden rounded-lg shadow-lg border overflow-x-auto border-blue-600/[.87]">
-                <Card v-for="(card, index) in cardWithImage" 
-                      :key="index"
-                      :type="card.type"
-                      :header="`This is a ${card.type} card with image.`"
-                      :body="'This is the body text.'"
-                      :image="card.image"
-                />
-              </div>
-            </div>
-          </template>
-        </Section>
-
-        <Section
-          @sectioncreated="addLink"
-          header="Card Orientation"
-          body="GCC card have two orientations: vertical and horizontal."
-        >
-          <template #content>
-            <div class="flex flex-col items-center mt-4 h-full">
-              <div :class="{ 'dark': defaultDark }" class="relative flex space-x-4 flex-row items-center justify-center bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-full p-16 overflow-hidden rounded-lg shadow-lg border overflow-x-auto border-blue-600/[.87]">
-                <Card v-for="(card, index) in cardOrientation" 
-                      :key="index"
-                      :horizontal="card.horizontal"
-                      :header="`This is a ${card.horizontal ? 'horizontal' : 'vertical'} card with image.`"
-                      :body="'This is the body text.'"
-                      :image="card.image"
-                />
-              </div>
-            </div>
-          </template>
-        </Section>
-
-        <Section
-          @sectioncreated="addLink"
-          header="Horizontal Sizes"
-          body="The GCC card horizontal orientation also supports different sizes."
-        >
-          <template #content>
-            <div class="flex flex-col items-center mt-4 h-full">
-              <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-full p-16 overflow-hidden rounded-lg shadow-lg border overflow-x-auto border-blue-600/[.87]">
-                <Card v-for="(card, index) in cardSizes"
-                      :class="'mt-4 '" 
-                      :key="index"
-                      :type="card.type"
-                      :size="card.size"
-                      :horizontal=true
-                      :header="`This is a horizontal size ${card.size} card with image.`"
-                      :body="'This is the body text.'"
-                      :image="'image-1.jpg'"
-                />
-              </div>
-            </div>
-          </template>
-        </Section>
-
-        <Section
-          @sectioncreated="addLink"
-          header="Random Card"
-          body="Create your own card."
-        >
+  <div :class="{ 'dark': isDarkMode }" class="overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 flex flex-row scroll-smooth">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <div class="relative w-auto mb-16">
+      <PageHeader 
+        class="flex-none"
+        header="GCC Card" 
+        body="Use these responsive card components to display data and information to your users in various forms and contexts, such as for blogs, applications, user profiles, and more."
+      />
+      
+      <Section
+        @sectioncreated="addLink"
+        header="Card Types"
+        body="GCC cards are available in four types: blue, sky, cyan, and teal. The default type is blue."
+      >
         <template #content>
-            <div class="flex flex-col items-center mt-4 h-full">
-              <div class="flex flex-row justify-between space-x-6">
-                <div class="flex flex-col space-y-2 self-center">
-                  <Toggle label="Image" type="blue" :changeFunc="toggleI"></Toggle>
-                  <Toggle label="Horizontal" type="sky" :changeFunc="toggleH"></Toggle>
-                  <Toggle label="Bordered" type="cyan" :changeFunc="toggleB"></Toggle>
-                </div>
+          <div class="flex flex-col items-center mt-4 h-full">
+            <div :class="{ 'dark': defaultDark }" class="relative flex space-x-4 flex-row items-center justify-center bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border overflow-x-auto border-blue-600/[.87]">
+              <Card v-for="(card, index) in cardTypes" 
+                    :key="index"
+                    :type="card.type"
+                    :header="`This is a ${card.type} card.`"
+                    :body="'This is the body text.'"
+              />
+            </div>
+          </div>
+        </template>
+      </Section>
 
-                <div class="flex flex-col items-start space-y-2 p-2 bg-blue-100 dark:bg-gray-800 rounded-lg shadow-md">
-                  <h4 class="text-md font-semibold text-gray-900 dark:text-gray-200">Sizes</h4>
-                  <Radio 
-                  :items="[
-                            {value: 'xs' ,label: 'Extra Small'},
-                            {value: 'sm' ,label: 'Small'},
-                            {value: 'md' ,label: 'Medium'},
-                            {value: 'lg' ,label: 'Large'},
-                            {value: 'xl' ,label: 'Extra Large'},
-                          ]"
-                  @input="changeSize"/>
+      <Section
+        @sectioncreated="addLink"
+        header="Card Sizes"
+        body="GCC cards come in different sizes: xs, sm, md, lg, and xl."
+      >
+        <template #content>
+          <div class="flex flex-col items-center mt-4 h-full">
+            <div :class="{ 'dark': defaultDark }" class="relative overflow-y-scroll bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border overflow-x-auto border-blue-600/[.87]">
+              <Card v-for="(card, index) in cardSizes"
+                    :class="'mb-4'" 
+                    :key="index"
+                    :type="card.type"
+                    :size="card.size"
+                    :header="`This is a ${card.size} card.`"
+                    :body="'This is the body text.'"
+              />
+            </div>
+          </div>
+        </template>
+      </Section>
+
+      <Section
+        @sectioncreated="addLink"
+        header="Card Bordered"
+        body="GCC cards can have borders."
+      >
+        <template #content>
+          <div class="flex flex-col items-center mt-4 h-full">
+            <div :class="{ 'dark': defaultDark }" class="relative flex space-x-4 flex-row items-center justify-center bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border overflow-x-auto border-blue-600/[.87]">
+              <Card v-for="(card, index) in cardBordered" 
+                    :key="index"
+                    :size="'lg'"
+                    :bordered="card.bordered"
+                    :header="`This is ${card.bordered ? 'a bordered' : 'not a bordered'} card.`"
+                    :body="'This is the body text.'"
+              />
+            </div>
+          </div>
+        </template>
+      </Section>
+
+      <Section
+        @sectioncreated="addLink"
+        header="Card Image"
+        body="GCC cards can include images."
+      >
+        <template #content>
+          <div class="flex flex-col items-center mt-4 h-full">
+            <div :class="{ 'dark': defaultDark }" class="relative flex space-x-4 flex-row items-center justify-center bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-full p-16 overflow-hidden rounded-lg shadow-lg border overflow-x-auto border-blue-600/[.87]">
+              <Card v-for="(card, index) in cardWithImage" 
+                    :key="index"
+                    :type="card.type"
+                    :header="`This is a ${card.type} card with an image.`"
+                    :body="'This is the body text.'"
+                    :image="card.image"
+              />
+            </div>
+          </div>
+        </template>
+      </Section>
+
+      <Section
+        @sectioncreated="addLink"
+        header="Card Orientation"
+        body="GCC cards can be oriented vertically or horizontally."
+      >
+        <template #content>
+          <div class="flex flex-col items-center mt-4 h-full">
+            <div :class="{ 'dark': defaultDark }" class="relative flex space-x-4 flex-row items-center justify-center bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-full p-16 overflow-hidden rounded-lg shadow-lg border overflow-x-auto border-blue-600/[.87]">
+              <Card v-for="(card, index) in cardOrientation" 
+                    :key="index"
+                    :horizontal="card.horizontal"
+                    :header="`This is a ${card.horizontal ? 'horizontal' : 'vertical'} card with an image.`"
+                    :body="'This is the body text.'"
+                    :image="card.image"
+              />
+            </div>
+          </div>
+        </template>
+      </Section>
+
+      <Section
+        @sectioncreated="addLink"
+        header="Horizontal Sizes"
+        body="GCC cards with horizontal orientation support different sizes."
+      >
+        <template #content>
+          <div class="flex flex-col items-center mt-4 h-full">
+            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-full p-16 overflow-hidden rounded-lg shadow-lg border overflow-x-auto border-blue-600/[.87]">
+              <Card v-for="(card, index) in cardSizes"
+                    :class="'mt-4'" 
+                    :key="index"
+                    :type="card.type"
+                    :size="card.size"
+                    :horizontal="true"
+                    :header="`This is a horizontal size ${card.size} card with an image.`"
+                    :body="'This is the body text.'"
+                    :image="'image-1.jpg'"
+              />
+            </div>
+          </div>
+        </template>
+      </Section>
+
+      <Section
+        @sectioncreated="addLink"
+        header="Random Card"
+        body="Customize your own card."
+      >
+        <template #content>
+          <div class="flex flex-col items-center mt-4 h-full">
+            <div class="flex flex-row justify-between space-x-6">
+              <div class="flex flex-col space-y-2 self-center">
+                <Toggle label="Image" type="blue" :changeFunc="toggleI"></Toggle>
+                <Toggle label="Horizontal" type="sky" :changeFunc="toggleH"></Toggle>
+                <Toggle label="Bordered" type="cyan" :changeFunc="toggleB"></Toggle>
               </div>
 
               <div class="flex flex-col items-start space-y-2 p-2 bg-blue-100 dark:bg-gray-800 rounded-lg shadow-md">
-                  <h4 class="text-md font-semibold text-gray-900 dark:text-gray-200">Types</h4>
-                  <Radio 
-                  :items="[
-                            {value: 'default' ,label: 'Blue'},
-                            {value: 'sky' ,label: 'Sky'},
-                            {value: 'cyan' ,label: 'Cyan'},
-                            {value: 'teal' ,label: 'Teal'},
-                          ]"
-                  @input="changeType"/>
+                <h4 class="text-md font-semibold text-gray-900 dark:text-gray-200">Sizes</h4>
+                <Radio 
+                :items="[
+                          {value: 'xs' ,label: 'Extra Small'},
+                          {value: 'sm' ,label: 'Small'},
+                          {value: 'md' ,label: 'Medium'},
+                          {value: 'lg' ,label: 'Large'},
+                          {value: 'xl' ,label: 'Extra Large'},
+                        ]"
+                @input="changeSize"/>
               </div>
+
+              <div class="flex flex-col items-start space-y-2 p-2 bg-blue-100 dark:bg-gray-800 rounded-lg shadow-md">
+                <h4 class="text-md font-semibold text-gray-900 dark:text-gray-200">Types</h4>
+                <Radio 
+                :items="[
+                          {value: 'default' ,label: 'Blue'},
+                          {value: 'sky' ,label: 'Sky'},
+                          {value: 'cyan' ,label: 'Cyan'},
+                          {value: 'teal' ,label: 'Teal'},
+                        ]"
+                @input="changeType"/>
               </div>
-              <div :class="{ 'dark': defaultDark }" class="relative flex space-x-4 p16 flex-row items-center justify-center bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-auto rounded-lg shadow-lg border overflow-x-auto border-blue-600/[.87]">
-                <Card v-if="cardOwn" 
-                      :key="index"
-                      :class="'mt-12'"
-                      :size="cardOwn.size"
-                      :image="cardOwn.image ? 'image-1.jpg' : ''"
-                      :bordered="cardOwn.bordered"
-                      :type="cardOwn.type"
-                      :horizontal="cardOwn.horizontal"
-                      :header="`This is your card.`"
+            </div>
+            <div :class="{ 'dark': defaultDark }" class="flex flex-row items-center justify-center bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-auto rounded-lg shadow-lg border overflow-x-auto border-blue-600/[.87]">
+              <Card v-if="cardOwn" 
+                    :key="index"
+                    :class="'mt-12'"
+                    :size="cardOwn.size"
+                    :image="cardOwn.image ? 'image-1.jpg' : ''"
+                    :bordered="cardOwn.bordered"
+                    :type="cardOwn.type"
+                    :horizontal="cardOwn.horizontal"
+                    :header="`This is your card.`"
                       :body="'This is the body text.'"
                 />
               </div>

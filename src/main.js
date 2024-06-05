@@ -11,5 +11,5 @@ import './index.css'
 
 
 
-createApp(cardPage).mount('#app')
+createApp(App).mount('#app')
 //createApp(breadcrumb_page).mount('#app')
