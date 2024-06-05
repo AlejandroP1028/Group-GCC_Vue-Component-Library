@@ -89,13 +89,13 @@
 </template>
 
 <script>
-import Progress from './components/Progress.vue';
+//import Progress from './components/Progress.vue';
 // Ensure Button is imported or defined here if needed
 
 export default {
   name: 'App',
   components: {
-    Progress,
+    //Progress,
   },
   data() {
     return {

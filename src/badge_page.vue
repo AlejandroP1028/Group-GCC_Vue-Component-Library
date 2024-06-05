@@ -60,34 +60,34 @@
       <Section 
         header="Inline Badge"
         @sectioncreated="addLink"
-        body="nyenyenye"
+        body="The default position of the GCC badge component is inline. Use the toggles for dot badge and pill badge one at a time, and use the bordered badge toggle to display the bordered badge."
       > 
         <template #content>
-          <div class="flex justify-center flex-row space-x-4">
-            <div class="flex justify-center flex-col space-y-2 p-5">
-              <ToggleComponent label="Default Badge" v-model="toggles.default" @change="handleToggle('default')" :disabled="toggles.defaultDisabled"></ToggleComponent>
-              <ToggleComponent label="Dot Badge" v-model="toggles.dot" @change="handleToggle('dot')" :disabled="toggles.dotDisabled"></ToggleComponent>
+          <div class="flex justify-center items-center">
+            <div class="flex flex-col space-y-2 p-5">
+              <ToggleComponent label="Dot Badge" type="sky" v-model="toggles.dot" @change="handleToggle('dot')" :disabled="toggles.dotDisabled"></ToggleComponent>
+              <ToggleComponent label="Pill Badge" type="sky" v-model="toggles.pill" @change="handleToggle('pill')" :disabled="toggles.pillDisabled"></ToggleComponent>
+              <ToggleComponent label="Bordered Badge" type="sky" v-model="toggles.bordered" @change="handleToggle('bordered')"></ToggleComponent>
             </div>
-            <div class="flex justify-center flex-col space-y-2 p-5">
-              <ToggleComponent label="Pill Badge" v-model="toggles.pill" @change="handleToggle('pill')" :disabled="toggles.pillDisabled"></ToggleComponent>
-              <ToggleComponent label="Bordered Badge" v-model="toggles.bordered" @change="handleToggle('bordered')"></ToggleComponent>
-            </div>
-            <div class="flex justify-center flex-col space-y-2 border-l-2 border-gray-300 p-5">
-              <DropdownComponent> Colors </DropdownComponent>
+            <div class="flex flex-col space-y-2 p-5 border-l-2 border-gray-200">
+              <ToggleComponent label="Blue" type="blue" :value="selectedColor === 'blue'" @change="updateSelectedColor('blue')" />
+              <ToggleComponent label="Sky" type="sky" :value="selectedColor === 'sky'" @change="updateSelectedColor('sky')" />
+              <ToggleComponent label="Teal" type="teal" :value="selectedColor === 'teal'" @change="updateSelectedColor('teal')" />
+              <ToggleComponent label="Cyan" type="cyan" :value="selectedColor === 'cyan'" @change="updateSelectedColor('cyan')" />
             </div>
           </div>
           <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
             <div class="w-2/3 flex items-center justify-center">
-              <Button>
+              <Button color="sky">
                 Button
-                <BadgeComponent :type="badgeType" color="blue" :bordered="toggles.bordered" :class="['relative ml-1', badgeNumber > 0 ? 'visible' : 'invisible']">
+                <BadgeComponent :type="badgeType" :color="selectedColor" :bordered="toggles.bordered" :class="['relative ml-1', badgeNumber > 0 ? 'visible' : 'invisible']">
                   {{ badgeNumber }}
                 </BadgeComponent>
               </Button>
             </div>
             <div class="w-1/3 border-l-2 border-gray-300 p-5">
               <p class="text-gray-800/[.87] dark:text-gray-200/[.87] font-medium text-md">Increase the counter value:</p>
-              <input type="range" min="1" max="99" v-model="badgeNumber" @input="updateBadgeNumber" class="h-2 w-40 appearance-none rounded-lg bg-gray-300 mt-1 outline-none dark:bg-gray-800">
+              <input type="range" min="1" max="99" v-model="badgeNumber" @input="updateBadgeNumber" class="h-2 w-40 appearance-none rounded-lg bg-gray-300 mt-1 outline-none dark:bg-gray-900">
             </div>
           </div>
         </template>
@@ -100,13 +100,13 @@
       > 
         <template #content>
           <div class="flex justify-center flex-row space-x-4 mt-6">
-            <ToggleComponent label="Dot Badge" type="blue" @change="toggleDot" :disabled="displayBadge.number || displayBadge.icon"></ToggleComponent>
-            <ToggleComponent label="Number Badge" type="blue" @change="toggleNum" :disabled="displayBadge.dot || displayBadge.icon"></ToggleComponent>
-            <ToggleComponent label="Icon Badge" type="blue" @change="toggleIcon" :disabled="displayBadge.dot || displayBadge.number"></ToggleComponent>
+            <ToggleComponent label="Dot Badge" type="sky" @change="toggleDot" :disabled="displayBadge.number || displayBadge.icon"></ToggleComponent>
+            <ToggleComponent label="Number Badge" type="sky" @change="toggleNum" :disabled="displayBadge.dot || displayBadge.icon"></ToggleComponent>
+            <ToggleComponent label="Icon Badge" type="sky" @change="toggleIcon" :disabled="displayBadge.dot || displayBadge.number"></ToggleComponent>
           </div>
           <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
             <div class="relative">
-              <Button>
+              <Button color="sky">
                 Button
                 <BadgeComponent type="dot" color="red" position v-if="displayBadge.dot"></BadgeComponent>
                 <BadgeComponent type="dot" color="blue" bordered position v-if="displayBadge.number"> 2 </BadgeComponent>
@@ -120,9 +120,9 @@
       <Section 
         header="Summary"
         @sectioncreated="addLink"
-        body="mama mo summary di pa tapos sandale"
-      > 
-        </Section>
+        body="The GCC Badge component offers versatile badge elements based on Tailwind CSS, including various colors such as blue, sky, teal, and cyan. It supports different styles like bordered badges, dot badges, and pill-shaped badges, providing flexibility in design options. Additionally, the component allows for easy integration of badge elements to display contextual information or counts, enhancing user interaction and visual appeal."
+      /> 
+      <br/>
     </div>
 
     <div class="sticky top-8 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
@@ -177,10 +177,10 @@ export default {
         dot: false,
         pill: false,
         bordered: false,
-        defaultDisabled: false,
         dotDisabled: false,
         pillDisabled: false
-      }
+      },
+      selectedColor: 'sky'
     };
   },
   computed: {
@@ -197,8 +197,11 @@ export default {
     toggleDarkMode() {
       this.isDarkMode = !this.isDarkMode;
     },
-    handleToggle(type) {
-      if (type === 'default') {
+    handleToggle(type, color) {
+      if (type ==='coolor') {
+        this.toggles[color] = !this.toggles[color];
+      }
+      else if (type === 'default') {
         this.toggles.default = !this.toggles.default;
         if (this.toggles.default) {
           this.toggles.dot = false;
@@ -214,10 +217,8 @@ export default {
         if (this.toggles.dot) {
           this.toggles.default = false;
           this.toggles.pill = false;
-          this.toggles.defaultDisabled = true;
           this.toggles.pillDisabled = true;
         } else {
-          this.toggles.defaultDisabled = false;
           this.toggles.pillDisabled = false;
         }
       } else if (type === 'pill') {
@@ -225,10 +226,8 @@ export default {
         if (this.toggles.pill) {
           this.toggles.default = false;
           this.toggles.dot = false;
-          this.toggles.defaultDisabled = true;
           this.toggles.dotDisabled = true;
         } else {
-          this.toggles.defaultDisabled = false;
           this.toggles.dotDisabled = false;
         }
       } else if (type === 'bordered') {
@@ -258,7 +257,10 @@ export default {
     },
     updateBadgeNumber(event) {
       this.badgeNumber = event.target.value;
-    }
+    },
+    updateSelectedColor(color) {
+            this.selectedColor = color;
+        }
   }
 };
 </script>
