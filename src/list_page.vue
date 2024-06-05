@@ -40,6 +40,39 @@
             </div>
           </template>
         </Section>
+        <Section header="Description List" @sectioncreated="addLink" body="The GCC list component includes an description list option.">
+          <template #content>
+            <div class="flex flex-col items-center mt-4 h-full">
+              <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+                <ItemList :items="descriptionList" type="descriptionlist" color="blue" position="centered"/> 
+              </div>
+            </div>
+          </template>
+        </Section>
+        <Section header="Horizontal List" @sectioncreated="addLink" body="The GCC list component includes an ordered list option with 4 color choices, blue, sky, teal, and cyan.">
+          <template #content>
+            <div class="flex flex-col items-center mt-4 h-full">
+              <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+                <ItemList type="unorderedlist" layout="horizontal" color="blue" position="centered">
+                  <li><a href="#" class="hover:underline">About</a></li>
+                  <li><a href="#" class="hover:underline">Campaign</a></li>
+                  <li><a href="#" class="hover:underline">Blog</a></li>
+                  <li><a href="#" class="hover:underline">FAQs</a></li>
+                  <li><a href="#" class="hover:underline">Contact Us</a></li>
+                </ItemList>
+              </div>
+            </div>
+          </template>
+        </Section>
+        <Section header="List with icons" @sectioncreated="addLink" body="The GCC list component includes an ordered list option with 4 color choices, blue, sky, teal, and cyan.">
+          <template #content>
+            <div class="flex flex-col items-center mt-4 h-full">
+              <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+                <ItemList :items="List" type="unorderedicon"/>
+              </div>
+            </div>
+          </template>
+        </Section>
       </div>
       <div class="sticky top-8 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
         <hr class="h-0.5 bg-blue-600 border-none rounded-full">
