@@ -122,6 +122,7 @@
         @sectioncreated="addLink"
         body="The GCC Badge component offers versatile badge elements based on Tailwind CSS, including various colors such as blue, sky, teal, and cyan. It supports different styles like bordered badges, dot badges, and pill-shaped badges, providing flexibility in design options. Additionally, the component allows for easy integration of badge elements to display contextual information or counts, enhancing user interaction and visual appeal."
       /> 
+      <br/>
     </div>
 
     <div class="sticky top-8 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">

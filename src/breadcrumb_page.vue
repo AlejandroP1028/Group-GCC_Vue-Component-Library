@@ -7,7 +7,7 @@
                 header="GCC Breadcrumb" 
                 body="Show navigational information to your users using breadcrumb elements based on Tailwind CSS"
                 />
-                
+
                 <Section 
                     body="The GCC breadcrumb component is a navigational component that provides users with a trail of links that represent the path they have taken to arrive at their current location within a website or application."
                 />
@@ -75,6 +75,7 @@
                 body="The GCC breadcrumb page offers users a comprehensive suite of navigational features, including customizable divider options and a range of solid background colors, ensuring seamless navigation within web applications. By providing clear and intuitive navigation paths, it enhances user experience and facilitates effortless exploration of website content."
             > 
             </Section>
+            <br/>
         </div>
 
         <div class="sticky top-8 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
