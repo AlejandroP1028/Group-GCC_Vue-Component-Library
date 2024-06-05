@@ -32,10 +32,10 @@
                 <template #content>
                     <div class="flex justify-center mt-5"> 
                         <div class="flex space-x-4">
-                            <ToggleComponent label="Blue" type="blue" :value="selectedColor === 'blue'" @change="updateSelectedColor('blue')" />
-                            <ToggleComponent label="Sky" type="sky" :value="selectedColor === 'sky'" @change="updateSelectedColor('sky')" />
-                            <ToggleComponent label="Teal" type="teal" :value="selectedColor === 'teal'" @change="updateSelectedColor('teal')" />
-                            <ToggleComponent label="Cyan" type="cyan" :value="selectedColor === 'cyan'" @change="updateSelectedColor('cyan')" />
+                            <Button label="Blue" color="blue" @click="updateSelectedColor('blue')"> Blue </Button>
+                            <Button label="Sky" color="sky" @click="updateSelectedColor('sky')"> Sky </Button>
+                            <Button label="Teal" color="teal" @click="updateSelectedColor('teal')"> Teal </Button>
+                            <Button label="Cyan" color="cyan" @click="updateSelectedColor('cyan')"> Cyan </Button>
                         </div>
                     </div>
                     <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
@@ -103,7 +103,6 @@ import PageHeader from './components/pageHeader.vue';
 import PageLinks from './components/pageLinks.vue'; 
 import Button from './components/Button.vue';
 import BreadcrumbComponent from './components/BreadcrumbComponent.vue';
-import ToggleComponent from './components/ToggleComponent.vue';
 import Radio from './components/radio.vue';
 
 export default {
@@ -114,7 +113,6 @@ export default {
         BreadcrumbComponent,
         Section,
         Button,
-        ToggleComponent,
         Radio
     },
     data() {
