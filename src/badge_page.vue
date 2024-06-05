@@ -69,11 +69,11 @@
               <ToggleComponent label="Pill Badge" type="sky" v-model="toggles.pill" @change="handleToggle('pill')" :disabled="toggles.pillDisabled"></ToggleComponent>
               <ToggleComponent label="Bordered Badge" type="sky" v-model="toggles.bordered" @change="handleToggle('bordered')"></ToggleComponent>
             </div>
-            <div class="flex flex-col space-y-2 p-5 border-l-2 border-gray-200">
-              <ToggleComponent label="Blue" type="blue" :value="selectedColor === 'blue'" @change="updateSelectedColor('blue')" />
-              <ToggleComponent label="Sky" type="sky" :value="selectedColor === 'sky'" @change="updateSelectedColor('sky')" />
-              <ToggleComponent label="Teal" type="teal" :value="selectedColor === 'teal'" @change="updateSelectedColor('teal')" />
-              <ToggleComponent label="Cyan" type="cyan" :value="selectedColor === 'cyan'" @change="updateSelectedColor('cyan')" />
+            <div class="flex flex-row space-x-2 p-5 border-l-2 border-gray-200">
+              <Button label="Blue" color="blue" @click="updateSelectedColor('blue')"> Blue </Button>
+              <Button label="Sky" color="sky" @click="updateSelectedColor('sky')"> Sky </Button>
+              <Button label="Teal" color="teal" @click="updateSelectedColor('teal')"> Teal </Button>
+              <Button label="Cyan" color="cyan" @click="updateSelectedColor('cyan')"> Cyan </Button>
             </div>
           </div>
           <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
@@ -96,13 +96,13 @@
       <Section 
         header="Floating Badge"
         @sectioncreated="addLink"
-        body="These are different examples of a floating badge, also known as notification badge, in a button. Use the toggle to display ways to indicate information, such as a simple dot, count indicator, or an icon."
+        body="These are different examples of a floating badge, also known as a notification badge, in a button. Use the buttons to display ways to indicate information, such as a simple dot, count indicator, or an icon."
       > 
         <template #content>
           <div class="flex justify-center flex-row space-x-4 mt-6">
-            <ToggleComponent label="Dot Badge" type="sky" @change="toggleDot" :disabled="displayBadge.number || displayBadge.icon"></ToggleComponent>
-            <ToggleComponent label="Number Badge" type="sky" @change="toggleNum" :disabled="displayBadge.dot || displayBadge.icon"></ToggleComponent>
-            <ToggleComponent label="Icon Badge" type="sky" @change="toggleIcon" :disabled="displayBadge.dot || displayBadge.number"></ToggleComponent>
+            <Button label="Dot Badge" color="sky" @click="toggleDot">Dot Badge</Button>
+            <Button label="Number Badge" color="sky" @click="toggleNum">Number Badge</Button>
+            <Button label="Icon Badge" color="sky" @click="toggleIcon">Icon Badge</Button>
           </div>
           <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
             <div class="relative">
@@ -198,7 +198,7 @@ export default {
       this.isDarkMode = !this.isDarkMode;
     },
     handleToggle(type, color) {
-      if (type ==='coolor') {
+      if (type ==='color') {
         this.toggles[color] = !this.toggles[color];
       }
       else if (type === 'default') {
