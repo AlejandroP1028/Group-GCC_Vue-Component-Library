@@ -11,8 +11,18 @@
     <slot></slot>
   </ul>
 </div>
-<div v-else-if="type === 'unorderedicon-horizontal'" class="border border-opacity-5 border-blue-700 bg-blue-100 rounded-sm md:px-5 md:py-4 w-full dark:bg-gray-900">
-  <ul v-if="iconItems && iconItems.length" class="space-x-5 text-lg text-blue-800 dark:text-sky-400 flex flex-wrap justify-center">
+<div v-else-if="type === 'unorderedlist' && layout === 'vertical'" :class="{ ...containerClasses, ...colorClasses }">
+    <ul v-if="items && items.length" :class="listClasses">
+      <li v-for="(item, index) in items" :key="index" class="py-1 m-1">
+        {{ item }}
+      </li>
+    </ul>
+    <ul v-else class="list-disc space-y-3 text-blue-800 dark:text-sky-400">
+      <slot></slot>
+    </ul>
+  </div>
+<div v-else-if="type === 'unorderedicon-horizontal'" :class="{ ...containerClasses, ...colorClasses }">
+  <ul v-if="iconItems && iconItems.length" :class="listClasses">
     <li v-for="(item, index) in iconItems" :key="index" class="flex items-center space-x-2">
         <a v-if="item === 'facebook'" href="https://facebook.com" class="flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" fill="#1E40AF" width="24" height="24" viewBox="0 0 32 32">
@@ -40,16 +50,6 @@
     <slot name="icons"></slot>
   </ul>
 </div>
-  <div v-else-if="type === 'unorderedlist' && layout === 'vertical'" :class="{ ...containerClasses, ...colorClasses }">
-    <ul v-if="items && items.length" :class="listClasses">
-      <li v-for="(item, index) in items" :key="index" class="py-1 m-1">
-        {{ item }}
-      </li>
-    </ul>
-    <ul v-else class="list-disc space-y-3 text-blue-800 dark:text-sky-400">
-      <slot></slot>
-    </ul>
-  </div>
   <div v-else-if="type === 'orderedlist' && layout === 'vertical'" :class="{ ...containerClasses, ...colorClasses }">
       <ol v-if="items && items.length" :class="listClasses">
         <li v-for="(item, index) in items" :key="index" class="py-1 m-1">
@@ -246,20 +246,33 @@ export default {
             'bg-sky-100': true,
             'dark:bg-sky-700': true
           };
+        case 'blue':
+          return {
+            'text-blue-800': true,
+            'dark:text-blue-200': true,
+            'bg-blue-100': true,
+            'dark:bg-blue-700': true
+          };
         case 'teal':
           return {
-            'dark:text-teal-400': true,
-            'bg-teal-100': true
+            'text-teal-800': true,
+            'dark:text-teal-200': true,
+            'bg-teal-100': true,
+            'dark:bg-teal-700': true
           };
         case 'cyan':
           return {
-            'dark:text-cyan-400': true,
-            'bg-cyan-100': true
+            'text-cyan-800': true,
+            'dark:text-cyan-200': true,
+            'bg-cyan-100': true,
+            'dark:bg-cyan-700': true
           };
         default:
           return {
-            'dark:text-sky-400': true,
-            'bg-blue-100': true
+            'text-blue-800': true,
+            'dark:text-sky-200': true,
+            'bg-blue-100': true,
+            'dark:bg-sky-700': true
           };
       }
     }

@@ -4,31 +4,38 @@
       <div class="relative w-auto mb-16">
         <PageHeader :class="'flex-none'" header="GCC List" body="Show contextual information to your users using list elements based on Tailwind CSS"/>
         <Section body="The GCC list component is a versatile tool for presenting various types of information. Each list item type is designed to be distinct, ensuring that users receive important feedback clearly and promptly, thereby enhancing the overall user experience and communication on the webpage."/>
-        <Section header="Unordered List" @sectioncreated="addLink" body="The GCC notification component features a default notification style that seamlessly fades out for automatic dismissal.">
+        <Section header="Unordered List" @sectioncreated="addLink" body="The GCC list component includes an unordered list option with 4 color choices, blue, sky, teal, and cyan.">
           <template #content>
             <div class="flex flex-col items-center mt-4 h-full">
+              <div class="flex space-x-4">
+                <Button color="blue" :class="'w-9/10'" @click="showBlue">Blue</Button>
+                <Button color="sky" :class="'w-9/10'" @click="showSky">Sky</Button>
+                <Button color="teal" :class="'w-9/10'" @click="showTeal">Teal</Button>
+                <Button color="cyan" :class="'w-9/10'" @click="showCyan">Cyan</Button>
+              </div>
               <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]"> 
-                <ItemList :items="List" type="unorderedlist" layout="vertical" color="sky" position="centered"/>
+                <ItemList v-if="blueList" :items="List" type="unorderedlist" layout="vertical" color="blue" position="centered"/> 
+                <ItemList v-if="skyList" :items="List" type="unorderedlist" layout="vertical" color="sky" position="centered"/>
+                <ItemList v-if="tealList" :items="List" type="unorderedlist" layout="vertical" color="teal" position="centered"/>
+                <ItemList v-if="cyanList" :items="List" type="unorderedlist" layout="vertical" color="cyan" position="centered"/>
               </div>
             </div>
           </template>
         </Section>
-        <Section header="Default Notification Style" @sectioncreated="addLink" body="The GCC notification component features a default notification with 5 different styles that seamlessly fades out for automatic dismissal.">
+        <Section header="Ordered List" @sectioncreated="addLink" body="The GCC list component includes an ordered list option with 4 color choices, blue, sky, teal, and cyan.">
           <template #content>
             <div class="flex flex-col items-center mt-4 h-full">
               <div class="flex space-x-4">
-                <Button color="blue" :class="'w-9/10'" @click="showNotificationDefault">Default</Button>
-                <Button color="blue" :class="'w-9/10'" @click="showNotificationBlue">Blue</Button>
-                <Button color="sky" :class="'w-9/10'" @click="showNotificationSky">Sky</Button>
-                <Button color="teal" :class="'w-9/10'" @click="showNotificationTeal">Teal</Button>
-                <Button color="cyan" :class="'w-9/10'" @click="showNotificationCyan">Cyan</Button>
+                <Button color="blue" :class="'w-9/10'" @click="showBlueO">Blue</Button>
+                <Button color="sky" :class="'w-9/10'" @click="showSkyO">Sky</Button>
+                <Button color="teal" :class="'w-9/10'" @click="showTealO">Teal</Button>
+                <Button color="cyan" :class="'w-9/10'" @click="showCyanO">Cyan</Button>
               </div>
               <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
-                <Notifications v-if="notificationDefaultVisible" type="default" notification_message="This is a default notification." position="pCenter"/> 
-                <Notifications v-if="notificationBlueBorderVisible"  type="BlueBorder" notification_message="This is a blue bordered default notification." position="pTop-right"/>       
-                <Notifications v-if="notificationCyanBorderVisible" type="CyanBorder" notification_message="This is a cyan bordered default notification." position="pTop-left"/>
-                <Notifications v-if="notificationSkyBorderVisible" type="SkyBorder" notification_message="This is a sky bordered default notification." position="pBottom-left"/>     
-                <Notifications v-if="notificationTealBorderVisible" type="TealBorder" notification_message="This is a teal bordered default notification." position="pBottom-right"/>    
+                <ItemList v-if="blueListO" :items="List" type="orderedlist" layout="vertical" color="blue" position="centered"/> 
+                <ItemList v-if="skyListO" :items="List" type="orderedlist" layout="vertical" color="sky" position="centered"/>
+                <ItemList v-if="tealListO" :items="List" type="orderedlist" layout="vertical" color="teal" position="centered"/>
+                <ItemList v-if="cyanListO" :items="List" type="orderedlist" layout="vertical" color="cyan" position="centered"/>  
               </div>
             </div>
           </template>
@@ -71,7 +78,15 @@
         links: [],
         isDarkMode: false,
         defaultDark: false,
-      List: [
+        blueList: false,
+        skyList: false,
+        tealList: false,
+        cyanList: false,
+        blueListO: false,
+        skyListO: false,
+        tealListO: false,
+        cyanListO: false,
+        List: [
         'Item 1',
         'Item 2',
         'Item 3',
@@ -86,13 +101,62 @@
     };
     },
     methods: {
-      toggleDarkMode() {
-        this.isDarkMode = !this.isDarkMode;
-      },
-      addLink(header) {
-        this.links.push({ label: header });
-      },
-    }
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+  },
+  addLink(header) {
+    this.links.push({ label: header });
+  },
+  showBlue() {
+    this.blueList = !this.blueList;
+    this.skyList = false;
+    this.tealList = false;
+    this.cyanList = false;
+  },
+  showSky() {
+    this.skyList = !this.skyList;
+    this.blueList = false;
+    this.tealList = false;
+    this.cyanList = false;
+  },
+  showTeal() {
+    this.tealList = !this.tealList;
+    this.blueList = false;
+    this.skyList = false;
+    this.cyanList = false;
+  },
+  showCyan() {
+    this.cyanList = !this.cyanList;
+    this.blueList = false;
+    this.skyList = false;
+    this.tealList = false;
+  },
+  showBlueO() {
+    this.blueListO = !this.blueListO;
+    this.skyListO = false;
+    this.tealListO = false;
+    this.cyanListO = false;
+  },
+  showSkyO() {
+    this.skyListO = !this.skyListO;
+    this.blueListO = false;
+    this.tealListO = false;
+    this.cyanListO = false;
+  },
+  showTealO() {
+    this.tealListO = !this.tealListO;
+    this.blueListO = false;
+    this.skyListO = false;
+    this.cyanListO = false;
+  },
+  showCyanO() {
+    this.cyanListO = !this.cyanListO;
+    this.blueListO = false;
+    this.skyListO = false;
+    this.tealListO = false;
+  },
+}
+
   };
   </script>
   
