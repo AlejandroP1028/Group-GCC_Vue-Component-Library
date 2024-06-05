@@ -116,7 +116,7 @@
       </div>
     </footer>
 
-    <footer :class="footerClasses">
+    <footer :class="footerStickyClasses">
     <span :class="spanClass">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
         <ul :class="ulClasses">
           <li v-for="(item, index) in footerLinks" :key="index" :class="liClasses">
@@ -137,7 +137,7 @@ export default defineComponent({
       footerType: 'default',
       
       // Footer Similarities
-      footerClasses: 'bg-blue-200 rounded-lg shadow m-4 dark:bg-blue-600',
+      footerClasses: 'bg-blue-200 rounded-lg shadow m-4 dark:bg-blue-600 mb-24',
       ulClasses: 'flex flex-wrap items-center float-right mt-3 text-sm font-medium text-blue-800 dark:text-white sm:mt-0',
       liClasses: 'me-4 md:me-6',
       hoverClasses: 'hover:underline',
@@ -148,11 +148,11 @@ export default defineComponent({
         { label: 'Contact', url: '#' }
       ],
 
-      // Default Footer Classes
+      // Default Footer 
       divDefaultClass: 'w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between',
       spanDefaultClasses: 'text-sm text-blue-800 sm:text-center dark:text-white',
 
-      // Footer with Logo Classes
+      // Footer with Logo 
       divFooterLogoClass: 'w-full max-w-screen-xl mx-auto p-4 md:py-8 footerLogoClass',
       anchorFooterLogoClass: 'flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse',
       imgFooterLogoClass: 'h-8',
@@ -160,7 +160,7 @@ export default defineComponent({
       hrFooterLogoClasses: 'my-6 border-blue-800 sm:mx-auto dark:border-white lg:my-8',
       spanFooterLogoTextClasses: 'block text-sm text-blue-800 sm:text-center dark:text-white',
 
-      // Social Footer Classes
+      // Social Footer
       divSocialFooterClass: 'mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8',
       socialDivClass: 'md:flex md:justify-between',
       imgSocialFooterClass: 'h-8 me-3',
@@ -190,7 +190,7 @@ export default defineComponent({
         { label: 'Terms & Conditions', url: '#' }
       ],
       
-      // SVG Icons for Social Footer
+      // Icons for Social Footer
       socialIcons: [
         {
           label: 'Facebook',
@@ -218,7 +218,7 @@ export default defineComponent({
         }
       ],
 
-      // Sitemap Linked Footer Classes
+      // Sitemap Linked Footer
       containerClasses: 'w-full max-w-screen-xl mx-auto p-4 py-6 lg:py-8',
       sitemapGridClasses: 'md:flex md:justify-between',
       sectionTitleClasses: 'mb-6 text-sm font-semibold text-blue-800 uppercase dark:text-white',
@@ -233,7 +233,10 @@ export default defineComponent({
         { title: 'Company', items: ['About', 'Careers', 'Brand Center', 'Blog'] },
         { title: 'Help center', items: ['Discord Server', 'Twitter', 'Facebook', 'Contact Us'] },
         { title: 'Legal', items: ['Privacy Policy', 'Licensing', 'Terms & Conditions'] }
-      ]
+      ],
+
+      // Sticky Footer
+      footerStickyClasses:'fixed bottom-0 left-0 z-20 w-full p-4 border-t shadow md:flex md:items-center md:justify-between md:p-6 text-blue-800 dark:text-white bg-blue-200 dark:bg-blue-600',
     };
   }
 });
