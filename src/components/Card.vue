@@ -77,7 +77,8 @@ export default {
       return this.horizontal ? 'w-2/5 object-cover rounded-l-lg' : 'w-full rounded-t-lg';
     },
     isHorizontal() {
-      return this.horizontal ? 'w-3/5 p-4' : 'w-full p-4';
+      console.log('true')
+      return this.horizontal && this.image ? 'w-3/5 p-4' : 'w-full p-4';
     },
     computedClassesHeader() {
       const styleClasses = {
