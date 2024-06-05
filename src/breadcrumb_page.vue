@@ -47,7 +47,7 @@
             <Section 
                 header="Breadcrumb Dividers"
                 @sectioncreated="addLink"
-                body="Separator or divider of the GCC breadcrumb component can be customized."
+                body="The separator or divider of the GCC breadcrumb component can be customized."
             > 
                 <template #content> 
                     <div class="flex flex-col items-start space-y-2 p-2 bg-blue-100 dark:bg-gray-800 rounded-lg shadow-md"> 
@@ -72,7 +72,7 @@
             <Section 
                 header="Summary"
                 @sectioncreated="addLink"
-                body="The GCC breadcrumb page offers users a comprehensive suite of navigational features, including customizable divider options and a range of solid background colors, ensuring seamless navigation within web applications. By providing clear and intuitive navigation paths, it enhances user experience and facilitates effortless exploration of website content."
+                body="The GCC breadcrumb component offers users a comprehensive suite of navigational features, including customizable divider options and a range of solid background colors, ensuring seamless navigation within web applications. By providing clear and intuitive navigation paths, it enhances user experience and facilitates effortless exploration of website content."
             > 
             </Section>
             <br/>

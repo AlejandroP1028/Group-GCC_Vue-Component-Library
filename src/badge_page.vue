@@ -60,7 +60,7 @@
       <Section 
         header="Inline Badge"
         @sectioncreated="addLink"
-        body="The default position of the GCC badge component is inline. Use the toggles for dot badge and pill badge one at a time, and use the bordered badge toggle to display the bordered badge."
+        body="The default position of the GCC badge component is inline. Use the toggles for dot badge and pill badge one at a time to display each badge type, and use the bordered badge toggle to display the bordered badge."
       > 
         <template #content>
           <div class="flex justify-center items-center">
@@ -120,7 +120,7 @@
       <Section 
         header="Summary"
         @sectioncreated="addLink"
-        body="The GCC Badge component offers versatile badge elements based on Tailwind CSS, including various colors such as blue, sky, teal, and cyan. It supports different styles like bordered badges, dot badges, and pill-shaped badges, providing flexibility in design options. Additionally, the component allows for easy integration of badge elements to display contextual information or counts, enhancing user interaction and visual appeal."
+        body="The GCC badge component offers versatile badge elements based on Tailwind CSS, including various colors such as blue, sky, teal, and cyan. It supports different styles like bordered badges, dot badges, and pill-shaped badges, providing flexibility in design options. Additionally, the component allows for easy integration of badge elements to display contextual information or counts, enhancing user interaction and visual appeal."
       /> 
       <br/>
     </div>
