@@ -133,8 +133,7 @@
 
       <Section
         @sectioncreated="addLink"
-        header="Random Card"
-        body="Customize your own card."
+        header="Customize your own card"
       >
         <template #content>
           <div class="flex flex-col items-center mt-4 h-full">
