@@ -60,13 +60,13 @@ export default {
     },
     sizeClass() {
       return {
-        small: 'relative w-6 h-4 after:w-3 after:h-3',
+        small: 'relative w-6 h-3.5 after:w-2.5 after:h-2.5',
         default: 'relative w-11 h-6 after:w-5 after:h-5',
         large: 'relative w-14 h-7 after:w-6 after:h-6'
       }[this.size || this.default];
     },
     baseClass() {
-      return `bg-gray-200 peer-focus:outline-none peer-focus:ring-4 rounded-full peer
+      return `bg-gray-400 peer-focus:outline-none peer-focus:ring-4 rounded-full peer
         dark:bg-gray-700
         peer-checked:after:translate-x-full 
         rtl:peer-checked:after:-translate-x-full

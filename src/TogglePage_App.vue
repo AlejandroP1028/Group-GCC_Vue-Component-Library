@@ -14,28 +14,41 @@
         body="Start by using the GCC toggle component example, modifying it into a checkbox element that allows the user to select either true or false.">
         <template #content>
           <div class="flex flex-col items-center mt-4 h-full">
-            <div class="flex justify-center pt-10">
+              <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
               <ToggleComponent
                 label="Toggle Me"
                 size="default"
                 type="blue"
                 :isChecked="false"
               />
+              </div>
+          </div>
+        </template>
+      </Section>
+
+      <Section header="Checked Toggle" 
+      @sectioncreated="addLink"
+      body="Start by using the GCC toggle component example, modifying it into a checkbox element that allows the user to select either true or false.">
+        <template #content>
+          <div class="flex flex-col items-center mt-4 h-full">
+            <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">            
+            <ToggleComponent
+              label="Checked Toggle"
+              size="default"
+              :isChecked="true"
+              type="blue"
+            />
             </div>
           </div>
         </template>
       </Section>
 
-      <Section header="Checked and Disabled" @sectioncreated="addLink">
+      <Section header="Disabled Toggle" 
+      @sectioncreated="addLink"
+      body="Start by using the GCC toggle component example, modifying it into a checkbox element that allows the user to select either true or false.">
         <template #content>
-          <div class="flex flex-wrap justify-center space-x-6 mb-6">
-            <ToggleComponent
-              label="Dark Mode"
-              :changeFunc="toggleDarkMode"
-              size="default"
-              :isChecked="isDarkMode"
-              type="blue"
-            />
+          <div class="flex flex-col items-center mt-4 h-full">
+            <div :class="{ 'dark': defaultDark }" class="relative space-x-4 bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">   
             <ToggleComponent
               label="Disabled Toggle"
               size="default"
@@ -50,13 +63,17 @@
               :disabled="true"
               :isChecked="true"
             />
+            </div>
           </div>
         </template>
       </Section>
 
-      <Section header="Colors" @sectioncreated="addLink">
+      <Section header="Colors" 
+      @sectioncreated="addLink"
+      body="Start by using the GCC toggle component example, modifying it into a checkbox element that allows the user to select either true or false.">
         <template #content>
-          <div class="flex flex-wrap justify-center space-x-6 mb-6">
+          <div class="flex flex-col items-center mt-4 h-full">
+            <div :class="{ 'dark': defaultDark }" class="relative space-x-4 bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">               
             <ToggleComponent
               label="Blue (default)"
               size="default"
@@ -77,14 +94,17 @@
               size="default"
               type="teal"
             />
+            </div>
           </div>
         </template>
       </Section>
 
-      <Section header="Sizes" @sectioncreated="addLink">
+      <Section header="Sizes" 
+      @sectioncreated="addLink"
+      body="Start by using the GCC toggle component example, modifying it into a checkbox element that allows the user to select either true or false.">
         <template #content>
-          <div class="flex flex-wrap justify-center space-x-6 mb-6">
-            <ToggleComponent
+          <div class="flex flex-col items-center mt-4 h-full">
+            <div :class="{ 'dark': defaultDark }" class="relative space-x-4 mb-10 bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">               <ToggleComponent
               label="Small"
               size="small"
               type="blue"
@@ -99,6 +119,7 @@
               size="large"
               type="blue"
             />
+            </div>
           </div>
         </template>
       </Section>
