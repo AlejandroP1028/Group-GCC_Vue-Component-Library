@@ -44,6 +44,7 @@
               <Button color="blue" :class="'w-9/10'" @click="showNotificationDismiss">Show Notification Dismiss</Button>
             </div>
             <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+              <Notifications type="dismiss" notification_message="This is a notification with dismissible close button." position="centered"/> 
               <Notifications v-if="notificationDismiss"  type="dismiss" notification_message="This is a notification with dismissible close button." position="centered"/>       
             </div>
           </div>
