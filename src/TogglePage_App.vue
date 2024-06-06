@@ -1,133 +1,161 @@
 <template>
-    <div :class="{'dark': isDarkMode}" class="overflow-auto h-screen w-screen bg-gray-50 dark:bg-gray-900 dark:text-white transition-colors duration-300">
-      <div class="flex items-center justify-center min-h-screen">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <div :class="{ 'dark': isDarkMode }" class="overflow-auto h-screen w-screen bg-gray-50 dark:bg-gray-900 flex flex-row scroll-smooth">
+    <div class="relative w-auto mb-16">
+      <PageHeader
+        :class="'flex-none'"
+        header="GCC Toggle"
+        body="Show contextual information to your users using toggle elements based on Tailwind CSS"/>
 
-        <div class="flex flex-col items-center">
+      <Section body="The GCC toggle component can be used to switch between a binary state of true or false using a single click, available in multiple sizes, variants, and colors." />
 
-            <div class="absolute top-10 left-24 m-16px z-1000">
-              <div class="text-gray-900 dark:text-gray-200">
-                <h1 class=" mb-4 text-5xl font-bold">GCC Toggle</h1>
-                <p class="pt-3 text-1l font-medium">Show contextual information to your users using toggle elements based on Tailwind CSS</p>
-                <div class="bg-blue-500 h-2 rounded-full my-4"></div>
-                <p class="text-gray-900 dark:text-gray-200 text-1l font-medium pt-10">The GCC toggle component can be used to switch between a binary state of true or false using a single click, available in multiple sizes, variants, and colors.</p>
-              </div>
-            </div>
-
-          <div class="flex flex-col my-4 items-center">
-            <div class="absolute top-72 left-24 m-16px">
-            <h1 class="mb-2 text-3xl font-bold">Sample Toggle</h1>
-            <p class="text-1l font-medium">Start by using the GCC toggle component example, modifying it into a checkbox element that allows the user to select either true or false.</p>
-              <div class="flex justify-center pt-10">
-                <ToggleComponent
-                    label="Toggle Me"
-                    size="default"
-                    type="blue"
-                    :isChecked="false"
-                  />
-              </div>
-            </div>
-
-            <h1 class="text-gray-900 dark:text-gray-200 mb-4 font-medium">Checked and Disabled</h1>
-            <div class="flex flex-wrap justify-center space-x-6 mb-6">
+      <Section header="Sample Toggle" 
+        @sectioncreated="addLink"
+        body="Start by using the GCC toggle component example, modifying it into a checkbox element that allows the user to select either true or false.">
+        <template #content>
+          <div class="flex flex-col items-center mt-4 h-full">
+            <div class="flex justify-center pt-10">
               <ToggleComponent
-                label="Dark Mode"
-                :changeFunc="toggleDarkMode"
-                size="default"
-                :isChecked="isDarkMode"
-                type="blue"
-              />
-              
-              <ToggleComponent
-                label="Disabled Toggle"
+                label="Toggle Me"
                 size="default"
                 type="blue"
-                :disabled="true"
                 :isChecked="false"
               />
-              <ToggleComponent
-                label="Disabled Toggle"
-                size="default"
-                type="blue"
-                :disabled="true"
-                :isChecked="true"
-              />
             </div>
           </div>
-  
-          <div class="flex flex-col my-4 items-center">
-            <h1 class="text-gray-900 dark:text-gray-200 mb-4 font-medium">Colors</h1>
-            <div class="flex flex-wrap justify-center space-x-6 mb-6">
-              <ToggleComponent
-                label="Blue (default)"
-                size="default"
-                type="blue"
-              />
-              <ToggleComponent
-                label="Sky"
-                size="default"
-                type="sky"
-              />
-              <ToggleComponent
-                label="Cyan"
-                size="default"
-                type="cyan"
-              />
-              <ToggleComponent
-                label="Teal"
-                size="default"
-                type="teal"
-              />
-            </div>
+        </template>
+      </Section>
+
+      <Section header="Checked and Disabled" @sectioncreated="addLink">
+        <template #content>
+          <div class="flex flex-wrap justify-center space-x-6 mb-6">
+            <ToggleComponent
+              label="Dark Mode"
+              :changeFunc="toggleDarkMode"
+              size="default"
+              :isChecked="isDarkMode"
+              type="blue"
+            />
+            <ToggleComponent
+              label="Disabled Toggle"
+              size="default"
+              type="blue"
+              :disabled="true"
+              :isChecked="false"
+            />
+            <ToggleComponent
+              label="Disabled Toggle"
+              size="default"
+              type="blue"
+              :disabled="true"
+              :isChecked="true"
+            />
           </div>
-  
-          <div class="flex flex-col my-4 items-center">
-            <h1 class="text-gray-900 dark:text-gray-200 mb-4 font-medium">Sizes</h1>
-            <div class="flex flex-wrap justify-center space-x-6 mb-6">
-              <ToggleComponent
-                label="Small"
-                size="small"
-                type="blue"
-              />
-              <ToggleComponent
-                label="Default"
-                size="default"
-                type="blue"
-              />
-              <ToggleComponent
-                label="Large"
-                size="large"
-                type="blue"
-              />
-            </div>
+        </template>
+      </Section>
+
+      <Section header="Colors" @sectioncreated="addLink">
+        <template #content>
+          <div class="flex flex-wrap justify-center space-x-6 mb-6">
+            <ToggleComponent
+              label="Blue (default)"
+              size="default"
+              type="blue"
+            />
+            <ToggleComponent
+              label="Sky"
+              size="default"
+              type="sky"
+            />
+            <ToggleComponent
+              label="Cyan"
+              size="default"
+              type="cyan"
+            />
+            <ToggleComponent
+              label="Teal"
+              size="default"
+              type="teal"
+            />
           </div>
-        </div>
-      </div>
+        </template>
+      </Section>
+
+      <Section header="Sizes" @sectioncreated="addLink">
+        <template #content>
+          <div class="flex flex-wrap justify-center space-x-6 mb-6">
+            <ToggleComponent
+              label="Small"
+              size="small"
+              type="blue"
+            />
+            <ToggleComponent
+              label="Default"
+              size="default"
+              type="blue"
+            />
+            <ToggleComponent
+              label="Large"
+              size="large"
+              type="blue"
+            />
+          </div>
+        </template>
+      </Section>
+
     </div>
-  </template>
-  
-  <script>
-  import ToggleComponent from './components/ToggleComponent.vue';
-  
-  export default {
-    components: {
-      ToggleComponent
+    <div class="sticky top-8 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
+      <hr class="h-0.5 bg-blue-600 border-none rounded-full">
+      <span class="tracking-tight font-semibold self-center text-md text-gray-800 dark:text-gray-200">ON THIS PAGE</span>
+      <PageLinks v-for="link in links" :key="link.label" :label="link.label"/>
+      <div class="flex justify-center">
+        <Button @click="toggleDarkMode" color="blue">
+          <template #icon>
+            <i :class="[isDarkMode ? 'fas fa-sun text-2xl' : 'fas fa-moon text-2xl', 'text-blue-200']"></i>
+          </template>
+        </Button>
+      </div>
+      <hr class="h-0.5 bg-blue-600 border-none rounded-full">
+    </div>
+  </div>
+</template>
+
+<script>
+import Button from './components/Button.vue';
+import Section from './components/Section.vue';
+import PageHeader from './components/pageHeader.vue';
+import PageLinks from './components/pageLinks.vue';
+import ToggleComponent from './components/ToggleComponent.vue';
+
+export default {
+  name: 'App',
+  components: {
+    Button,
+    Section,
+    PageHeader,
+    PageLinks,
+    ToggleComponent
+  },
+  data() {
+    return {
+      isDarkMode: false,
+      links: []
+    };
+  },
+  methods: {
+    toggleDarkMode() {
+      this.isDarkMode = !this.isDarkMode;
     },
-    data() {
-      return {
-        isDarkMode: false
-      };
-    },
-    methods: {
-      toggleDarkMode() {
-        this.isDarkMode = !this.isDarkMode;
-      }
-    },
-  };
-  </script>
-  
-  <style scoped>
-  .dark {
-    background-color: #121212;
-    color: #ffffff;
+    addLink(header) {
+      this.links.push({ label: header });
+    }
   }
-  </style>
+};
+</script>
+
+<style scoped>
+.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+</style>
