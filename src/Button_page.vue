@@ -224,6 +224,11 @@
         </div>
       </template>
       </Section>
+      <Section
+            header="Summary" 
+            @sectioncreated="addLink"
+            body="The GCC Button and ButtonGroup components provide a versatile range of button styles and functionalities, enhancing user interactions within web applications. The Button component serves as a clickable element for actions or navigation, while the ButtonGroup organizes related buttons for improved visual clarity. With customizable styles, sizes, and dark mode support, these components ensure a cohesive and user-friendly interface."/>
+      
       </div>
   
       <div class="sticky top-8 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
