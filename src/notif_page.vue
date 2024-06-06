@@ -52,14 +52,11 @@
       <Section header="Notification Types" @sectioncreated="addLink" body="The GCC Notification Component encompasses various notification types with dismissible close button tailored to different scenarios, ensuring users are promptly informed and can respond effectively to system events. The success notification provides reassurance by signaling successful operations, the error notification promptly alerts users to encountered errors, the warning notification preemptively highlights potential issues or risks, the message notification that informs a user that a message is sent/received.">
         <template #content>
           <div class="flex flex-col items-center mt-4 h-full">
-            <div class="flex space-x-4">
-              <Button color="blue" :class="'w-9/10'" @click="showNotificationTypes">Show Notification</Button>
-            </div>
             <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
-              <Notifications v-if="notificationVisibled"  type="success" notification_message="This is a success notification." position="pTop-right"/>       
-              <Notifications v-if="notificationVisibled" type="warning" notification_message="This is a warning notification." position="pTop-left"/>
-              <Notifications v-if="notificationVisibled" type="error" notification_message="This is an error notification." position="pBottom-left"/>     
-              <Notifications v-if="notificationVisibled" type="message" notification_message="This is a message notification." position="pBottom-right"/>    
+              <Notifications type="success" notification_message="This is a success notification." position="pTop-right"/>       
+              <Notifications type="warning" notification_message="This is a warning notification." position="pTop-left"/>
+              <Notifications type="error" notification_message="This is an error notification." position="pBottom-left"/>     
+              <Notifications type="message" notification_message="This is a message notification." position="pBottom-right"/>    
             </div>
           </div>
         </template>
@@ -72,8 +69,8 @@
               <Button color="blue" :class="'w-9/10'" @click="() => showPositions('parent')">Show Parent Positions</Button>
             </div>
             <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
-              <Notifications v-for="(position, index) in notificationPositionsA" :key="index" :type="position.type" :notification_message="position.message" :position="position.position"/>
               <Notifications v-for="(position, index) in notificationPositionsP" :key="index" :type="position.type" :notification_message="position.message" :position="position.position"/>
+              <Notifications v-for="(position, index) in notificationPositionsA" :key="index" :type="position.type" :notification_message="position.message" :position="position.position"/>
             </div>
           </div>
         </template>
@@ -172,9 +169,6 @@ export default {
       this.notificationCyanBorderVisible = false;
       this.notificationSkyBorderVisible = false;
       this.notificationBlueBorderVisible = false;
-    },
-    showNotificationTypes() {
-      this.notificationVisibled = !this.notificationVisibled;
     },
     showNotificationDismiss() {
       this.notificationDismiss = !this.notificationDismiss;
