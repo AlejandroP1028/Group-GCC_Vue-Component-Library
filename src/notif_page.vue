@@ -4,7 +4,7 @@
     <div class="relative w-auto mb-16">
       <PageHeader :class="'flex-none'" header="GCC Notification" body="Show contextual information to your users using notification elements based on Tailwind CSS"/>
       <Section body="The GCC notification component is a versatile tool for displaying various types of messages to users, including warnings, success, errors, default notifications, and general information. Each notification type is designed to stand out, ensuring that users receive important feedback clearly and promptly, thereby enhancing the overall user experience and communication on the webpage."/>
-      <Section header="Default Notification" @sectioncreated="addLink" body="The GCC notification component features a default notification style that seamlessly fades out for automatic dismissal.">
+      <Section header="Default Notification" @sectioncreated="addLink" body="The GCC notification component features a default notification style that used to show messages and notifications without the use of a close button but seamlessly fades out for automatic dismissal.">
         <template #content>
           <div class="flex flex-col items-center mt-4 h-full">
             <div class="flex space-x-4">
@@ -12,6 +12,7 @@
             </div>
             <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
               <Notifications v-if="notificationVisible" type="default" notification_message="This is a default notification." position="centered"/> 
+              <Notifications type="default" notification_message="This is a default notification." position="centered"/>
             </div>
           </div>
         </template>
@@ -27,11 +28,11 @@
               <Button color="cyan" :class="'w-9/10'" @click="showNotificationCyan">Cyan</Button>
             </div>
             <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
-              <Notifications v-if="notificationDefaultVisible" type="default" notification_message="This is a default notification." position="pCenter"/> 
-              <Notifications v-if="notificationBlueBorderVisible"  type="BlueBorder" notification_message="This is a blue bordered default notification." position="pTop-right"/>       
-              <Notifications v-if="notificationCyanBorderVisible" type="CyanBorder" notification_message="This is a cyan bordered default notification." position="pTop-left"/>
-              <Notifications v-if="notificationSkyBorderVisible" type="SkyBorder" notification_message="This is a sky bordered default notification." position="pBottom-left"/>     
-              <Notifications v-if="notificationTealBorderVisible" type="TealBorder" notification_message="This is a teal bordered default notification." position="pBottom-right"/>    
+              <Notifications v-if="notificationDefaultVisible" type="default" notification_message="This is a default notification." position="centered"/> 
+              <Notifications v-if="notificationBlueBorderVisible"  type="BlueBorder" notification_message="This is a blue bordered default notification." position="centered"/>       
+              <Notifications v-if="notificationCyanBorderVisible" type="CyanBorder" notification_message="This is a cyan bordered default notification." position="centered"/>
+              <Notifications v-if="notificationSkyBorderVisible" type="SkyBorder" notification_message="This is a sky bordered default notification." position="centered"/>     
+              <Notifications v-if="notificationTealBorderVisible" type="TealBorder" notification_message="This is a teal bordered default notification." position="centered"/>    
             </div>
           </div>
         </template>
@@ -139,18 +140,38 @@ export default {
     },
     showNotificationDefault() {
       this.notificationDefaultVisible = !this.notificationDefaultVisible;
+      this.notificationBlueVisible = false;
+      this.notificationCyanBorderVisible = false;
+      this.notificationSkyBorderVisible = false;
+      this.notificationTealBorderVisible = false;
     },
     showNotificationBlue() {
       this.notificationBlueBorderVisible = !this.notificationBlueBorderVisible;
+      this.notificationDefaultVisible = false;
+      this.notificationCyanBorderVisible = false;
+      this.notificationSkyBorderVisible = false;
+      this.notificationTealBorderVisible = false;
     },
     showNotificationSky() {
       this.notificationSkyBorderVisible = !this.notificationSkyBorderVisible;
+      this.notificationDefaultVisible = false;
+      this.notificationCyanBorderVisible = false;
+      this.notificationBlueBorderVisible = false;
+      this.notificationTealBorderVisible = false;
     },
     showNotificationCyan() {
       this.notificationCyanBorderVisible = !this.notificationCyanBorderVisible;
+      this.notificationDefaultVisible = false;
+      this.notificationBlueBorderVisible = false;
+      this.notificationSkyBorderVisible = false;
+      this.notificationTealBorderVisible = false;
     },
     showNotificationTeal() {
       this.notificationTealBorderVisible = !this.notificationTealBorderVisible;
+      this.notificationDefaultVisible = false;
+      this.notificationCyanBorderVisible = false;
+      this.notificationSkyBorderVisible = false;
+      this.notificationBlueBorderVisible = false;
     },
     showNotificationTypes() {
       this.notificationVisibled = !this.notificationVisibled;
