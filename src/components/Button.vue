@@ -28,6 +28,14 @@ export default {
       default: 'normal',
       validator: (value) => ['small', 'normal', 'large'].includes(value)
     },
+    bordered: {
+      type: Boolean,
+      default: false
+    },
+    pill: {
+      type: Boolean,
+      default: false
+    },
     disabled: {
       type: Boolean,
       default: false
@@ -39,7 +47,7 @@ export default {
     onClick: {
       type: Function,
       default: null
-    }
+    },
   },
   computed: {
     buttonClasses() {
@@ -56,11 +64,15 @@ export default {
         large: 'px-6 py-3 text-lg'
       };
 
+      let roundedClass = this.pill ? 'rounded-full' : 'rounded-lg';
+
       return [
-        'inline-flex items-center font-medium rounded-lg focus:outline-none focus:ring-4',
+        'inline-flex items-center font-medium focus:outline-none focus:ring-4',
         colorClasses[this.color],
         sizeClasses[this.size],
+        this.bordered ? 'border border-blue-600' : '',
         this.disabled ? 'cursor-not-allowed bg-blue-400 dark:bg-blue-500' : '',
+        roundedClass,
         this.customClasses
       ].join(' ');
     }
@@ -79,7 +91,6 @@ export default {
 
 <style scoped>
 button {
-  border: 2px solid transparent;
   text-align: center;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
