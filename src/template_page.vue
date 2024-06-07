@@ -1,13 +1,13 @@
 <template>
-    <!--
+    
         main div <div :class="{ 'dark': isDarkMode }" class="overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 flex flex-row scroll-smooth">
         </div>
-    -->
-    <!--
+    
+    
         If you are going to use external icons use this cdn
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         this will allow you to use font-awesome icons 
-    -->
+    
 
     <!--
         PageHeader always first, it needs a header and a body
