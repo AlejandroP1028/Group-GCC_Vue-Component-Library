@@ -1,7 +1,7 @@
 <template>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
       <div :class="{ 'dark': isDarkMode }" class=" overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 flex flex-row scroll-smooth">
-         <div class="flex flex-col w-8/12 p-4">
+         <div class="flex flex-col w-10/12 p-4">
         <PageHeader 
           header="GCC Button and ButtonGroup" 
           body="Show contextual information to your users using Button and ButtonGroup elements based on Tailwind CSS"/>
@@ -229,9 +229,12 @@
             @sectioncreated="addLink"
             body="The GCC Button and ButtonGroup components provide a versatile range of button styles and functionalities, enhancing user interactions within web applications. The Button component serves as a clickable element for actions or navigation, while the ButtonGroup organizes related buttons for improved visual clarity. With customizable styles, sizes, and dark mode support, these components ensure a cohesive and user-friendly interface."/>
       
+            <br>
       </div>
+
+      
   
-      <div class="sticky top-8 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
+      <div class="sticky top-8 w-2/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
       <hr class="h-0.5 bg-blue-600 border-none rounded-full">
       <span class="tracking-tight font-semibold self-center text-md text-gray-800 dark:text-gray-200">ON THIS PAGE</span>
       <PageLinks v-for="link in links" 
