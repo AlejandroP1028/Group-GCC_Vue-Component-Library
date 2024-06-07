@@ -9,7 +9,7 @@ import Avatar from './components/UserAvatar.vue';
       <Avatar
         name="Gian Catalan"
         image="https://i.pinimg.com/originals/04/63/12/046312aac440d95cbc6d56b3eb527d5d.jpg"
-        size="xl"
+        size="sm"
         rounded="full"
         :is-online="true"/>
         
