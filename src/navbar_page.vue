@@ -10,17 +10,17 @@
     <div class="relative w-auto mb-16">
       <PageHeader
         header="GCC Navbar"
-        body="Show contextual information to yourfsdfsfsdsed on Tailwind CSS"
+        body="Show a list of navigation links using a Navbar based on Tailwind CSS"
       />
 
       <Section
-        body="asdapsdkasoaskdapsdkakoasdkaosoasdskodsadspdsadsaoskdaosdkasokdaopdkasopdkaspd oadkoasodkaosdko paskdaosk adksaosdk oasdk apsdk apsdk asdasdaskdaosdkaspdkoasodpsaodaksods osakdopaksodpksaodasodaksdoaskd poaksdopaksdsaodksapdksaodkoadkasodkaspdksaodk opasdokasodkasodkasoadkodskaosdkaosdaskpdoasd opaskod aospokasodpaoskdso "
+        body="The GCC Navbar component is a navigational component designed to provide a consistent and user-friendly navigation experience across your website. It serves as a horizontal bar typically positioned at the top of the page, offering quick access to essential sections or functionalities."
       />
 
       <Section
         header="Default Navbar"
         @sectioncreated="addLink"
-        body="The default GCC sadadasd"
+        body="The default GCC Navbar"
       >
         <template #content>
           <div
@@ -34,7 +34,7 @@
       <Section
         header="Navbar with Search Bar"
         @sectioncreated="addLink"
-        body="Tsfsdfsdfsdf"
+        body="The GCC Navbar component with a search function"
       >
         <template #content>
           <div
@@ -47,9 +47,9 @@
       </Section>
 
       <Section
-        header="Navbar colors"
+        header="Navbar Color"
         @sectioncreated="addLink"
-        body="The GCC brsdfsdfsdfsd"
+        body="The GCC Navbar component is customizable with different color options like blue, slate, teal, sky, and cyan."
       >
         <template #content>
           <div class="flex justify-center mt-5" :class="{ dark: defaultDark }">
@@ -102,7 +102,7 @@
       <Section
         header="Customize your own Navbar"
         @sectioncreated="addLink"
-        body="The GCC brsdfsdfsdfsd"
+        body="The user has the freedom to customize the GCC Navbar's color, hover color, search bar color, and the menu items."
       >
         <template #content>
           <div class="flex flex-col items-center">
@@ -219,7 +219,7 @@
     </div>
 
     <div
-      class="sticky top-12 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8"
+      class="sticky top-8 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8"
     >
       <hr class="h-0.5 bg-blue-600 border-none rounded-full" />
       <span
@@ -254,7 +254,6 @@ import Navbar from "./components/NavbarComponent.vue";
 import Radio from "./components/radio.vue";
 
 export default {
-  name: "CardPage",
   components: {
     PageHeader,
     Section,
