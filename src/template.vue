@@ -126,7 +126,7 @@ export default{
         }
     },
     methods:{
-        addLink(header) {
+    addLink(header) {
       this.links.push({ label: header });
     },
     toggleDarkMode() {
