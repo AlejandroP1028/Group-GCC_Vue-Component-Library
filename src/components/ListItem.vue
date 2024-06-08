@@ -139,6 +139,9 @@
 .checkbox-teal {
   border: 1px solid #4FD1C5;
 }
+.checkbox-dummy {
+  border: 1px solid #4FD1C5;
+}
 .toggle-checkbox {
   appearance: none;
   width: 40px;

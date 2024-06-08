@@ -261,4 +261,8 @@
   opacity: 0;
   transform: translateY(-50%,-5%);
 }
+.dummy-transition {
+  opacity: 0;
+  transform: translateY(-50%,-5%);
+}
 </style>
