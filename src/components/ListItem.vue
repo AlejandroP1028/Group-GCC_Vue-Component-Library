@@ -13,6 +13,7 @@
 
       <label v-if="item.type === 'checkbox'" :class="{ 'cursor-not-allowed opacity-50 pointer-events-none': item.disabled }">
         <input type="checkbox" 
+        :checked="item.checked"
         :disabled="item.disabled" 
         @change="emitCheckboxChange" 
         :class="[checkboxColorClass,
@@ -27,7 +28,8 @@
 
       <label v-if="item.type === 'toggle'" :class="[toggleContainerClasses, { 'cursor-not-allowed opacity-50 pointer-events-none': item.disabled }]">
         <input type="checkbox" 
-        class="toggle-checkbox" 
+        class="toggle-checkbox"
+        :checked="item.checked" 
         :disabled="item.disabled" 
         @change="emitToggleChange"
         :class="toggleColorClass"
@@ -93,12 +95,12 @@
       },
       emitToggleChange() {
         if (!this.item.disabled){
-          this.$emit('toggle-change', this.item);
+          this.$emit('toggle-change', { ...this.item, checked: event.target.checked });
         }
       },
       emitCheckboxChange() {
         if (!this.item.disabled){
-          this.$emit('checkbox-change', this.item);
+          this.$emit('checkbox-change', { ...this.item, checked: event.target.checked });
         }
       }
     }

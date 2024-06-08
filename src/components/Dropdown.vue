@@ -85,7 +85,7 @@
       menuItems: {
         type: Array,
         default: () => []
-      }
+      },
     },
     data() {
       return {
@@ -171,7 +171,7 @@
         const { bgClass, borderClass } = styleClasses[this.type] || styleClasses['default'];
   
         return [
-          'absolute origin-top-right mt-2 rounded-md shadow-lg z-10 max-h-60 overflow-auto py-2',
+          'absolute origin-top-right mt-2 rounded-md shadow-lg z-50 max-h-60 overflow-auto py-2',
           bgClass, borderClass, this.alignmentClass,
           this.menuWidth === 'full' ? 'w-full' : this.menuWidth,
         ];
@@ -235,6 +235,13 @@
       handleCheckboxChange(item) {
         if(!item.disabled){
           this.$emit('checkbox-change', item);
+        }
+      }
+    },
+    watch: {
+      disabled(newVal){
+        if(newVal){
+          this.show = false;
         }
       }
     }
