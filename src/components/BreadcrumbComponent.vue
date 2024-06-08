@@ -31,12 +31,23 @@ export default {
     divider: {
       type: String,
       default: '>' 
+    },
+    bgColor: {
+      type: String,
+      default: 'sky' 
     }
   },
   computed: {
     breadcrumbClass() {
+      const colorClassMap = {
+        'blue': 'bg-blue-200 dark:bg-blue-600',
+        'cyan': 'bg-cyan-200 dark:bg-cyan-600',
+        'sky': 'bg-sky-200 dark:bg-sky-600',
+        'teal': 'bg-teal-200 dark:bg-teal-600'
+      };
       return {
-        'bg-sky-200 dark:bg-blue-600 border border-black dark:border-white px-4 py-2 rounded': this.type === 'solidbg'
+        [colorClassMap[this.bgColor]]: this.type === 'solidbg',
+        'border border-black dark:border-white px-4 py-2 rounded': this.type === 'solidbg'
       };
     },
     computedDivider() {

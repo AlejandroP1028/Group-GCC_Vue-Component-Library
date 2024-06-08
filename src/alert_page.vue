@@ -1,6 +1,6 @@
 <template>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <div :class="{ 'dark': isDarkMode }" class="overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 flex flex-row scroll-smooth">
+  <div :class="{ 'dark': isDarkMode }" class=" overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 flex flex-row scroll-smooth">
     <div class="relative w-auto mb-16">
       <PageHeader 
         :class="'flex-none'"
@@ -9,7 +9,8 @@
       
       <Section body="The GCC alert component can be used to provide information to your users such as success or error messages, but also highlighted information complementing the normal flow of paragraphs and headers on a page."/>
 
-      <Section header="Alert Dismiss Type" 
+      <Section
+      header="Alert Dismiss Type" 
         @sectioncreated="addLink"
         body="The GCC alert component supports manual and automatic dismissals. Use the following button to show random alert components with their respective dismissal type.">
         <template #content>
@@ -148,30 +149,55 @@
         <template #content>
           <div class="flex flex-col items-center my-4 h-full">
             <div class="flex flex-row space-x-4">
-              <Button color="sky" :class="'w-9/10'" @click="addAlertPositions('absolute')">Show Absolute Positions</Button>
-              <Button color="cyan" :class="'w-9/10'" @click="addAlertPositions('parent')">Show Parent Positions</Button>
+              <div class="flex flex-col items-start space-y-2 p-2 bg-blue-100 dark:bg-gray-800 rounded-lg shadow-md">
+                <h4 class="text-md font-semibold text-gray-900 dark:text-gray-200">Fonts</h4>
+                <Radio 
+                :items="[
+                          {value: 'medium' ,label: 'Medium'},
+                          {value: 'bold' ,label: 'Bold'},
+                          {value: 'semibold' ,label: 'Semibold'},
+                          {value: 'light' ,label: 'Light'},
+                          {value: 'normal' ,label: 'Normal'},
+                        ]"
+                @input="changeFont"/>
+              </div>
+              <div>
+
+              </div>
+              <div class="flex flex-col items-start space-y-2 p-2 bg-blue-100 dark:bg-gray-800 rounded-lg shadow-md">
+                <h4 class="text-md font-semibold text-gray-900 dark:text-gray-200">Sizes</h4>
+                <Radio 
+                :items="[
+                          {value: 'w' ,label: 'Wrap'},
+                          {value: 's' ,label: 'Small'},
+                          {value: 'm' ,label: 'Medium'},
+                          {value: 'l' ,label: 'Large'},
+                        ]"
+                @input="changeSize"/>
+              </div>
+              
             </div>
             <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
               <div class="pointer-events-none mb-24">
-                <Alert v-for="(alert, index) in alertsPositionsA" 
+                <Alert v-for="(alert, index) in alertsType" 
                        :key="index"
-                       :msg="`This is ${alert.position} position`"
-                       :type="'info'"
-                       :position="alert.position"/>
-                <Alert v-for="(alert, index) in alertsPositionsP" 
-                       :key="index"
-                       :msg="`This is ${alert.position} position`"
-                       :type="'info'"
-                       :position="alert.position"/>
+                       :msg="'This is a message for our alert.'"
+                       :type="alert.type"
+                       :position="alert.position"
+                       :dismissType="'manual'"
+                       :size="this.size"
+                       :accent="true"
+                       :font="this.font"/>
               </div>
-              
             </div>
           </div>
         </template>
       </Section>
       <br>
     </div>
-    <div class="sticky top-8 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
+
+    
+    <div class="sticky top-8 w-3/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
       <hr class="h-0.5 bg-blue-600 border-none rounded-full">
       <span class="tracking-tight font-semibold self-center text-md text-gray-800 dark:text-gray-200">ON THIS PAGE</span>
       <PageLinks v-for="link in links" 
@@ -197,7 +223,7 @@ import PageHeader from './components/pageHeader.vue';
 import Alert from './components/Alert.vue';
 import PageLinks from './components/pageLinks.vue'; 
 import Toggle from './components/ToggleComponent.vue';
-
+import Radio from './components/radio.vue'
 export default {
   name: 'App',
   components: {
@@ -206,10 +232,13 @@ export default {
     PageHeader,
     Alert,
     PageLinks,
-     Toggle  
+     Toggle,
+     Radio
   },
   data() {
     return {
+      size: 'w',
+      font: 'bold',
       alerts: [],
       alertsMessage: [],
       alertsPositionsA: [],
@@ -248,6 +277,12 @@ export default {
     };
   },
   methods: {
+    changeSize(val){
+      this.size = val
+    },
+    changeFont(val){
+      this.font = val
+    },
     toggleI(){
       this.icon = !this.icon
     },

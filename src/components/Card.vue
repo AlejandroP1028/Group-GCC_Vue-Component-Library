@@ -61,6 +61,11 @@ export default {
       const bgClass = styleClasses[this.type] || styleClasses['default'];
       
       const sizeClasses = {
+        // xs: 'w-[20rem]',
+        // sm: 'w-[24rem]',
+        // md: 'w-[28rem]',
+        // lg: 'w-[32rem]',
+        // xl: 'w-[36rem]',
         xs: 'max-w-xs',
         sm: 'max-w-sm',
         md: 'max-w-md',
@@ -77,7 +82,8 @@ export default {
       return this.horizontal ? 'w-2/5 object-cover rounded-l-lg' : 'w-full rounded-t-lg';
     },
     isHorizontal() {
-      return this.horizontal ? 'w-3/5 p-4' : 'w-full p-4';
+      console.log('true')
+      return this.horizontal && this.image ? 'w-3/5 p-4' : 'w-full p-4';
     },
     computedClassesHeader() {
       const styleClasses = {
