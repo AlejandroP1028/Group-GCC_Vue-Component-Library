@@ -28,6 +28,7 @@
               <Button color="cyan" :class="'w-9/10'" @click="showNotificationCyan">Cyan</Button>
             </div>
             <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+              <Notifications type="default" notification_message="This is a default notification." position="centered"/>
               <Notifications v-for="(notification, index) in notificationsDefaultStyle" :key="index" :type="notification.type" :notification_message="notification.message" position="centered"/>
             </div>
           </div>
@@ -40,6 +41,7 @@
               <Button color="blue" :class="'w-9/10'" @click="showNotificationDismiss">Show Notification Dismiss</Button>
             </div>
             <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">
+              <Notifications type="dismiss" notification_message="This is a notification with dismissible button." position="centered"/>
               <Notifications v-for="(notification, index) in notificationsDismiss" :key="index" :type="notification.type" :notification_message="notification.message" position="centered"/>
             </div>
           </div>
@@ -57,12 +59,16 @@
 
             </div>
             <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87]">  
+              <Notifications type="message" notification_message="This is a default notification." position="pBottom-right"/>
+              <Notifications type="success" notification_message="This is a default notification." position="pTop-right"/>
+              <Notifications type="warning" notification_message="This is a default notification." position="pTop-left"/>
+              <Notifications type="error" notification_message="This is a default notification." position="pBottom-left"/>
               <Notifications v-for="(notification, index) in notificationsTypes" :key="index" :type="notification.type" :notification_message="notification.message" :position="notification.position"/>    
             </div>
           </div>
         </template>
       </Section>
-      <Section header="Notification Positions" @sectioncreated="addLink" body="The GCC notification component features a default notification style that seamlessly fades out for automatic dismissal.">
+      <Section header="Notification Positions" @sectioncreated="addLink" body="The GCC notification component features a notification positions, the absolute and parent position.">
         <template #content>
           <div class="flex flex-col items-center mt-4 h-full">
             <div class="flex space-x-4">
@@ -76,6 +82,9 @@
           </div>
         </template>
       </Section>
+      <Section header="Summary" @sectioncreated="addLink" body="The GCC notification component features customizable notification elements utilizing Tailwind CSS, available in various colors including blue, sky, teal, and cyan, and types including warning, error, success, and message. This component also enables the seamless integration of notifications to display notifications or messages, enhancing user interaction and visual appeal.">
+      </Section>
+      <br/>
     </div>
     <div class="sticky top-8 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
       <hr class="h-0.5 bg-blue-600 border-none rounded-full">

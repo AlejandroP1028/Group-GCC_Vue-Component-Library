@@ -3,10 +3,10 @@
     <div v-if="type === 'unorderedlist' && layout === 'horizontal'" :class="{ ...containerClasses, ...colorClasses }">
   <ul v-if="items && items.length" :class="listClasses">
     <li v-for="(item, index) in items" :key="index">
-      {{ item }}
+      <a href="#" class="hover:underline">{{ item }}</a>
     </li>
   </ul>
-  <ul v-else class="space-x-9 font-bold text-lg text-blue-800 dark:text-blue-200 flex flex-wrap justify-center">
+  <ul v-else :class="listClasses">
     <slot></slot>
   </ul>
 </div>
@@ -16,7 +16,7 @@
         {{ item }}
       </li>
     </ul>
-    <ul v-else class="list-disc space-y-3 text-blue-800 dark:text-sky-400">
+    <ul v-else :class="listClasses">
       <slot></slot>
     </ul>
   </div>
@@ -26,7 +26,7 @@
           {{ item }}
         </li>
       </ol>
-      <ol v-else class="list-decimal space-y-2 text-blue-800 dark:text-sky-400">
+      <ol v-else :class="listClasses">
         <slot></slot>
       </ol>
   </div>
@@ -37,22 +37,22 @@
         <dd class="text-lg font-bold">{{ item.description }}</dd>
       </div>
     </div>
-    <div v-else class="text-blue-900 divide-y divide-blue-300 dark:text-sky-400 dark:divide-gray-700">
+    <div v-else :class="listClasses">
       <slot></slot>
     </div>
   </div>
-  <div v-if="type === 'unorderedicon'" class="border border-blue-700 bg-blue-100 rounded-sm px-4 py-3 sm:px-6 sm:py-4 md:p-8 w-64 dark:bg-gray-900 dark:border-sky-400">
-    <ul v-if="items && items.length" class="max-w-md space-y-1 text-blue-800 list-inside text-lg dark:text-sky-400">
-      <li v-for="(item, index) in items" :key="index" class="flex items-center">
-        <svg class="w-3.5 h-3.5 me-2 text-blue-800 dark:text-blue-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+  <div v-if="type === 'unorderedicon'" :class="{ ...containerClasses, ...colorClasses }">
+    <ul v-if="items && items.length" :class="listClasses">
+      <li v-for="(item, index) in items" :key="index" class="flex items-center space-x-2 p-2">
+        <svg :class="svgClasses" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
           <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
         </svg>
         {{ item }}
       </li>
     </ul>
-    <ul v-else class="max-w-md space-y-1 text-blue-800 list-inside dark:text-sky-400">
+    <ul v-else :class="listClasses">
       <li v-for="(_, index) in $slots.default()" :key="index" class="flex items-center">
-        <svg class="w-3.5 h-3.5 me-2 text-blue-800 dark:text-blue-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <svg :class="svgClasses" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
           <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
         </svg>
         <slot></slot>
@@ -99,6 +99,19 @@ export default {
   computed: {
     computedClass() {
       return 'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2';
+    },svgClasses() {
+      switch (this.color) {
+        case 'sky':
+          return 'w-3.5 h-3.5 me-2 text-sky-800 dark:text-sky-400 flex-shrink-0';
+        case 'blue':
+          return 'w-3.5 h-3.5 me-2 text-blue-800 dark:text-blue-400 flex-shrink-0';
+        case 'teal':
+          return 'w-3.5 h-3.5 me-2 text-teal-800 dark:text-teal-400 flex-shrink-0';
+        case 'cyan':
+          return 'w-3.5 h-3.5 me-2 text-cyan-800 dark:text-cyan-400 flex-shrink-0';
+        default:
+          return 'w-3.5 h-3.5 me-2 text-blue-800 dark:text-blue-400 flex-shrink-0';
+      }
     },
     containerClasses() {
       let baseClasses = {
@@ -128,7 +141,7 @@ export default {
           'sm:px-6': true,
           'sm:py-2': true,
           'md:px-8': true,
-          'w-64': true,
+          'w-64': true
         };
       } else if (this.type === 'descriptionlist' && this.layout === 'vertical') {
         return {
@@ -137,17 +150,17 @@ export default {
           'sm:px-6': true,
           'sm:py-2': true,
           'md:p-8': true,
-          'w-full': true,
+          'w-full': true
         };
       } else if (this.type === 'unorderedicon') {
         return {
           ...baseClasses,
-          'px-4': true,
-          'py-3': true,
-          'sm:px-6': true,
-          'sm:py-4': true,
-          'md:p-8': true,
+          'py-4': true,
+          'sm:px-2': true,
+          'sm:py-2': true,
+          'md:px-4': true,
           'w-64': true,
+          'mt-4': true
         };
       }
       return baseClasses;
@@ -164,10 +177,14 @@ export default {
   if (this.type === 'unorderedlist' && this.layout === 'horizontal') {
     return {
       ...classes,
-      'space-x-5': true,
+      'space-x-9': true,
       'flex': true,
       'flex-wrap': true,
-      'justify-center': true
+      'justify-center': true,
+      'font-bold': true,
+      'text-lg': true,
+      'text-blue-800':true,
+      'dark:text-blue-200': true
     };
   } else if (this.type === 'unorderedlist' && this.layout === 'vertical') {
     return {
@@ -175,8 +192,10 @@ export default {
       'list-disc': true,
       'divide-y': true,
       'divide-opacity-5': true,
-      'divide-blue-900': true,
-      'divide-sky-400': true
+      'dark:divide-opacity-5': true,
+      'divide-sky-800': true,
+      'dark:divide-sky-200': true
+
     };
   } else if (this.type === 'orderedlist' && this.layout === 'vertical') {
     return {
@@ -184,23 +203,26 @@ export default {
       'list-decimal': true,
       'divide-y': true,
       'divide-opacity-5': true,
-      'divide-blue-900': true,
-      'divide-sky-400': true
+      'dark:divide-opacity-5': true,
+      'divide-sky-800': true,
+      'dark:divide-sky-200': true
     };
   } else if (this.type === 'descriptionlist' && this.layout === 'vertical') {
     return {
       ...classes,
-      'text-blue-900': true,
       'divide-y': true,
-      'divide-blue-300': true,
-      'dark:divide-blue-300': true
+      'divide-sky-800': true,
+      'dark:divide-sky-200': true
     };
   } else if (this.type === 'unorderedicon') {
     return {
       ...classes,
-      'max-w-md': true,
-      'space-y-1': true,
-      'list-inside': true
+      'list-inside': true,
+      'divide-y': true,
+      'divide-sky-800': true,
+      'dark:divide-sky-200': true,
+      'divide-opacity-5': true,
+      'dark:divide-opacity-5': true
     };
   }
   return classes;
@@ -211,35 +233,35 @@ export default {
           return {
             'text-sky-800': true,
             'dark:text-sky-200': true,
-            'bg-sky-100': true,
+            'bg-sky-200': true,
             'dark:bg-sky-700': true
           };
         case 'blue':
           return {
             'text-blue-800': true,
             'dark:text-blue-200': true,
-            'bg-blue-100': true,
+            'bg-blue-200': true,
             'dark:bg-blue-700': true
           };
         case 'teal':
           return {
             'text-teal-800': true,
             'dark:text-teal-200': true,
-            'bg-teal-100': true,
+            'bg-teal-200': true,
             'dark:bg-teal-700': true
           };
         case 'cyan':
           return {
             'text-cyan-800': true,
             'dark:text-cyan-200': true,
-            'bg-cyan-100': true,
+            'bg-cyan-200': true,
             'dark:bg-cyan-700': true
           };
         default:
           return {
             'text-blue-800': true,
             'dark:text-sky-200': true,
-            'bg-blue-100': true,
+            'bg-blue-200': true,
             'dark:bg-sky-700': true
           };
       }
