@@ -50,7 +50,6 @@ export default {
         teal: 'bg-teal-500 hover:bg-teal-600 focus:ring-teal-300  dark:hover:bg-teal-600 dark:focus:ring-teal-800',
         gray: 'bg-gray-500 hover:bg-gray-600 focus:ring-gray-300  dark:hover:bg-gray-600 dark:focus:ring-gray-800'
       };
-
       const sizeClasses = {
         small: 'px-4 py-2 text-sm',
         normal: 'px-5 py-2.5 text-sm',

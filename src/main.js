@@ -1,14 +1,13 @@
 /* eslint-disable */
 
 import { createApp } from 'vue'
-//import AlertTest from "./alert_page.vue";
-//import app from "./App.vue"
-// import CardTest from "./card_test.vue";
+import alert_page from "./alert_page.vue";
+import badge_page from './badge_page.vue';
+import breadcrumb_page from './breadcrumb_page.vue';
+import card_page from './card_page.vue';
 import './index.css'
+import dropdown_test from './dropdown_test.vue';
 
- import AvatarTest from "./avatar_test.vue";
-
-//createApp(AlertTest).mount('#app')
-// createApp(CardTest).mount('#app')
-
- createApp(AvatarTest).mount('#app')
+createApp(alert_page).mount('#app')
+// createApp(breadcrumb_page).mount('#app')
+//createApp(dropdown_test).mount('#app')

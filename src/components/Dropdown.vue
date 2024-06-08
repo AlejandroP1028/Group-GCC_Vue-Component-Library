@@ -100,7 +100,7 @@
           }
         };
 
-        const { bgClass, borderClass } = styleClasses[this.type] || styleClasses['default'];
+      const { bgClass, borderClass } = styleClasses[this.type] || styleClasses['default'];
 
         return [
           'inline-flex justify-center w-full rounded-md shadow-sm px-4 py-2 font-medium focus:outline-none',
