@@ -1,4 +1,4 @@
- /* eslint-disable */
+/* eslint-disable */
 
 import { createApp } from 'vue'
 import App from "./list_page.vue";

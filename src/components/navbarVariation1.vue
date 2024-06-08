@@ -2,7 +2,7 @@
   <nav
     :class="[
       navbarColorClass,
-      'navbar_default justify-between items-center p-4',
+      'navbar_default justify-between items-center p-4 w-full',
     ]"
   >
     <div class="container mx-auto flex items-center justify-between p-1">
@@ -24,7 +24,7 @@
         <ul class="flex space-x-8 items-center">
           <li
             v-for="item in menuItems"
-            :key="item.page"
+            :key="item.name"
             :class="{ activepage: activePage === item.page }"
           >
             <a
@@ -62,11 +62,11 @@ export default {
     },
     searchColor: {
       type: String,
-      default: "transparent",
+      default: "default",
     },
     hoverColor: {
       type: String,
-      default: "white",
+      default: "default",
     },
     menuItems: {
       type: Array,
@@ -98,7 +98,7 @@ export default {
     navbarColorClass() {
       return {
         transparent: "bg-transparent",
-        default: "bg-white dark:bg-gray-800 dark:text-white",
+        default: "bg-white dark:bg-gray-700 dark:text-white",
         blue: "bg-blue-100 dark:bg-blue-800 dark:text-white",
         slate: "bg-slate-200 dark:bg-slate-700 dark:text-white",
         teal: "bg-teal-100 dark:bg-teal-900 dark:text-white",
@@ -109,6 +109,7 @@ export default {
     searchColorClass() {
       return {
         transparent: "bg-transparent",
+        default: "bg-blue-100 border-slate-50",
         white: "bg-white border-slate-100",
         blue: "bg-blue-100 border-slate-50",
         slate: "bg-slate-100 border-white",
@@ -119,6 +120,7 @@ export default {
     },
     HoverColorClass() {
       return {
+        default: "hover:text-blue-600 active:text-blue-400",
         blue: "hover:text-blue-600 active:text-blue-400",
         slate: "hover:text-slate-400 active:text-slate-400",
         teal: "hover:text-teal-600 active:text-teal-600",
