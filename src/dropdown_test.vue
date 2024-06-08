@@ -29,6 +29,7 @@
 
 <script>
 import dropdown_component from './components/Dropdown.vue';
+
 export default {
   name: 'DropdownTest',
   components: {
