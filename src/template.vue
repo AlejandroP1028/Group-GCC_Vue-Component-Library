@@ -282,9 +282,7 @@ export default {
     toggleDarkMode() {
       this.isDarkMode = !this.isDarkMode;
     },
-    toggleSliderControls() {
-      this.showSliderControls =this.showSliderControls;
-    },
+
     toggleAnimation() {
       this.animateProgress = !this.animateProgress;
     },
