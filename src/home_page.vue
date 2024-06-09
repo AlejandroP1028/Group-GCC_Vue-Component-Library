@@ -11,7 +11,7 @@
         <div id="explore-components" class="bg-blue-50 dark:bg-gray-900 py-20 px-56 space-y-14 text-slate-900 dark:text-slate-100 font-bold border-t border-gray-200 dark:border-gray-800"> 
             <p class="text-xl text-slate-900 dark:text-slate-100 text-center"> Explore our extensive range of components,<br> from basic elements like buttons and toggles to advanced features like carousel and tables.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="relative bg-gray-100 dark:bg-gray-800 hover:bg-cyan-50 dark:hover:text-gray-800 transition-all duration-300 ease-in-out h-60 p-4 overflow-hidden rounded-lg shadow-lg">
+                <router-link to="/badge" class="relative bg-gray-100 dark:bg-gray-800 hover:bg-cyan-50 dark:hover:text-gray-800 transition-all duration-300 ease-in-out h-60 p-4 overflow-hidden rounded-lg shadow-lg">
                     <p> Badge </p>
                     <div class="flex items-center justify-center h-full"> 
                         <Button color="sky"> 
@@ -19,33 +19,32 @@
                             <BadgeComponent type="dot" color="blue" bordered class="ml-2"> 2 </BadgeComponent> 
                         </Button>
                     </div>
-                </div>
-                
-                <div class="relative bg-gray-100 dark:bg-gray-800 hover:bg-cyan-50 dark:hover:text-gray-800 transition-all duration-300 ease-in-out h-60 p-4 overflow-hidden rounded-lg shadow-lg">
+                </router-link>
+                <router-link to="/breadcrumb" class="relative bg-gray-100 dark:bg-gray-800 hover:bg-cyan-50 dark:hover:text-gray-800 transition-all duration-300 ease-in-out h-60 p-4 overflow-hidden rounded-lg shadow-lg">
                     <p> Breadcrumb </p>
                     <div class="flex items-center justify-center h-full">
                         <BreadcrumbComponent :items="breadcrumbItems" type="solidbg" bgColor="sky"/>
                     </div>
-                </div>
-                <div class="relative bg-gray-100 dark:bg-gray-800 hover:bg-cyan-50 dark:hover:text-gray-800 transition-all duration-300 ease-in-out h-60 p-4 overflow-hidden rounded-lg shadow-lg">
+                </router-link>
+                <router-link to="/button" class="relative bg-gray-100 dark:bg-gray-800 hover:bg-cyan-50 dark:hover:text-gray-800 transition-all duration-300 ease-in-out h-60 p-4 overflow-hidden rounded-lg shadow-lg">
                     <p> Button </p>
                     <div class="flex items-center justify-center h-full">
                         <Button color="sky"> Button </Button>
                     </div>
-                </div>
-                <div class="relative bg-gray-100 dark:bg-gray-800 hover:bg-cyan-50 dark:hover:text-gray-800 transition-all duration-300 ease-in-out h-60 p-4 overflow-hidden rounded-lg shadow-lg">
+                </router-link>
+                <router-link to="/dropdown" class="relative bg-gray-100 dark:bg-gray-800 hover:bg-cyan-50 dark:hover:text-gray-800 transition-all duration-300 ease-in-out h-60 p-4 overflow-hidden rounded-lg shadow-lg">
                     <p> Dropdown </p>
                     <div class="flex items-center justify-center h-full">
                         <Dropdown type="sky" :menuItems="menuItems"> </Dropdown>
                     </div>
-                </div>
-                <div class="relative bg-gray-100 dark:bg-gray-800 hover:bg-cyan-50 dark:hover:text-gray-800 transition-all duration-300 ease-in-out h-60 p-4 overflow-hidden rounded-lg shadow-lg">
+                </router-link>
+                <router-link to="/toggle" class="relative bg-gray-100 dark:bg-gray-800 hover:bg-cyan-50 dark:hover:text-gray-800 transition-all duration-300 ease-in-out h-60 p-4 overflow-hidden rounded-lg shadow-lg">
                     <p> Toggle </p>
                     <div class="flex items-center justify-center h-full">
                         <ToggleComponent label="Toggle" type="sky"> 
                         </ToggleComponent>
                     </div>
-                </div>
+                </router-link>
                 <div class="relative bg-gray-100 dark:bg-gray-800 hover:bg-cyan-50 dark:hover:text-gray-800 transition-all duration-300 ease-in-out h-60 p-4 overflow-hidden rounded-lg shadow-lg flex items-center justify-center">
                     <p> See more...  </p>
                     <i class="fas fa-arrow-right ml-4"></i>
@@ -127,7 +126,7 @@
     import BadgeComponent from './components/BadgeComponent.vue';
     import BreadcrumbComponent from './components/BreadcrumbComponent.vue';
     import ToggleComponent from './components/ToggleComponent.vue';
-    import UserAvatar from './components/UserAvatar.vue'
+    import UserAvatar from './components/UserAvatar.vue';
     import Dropdown from './components/Dropdown.vue';
 
     export default {
@@ -139,7 +138,6 @@
             ToggleComponent,
             Dropdown,
             UserAvatar
-
         },
         data() {
             return {

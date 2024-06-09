@@ -14,7 +14,7 @@ import TabPage from './TabPage.vue'
 import template from './template.vue'
 import toggle_page from './toggle_page.vue'
 import home_page from './home_page.vue'
-
+import breadcrumb_page from './breadcrumb_page.vue'
 const routes = [
   { path: '/', component: home_page },
   { path: '/alert', component: alert_page },
@@ -31,7 +31,7 @@ const routes = [
   { path: '/tab', component: TabPage },
   { path: '/template', component: template },
   { path: '/toggle', component: toggle_page },
-
+  { path: '/breadcrumb', component: breadcrumb_page}
 
 ]
 

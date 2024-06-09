@@ -92,6 +92,7 @@
             { label: 'Tab', disabled: false, to: '/tab' },
             { label: 'Carousel and Progress', disabled: false, to: '/template' },
             { label: 'Toggle', disabled: false, to: '/toggle' },
+            { label: 'BreadCrumb', disabled: false, to: '/breadcrumb' }
             //{ label: '', disabled: false, to: '/' },
 
         ],
