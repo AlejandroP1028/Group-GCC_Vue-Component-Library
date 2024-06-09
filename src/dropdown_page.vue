@@ -421,6 +421,12 @@
                     <input v-model="dropdownTextInput" placeholder="Enter text..." class="placeholder:italic placeholder:text-gray-600 dark:placeholder:text-gray-400 border rounded-lg border-gray-800 bg-gray-200 dark:bg-gray-600 dark:border dark:border-gray-700 text-gray-800 dark:text-gray-200 shadow-lg p-2" type="text" id="dropdownText">
                     <Button color="blue" :class="'w-9/10'" @click="changeText('dummy')">Set Dropdown Text</Button>
                     <Button color="cyan" :class="'w-9/10'" @click="changeText('')">Reset</Button>
+                </div><br>
+                <div class="flex flex-row space-x-4">
+                <Button color="blue" :class="'w-9/10'" @click="changeAlignment('left')">Set Item 1</Button>
+                <Button color="cyan" :class="'w-9/10'" @click="changeAlignment('center')">Set Item 2</Button>
+                <Button color="sky" :class="'w-9/10'" @click="changeAlignment('right')">Set Item 3</Button>
+                <Button color="teal" :class="'w-9/10'" @click="changeAlignment('')">Set Item 4</Button>
                 </div>
               <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 rounded-lg shadow-lg border border-blue-600/[.87]">
                 <!-- Dropdown in Top Left Corner -->
@@ -707,34 +713,115 @@
           @sectioncreated="addLink"
           body="The user can customize their own GCC dropdown component in here.">
           <template #content>
-            <div class="flex flex-col items-center mt-4 h-full">
-                <div class="flex flex-row space-x-4">
-                    <Button color="blue" :class="'w-9/10'" @click="changeSize('w')">Extra Small</Button>
-                    <Button color="cyan" :class="'w-9/10'" @click="changeSize('s')">Small Size</Button>
-                    <Button color="sky" :class="'w-9/10'" @click="changeSize('m')">Medium Size</Button>
-                    <Button color="teal" :class="'w-9/10'" @click="changeSize('l')">Large Size</Button>
-                </div><br>
-                <div class="flex flex-row space-x-4">
-                    <Button color="blue" :class="'w-9/10'" @click="changeType('default')">Item List</Button>
-                    <Button color="cyan" :class="'w-9/10'" @click="changeType('checkbox')">Checkbox List</Button>
-                    <Button color="sky" :class="'w-9/10'" @click="changeType('toggle')">Toggle List</Button>
-                </div>
-              <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 rounded-lg shadow-lg border border-blue-600/[.87]">
-                <!-- Dropdown in Top Left Corner -->
-                <div class="flex justify-center items-center">
-                    <Dropdown
-                    buttonText="Blue Dropdown"
+            <div class="flex flex-col mt-4 h-full">
+              <div class="flex flex-row justify-center space-x-4">
+              <div class="flex flex-col items-start space-y-2 p-2 bg-blue-100 dark:bg-gray-800 rounded-lg shadow-md">
+                <h4 class="text-md font-semibold text-gray-900 dark:text-gray-200">Colors</h4>
+                <Radio 
+                :items="[
+                          {value: 'default' ,label: 'Blue'},
+                          {value: 'cyan' ,label: 'Cyan'},
+                          {value: 'sky' ,label: 'Sky'},
+                          {value: 'teal' ,label: 'Teal'},
+                        ]"
+                @input="changeCustomColor"/>
+              </div>
+              <div>
+
+              </div>
+              <div class="flex flex-col items-start space-y-2 p-2 bg-blue-100 dark:bg-gray-800 rounded-lg shadow-md">
+                <h4 class="text-md font-semibold text-gray-900 dark:text-gray-200">Sizes</h4>
+                <Radio 
+                :items="[
+                          {value: 'w' ,label: 'xSmall'},
+                          {value: 's' ,label: 'Small'},
+                          {value: 'm' ,label: 'Medium'},
+                          {value: 'l' ,label: 'Large'},
+                        ]"
+                @input="changeCustomSize"/>
+              </div>
+              <div class="flex flex-col items-start space-y-2 p-2 bg-blue-100 dark:bg-gray-800 rounded-lg shadow-md">
+                <h4 class="text-md font-semibold text-gray-900 dark:text-gray-200">Divider Margin</h4>
+                <Radio 
+                :items="[
+                          {value: '0.5' ,label: '0.5'},
+                          {value: '1' ,label: '1'},
+                          {value: '2' ,label: '2'},
+                        ]"
+                @input="changeCustomMargin"/>
+              </div>
+              
+            </div><br>
+            <div class="flex flex-row space-x-4 justify-center">
+              <div class="flex flex-col items-start space-y-2 p-2 bg-blue-100 dark:bg-gray-800 rounded-lg shadow-md">
+                <h4 class="text-md font-semibold text-gray-900 dark:text-gray-200">Menu Width</h4>
+                <Radio 
+                :items="[
+                          {value: 'auto' ,label: 'Auto'},
+                          {value: 'full' ,label: 'Full'},
+                          {value: 'w-48' ,label: 'w48'},
+                          {value: 'w-64' ,label: 'w64'},
+                        ]"
+                @input="changeCustomWidth"/>
+              </div>
+              <div class="flex flex-col items-start space-y-2 p-2 bg-blue-100 dark:bg-gray-800 rounded-lg shadow-md">
+                <h4 class="text-md font-semibold text-gray-900 dark:text-gray-200">Menu Item Type</h4>
+                <Radio 
+                :items="[
+                          {value: 'default' ,label: 'List'},
+                          {value: 'checkbox' ,label: 'Checkbox'},
+                          {value: 'toggle' ,label: 'Toggle'},
+                        ]"
+                @input="changeCustomItemType"/>
+              </div>
+              <div class="flex flex-col items-start space-y-2 p-2 bg-blue-100 dark:bg-gray-800 rounded-lg shadow-md">
+                <h4 class="text-md font-semibold text-gray-900 dark:text-gray-200">Menu Alignment</h4>
+                <Radio 
+                :items="[
+                          {value: 'left' ,label: 'Left'},
+                          {value: 'center' ,label: 'Center'},
+                          {value: 'right' ,label: 'Right'},
+                        ]"
+                @input="changeCustomAlignment"/>
+              </div>
+            </div><br>
+            <div class="flex flex-row justify-center space-x-4">
+                <input v-model="customTextInput" placeholder="Enter text..." class="placeholder:italic placeholder:text-gray-600 dark:placeholder:text-gray-400 border rounded-lg border-gray-800 bg-gray-200 dark:bg-gray-600 dark:border dark:border-gray-700 text-gray-800 dark:text-gray-200 shadow-lg p-2" type="text" id="dropdownText">
+                <Button color="blue" :class="'w-9/10'" @click="changeCustomText('')">Reset</Button>
+                <Button color="blue" :class="'w-9/10'" @click="changeCustomText('dummy')">Set Dropdown Text</Button>
+            </div><br>
+            <div class="flex flex-row justify-center space-x-4">
+                <Button color="blue" :class="'w-9/10'" @click="changeCustomItemText(0)">Set Item 1</Button>
+                <Button color="blue" :class="'w-9/10'" @click="changeCustomItemText(1)">Set Item 2</Button>
+                
+                <Button color="blue" :class="'w-9/10'" @click="changeCustomItemText(2)">Set Item 3</Button>
+                <Button color="blue" :class="'w-9/10'" @click="changeCustomItemText(3)">Set Item 4</Button>
+                <Dropdown
+                    buttonText="Click Me!"
                     type="default" 
-                    size="m" 
-                    :divider="true"
-                    :bordered="true"
-                    :menuItems="typeItems" 
+                    size="s"
+                    :menuItems="dropdownCustomizations" 
                     menuWidth="w-64" 
-                    menuAlignment="left"
+                    menuAlignment="center"
+                    :bordered="true"
+                    @toggle-change="handleToggleChange"
+                    />
+            </div>
+                
+              <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
+                <div class="absolute top-50">
+                    <Dropdown
+                    :buttonText="this.customDropdownText === '' ? 'Custom Dropdown' : this.customDropdownText"
+                    :type="customType" 
+                    :size="customSize" 
+                    :divider="customDivider"
+                    :bordered="customBordered"
+                    :menuItems="customDropdown" 
+                    :menuWidth="customWidth" 
+                    :menuAlignment="customAlignment"
+                    :disabled="customDisabled"
                     />
                 </div>
-
-                
               </div>
             </div>
           </template>
@@ -778,24 +865,18 @@
   import Button from './components/Button.vue';
   import Section from './components/Section.vue';
   import PageHeader from './components/pageHeader.vue';
-  //import Alert from './components/Alert.vue';
   import PageLinks from './components/pageLinks.vue'; 
-  //import Toggle from './components/ToggleComponent.vue';
-  //import Radio from './components/radio.vue'
+  import Radio from './components/radio.vue'
   import Dropdown from './components/Dropdown.vue'
-  //import Tooltip from './components/tooltip.vue'
   export default {
     name: 'App',
     components: {
       Button,
       Section,
       PageHeader,
-      //Alert,
       PageLinks,
-       //Toggle,
-       //Radio,
+       Radio,
        Dropdown,
-       //Tooltip
     },
     data() {
       return {
@@ -855,7 +936,34 @@
             { label: 'Item 3', disabled: false, type: 'default' },
             { label: 'Item 4', disabled: false, type: 'default' }
         ],
-        customItems: []
+        customDropdown: [
+            { label: 'Item 1', disabled: false, type: 'default' },
+            { label: 'Item 2', disabled: false, type: 'default' },
+            { label: 'Item 3', disabled: false, type: 'default' },
+            { label: 'Item 4', disabled: false, type: 'default' }
+        ],
+        dropdownCustomizations: [
+            { label: 'Toggle Border', disabled: false, type: 'toggle', divider: true, toggleHandler: 'toggleCustomBordered()' },
+            { label: 'Disable Dropdown', disabled: false, type: 'toggle', toggleHandler: 'toggleCustomDisabled()' },
+            { label: 'Disable Item 1', disabled: false, type: 'toggle', toggleHandler: 'toggleCustomItemDisabled(0)' },
+            { label: 'Disable Item 2', disabled: false, type: 'toggle', toggleHandler: 'toggleCustomItemDisabled(1)' },
+            { label: 'Disable Item 3', disabled: false, type: 'toggle', toggleHandler: 'toggleCustomItemDisabled(2)' },
+            { label: 'Disable Item 4', disabled: false, type: 'toggle', divider: true, toggleHandler: 'toggleCustomItemDisabled(3)' },
+            { label: 'Item 1 Divider', disabled: false, type: 'toggle', toggleHandler: 'toggleCustomItemDivider(0)' },
+            { label: 'Item 2 Divider', disabled: false, type: 'toggle', toggleHandler: 'toggleCustomItemDivider(1)' },
+            { label: 'Item 3 Divider', disabled: false, type: 'toggle', toggleHandler: 'toggleCustomItemDivider(2)' },
+            { label: 'All-Item Divider', disabled: false, type: 'toggle', toggleHandler: 'toggleCustomDivider()' },
+        ],
+        customType: 'default',
+        customSize: 's',
+        customMargin: '0.5',
+        customWidth: 'full',
+        customItemType: 'default',
+        customAlignment: 'left',
+        customDropdownText: '',
+        customBordered: false,
+        customDisabled: false,
+        customDivider: false,
       };
     },
     methods: {
@@ -893,6 +1001,7 @@
       },
       toggleDivider(){
         this.divider = !this.divider;
+        this.dividerDropdown[3].checked = !this.dividerDropdown[3].checked
         for (let i = 0; i < this.dividerDropdown.length - 1; i++) {
             this.dividerDropdown[i].checked = false;
             this.dividerDropdown[i].disabled = !this.dividerDropdown[i].disabled;
@@ -918,6 +1027,70 @@
       },
       toggleDividerChecked(index){
         this.dividerDropdown[index].checked = !this.dividerDropdown[index].checked
+      },
+      toggleDropdownCustomizations(index){
+        this.dropdownCustomizations[index].checked = !this.dropdownCustomizations[index].checked
+      },
+      changeCustomColor(val){
+        this.customType = val
+      },
+      changeCustomSize(val){
+        this.customSize = val
+      },
+      toggleCustomBordered(){
+        this.customBordered = !this.customBordered
+      },
+      toggleCustomDisabled(){
+        this.customDisabled = !this.customDisabled
+      },
+      toggleCustomItemDisabled(index){
+        this.customDropdown[index].disabled = !this.customDropdown[index].disabled;
+      },
+      toggleCustomDivider(){
+        this.customDivider = !this.customDivider;
+        this.dropdownCustomizations[9].checked = !this.dropdownCustomizations[9].checked
+        for (let i = 6; i < this.dropdownCustomizations.length - 1; i++) {
+            this.dropdownCustomizations[i].checked = false;
+            this.dropdownCustomizations[i].disabled = !this.dropdownCustomizations[i].disabled;
+            this.customDropdown[i-6].divider = false;
+        }
+      },
+      toggleCustomItemDivider(index){
+        this.customDropdown[index].divider = !this.customDropdown[index].divider;
+        this.toggleCustomDividerChecked(index);
+      },
+      toggleCustomDividerChecked(index){
+        let i = index + 6
+        this.dropdownCustomizations[i].checked = !this.dropdownCustomizations[i].checked
+      },
+      changeCustomMargin(val){
+        for (let i = 0; i < this.customDropdown.length - 1; i++){
+            this.customDropdown[i].customMargin = val
+        }
+      },
+      changeCustomItemType(val){
+        for (let i = 0; i < this.customDropdown.length; i++){
+            this.customDropdown[i].type = val
+        }
+      },
+      changeCustomText(val){
+        this.customDropdownText = this.customTextInput
+        if(val === ''){
+            this.customDropdownText = ''
+            for (let i = 0; i < this.customDropdown.length; i++){
+              let key = i + 1
+              this.customDropdown[i].label = 'Item ' + key
+          }
+        }
+      },
+      changeCustomItemText(val){
+        this.customDropdown[val].label = this.customTextInput
+      },
+      changeCustomWidth(val){
+        this.customWidth = val
+      },
+      changeCustomAlignment(val){
+        this.customAlignment = val
       },
       handleToggleChange(item){
         if(item.toggleHandler === 'toggleItemDisabled(0)'){
@@ -947,8 +1120,43 @@
         if(item.toggleHandler === 'toggleDivider()'){
             this.toggleDivider();
         }
+        if(item.toggleHandler === 'toggleCustomBordered()'){
+            this.toggleCustomBordered();
+            this.toggleDropdownCustomizations(0)
+        }
+        if(item.toggleHandler === 'toggleCustomDisabled()'){
+            this.toggleCustomDisabled();
+            this.toggleDropdownCustomizations(1)
+        }
+        if(item.toggleHandler === 'toggleCustomItemDisabled(0)'){
+            this.toggleCustomItemDisabled(0);
+            this.toggleDropdownCustomizations(2)
+        }
+        if(item.toggleHandler === 'toggleCustomItemDisabled(1)'){
+            this.toggleCustomItemDisabled(1);
+            this.toggleDropdownCustomizations(3)
+        }
+        if(item.toggleHandler === 'toggleCustomItemDisabled(2)'){
+            this.toggleCustomItemDisabled(2);
+            this.toggleDropdownCustomizations(4)
+        }
+        if(item.toggleHandler === 'toggleCustomItemDisabled(3)'){
+            this.toggleCustomItemDisabled(3);
+            this.toggleDropdownCustomizations(5)
+        }
+        if(item.toggleHandler === 'toggleCustomDivider()'){
+            this.toggleCustomDivider()
+        }
+        if(item.toggleHandler === 'toggleCustomItemDivider(0)'){
+            this.toggleCustomItemDivider(0)
+        }
+        if(item.toggleHandler === 'toggleCustomItemDivider(1)'){
+            this.toggleCustomItemDivider(1)
+        }
+        if(item.toggleHandler === 'toggleCustomItemDivider(2)'){
+            this.toggleCustomItemDivider(2)
+        }
       }
     },
   };
   </script>
-  

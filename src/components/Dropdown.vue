@@ -174,6 +174,7 @@
           'absolute origin-top-right mt-2 rounded-md shadow-lg z-50 max-h-60 overflow-auto py-2',
           bgClass, borderClass, this.alignmentClass,
           this.menuWidth === 'full' ? 'w-full' : this.menuWidth,
+          'dropdown-menu',
         ];
       },
       itemClasses() {
@@ -268,8 +269,34 @@
   opacity: 0;
   transform: translateY(-50%,-5%);
 }
-.dummy-transition {
-  opacity: 0;
-  transform: translateY(-50%,-5%);
+/* Hide scrollbar for Chrome, Safari and Opera */
+.dropdown-menu::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.dropdown-menu {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Custom scrollbar for Chrome, Safari and Opera */
+.dropdown-menu::-webkit-scrollbar {
+  width: 8px;  /* Width of the scrollbar */
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);  /* Color of the scrollbar */
+  border-radius: 10px;  /* Rounded edges */
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+  background: transparent;  /* Background of the scrollbar track */
+}
+
+/* Custom scrollbar for Firefox */
+.dropdown-menu {
+  scrollbar-width: thin;  /* Width of the scrollbar */
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;  /* Color of the scrollbar thumb and track */
 }
 </style>
