@@ -51,13 +51,71 @@
                 </div>
             </div>
         </div>
-        <div class="bg-blue-50 dark:bg-gray-900 py-24 px-56 space-y-5 text-slate-900 dark:text-slate-100 border-t border-gray-200 dark:border-gray-800"> 
-            <p class="text-4xl text-slate-900 dark:text-slate-100 text-center font-bold"> Contributors </p>
-            <p class="text-lg text-slate-900 dark:text-slate-100 text-center"> Join our community of developers and start building better web experiences today with the GCC Component Library. </p>
-            
+        <div class="bg-blue-50 dark:bg-gray-900 py-24 px-56 text-slate-900 dark:text-slate-100 border-t border-gray-200 dark:border-gray-800 text-center"> 
+            <p class="text-5xl text-slate-900 dark:text-slate-100 font-bold mb-5"> Contributors </p>
+            <p class="text-lg text-slate-900 dark:text-slate-100 mb-20"> Join our community of developers and start building better web experiences today with the GCC Component Library. </p>
+            <div class="space-y-4">
+                <div class="flex flex-row justify-center space-x-8"> 
+                    <UserAvatar 
+                        name="France Angelo Alcantara"
+                        :image="require('@/assets/prans.png')"
+                        size="xxxl"
+                        rounded="full"/> 
+                    <UserAvatar 
+                        name="Ma. Khlarence Arnau"
+                        :image="require('@/assets/khla.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                    <UserAvatar 
+                        name="Lovely Ann Baylon"
+                        :image="require('@/assets/lab.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                    <UserAvatar 
+                        name="Edelyn Carable"
+                        :image="require('@/assets/ede.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                    <UserAvatar 
+                        name="Gian Carlo Catalan"
+                        :image="require('@/assets/gian.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                    </div>
+                    <div class="flex flex-row justify-center space-x-8"> 
+                    <UserAvatar 
+                        name="Aaron De Leon"
+                        :image="require('@/assets/prans.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                    <UserAvatar 
+                        name="Ryan Celestino Intalan"
+                        :image="require('@/assets/ry.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                    <UserAvatar 
+                        name="Paul Vincent Javier"
+                        :image="require('@/assets/pol.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                    <UserAvatar 
+                        name="Jhermaine Parrucho"
+                        :image="require('@/assets/maine.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                    <UserAvatar 
+                        name="Alejandro Prado"
+                        :image="require('@/assets/prado.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                </div>
+            </div>
+            <a href="https://github.com/AlejandroP1028/Group-GCC_Vue-Component-Library" title="GCC Github Repository">
+                <i class="fab fa-github text-3xl text-sky-400 hover:text-gray-400 mt-16"></i>
+            </a>
         </div>
         <div> 
-            <Button @click="toggleDarkMode" color="sky" class="absolute bottom-4 right-4">
+            <Button @click="toggleDarkMode" color="sky" class="absolute top-4 right-4">
                 <template #icon>
                     <i :class="[isDarkMode ? 'fas fa-sun text-2xl' : 'fas fa-moon text-2xl','text-blue-200']"></i>
                 </template>
@@ -72,6 +130,7 @@
     import BreadcrumbComponent from './components/BreadcrumbComponent.vue';
     import ToggleComponent from './components/ToggleComponent.vue';
     import Dropdown from './components/Dropdown.vue';
+    import UserAvatar from './components/UserAvatar.vue';
 
     export default {
         name: 'home_page',
@@ -80,7 +139,8 @@
             BadgeComponent,
             BreadcrumbComponent,
             ToggleComponent,
-            Dropdown
+            Dropdown,
+            UserAvatar
 
         },
         data() {
