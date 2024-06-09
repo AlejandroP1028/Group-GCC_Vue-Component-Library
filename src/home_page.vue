@@ -20,6 +20,7 @@
                         </Button>
                     </div>
                 </div>
+                
                 <div class="relative bg-gray-100 dark:bg-gray-800 hover:bg-cyan-50 dark:hover:text-gray-800 transition-all duration-300 ease-in-out h-60 p-4 overflow-hidden rounded-lg shadow-lg">
                     <p> Breadcrumb </p>
                     <div class="flex items-center justify-center h-full">
@@ -54,6 +55,66 @@
         <div class="bg-blue-50 dark:bg-gray-900 py-24 px-56 space-y-5 text-slate-900 dark:text-slate-100 border-t border-gray-200 dark:border-gray-800"> 
             <p class="text-4xl text-slate-900 dark:text-slate-100 text-center font-bold"> Contributors </p>
             <p class="text-lg text-slate-900 dark:text-slate-100 text-center"> Join our community of developers and start building better web experiences today with the GCC Component Library. </p>
+            <div class="flex flex-col space-y-4 items-center">
+                <div class="flex flex-row justify-center space-x-8"> 
+                    <UserAvatar 
+                        name="France Angelo Alcantara"
+                        :image="require('@/assets/prans.png')"
+                        size="xxxl"
+                        rounded="full"/> 
+                    <UserAvatar 
+                        name="Ma. Khlarence Arnau"
+                        :image="require('@/assets/khla.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                    <UserAvatar 
+                        name="Lovely Ann Baylon"
+                        :image="require('@/assets/lab.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                    <UserAvatar 
+                        name="Edelyn Carable"
+                        :image="require('@/assets/ede.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                    <UserAvatar 
+                        name="Gian Carlo Catalan"
+                        :image="require('@/assets/gian.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                    </div>
+                    <div class="flex flex-row justify-center space-x-8"> 
+                    <UserAvatar 
+                        name="Aaron De Leon"
+                        :image="require('@/assets/prans.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                    <UserAvatar 
+                        name="Ryan Celestino Intalan"
+                        :image="require('@/assets/ry.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                    <UserAvatar 
+                        name="Paul Vincent Javier"
+                        :image="require('@/assets/pol.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                    <UserAvatar 
+                        name="Jhermaine Parrucho"
+                        :image="require('@/assets/maine.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                    <UserAvatar 
+                        name="Alejandro Prado"
+                        :image="require('@/assets/prado.png')"
+                        size="xxxl"
+                        rounded="full"/>
+                </div>
+                <a href="https://github.com/AlejandroP1028/Group-GCC_Vue-Component-Library" title="GCC Github Repository">
+                <i class="fab fa-github text-3xl text-sky-400 hover:text-gray-400 mt-16 self-center"></i>
+            </a>
+            </div>
+            
             
         </div>
         <div> 
@@ -66,6 +127,7 @@
     import BadgeComponent from './components/BadgeComponent.vue';
     import BreadcrumbComponent from './components/BreadcrumbComponent.vue';
     import ToggleComponent from './components/ToggleComponent.vue';
+    import UserAvatar from './components/UserAvatar.vue'
     import Dropdown from './components/Dropdown.vue';
 
     export default {
@@ -75,7 +137,8 @@
             BadgeComponent,
             BreadcrumbComponent,
             ToggleComponent,
-            Dropdown
+            Dropdown,
+            UserAvatar
 
         },
         data() {
