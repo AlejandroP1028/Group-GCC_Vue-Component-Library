@@ -1,6 +1,6 @@
 <template>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <div :class="[{ 'dark': isDarkMode }, containerClasses]" class="overflow-auto flex flex-col scroll-smooth">
+    <div :class="['bg-gradient-to-br from-cyan-100 via-blue-50 to-teal-100 dark:bg-gradient-to-br dark:from-gray-700 dark:via-gray-900 dark:to-gray-700', containerClasses]" class="overflow-auto flex flex-col scroll-smooth">
         <div class="flex flex-col justify-center items-center text-center space-y-8 h-screen"> 
             <p class="text-6xl text-slate-900 dark:text-slate-100 font-bold">Create with ease using <br> GCC Component Library</p>
             <p class="text-xl text-slate-600 dark:text-gray-400"> Your ultimate toolkit for building modern, responsive web applications with ease. </p>
@@ -57,11 +57,6 @@
             
         </div>
         <div> 
-            <Button @click="toggleDarkMode" color="sky" class="absolute bottom-4 right-4">
-                <template #icon>
-                    <i :class="[isDarkMode ? 'fas fa-sun text-2xl' : 'fas fa-moon text-2xl','text-blue-200']"></i>
-                </template>
-            </Button>
         </div>
     </div>
 </template>

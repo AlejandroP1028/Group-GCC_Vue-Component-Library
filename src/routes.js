@@ -13,10 +13,10 @@ import snackbar_page from './snackbar_page.vue'
 import TabPage from './TabPage.vue'
 import template from './template.vue'
 import toggle_page from './toggle_page.vue'
-import HomePage from './components/HomePage.vue'
+import home_page from './home_page.vue'
 
 const routes = [
-  { path: '/', component: HomePage },
+  { path: '/', component: home_page },
   { path: '/alert', component: alert_page },
   { path: '/avatar', component: AvatarPage },
   { path: '/badge', component: badge_page },
