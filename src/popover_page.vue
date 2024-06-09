@@ -7,7 +7,7 @@
     :class="{ dark: isDarkMode }"
     class="overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 flex flex-row scroll-smooth"
   >
-    <div class="relative w-auto mb-16">
+    <div class="relative w-10/12 mb-16">
       <PageHeader
         header="GCC Popover"
         body="Show contextual information using popover elements based on Tailwind CSS"
@@ -285,7 +285,7 @@
     </div>
 
     <div
-      class="sticky top-12 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8"
+      class="sticky top-12 w-2/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8"
     >
       <hr class="h-0.5 bg-blue-600 border-none rounded-full" />
       <span

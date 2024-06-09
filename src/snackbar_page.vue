@@ -10,7 +10,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
-    <div class="relative w-auto mb-16">
+    <div class="relative w-10/12 mb-16">
       <PageHeader
         header="GCC Snackbar"
         body="Show contextual information to your users using snackbar elements based on Tailwind CSS"
@@ -37,7 +37,7 @@
         header="OTHER STYLES"
         body="These are a variety of style options available for users to select from, allowing them to choose the design that best suits their preferences.">
             <template #content>
-                        <div :class="{ 'dark': defaultDark }" class=" flex gap-60 relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
+                        <div :class="{ 'dark': defaultDark }" class=" gap-60 relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-60 p-4 overflow-hidden rounded-lg shadow-lg border border-blue-600/[.87] flex justify-center items-center">
                         <Button @click="showSnackbar('Notification Message', 'style1')" color="sky">Sky</Button>
                         <Button @click="showSnackbar('Notification Message', 'style2')" color="cyan">Cyan</Button>
                         <Button @click="showSnackbar('Notification Message', 'style3')" color="teal">Teal</Button>

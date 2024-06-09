@@ -53,11 +53,11 @@
         >
           <template #content>
             <div class="flex flex-col items-center mt-4 h-full">
-              <div :class="{ 'dark': defaultDark }" class=" flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 rounded-lg shadow-lg border overflow-hidden border-blue-600/[.87]">
-                <FooterComponent company="Blue"></FooterComponent>
-                <FooterComponent company="Sky" color="sky"></FooterComponent>
-                <FooterComponent company="Cyan" color="cyan"></FooterComponent>
-                <FooterComponent company="Teal" color="teal"></FooterComponent>
+              <div :class="{ 'dark': defaultDark }" class=" flex flex-col space-y-2 items-center justify-center bg-gray-100 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 rounded-lg shadow-lg border overflow-hidden border-blue-600/[.87]">
+                <FooterComponent header="Blue" type="blue"></FooterComponent>
+                <FooterComponent header="Sky" type="sky"></FooterComponent>
+                <FooterComponent header="Cyan" type="cyan"></FooterComponent>
+                <FooterComponent header="Teal" type="teal"></FooterComponent>
               </div>
             </div>
           </template>

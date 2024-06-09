@@ -1,7 +1,6 @@
 <template>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <div :class="{ 'dark': isDarkMode }" class=" overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 flex flex-col scroll-smooth">
-    <NavGCC></NavGCC>
     <div class="flex flex-row">
       <div class="relative w-auto mb-16">
       <PageHeader 
@@ -229,7 +228,6 @@ import PageLinks from './components/pageLinks.vue';
 import Toggle from './components/ToggleComponent.vue';
 import Radio from './components/radio.vue'
 
-import NavGCC from './components/navGCC.vue'
 export default {
   name: 'App',
   components: {
@@ -240,7 +238,6 @@ export default {
     PageLinks,
      Toggle,
      Radio,
-     NavGCC
   },
   data() {
     return {
