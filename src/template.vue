@@ -117,21 +117,21 @@ import PageLinks from "./components/pageLinks.vue";
 import PageHeader from "./components/pageHeader.vue";
 import Button from "./components/Button.vue";
 
-export default {
-  name: "CardPage",
-  components: {
-    PageHeader,
-    Section,
-    PageLinks,
-    Button,
-  },
-  data() {
-    return {
-      links: [],
-      isDarkMode: false,
-    };
-  },
-  methods: {
+export default{
+    name: 'CardPage',
+    components:{
+        PageHeader,
+        Section,
+        PageLinks,
+        Button
+    },
+    data(){
+        return {
+            links:[],
+            isDarkMode: false,
+        }
+    },
+    methods:{
     addLink(header) {
       this.links.push({ label: header });
     },
