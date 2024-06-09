@@ -11,9 +11,12 @@ import notif_page from './notif_page.vue'
 import popover_page from './popover_page.vue'
 import snackbar_page from './snackbar_page.vue'
 import TabPage from './TabPage.vue'
+import template from './template.vue'
 import toggle_page from './toggle_page.vue'
+import HomePage from './components/HomePage.vue'
 
 const routes = [
+  { path: '/', component: HomePage },
   { path: '/alert', component: alert_page },
   { path: '/avatar', component: AvatarPage },
   { path: '/badge', component: badge_page },
@@ -26,6 +29,7 @@ const routes = [
   { path: '/popover', component: popover_page },
   { path: '/snackbar', component: snackbar_page },
   { path: '/tab', component: TabPage },
+  { path: '/template', component: template },
   { path: '/toggle', component: toggle_page },
 
 

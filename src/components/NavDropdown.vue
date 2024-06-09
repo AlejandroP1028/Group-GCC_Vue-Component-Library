@@ -14,7 +14,7 @@
       <transition :name="[this.menuAlignment === 'center' ? 'center' : 'v']">
         <div v-if="show" :class="dropdownClasses">
           <template v-for="(item, index) in menuItems" :key="index">
-            <router-link :to="item.to" :class="itemClasses">
+            <router-link :to="item.to" :class="itemClasses" @click="this.show = !this.show">
                 <slot>{{ item.label }}</slot>
             </router-link>
             <div v-if="item && item.divider" :class="setDivider(item.customMargin)"></div>
@@ -78,8 +78,21 @@
       return {
         show: false,
         menuItems: [
-            { label: 'Dropdown', disabled: false, to: '/dropdown' },
             { label: 'Alert', disabled: false, to: '/alert' },
+            { label: 'Avatar', disabled: false, to: '/avatar' },
+            { label: 'Badge', disabled: false, to: '/badge' },
+            { label: 'Card', disabled: false, to: '/card' },
+            { label: 'Collapse', disabled: false, to: '/collapse' },
+            { label: 'Dropdown', disabled: false, to: '/dropdown' },
+            { label: 'List', disabled: false, to: '/list' },
+            { label: 'Navigation Bar', disabled: false, to: '/navbar' },
+            { label: 'Notifications', disabled: false, to: '/notif' },
+            { label: 'Popover', disabled: false, to: '/popover' },
+            { label: 'Snackbar', disabled: false, to: '/snackbar' },
+            { label: 'Tab', disabled: false, to: '/tab' },
+            { label: 'Template', disabled: false, to: '/template' },
+            { label: 'Toggle', disabled: false, to: '/toggle' },
+            //{ label: '', disabled: false, to: '/' },
 
         ],
       }
