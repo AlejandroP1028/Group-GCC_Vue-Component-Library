@@ -423,10 +423,10 @@
                     <Button color="cyan" :class="'w-9/10'" @click="changeText('')">Reset</Button>
                 </div><br>
                 <div class="flex flex-row space-x-4">
-                <Button color="blue" :class="'w-9/10'" @click="changeAlignment('left')">Set Item 1</Button>
-                <Button color="cyan" :class="'w-9/10'" @click="changeAlignment('center')">Set Item 2</Button>
-                <Button color="sky" :class="'w-9/10'" @click="changeAlignment('right')">Set Item 3</Button>
-                <Button color="teal" :class="'w-9/10'" @click="changeAlignment('')">Set Item 4</Button>
+                <Button color="blue" :class="'w-9/10'" @click="changeItemText(0)">Set Item 1</Button>
+                <Button color="cyan" :class="'w-9/10'" @click="changeItemText(1)">Set Item 2</Button>
+                <Button color="sky" :class="'w-9/10'" @click="changeItemText(2)">Set Item 3</Button>
+                <Button color="teal" :class="'w-9/10'" @click="changeItemText(3)">Set Item 4</Button>
                 </div>
               <div :class="{ 'dark': defaultDark }" class="relative bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 rounded-lg shadow-lg border border-blue-600/[.87]">
                 <!-- Dropdown in Top Left Corner -->
@@ -435,8 +435,7 @@
                     :buttonText="this.dropdownText === '' ? 'Blue Dropdown' : this.dropdownText"
                     type="default" 
                     size="m"
-                    :disabled="dropdownDisabled" 
-                    :menuItems="disabledItems" 
+                    :menuItems="customText" 
                     menuWidth="full" 
                     menuAlignment="left"
                     />
@@ -448,8 +447,7 @@
                     :buttonText="this.dropdownText === '' ? 'Cyan Dropdown' : this.dropdownText"
                     type="cyan" 
                     size="m"
-                    :disabled="dropdownDisabled" 
-                    :menuItems="disabledItems" 
+                    :menuItems="customText" 
                     menuWidth="full" 
                     menuAlignment="right"
                     />
@@ -461,8 +459,7 @@
                     :buttonText="this.dropdownText === '' ? 'Sky Dropdown' : this.dropdownText"
                     type="sky" 
                     size="m" 
-                    :disabled="dropdownDisabled"
-                    :menuItems="disabledItems" 
+                    :menuItems="customText" 
                     menuWidth="full" 
                     menuAlignment="left"
                     />
@@ -474,8 +471,7 @@
                     :buttonText="this.dropdownText === '' ? 'Teal Dropdown' : this.dropdownText"
                     type="teal" 
                     size="m" 
-                    :disabled="dropdownDisabled"
-                    :menuItems="disabledItems" 
+                    :menuItems="customText" 
                     menuWidth="full" 
                     menuAlignment="right"
                     />
@@ -942,6 +938,12 @@
             { label: 'Item 3', disabled: false, type: 'default' },
             { label: 'Item 4', disabled: false, type: 'default' }
         ],
+        customText: [
+            { label: 'Item 1', disabled: false, type: 'default' },
+            { label: 'Item 2', disabled: false, type: 'default' },
+            { label: 'Item 3', disabled: false, type: 'default' },
+            { label: 'Item 4', disabled: false, type: 'default' }
+        ],
         dropdownCustomizations: [
             { label: 'Toggle Border', disabled: false, type: 'toggle', divider: true, toggleHandler: 'toggleCustomBordered()' },
             { label: 'Disable Dropdown', disabled: false, type: 'toggle', toggleHandler: 'toggleCustomDisabled()' },
@@ -977,7 +979,14 @@
         this.dropdownText = this.dropdownTextInput
         if(val === ''){
             this.dropdownText = ''
+            for(let i=0; i < this.customText.length; i++){
+              let key = i + 1
+              this.customText[i].label = 'Item ' + key
+            }
         }
+      },
+      changeItemText(val){
+        this.customText[val].label = this.dropdownTextInput
       },
       changeAlignment(val){
         this.menuAlignment = val
