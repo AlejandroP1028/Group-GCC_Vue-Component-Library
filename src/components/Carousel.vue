@@ -1,7 +1,7 @@
 <template>
   <div :class="['relative w-full', borderSize, borderColor, {'dark:border-gray-800': isDarkMode}]" data-carousel="static">
     <button v-if="showSliderControls" @click="toggleSliderControls" class="absolute top-0 end-0 z-30 bg-white dark:bg-gray-800 dark:text-white p-2 m-2 rounded-md shadow-md cursor-pointer focus:outline-none">
-      {{ showSlider? 'Remove Slider Control' : 'Revert Slider Control' }}
+      {{ showSlider ? 'Remove Slider Control' : 'Revert Slider Control' }}
     </button>
     <div class="relative h-full overflow-hidden">
       <transition-group name="carousel" tag="div">
@@ -115,7 +115,7 @@ export default {
   computed: {
     itemClasses() {
       return index => ({
-        hidden: this.currentSlide!== index,
+        hidden: this.currentSlide !== index,
         'duration-700 ease-in-out': true,
         block: this.currentSlide === index,
         'carousel-enter-active': true,
@@ -126,7 +126,7 @@ export default {
       return index => ({
         'w-3 h-3 rounded-full': true,
         [this.indicatorColor]: this.currentSlide === index,
-        'bg-gray-300': this.currentSlide!== index,
+        'bg-gray-300': this.currentSlide !== index,
       });
     },
   },
@@ -152,7 +152,7 @@ export default {
       this.autoplayTimer = null;
     },
     toggleSliderControls() {
-      this.showSlider =!this.showSlider;
+      this.showSlider = !this.showSlider;
     },
   },
   mounted() {

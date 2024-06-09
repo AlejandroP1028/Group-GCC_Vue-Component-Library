@@ -14,9 +14,9 @@ import popover_page from './popover_page.vue';
 import snackbar_page from './snackbar_page.vue';
 import TabPage from './TabPage.vue';
 import toggle_page from './toggle_page.vue';
-
+import template from './template.vue'
 import './index.css'
 
-createApp(Alert_page).mount('#app')
+createApp(template).mount('#app')
 
 

@@ -328,7 +328,7 @@ updateProgressBarColor(color) {
 }
 </script>
 
-<style>
+<style scoped>
 .animateButton {
   background-image: url("@/assets/playthis.png");
   background-size: cover;

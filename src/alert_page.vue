@@ -1,6 +1,7 @@
 <template>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <div :class="{ 'dark': isDarkMode }" class=" overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 flex flex-col scroll-smooth">
+
     <div class="flex flex-row">
       <div class="relative w-auto mb-16">
       <PageHeader 
