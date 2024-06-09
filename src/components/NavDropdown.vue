@@ -92,7 +92,8 @@
             { label: 'Tab', disabled: false, to: '/tab' },
             { label: 'Carousel and Progress', disabled: false, to: '/template' },
             { label: 'Toggle', disabled: false, to: '/toggle' },
-            { label: 'BreadCrumb', disabled: false, to: '/breadcrumb' }
+            { label: 'BreadCrumb', disabled: false, to: '/breadcrumb' },
+            { label: 'Button and Button Group', disabled: false, to: '/button' }
             //{ label: '', disabled: false, to: '/' },
 
         ],

@@ -5,9 +5,15 @@
       <i :class="[isDark ? 'fas fa-sun text-md' : 'fas fa-moon text-md','text-blue-200']"></i>
     </button>
     <div class="p-4 w-full bg-blue-200 dark:bg-gray-800 text-gray-900 dark:text-gray-200 flex flex-row items-center justify-between">
-      <h1 class="ml-12 font-medium hover:cursor-pointer text-3xl"> 
-        <router-link to="/">GCC</router-link>
+      <router-link to="/">
+      <div class="flex flex-row items-center">
+        <img src="./assets/gcc-logo.png" class="ml-4 h-20" alt="">
+        <h1 class="font-medium hover:cursor-pointer text-3xl"> 
+        GCC
       </h1>
+      </div>
+    </router-link>
+
       <div class="px-5 py-2.5 text-center inline-flex items-center">
         <NavDropdown/>
       </div>
