@@ -1022,6 +1022,7 @@
       },
       toggleDarkMode() {
         this.isDarkMode = !this.isDarkMode;
+        this.$emit('toggleDarkMode()');
       },
       toggleItemDisabled(index){
         this.disabledItems[index].disabled = !this.disabledItems[index].disabled;

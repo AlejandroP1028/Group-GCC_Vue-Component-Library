@@ -1,35 +1,28 @@
 <template>
-  <div id="app">
-    <nav class="navbar">
-      <router-link class="nav-link" to="/">Alert</router-link>
-      <router-link class="nav-link" to="/dropdown">Dropdown</router-link>
-    </nav>
+  <div id="app" class="overflow-x-hidden">
+    <div class="p-4 w-full bg-blue-200 flex flex-row justify-between">
+      <h1 class="ml-12 font-medium text-3xl"> GCC
+      </h1>
+      <div class="px-5 py-2.5 text-center inline-flex items-center">
+        <NavDropdown/>
+      </div>
+      
+      
+    </div>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import NavDropdown from './components/NavDropdown.vue'
 export default {
   name: 'App',
+  components: {
+    NavDropdown
+  }
 };
 </script>
 
 <style scoped>
-.navbar {
-  display: flex;
-  justify-content: space-around;
-  background-color: #333;
-  padding: 1rem;
-}
 
-.nav-link {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-}
-
-.nav-link:hover {
-  background-color: #555;
-}
 </style>
