@@ -1,7 +1,7 @@
 <template>
   <div :class="{ 'dark': isDarkMode }" class="overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 flex flex-row scroll-smooth">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <div class="relative w-auto mb-16">
+    <div class="relative w-10/12 mb-16">
       <PageHeader 
         class="flex-none"
         header="GCC Avatar" 

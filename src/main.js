@@ -11,10 +11,10 @@ import './index.css'
 
 import dropdown_test from './dropdown_test.vue';
 
-createApp(TabPage).mount('#app')
+createApp(AvatarPage).mount('#app')
 //createApp(Demo_Tab).mount('#app');
 
-//import AvatarPage from './AvatarPage.vue';
+import AvatarPage from './AvatarPage.vue';
 
 //createApp(AvatarPage).mount('#app')
 
