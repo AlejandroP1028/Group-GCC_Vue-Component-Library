@@ -83,10 +83,11 @@
                 body="The GCC collapse component makes it convenient for users as it keeps the interface clean and organized, allowing them to focus on relevant information while easily accessing more details when needed."
             > 
             </Section>
+            <br>
     </div>
 
     <div
-      class="sticky top-12 w-4/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8"
+      class="sticky top-12 w-2/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8"
     >
       <hr class="h-0.5 bg-blue-600 border-none rounded-full" />
       <span
