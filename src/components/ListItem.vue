@@ -107,7 +107,7 @@
   }
 </script>
   
-<style scoped>
+<style>
 .checkbox-input {
   appearance: none;
   width: 16px;
