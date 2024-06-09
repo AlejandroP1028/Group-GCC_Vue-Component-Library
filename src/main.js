@@ -1,17 +1,19 @@
 /* eslint-disable */
 
 import { createApp } from "vue";
-import alert_page from "./alert_page.vue";
-import badge_page from "./badge_page.vue";
-import breadcrumb_page from "./breadcrumb_page.vue";
-import card_page from "./card_page.vue";
+//import alert_page from "./alert_page.vue";
+//import badge_page from "./badge_page.vue";
+//import breadcrumb_page from "./breadcrumb_page.vue";
+//import card_page from "./card_page.vue";
 import "./index.css";
 import dropdown_test from "./dropdown_test.vue";
 import popover_page from "./popover_page.vue";
 import navbar_page from "./navbar_page.vue";
+import Dropdown_page from "./dropdown_page.vue";
 
 //createApp(alert_page).mount("#app");
-createApp(popover_page).mount("#app");
+//createApp(popover_page).mount("#app");
+createApp(Dropdown_page).mount('#app')
 //createApp(breadcrumb_page).mount("#app");
 //createApp(dropdown_test).mount('#app')
 
