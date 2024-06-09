@@ -17,7 +17,7 @@ Components are designed first in [here](https://www.figma.com/design/ncwy7ApKxRj
 - Carable - breadcrumb, badge
 - De Leon - carousel, progress
 - Intalan - Navbar, Popovers
-- Javier - Collapse, Toast
+- Javier - Collapse, Snackbar
 - Catalan- Avatars, Table
 
   Component Preview:

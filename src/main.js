@@ -9,9 +9,14 @@ import "./index.css";
 import dropdown_test from "./dropdown_test.vue";
 import popover_page from "./popover_page.vue";
 import navbar_page from "./navbar_page.vue";
-
+import collapse_page from "./collapse_page.vue";
+import button_page from "./Button_page.vue";
+import snackbar_page from "./snackbar_page.vue";
+//createApp(button_page).mount('#app');
+createApp(collapse_page).mount('#app');
+//createApp(snackbar_page).mount('#app');
 //createApp(alert_page).mount("#app");
-createApp(popover_page).mount("#app");
+//createApp(popover_page).mount("#app");
 //createApp(breadcrumb_page).mount("#app");
 //createApp(dropdown_test).mount('#app')
 

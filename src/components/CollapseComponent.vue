@@ -1,8 +1,8 @@
 <template>
   <div :class="['collapse-container', containerTypeClass, darkModeClass]">
-    <button @click="toggle" :class="buttonClasses">
-      {{ isCollapsed ? 'BUKSAN' : 'ITAGO' }}
-    </button>
+    <Button @click="toggle" color="blue">
+      {{ isCollapsed ? 'SHOW' : 'HIDE' }}
+    </Button>
     <transition name="collapse">
       <div v-show="!isCollapsed" :class="contentClasses">
         <slot></slot>
@@ -12,11 +12,16 @@
 </template>
 
 <script>
+import Button from "./Button.vue";
+
 export default {
+  components: {
+  Button,
+  },
   props: {
     initialCollapsed: {
       type: Boolean,
-      default: true
+      default: false
     },
     type: {
       type: String,
@@ -42,11 +47,8 @@ export default {
     darkModeClass() {
       return this.isDarkMode ? 'dark' : '';
     },
-    buttonClasses() {
-      return 'inline-block px-4 py-2 text-lg font-bold text-white bg-blue-500 rounded cursor-pointer';
-    },
     contentClasses() {
-      const baseClasses = 'absolute mt-2 p-2 max-h-full max-w-sm overflow-hidden transition-all duration-300 ease';
+      const baseClasses = 'absolute mt-2 p-2 max-h-full max-w-72 overflow-hidden transition-all duration-300 ease';
       const typeClasses = {
         default: 'bg-blue-200 border border-blue-300 rounded',
         type1: 'bg-blue-100 border border-blue-500 rounded',

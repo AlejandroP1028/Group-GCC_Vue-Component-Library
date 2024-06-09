@@ -34,12 +34,12 @@ export default {
       const baseClasses = 'fixed bottom-5 left-1/2 transform -translate-x-1/2 p-4 rounded z-50';
       const lightModeClasses = {
         default: 'bg-blue-200',
-        style1: 'bg-blue-100',
-        style2: 'bg-blue-600',
-        style3: 'bg-cyan-500'
+        style1: 'bg-sky-200',
+        style2: 'bg-cyan-200',
+        style3: 'bg-teal-200'
       };
       const darkModeClasses = {
-        default: 'bg-blue-800',
+        default: 'bg-blue-700',
         style1: 'bg-sky-700',
         style2: 'bg-cyan-700',
         style3: 'bg-teal-700'
