@@ -277,9 +277,9 @@
       };
     },
     methods: {
-      addLink(header) {
-        this.links.push({ label: header });
-      },
+        addLink(header) {
+          this.links.push({ label: header });
+        },
       toggleDarkMode() {
         this.isDarkMode = !this.isDarkMode;
       },
