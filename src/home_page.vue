@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="relative bg-gray-100 dark:bg-gray-800 hover:bg-cyan-50 dark:hover:text-gray-800 transition-all duration-300 ease-in-out h-60 p-4 overflow-hidden rounded-lg shadow-lg">
-                    <p class="mb-3"> Button </p>
+                    <p> Button </p>
                     <div class="flex items-center justify-center h-full">
                         <Button color="sky"> Button </Button>
                     </div>
@@ -54,6 +54,7 @@
         <div class="bg-blue-50 dark:bg-gray-900 py-24 px-56 space-y-5 text-slate-900 dark:text-slate-100 border-t border-gray-200 dark:border-gray-800"> 
             <p class="text-4xl text-slate-900 dark:text-slate-100 text-center font-bold"> Contributors </p>
             <p class="text-lg text-slate-900 dark:text-slate-100 text-center"> Join our community of developers and start building better web experiences today with the GCC Component Library. </p>
+            
         </div>
         <div> 
             <Button @click="toggleDarkMode" color="sky" class="absolute bottom-4 right-4">
