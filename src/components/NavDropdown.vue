@@ -90,7 +90,7 @@
             { label: 'Popover', disabled: false, to: '/popover' },
             { label: 'Snackbar', disabled: false, to: '/snackbar' },
             { label: 'Tab', disabled: false, to: '/tab' },
-            { label: 'Template', disabled: false, to: '/template' },
+            { label: 'Carousel and Progress', disabled: false, to: '/template' },
             { label: 'Toggle', disabled: false, to: '/toggle' },
             //{ label: '', disabled: false, to: '/' },
 

@@ -195,13 +195,6 @@
         <hr class="h-0.5 bg-blue-600 border-none rounded-full">
         <span class="tracking-tight font-semibold self-center text-md text-gray-800 dark:text-gray-200">ON THIS PAGE</span>
         <PageLinks v-for="link in links" :key="link.label" :label="link.label"/>
-        <div class="flex justify-center">
-          <Button @click="toggleDarkMode" color="blue">
-            <template #icon>
-              <i :class="[isDarkMode ? 'fas fa-sun text-2xl' : 'fas fa-moon text-2xl','text-blue-200']"></i>
-            </template>
-          </Button>
-        </div>
         <hr class="h-0.5 bg-blue-600 border-none rounded-full">
       </div>
     </div>
@@ -211,7 +204,6 @@
   import Section from './components/Section.vue';
   import PageLinks from './components/pageLinks.vue';
   import PageHeader from './components/pageHeader.vue';
-  import Button from './components/Button.vue';
   import Card from './components/Card.vue';
   import Toggle from './components/ToggleComponent.vue';
   import Radio from './components/radio.vue';
@@ -222,7 +214,6 @@
       PageHeader,
       Section,
       PageLinks,
-      Button,
       Card,
       Toggle,
       Radio
