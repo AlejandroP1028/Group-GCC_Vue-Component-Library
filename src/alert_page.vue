@@ -1,7 +1,8 @@
 <template>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <div :class="{ 'dark': isDarkMode }" class=" overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 flex flex-row scroll-smooth">
-    <div class="relative w-auto mb-16">
+  <div :class="{ 'dark': isDarkMode }" class=" overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 flex flex-col scroll-smooth">
+    <div class="flex flex-row">
+      <div class="relative w-auto mb-16">
       <PageHeader 
         :class="'flex-none'"
         header="GCC Alert" 
@@ -197,7 +198,7 @@
     </div>
 
     
-    <div class="sticky top-8 w-3/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
+    <div class="sticky h-screen top-8 w-3/12 transition-all duration-300 ease-in-out flex flex-col space-y-4 overflow-hidden mr-8">
       <hr class="h-0.5 bg-blue-600 border-none rounded-full">
       <span class="tracking-tight font-semibold self-center text-md text-gray-800 dark:text-gray-200">ON THIS PAGE</span>
       <PageLinks v-for="link in links" 
@@ -213,6 +214,8 @@
       </div>
       <hr class="h-0.5 bg-blue-600 border-none rounded-full">
     </div>
+    </div>
+    
   </div>  
 </template>
 
@@ -224,6 +227,7 @@ import Alert from './components/Alert.vue';
 import PageLinks from './components/pageLinks.vue'; 
 import Toggle from './components/ToggleComponent.vue';
 import Radio from './components/radio.vue'
+
 export default {
   name: 'App',
   components: {
@@ -233,7 +237,7 @@ export default {
     Alert,
     PageLinks,
      Toggle,
-     Radio
+     Radio,
   },
   data() {
     return {

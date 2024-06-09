@@ -6,7 +6,6 @@ import { createApp } from "vue";
 //import breadcrumb_page from "./breadcrumb_page.vue";
 //import card_page from "./card_page.vue";
 import "./index.css";
-import dropdown_test from "./dropdown_test.vue";
 import popover_page from "./popover_page.vue";
 import navbar_page from "./navbar_page.vue";
 import Dropdown_page from "./dropdown_page.vue";
