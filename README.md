@@ -9,7 +9,7 @@ To run the project, follow these steps:
     npm install
     ```
 
-2. Install the necessary dependencies:
+2. Install the vue cli:
     ```sh
     npm install @vue/cli
     ```
