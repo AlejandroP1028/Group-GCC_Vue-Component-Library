@@ -27,11 +27,11 @@ Components are designed first in [Figma](https://www.figma.com/design/ncwy7ApKxR
 
 - Prado - alert, card
 - Arnau - list group, notifications
-- Alcantara - accordion, modal
-- Parrucho - dropdown, tooltip
+- Alcantara - toggle, footer
+- Parrucho - dropdown
 - Baylon - button, button group
 - Carable - breadcrumb, badge
 - De Leon - carousel, progress
 - Intalan - Navbar, Popovers
-- Javier - Collapse, Toast
-- Catalan - Avatars, Table
+- Javier - Collapse, Snackbar
+- Catalan - Avatars, Tabs
