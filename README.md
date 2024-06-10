@@ -35,3 +35,23 @@ Components are designed first in [Figma](https://www.figma.com/design/ncwy7ApKxR
 - Intalan - Navbar, Popovers
 - Javier - Collapse, Snackbar
 - Catalan - Avatars, Tabs
+
+## Usage
+
+Here is an example of how to use the `Button` component:
+
+```vue
+<template>
+  <Button color="sky">Click Me!</Button>
+</template>
+
+<script>
+import Button from './components/Button.vue';
+
+export default {
+  components: {
+    Button
+  }
+};
+</script>
+
