@@ -9,12 +9,17 @@ To run the project, follow these steps:
     npm install
     ```
 
-2. Install the Vue Router:
+2. Install the necessary dependencies:
+    ```sh
+    npm install @vue/cli
+    ```
+
+3. Install the Vue Router:
     ```sh
     npm install vue-router@next
     ```
 
-3. Start the development server:
+4. Start the development server:
     ```sh
     npm run serve
     ```
