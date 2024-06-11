@@ -85,7 +85,7 @@
                     <div class="flex flex-row justify-center space-x-8"> 
                     <UserAvatar 
                         name="Aaron De Leon"
-                        :image="require('@/assets/prans.png')"
+                        :image="require('@/assets/aaron.png')"
                         size="xxxl"
                         rounded="full"/>
                     <UserAvatar 
