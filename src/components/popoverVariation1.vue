@@ -135,9 +135,6 @@ export default {
         };
       });
     },
-    handleScroll() {
-      this.hidePopover();
-    },
   },
   computed: {
     positionClass() {

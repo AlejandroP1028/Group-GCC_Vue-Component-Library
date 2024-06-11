@@ -3,7 +3,7 @@
       <div :class="{ 'dark': isDarkMode }" class=" overflow-auto h-screen w-screen bg-blue-50 dark:bg-gray-900 flex flex-row scroll-smooth">
          <div class="flex flex-col w-10/12 p-4">
         <PageHeader 
-          header="GCC Button and ButtonGroup" 
+          header="GCC Button and Button Group" 
           body="Show contextual information to your users using Button and ButtonGroup elements based on Tailwind CSS"/>
         <Section body="The Button component serves as a clickable element in user interfaces, typically used to trigger an action or navigate to a different part of the application. It provides a clear call to action for users and can be customized to fit the design of the application.
         The ButtonGroup component, on the other hand, is used to group related buttons together. It helps organize multiple actions or options into a cohesive unit, enhancing the visual clarity and usability of the interface. ButtonGroups are particularly useful when presenting sets of actions or choices that are logically connected."/>

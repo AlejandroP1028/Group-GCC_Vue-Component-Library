@@ -45,7 +45,7 @@ export default {
     },
     popoverButtonColor: {
       type: String,
-      default: "blue",
+      default: "sky",
     },
     trigger: {
       type: String,
@@ -53,7 +53,7 @@ export default {
     },
     buttonText: {
       type: String,
-      default: "Button",
+      default: "Popover",
     },
     popoverTitle: {
       type: String,
