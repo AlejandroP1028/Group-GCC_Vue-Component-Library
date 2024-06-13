@@ -169,10 +169,10 @@
                 @input="changeType"/>
               </div>
             </div>
-            <div :class="{ 'dark': defaultDark }" class="flex flex-row items-center justify-center bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-96 p-4 overflow-auto rounded-lg shadow-lg border overflow-x-auto border-blue-600/[.87]">
+            <div :class="{ 'dark': defaultDark }" class="flex flex-row items-center justify-center bg-gray-200 dark:bg-gray-800 transition-all duration-300 ease-in-out mt-4 w-full h-full p-4 overflow-auto rounded-lg shadow-lg border overflow-x-auto border-blue-600/[.87]">
               <Card v-if="cardOwn" 
                     :key="index"
-                    :class="'mt-12'"
+                    :class="'m-12'"
                     :size="cardOwn.size"
                     :image="cardOwn.image ? 'image-1.jpg' : ''"
                     :bordered="cardOwn.bordered"
