@@ -4,13 +4,7 @@
 
 To run the project, follow these steps:
 
-1. Navigate to the os_js folder where the project is located:
-    ```sh
-    cd os_js
-    ```
-
-
-2. Install the necessary dependencies:
+1. Install the necessary dependencies:
     ```sh
     npm install
     ```
